@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZAFPI Capstone | Homepage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0f1a;
+      --bg-soft: rgba(10, 15, 26, 0.72);
+      --card: rgba(11, 17, 32, 0.62);
+      --line: rgba(255,255,255,0.1);
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --subtle: #94a3b8;
+      --accent: #f59e0b;
+      --accent-2: #fb7185;
+      --green: #22c55e;
+      --cyan: #22d3ee;
+      --shadow: 0 20px 60px rgba(0,0,0,0.35);
+      --max: 1280px;
+      --nav-h: 78px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(245, 158, 11, 0.14), transparent 28%),
+        radial-gradient(circle at top right, rgba(34, 211, 238, 0.1), transparent 24%),
+        linear-gradient(180deg, #101826 0%, #0a0f1a 100%);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      min-height: var(--nav-h);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      background: rgba(2, 6, 23, 0.62);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .topbar-inner, .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    .topbar-inner {
+      min-height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 14px;
+      padding-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      background: linear-gradient(135deg, #f59e0b, #f97316);
+      box-shadow: 0 12px 28px rgba(245, 158, 11, 0.30);
+      flex: 0 0 auto;
+    }
+
+    .brand-copy h1 {
+      margin: 0;
+      font-size: 0.96rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand-copy p {
+      margin: 4px 0 0;
+      color: var(--subtle);
+      font-size: 0.86rem;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-link, .button, .dropdown-toggle, .dropdown-menu a {
+      border-radius: 999px;
+      transition: 0.2s ease;
+    }
+
+    .nav-link {
+      padding: 10px 16px;
+      color: var(--muted);
+      border: 1px solid transparent;
+      font-size: 0.92rem;
+    }
+
+    .nav-link:hover {
+      color: white;
+      border-color: rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .dropdown { position: relative; }
+    .dropdown-toggle {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      padding: 10px 14px;
+      font: inherit;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .dropdown-toggle:hover { background: rgba(255,255,255,0.08); }
+
+    .dropdown-menu {
+      position: absolute;
+      right: 0;
+      top: calc(100% + 10px);
+      min-width: 220px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 10px;
+      display: none;
+      z-index: 110;
+    }
+
+    .dropdown.open .dropdown-menu { display: block; }
+    .dropdown-menu a {
+      display: block;
+      padding: 12px 14px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .dropdown-menu a:hover {
+      color: white;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .button.primary {
+      background: linear-gradient(135deg, #f59e0b, #f97316);
+      border: none;
+      box-shadow: 0 14px 34px rgba(245, 158, 11, 0.28);
+    }
+
+    .homepage {
+      min-height: calc(100vh - var(--nav-h));
+      padding: 20px 0 24px;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .home-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 20px;
+      width: 100%;
+      align-items: stretch;
+    }
+
+    .sim-card, .side-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .sim-card {
+      border-radius: 30px;
+      overflow: hidden;
+      position: relative;
+      min-height: 760px;
+    }
+
+    .demo-stage {
+      position: relative;
+      min-height: 760px;
+      background-color: #ffb57a;
+      font-family: 'Montserrat', sans-serif;
+      color: #fff;
+      user-select: none;
+      overflow: hidden;
+    }
+
+    #canvas-container {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    .vignette {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at center, transparent 28%, rgba(0,0,0,0.84) 122%),
+        linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.05) 30%, rgba(0,0,0,0.24) 100%);
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .ui-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 32px;
+    }
+
+    .sim-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .sim-brand {
+      display: grid;
+      gap: 8px;
+    }
+
+    .demo-logo {
+      font-family: 'Oswald', sans-serif;
+      color: #ffaa00;
+      font-size: 30px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      text-shadow: 0 0 20px rgba(255, 170, 0, 0.45);
+    }
+
+    .demo-tagline {
+      width: fit-content;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.28);
+      border: 1px solid rgba(255,255,255,0.14);
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .sim-status {
+      display: grid;
+      gap: 12px;
+      width: 320px;
+      max-width: 100%;
+    }
+
+    .hud-card {
+      background: rgba(15, 23, 42, 0.45);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 16px 18px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.28);
+    }
+
+    .hud-card p {
+      margin: 0;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #dbeafe;
+      opacity: 0.9;
+    }
+
+    .hud-card h2, .hud-card h3 {
+      margin: 8px 0 0;
+      font-size: 1.45rem;
+      letter-spacing: 0.04em;
+    }
+
+    #egg-tracker h2 {
+      color: #ffcc00;
+      text-shadow: 0 0 15px rgba(255, 204, 0, 0.35);
+    }
+
+    .gauge-shell {
+      margin-top: 10px;
+      height: 14px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+    }
+
+    .gauge-fill {
+      height: 100%;
+      width: 18%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #22d3ee, #22c55e, #f59e0b);
+      box-shadow: 0 0 20px rgba(34, 211, 238, 0.45);
+      transition: width 0.18s ease;
+    }
+
+    .gauge-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 10px;
+      font-size: 0.78rem;
+      color: #e2e8f0;
+    }
+
+    .tablet-panel {
+      position: absolute;
+      right: 36px;
+      bottom: 118px;
+      width: 265px;
+      border-radius: 24px;
+      padding: 16px;
+      background: rgba(8, 12, 20, 0.55);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      pointer-events: none;
+      transform: rotate(-6deg);
+      transform-origin: bottom right;
+    }
+
+    .tablet-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #a5f3fc;
+    }
+
+    .tablet-screen {
+      border-radius: 18px;
+      padding: 14px;
+      background:
+        linear-gradient(180deg, rgba(15,23,42,0.92) 0%, rgba(6,10,18,0.96) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+    }
+
+    .tablet-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 0.78rem;
+      color: #e2e8f0;
+    }
+
+    .tablet-bars {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .tablet-bar {
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .tablet-bar span {
+      display: block;
+      height: 100%;
+      width: 30%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #22d3ee, #60a5fa);
+      transition: width 0.12s linear;
+    }
+
+    .ticker-wrap {
+      margin-top: 14px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 12px;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .ticker {
+      display: inline-block;
+      min-width: 100%;
+      color: #fde68a;
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      animation: tickerMove 12s linear infinite;
+    }
+
+    @keyframes tickerMove {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .text-container {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 720px;
+      position: relative;
+    }
+
+    .story-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 46px;
+      line-height: 1.02;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: absolute;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1.1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.1s cubic-bezier(0.2, 0.8, 0.2, 1);
+      color: #ffffff;
+      text-shadow: 0 10px 30px rgba(0,0,0,0.84);
+      max-width: 13ch;
+      margin: 0;
+    }
+
+    .story-text.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .sim-bottom {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .instruction {
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      font-weight: 800;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #ff7700, #ff3300);
+      color: white;
+      padding: 18px 24px;
+      border-radius: 999px;
+      pointer-events: auto;
+      box-shadow: 0 10px 30px rgba(255, 85, 0, 0.3), inset 0 2px 0 rgba(255,255,255,0.2);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      border: none;
+      max-width: fit-content;
+    }
+
+    .accelerating-ui {
+      transform: scale(0.94);
+      box-shadow: 0 2px 10px rgba(255, 85, 0, 0.5), inset 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .mini-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      pointer-events: auto;
+    }
+
+    .mini-link {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.28);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #fff;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .mini-link:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .side-stack {
+      display: grid;
+      gap: 18px;
+      align-content: start;
+    }
+
+    .side-card {
+      border-radius: 28px;
+      padding: 24px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #fde68a;
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: currentColor;
+      display: inline-block;
+    }
+
+    .side-card h2 {
+      margin: 0;
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      line-height: 0.96;
+      letter-spacing: -0.05em;
+      max-width: 12ch;
+    }
+
+    .side-card h2 span { color: #fde68a; }
+
+    .side-card p {
+      margin: 14px 0 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 1rem;
+    }
+
+    .quick-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .quick-stat {
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .quick-stat strong {
+      display: block;
+      font-size: 1.4rem;
+      line-height: 1;
+      margin-bottom: 8px;
+      letter-spacing: -0.04em;
+    }
+
+    .quick-stat span {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .footer-note {
+      color: var(--subtle);
+      font-size: 0.9rem;
+      margin-top: 14px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 1150px) {
+      .home-grid { grid-template-columns: 1fr; }
+      .side-stack { order: -1; }
+      .side-card h2 { max-width: none; }
+    }
+
+    @media (max-width: 820px) {
+      .topbar-inner, .container { padding-left: 16px; padding-right: 16px; }
+      .topbar-inner { align-items: flex-start; flex-direction: column; }
+      .nav-actions { width: 100%; justify-content: flex-start; }
+      .brand-copy p { display: none; }
+      .sim-card, .demo-stage { min-height: 700px; }
+      .ui-layer { padding: 20px; }
+      .sim-top, .sim-bottom { flex-direction: column; align-items: flex-start; }
+      .sim-status { width: 100%; }
+      .tablet-panel {
+        right: 18px;
+        bottom: 128px;
+        width: 220px;
+        transform: rotate(-4deg);
+      }
+      .story-text { font-size: 30px; max-width: 12ch; }
+      .quick-stats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">Z</div>
+        <div class="brand-copy">
+          <h1>ZAFPI Capstone</h1>
+          <p>Retro simulation homepage</p>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="system.html">System</a>
+        <div class="dropdown" id="menuDropdown">
+          <button class="dropdown-toggle" id="dropdownToggle" aria-expanded="false" aria-controls="dropdownMenu">
+            More <span>▾</span>
+          </button>
+          <div class="dropdown-menu" id="dropdownMenu">
+            <a href="problem.html">The Problem</a>
+            <a href="results.html">Results</a>
+            <a href="resources.html">Resources</a>
+            <a href="sources.html">Sources</a>
+          </div>
+        </div>
+        <a class="button primary" href="system.html">View Project</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="homepage">
+    <div class="container">
+      <div class="home-grid">
+        <section class="sim-card">
+          <div class="demo-stage" id="demoStage">
+            <div class="vignette"></div>
+            <div class="ui-layer">
+              <div class="sim-top">
+                <div class="sim-brand">
+                  <div class="demo-logo">ZAFPI</div>
+                  <div class="demo-tagline">Farmbrite Live Capture Experience</div>
+                </div>
+
+                <div class="sim-status">
+                  <div class="hud-card" id="egg-tracker">
+                    <p>Latest Egg</p>
+                    <h2 id="egg-type-display">WAITING...</h2>
+                  </div>
+
+                  <div class="hud-card">
+                    <p>Farmbrite Throughput Gauge</p>
+                    <div class="gauge-shell">
+                      <div class="gauge-fill" id="throughputFill"></div>
+                    </div>
+                    <div class="gauge-meta">
+                      <span id="throughputText">18% synced</span>
+                      <span id="recordsText">0 records/min</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="text-container">
+                <h1 class="story-text active">A RETRO FARM DASHBOARD<br>POWERED BY LIVE DATA</h1>
+                <h1 class="story-text">CAPTURE EGGS, TRACK FLOW,<br>SYNC TO FARMBRITE</h1>
+                <h1 class="story-text">FROM THE BELT TO THE TABLET,<br>EVERY PASS BECOMES A RECORD</h1>
+              </div>
+
+              <div class="sim-bottom">
+                <button class="instruction" id="instruction-text">CLICK HERE, THEN HOLD SPACEBAR OR TOUCH TO LAY EGGS</button>
+                <div class="mini-links">
+                  <a class="mini-link" href="about.html">About Project</a>
+                  <a class="mini-link" href="problem.html">See Problem</a>
+                  <a class="mini-link" href="system.html">Open System</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="tablet-panel">
+              <div class="tablet-header">
+                <span>Farmbrite Tablet</span>
+                <span id="tabletTime">06:30 PM</span>
+              </div>
+              <div class="tablet-screen">
+                <div class="tablet-row"><span>House Sync</span><strong id="houseSyncValue">12 / 24</strong></div>
+                <div class="tablet-row"><span>Passes Logged</span><strong id="passesLoggedValue">000</strong></div>
+                <div class="tablet-row"><span>Cutoff Status</span><strong id="cutoffValue">ACTIVE</strong></div>
+                <div class="tablet-bars">
+                  <div class="tablet-bar"><span id="tabletBar1"></span></div>
+                  <div class="tablet-bar"><span id="tabletBar2"></span></div>
+                  <div class="tablet-bar"><span id="tabletBar3"></span></div>
+                </div>
+                <div class="ticker-wrap">
+                  <div class="ticker" id="dataTicker">farmbrite sync ready • quality checks stable • layer houses active • daily capture in progress •</div>
+                </div>
+              </div>
+            </div>
+
+            <div id="canvas-container"></div>
+          </div>
+        </section>
+
+        <aside class="side-stack">
+          <section class="side-card">
+            <div class="eyebrow">Homepage</div>
+            <h2>Keep it <span>simple</span>, visual, and alive.</h2>
+            <p>
+              This homepage is intentionally short. It puts the simulation first, keeps the same shared top bar you can reuse across every page, and uses the retro Farmbrite vibe as the main entry point into the project.
+            </p>
+            <div class="nav-buttons">
+              <a class="button primary" href="system.html">Enter Project</a>
+              <a class="button" href="about.html">About Us</a>
+            </div>
+            <div class="quick-stats">
+              <div class="quick-stat">
+                <strong>24</strong>
+                <span>houses represented through live-style capture and syncing cues</span>
+              </div>
+              <div class="quick-stat">
+                <strong>Retro</strong>
+                <span>visual direction with dashboard overlays, gauges, and tablet UI</span>
+              </div>
+            </div>
+            <p class="footer-note">
+              Next step is to make the inner pages match this same top bar and visual system.
+            </p>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const dropdown = document.getElementById('menuDropdown');
+    const dropdownToggle = document.getElementById('dropdownToggle');
+    dropdownToggle.addEventListener('click', () => {
+      const isOpen = dropdown.classList.toggle('open');
+      dropdownToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    document.addEventListener('click', (event) => {
+      if (!dropdown.contains(event.target)) {
+        dropdown.classList.remove('open');
+        dropdownToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  </script>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+
+  <script type="module">
+    import * as THREE from 'three';
+    import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+    import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+    import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+    import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+
+    const container = document.getElementById('canvas-container');
+    const demoStage = document.getElementById('demoStage');
+    const instruction = document.getElementById('instruction-text');
+    const uiDisplay = document.getElementById('egg-type-display');
+    const uiContainer = document.getElementById('egg-tracker');
+    const throughputFill = document.getElementById('throughputFill');
+    const throughputText = document.getElementById('throughputText');
+    const recordsText = document.getElementById('recordsText');
+    const houseSyncValue = document.getElementById('houseSyncValue');
+    const passesLoggedValue = document.getElementById('passesLoggedValue');
+    const cutoffValue = document.getElementById('cutoffValue');
+    const tabletBar1 = document.getElementById('tabletBar1');
+    const tabletBar2 = document.getElementById('tabletBar2');
+    const tabletBar3 = document.getElementById('tabletBar3');
+    const tabletTime = document.getElementById('tabletTime');
+    const dataTicker = document.getElementById('dataTicker');
+    const storyTexts = Array.from(document.querySelectorAll('.story-text'));
+
+    let windmillBladesGroup;
+    let chickenGroup;
+    let composer, bloomPass, camera, scene, renderer;
+    let eggs = [];
+    let isLaying = false;
+    let spawnTimer = 0;
+    let driftTime = 0;
+    let storyIndex = 0;
+    let storyTimer = 0;
+    let passesLogged = 0;
+    let syncedPercent = 18;
+    let lastMinuteRecords = 0;
+    const clock = new THREE.Clock();
+
+    const sceneWidth = () => container.clientWidth || demoStage.clientWidth || window.innerWidth;
+    const sceneHeight = () => container.clientHeight || demoStage.clientHeight || 760;
+
+    scene = new THREE.Scene();
+    const skyColor = new THREE.Color(0xffb57a);
+    scene.background = skyColor;
+    scene.fog = new THREE.FogExp2(skyColor, 0.012);
+
+    camera = new THREE.PerspectiveCamera(40, sceneWidth() / sceneHeight(), 0.1, 1000);
+    camera.position.set(6, 4, 14);
+
+    renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+    renderer.setSize(sceneWidth(), sceneHeight());
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.1;
+    container.appendChild(renderer.domElement);
+
+    composer = new EffectComposer(renderer);
+    composer.addPass(new RenderPass(scene, camera));
+    bloomPass = new UnrealBloomPass(new THREE.Vector2(sceneWidth(), sceneHeight()), 0.6, 0.5, 0.85);
+    composer.addPass(bloomPass);
+    composer.addPass(new OutputPass());
+
+    const pmremGenerator = new THREE.PMREMGenerator(renderer);
+    pmremGenerator.compileEquirectangularShader();
+    scene.environment = pmremGenerator.fromScene(new THREE.Scene()).texture;
+
+    scene.add(new THREE.AmbientLight(0x404060, 1.5));
+
+    const sunLight = new THREE.DirectionalLight(0xffddaa, 4.0);
+    sunLight.position.set(-25, 30, -15);
+    sunLight.castShadow = true;
+    sunLight.shadow.mapSize.width = 2048;
+    sunLight.shadow.mapSize.height = 2048;
+    sunLight.shadow.camera.near = 0.5;
+    sunLight.shadow.camera.far = 100;
+    sunLight.shadow.camera.left = -30;
+    sunLight.shadow.camera.right = 30;
+    sunLight.shadow.camera.top = 30;
+    sunLight.shadow.camera.bottom = -30;
+    sunLight.shadow.bias = -0.0005;
+    scene.add(sunLight);
+
+    const rimLight = new THREE.PointLight(0x77bbff, 30, 40);
+    rimLight.position.set(15, 5, -5);
+    scene.add(rimLight);
+
+    const beltCanvas = document.createElement('canvas');
+    beltCanvas.width = 512;
+    beltCanvas.height = 1024;
+    const bctx = beltCanvas.getContext('2d');
+    bctx.fillStyle = '#151515';
+    bctx.fillRect(0, 0, beltCanvas.width, beltCanvas.height);
+    for (let i = 0; i < 2000; i++) {
+      bctx.fillStyle = Math.random() > 0.5 ? 'rgba(255,255,255,0.02)' : 'rgba(0,0,0,0.2)';
+      bctx.fillRect(Math.random() * 512, Math.random() * 1024, 2, 2);
+    }
+    bctx.fillStyle = '#0a0a0a';
+    for (let i = 0; i < beltCanvas.height; i += 40) {
+      bctx.fillRect(0, i, beltCanvas.width, 15);
+    }
+    const beltTexture = new THREE.CanvasTexture(beltCanvas);
+    beltTexture.wrapS = THREE.RepeatWrapping;
+    beltTexture.wrapT = THREE.RepeatWrapping;
+    beltTexture.repeat.set(1, 10);
+    beltTexture.anisotropy = renderer.capabilities.getMaxAnisotropy();
+
+    const crackCanvas = document.createElement('canvas');
+    crackCanvas.width = 512;
+    crackCanvas.height = 512;
+    const cctx = crackCanvas.getContext('2d');
+    cctx.fillStyle = '#ffffff';
+    cctx.fillRect(0, 0, 512, 512);
+    cctx.strokeStyle = '#222';
+    cctx.lineWidth = 6;
+    cctx.beginPath();
+    cctx.moveTo(256, 0); cctx.lineTo(200, 100); cctx.lineTo(300, 200);
+    cctx.lineTo(220, 300); cctx.lineTo(260, 400); cctx.lineTo(256, 512);
+    cctx.stroke();
+    const crackedTexture = new THREE.CanvasTexture(crackCanvas);
+
+    const machineGroup = new THREE.Group();
+    const belt = new THREE.Mesh(
+      new THREE.BoxGeometry(4.5, 0.5, 50),
+      new THREE.MeshPhysicalMaterial({ map: beltTexture, roughness: 0.6, metalness: 0.2, clearcoat: 0.1 })
+    );
+    belt.position.set(0, 1, 10);
+    belt.receiveShadow = true;
+    machineGroup.add(belt);
+
+    const railGeo = new THREE.BoxGeometry(0.4, 1.0, 50);
+    const railMat = new THREE.MeshPhysicalMaterial({ color: 0x555555, metalness: 0.9, roughness: 0.2, clearcoat: 0.5 });
+    const rightRail = new THREE.Mesh(railGeo, railMat);
+    rightRail.position.set(2.45, 1.25, 10);
+    rightRail.castShadow = true;
+    rightRail.receiveShadow = true;
+    machineGroup.add(rightRail);
+    const leftRail = new THREE.Mesh(railGeo, railMat);
+    leftRail.position.set(-2.45, 1.25, 10);
+    leftRail.castShadow = true;
+    leftRail.receiveShadow = true;
+    machineGroup.add(leftRail);
+    scene.add(machineGroup);
+
+    const farmBgGroup = new THREE.Group();
+    const farmGround = new THREE.Mesh(
+      new THREE.PlaneGeometry(150, 150),
+      new THREE.MeshPhysicalMaterial({ color: 0x4a7c36, roughness: 0.9 })
+    );
+    farmGround.rotation.x = -Math.PI / 2;
+    farmGround.receiveShadow = true;
+    farmBgGroup.add(farmGround);
+
+    const barnWoodMat = new THREE.MeshPhysicalMaterial({ color: 0xa13022, roughness: 0.9 });
+    const roofMat = new THREE.MeshPhysicalMaterial({ color: 0x333333, roughness: 0.8 });
+    const barnBase = new THREE.Mesh(new THREE.BoxGeometry(20, 12, 15), barnWoodMat);
+    barnBase.position.set(-20, 6, -30);
+    barnBase.castShadow = true;
+    barnBase.receiveShadow = true;
+    farmBgGroup.add(barnBase);
+
+    const roofGeo = new THREE.CylinderGeometry(11, 11, 22, 3);
+    roofGeo.rotateZ(Math.PI / 2);
+    roofGeo.rotateX(-Math.PI / 2);
+    const barnRoof = new THREE.Mesh(roofGeo, roofMat);
+    barnRoof.position.set(-20, 15, -30);
+    barnRoof.castShadow = true;
+    farmBgGroup.add(barnRoof);
+
+    const windowGlow = new THREE.Mesh(new THREE.PlaneGeometry(3, 3), new THREE.MeshBasicMaterial({ color: 0xffaa00 }));
+    windowGlow.position.set(-14.9, 10, -22.4);
+    windowGlow.rotation.y = Math.PI / 4;
+    farmBgGroup.add(windowGlow);
+    const barnLight = new THREE.PointLight(0xffaa00, 40, 30);
+    barnLight.position.set(-14, 10, -20);
+    farmBgGroup.add(barnLight);
+
+    const siloMat = new THREE.MeshPhysicalMaterial({ color: 0x888aa0, metalness: 0.6, roughness: 0.4 });
+    const silo = new THREE.Mesh(new THREE.CylinderGeometry(3.5, 3.5, 18, 16), siloMat);
+    silo.position.set(-30, 9, -25);
+    silo.castShadow = true;
+    const siloDome = new THREE.Mesh(new THREE.SphereGeometry(3.5, 16, 16), siloMat);
+    siloDome.position.y = 9;
+    silo.add(siloDome);
+    farmBgGroup.add(silo);
+
+    const woodTowerMat = new THREE.MeshPhysicalMaterial({ color: 0x4a3018, roughness: 1.0 });
+    const windmillTower = new THREE.Mesh(new THREE.CylinderGeometry(1, 2.5, 20, 8), woodTowerMat);
+    windmillTower.position.set(25, 10, -45);
+    windmillTower.castShadow = true;
+    farmBgGroup.add(windmillTower);
+    windmillBladesGroup = new THREE.Group();
+    windmillBladesGroup.position.set(25, 19, -43.5);
+    const bladeMat = new THREE.MeshPhysicalMaterial({ color: 0xe0e0e0, roughness: 0.8 });
+    for (let i = 0; i < 4; i++) {
+      const blade = new THREE.Mesh(new THREE.BoxGeometry(0.2, 8, 1), bladeMat);
+      blade.position.y = 4;
+      const pivot = new THREE.Group();
+      pivot.rotation.z = (Math.PI / 2) * i;
+      pivot.add(blade);
+      windmillBladesGroup.add(pivot);
+    }
+    farmBgGroup.add(windmillBladesGroup);
+
+    const leafMat = new THREE.MeshPhysicalMaterial({ color: 0x224a1e, roughness: 0.9 });
+    const trunkGeo = new THREE.CylinderGeometry(0.4, 0.6, 3);
+    const leafGeo1 = new THREE.ConeGeometry(2.5, 5, 8);
+    const leafGeo2 = new THREE.SphereGeometry(2.5, 8, 8);
+    for (let i = 0; i < 34; i++) {
+      const tree = new THREE.Group();
+      const trunk = new THREE.Mesh(trunkGeo, woodTowerMat);
+      trunk.position.y = 1.5;
+      const foliage = new THREE.Mesh(Math.random() > 0.5 ? leafGeo1 : leafGeo2, leafMat);
+      foliage.position.y = 4;
+      trunk.castShadow = true;
+      foliage.castShadow = true;
+      tree.add(trunk, foliage);
+      let tx = (Math.random() - 0.5) * 120;
+      let tz = -30 - Math.random() * 50;
+      if (Math.abs(tx) < 20) tx += (Math.sign(tx) || 1) * 20;
+      tree.position.set(tx, 0, tz);
+      tree.scale.setScalar(0.8 + Math.random() * 0.6);
+      farmBgGroup.add(tree);
+    }
+
+    const cropMat = new THREE.MeshPhysicalMaterial({ color: 0x3d7a28, roughness: 0.9 });
+    const sunflowerYellow = new THREE.MeshPhysicalMaterial({ color: 0xffcc00, roughness: 0.8 });
+    const cropGeo = new THREE.SphereGeometry(0.5, 8, 8);
+    const stemGeo = new THREE.CylinderGeometry(0.05, 0.05, 2);
+    const flowerGeo = new THREE.CylinderGeometry(0.6, 0.6, 0.1, 12);
+    flowerGeo.rotateX(Math.PI / 2);
+    for (let row = 0; row < 15; row++) {
+      for (let col = 0; col < 14; col++) {
+        const cx = 8 + col * 2 + (Math.random() * 0.3);
+        const cz = -5 - row * 2.5 + (Math.random() * 0.3);
+        if (row > 10 && Math.random() > 0.3) {
+          const sunflower = new THREE.Group();
+          const stem = new THREE.Mesh(stemGeo, cropMat);
+          stem.position.y = 1;
+          const flower = new THREE.Mesh(flowerGeo, sunflowerYellow);
+          flower.position.set(0, 2, 0.2);
+          sunflower.add(stem, flower);
+          sunflower.position.set(cx, 0, cz);
+          sunflower.rotation.y = (Math.random() - 0.5) * 0.5;
+          farmBgGroup.add(sunflower);
+        } else {
+          const crop = new THREE.Mesh(cropGeo, cropMat);
+          crop.position.set(cx, 0.2, cz);
+          crop.scale.set(1, 0.6 + Math.random() * 0.5, 1);
+          farmBgGroup.add(crop);
+        }
+      }
+    }
+
+    const fenceMat = new THREE.MeshPhysicalMaterial({ color: 0x6e4e37, roughness: 1.0 });
+    const postGeo = new THREE.BoxGeometry(0.2, 1.5, 0.2);
+    const fenceRailGeo = new THREE.BoxGeometry(0.1, 0.2, 4);
+    for (let i = 0; i < 12; i++) {
+      const lPost = new THREE.Mesh(postGeo, fenceMat);
+      lPost.position.set(-8, 0.75, 10 - (i * 4));
+      farmBgGroup.add(lPost);
+      const lRail = new THREE.Mesh(fenceRailGeo, fenceMat);
+      lRail.position.set(-8, 1.2, 8 - (i * 4));
+      farmBgGroup.add(lRail);
+      const rPost = new THREE.Mesh(postGeo, fenceMat);
+      rPost.position.set(6, 0.75, 10 - (i * 4));
+      farmBgGroup.add(rPost);
+      const rRail = new THREE.Mesh(fenceRailGeo, fenceMat);
+      rRail.position.set(6, 1.2, 8 - (i * 4));
+      farmBgGroup.add(rRail);
+    }
+
+    chickenGroup = new THREE.Group();
+    const featherMat = new THREE.MeshPhysicalMaterial({ color: 0xf5e7cf, roughness: 0.85 });
+    const beakMat = new THREE.MeshPhysicalMaterial({ color: 0xf59e0b, roughness: 0.5 });
+    const combMat = new THREE.MeshPhysicalMaterial({ color: 0xdc2626, roughness: 0.4 });
+    const body = new THREE.Mesh(new THREE.SphereGeometry(1.3, 24, 24), featherMat);
+    body.scale.set(1.2, 1, 1.4);
+    body.castShadow = true;
+    chickenGroup.add(body);
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.72, 24, 24), featherMat);
+    head.position.set(0, 1.15, 1.15);
+    head.castShadow = true;
+    chickenGroup.add(head);
+    const beak = new THREE.Mesh(new THREE.ConeGeometry(0.18, 0.45, 12), beakMat);
+    beak.position.set(0, 1.08, 1.82);
+    beak.rotation.x = Math.PI / 2;
+    chickenGroup.add(beak);
+    const comb = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.45, 0.5), combMat);
+    comb.position.set(0, 1.72, 1.05);
+    chickenGroup.add(comb);
+    const tail = new THREE.Mesh(new THREE.ConeGeometry(0.48, 1.5, 10), featherMat);
+    tail.position.set(0, 0.9, -1.55);
+    tail.rotation.x = -1.25;
+    tail.castShadow = true;
+    chickenGroup.add(tail);
+    const legMat = new THREE.MeshPhysicalMaterial({ color: 0xd97706, roughness: 0.7 });
+    const legGeo = new THREE.CylinderGeometry(0.08, 0.08, 0.9, 10);
+    const leg1 = new THREE.Mesh(legGeo, legMat);
+    leg1.position.set(-0.35, -0.9, 0.2);
+    const leg2 = new THREE.Mesh(legGeo, legMat);
+    leg2.position.set(0.35, -0.9, 0.2);
+    chickenGroup.add(leg1, leg2);
+    chickenGroup.position.set(0, 2.4, -7.8);
+    scene.add(chickenGroup);
+    scene.add(farmBgGroup);
+
+    const eggTypes = [
+      { id: 'pewy', name: 'Pewy', scale: 0.7, weight: 10 },
+      { id: 'small', name: 'Small', scale: 0.82, weight: 25 },
+      { id: 'normal', name: 'Normal', scale: 1.0, weight: 40 },
+      { id: 'big', name: 'Big', scale: 1.2, weight: 15 },
+      { id: 'jumbo', name: 'Jumbo', scale: 1.5, weight: 8 },
+      { id: 'super_jumbo', name: 'Super Jumbo', scale: 1.8, weight: 3, emissive: true },
+      { id: 'cracked', name: 'Cracked', scale: 1.0, weight: 3, isCracked: true },
+      { id: 'leak', name: 'Leak Splat', scale: 1.0, weight: 1, isLeak: true, emissive: true }
+    ];
+
+    const totalWeight = eggTypes.reduce((sum, type) => sum + type.weight, 0);
+    const eggBaseGeo = new THREE.SphereGeometry(0.5, 48, 48);
+    const createEggMat = (colorHex, emissive = false) => new THREE.MeshPhysicalMaterial({
+      color: colorHex,
+      roughness: 0.2,
+      metalness: 0.0,
+      clearcoat: 1.0,
+      clearcoatRoughness: 0.1,
+      emissive: emissive ? colorHex : 0x000000,
+      emissiveIntensity: emissive ? 2.0 : 0
+    });
+    const eggMaterials = {
+      pewy: createEggMat(0xffffff),
+      small: createEggMat(0xfffdd0),
+      normal: createEggMat(0xeeddcc),
+      big: createEggMat(0xd2a679),
+      jumbo: createEggMat(0xc49a6c),
+      super_jumbo: createEggMat(0xffaa00, true),
+      cracked: new THREE.MeshPhysicalMaterial({ map: crackedTexture, roughness: 0.4, clearcoat: 0.5 }),
+      leak: createEggMat(0xff4400, true)
+    };
+
+    for (let i = 0; i < 96; i++) {
+      const egg = new THREE.Mesh(eggBaseGeo, eggMaterials.normal);
+      egg.castShadow = true;
+      egg.position.set(0, -100, 0);
+      egg.userData = { active: false, type: null, rotationSpeed: 0, logged: false };
+      scene.add(egg);
+      eggs.push(egg);
+    }
+
+    function pickEggType() {
+      let randomNum = Math.random() * totalWeight;
+      for (const type of eggTypes) {
+        if (randomNum < type.weight) return type;
+        randomNum -= type.weight;
+      }
+      return eggTypes[2];
+    }
+
+    function updateHud() {
+      throughputFill.style.width = `${Math.max(12, Math.min(100, syncedPercent))}%`;
+      throughputText.textContent = `${Math.round(syncedPercent)}% synced`;
+      recordsText.textContent = `${Math.round(lastMinuteRecords)} records/min`;
+      houseSyncValue.textContent = `${Math.min(24, Math.max(1, Math.round((syncedPercent / 100) * 24)))} / 24`;
+      passesLoggedValue.textContent = String(passesLogged).padStart(3, '0');
+      cutoffValue.textContent = isLaying ? 'CAPTURING' : 'ACTIVE';
+      tabletBar1.style.width = `${Math.min(100, 16 + (syncedPercent * 0.8))}%`;
+      tabletBar2.style.width = `${Math.min(100, 10 + (passesLogged % 100))}%`;
+      tabletBar3.style.width = `${Math.min(100, 18 + (lastMinuteRecords * 0.9))}%`;
+      dataTicker.textContent = `farmbrite sync ${Math.round(syncedPercent)}% • passes logged ${String(passesLogged).padStart(3, '0')} • ${uiDisplay.textContent.toLowerCase()} latest record • houses active ${houseSyncValue.textContent} •`;
+    }
+
+    function spawnEgg() {
+      const egg = eggs.find(e => !e.userData.active);
+      if (!egg) return;
+      const selectedType = pickEggType();
+      egg.userData.active = true;
+      egg.userData.type = selectedType;
+      egg.userData.rotationSpeed = (Math.random() - 0.5) * 0.08;
+      egg.userData.logged = false;
+      egg.material = eggMaterials[selectedType.id] || eggMaterials.normal;
+      egg.scale.setScalar(selectedType.scale);
+      egg.position.set((Math.random() - 0.5) * 0.4, 2.15, -5.8);
+      egg.rotation.set(Math.random() * 0.25, Math.random() * Math.PI, 0);
+      if (selectedType.isLeak) {
+        egg.scale.set(1.2, 0.25, 1.2);
+        egg.position.y = 1.45;
+      }
+      uiDisplay.textContent = selectedType.name.toUpperCase();
+      uiContainer.classList.add('bump');
+      setTimeout(() => uiContainer.classList.remove('bump'), 140);
+    }
+
+    function cycleStory(delta) {
+      storyTimer += delta;
+      if (storyTimer > 3.2) {
+        storyTexts[storyIndex].classList.remove('active');
+        storyIndex = (storyIndex + 1) % storyTexts.length;
+        storyTexts[storyIndex].classList.add('active');
+        storyTimer = 0;
+      }
+    }
+
+    function focusApp() {
+      demoStage.focus?.();
+    }
+
+    function handleDown(e) {
+      if (e) e.preventDefault();
+      focusApp();
+      isLaying = true;
+      instruction.classList.add('accelerating-ui');
+    }
+
+    function handleUp(e) {
+      if (e) e.preventDefault();
+      isLaying = false;
+      instruction.classList.remove('accelerating-ui');
+    }
+
+    demoStage.tabIndex = 0;
+    window.addEventListener('load', () => {
+      focusApp();
+      updateHud();
+    });
+    demoStage.addEventListener('pointerdown', focusApp);
+    instruction.addEventListener('mousedown', handleDown);
+    instruction.addEventListener('touchstart', handleDown, { passive: false });
+    document.addEventListener('mouseup', handleUp);
+    document.addEventListener('touchend', handleUp, { passive: false });
+    demoStage.addEventListener('keydown', (e) => { if (e.code === 'Space') handleDown(e); }, { passive: false });
+    demoStage.addEventListener('keyup', (e) => { if (e.code === 'Space') handleUp(e); }, { passive: false });
+    document.addEventListener('keydown', (e) => {
+      if (e.code === 'Space' && document.activeElement === demoStage) handleDown(e);
+    }, { passive: false });
+    document.addEventListener('keyup', (e) => {
+      if (e.code === 'Space' && document.activeElement === demoStage) handleUp(e);
+    }, { passive: false });
+
+    function resizeRenderer() {
+      const w = sceneWidth();
+      const h = sceneHeight();
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+      composer.setSize(w, h);
+      bloomPass.setSize(w, h);
+    }
+    window.addEventListener('resize', resizeRenderer);
+    resizeRenderer();
+
+    function animate() {
+      requestAnimationFrame(animate);
+      const delta = Math.min(clock.getDelta(), 0.033);
+      driftTime += delta;
+      cycleStory(delta);
+
+      const now = new Date();
+      tabletTime.textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+      if (windmillBladesGroup) windmillBladesGroup.rotation.z -= delta * 1.8;
+      if (chickenGroup) {
+        chickenGroup.position.y = 2.4 + Math.sin(driftTime * (isLaying ? 18 : 3.5)) * (isLaying ? 0.14 : 0.05);
+        chickenGroup.rotation.x = Math.sin(driftTime * 9) * (isLaying ? 0.08 : 0.02);
+      }
+
+      beltTexture.offset.y -= delta * (isLaying ? 3.2 : 0.35);
+      const currentSpeed = isLaying ? 7.5 : 1.15;
+      const currentSpawnRate = isLaying ? 0.12 : 2.4;
+      spawnTimer += delta;
+      if (spawnTimer >= currentSpawnRate) {
+        spawnEgg();
+        spawnTimer = 0;
+      }
+
+      eggs.forEach(egg => {
+        if (!egg.userData.active) return;
+        egg.position.z += currentSpeed * delta * 5;
+        if (!egg.userData.type.isLeak) {
+          egg.rotation.x += currentSpeed * delta * 2;
+          egg.rotation.z += egg.userData.rotationSpeed;
+        }
+
+        if (!egg.userData.logged && egg.position.z > 7.8) {
+          egg.userData.logged = true;
+          passesLogged += 1;
+          lastMinuteRecords = Math.min(99, lastMinuteRecords + (isLaying ? 4 : 1.2));
+          syncedPercent = Math.min(100, syncedPercent + (egg.userData.type.id === 'super_jumbo' ? 1.8 : 0.65));
+          updateHud();
+        }
+
+        if (egg.position.z > 20) {
+          egg.position.y -= delta * 8;
+          if (egg.position.y < -5) {
+            egg.userData.active = false;
+            egg.position.set(0, -100, 0);
+          }
+        }
+      });
+
+      lastMinuteRecords += ((isLaying ? 36 : 12) - lastMinuteRecords) * 0.02;
+      syncedPercent += ((isLaying ? 92 : 38) - syncedPercent) * 0.01;
+      updateHud();
+
+      let camX = 6 + Math.sin(driftTime) * 3;
+      let camY = 4 + Math.cos(driftTime * 0.8) * 1;
+      let camZ = 14 + Math.sin(driftTime * 0.5) * 2;
+
+      if (isLaying) {
+        const shake = 0.08;
+        camX = 4 + (Math.random() - 0.5) * shake;
+        camY = 3.5 + (Math.random() - 0.5) * shake;
+        camZ = 10;
+        camera.fov += (55 - camera.fov) * 0.1;
+        bloomPass.strength = 1.0;
+      } else {
+        camera.fov += (40 - camera.fov) * 0.05;
+        bloomPass.strength += (0.5 - bloomPass.strength) * 0.05;
+      }
+
+      camera.position.x += (camX - camera.position.x) * 0.05;
+      camera.position.y += (camY - camera.position.y) * 0.05;
+      camera.position.z += (camZ - camera.position.z) * 0.05;
+      camera.lookAt(new THREE.Vector3(0, 2, -2));
+      camera.updateProjectionMatrix();
+      composer.render();
+    }
+
+    animate();
+  </script>
+</body>
+</html>
