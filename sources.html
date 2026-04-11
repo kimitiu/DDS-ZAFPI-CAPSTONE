@@ -1,2 +1,97 @@
 ﻿<!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>ZAFPI Capstone | Sources</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;900&display=swap" rel="stylesheet"><style>:root{--bg:#07101b;--bg2:#0d1624;--card:rgba(10,18,31,.72);--line:rgba(255,255,255,.1);--text:#f8fafc;--muted:#d9e1ec;--subtle:#8ba0b9;--shadow:0 24px 64px rgba(0,0,0,.28)}*{box-sizing:border-box}body{margin:0;font-family:Inter,sans-serif;background:linear-gradient(180deg,var(--bg2),var(--bg));color:var(--text)}a{text-decoration:none;color:#fde68a}.topbar{position:sticky;top:0;z-index:100;backdrop-filter:blur(18px);background:rgba(2,6,23,.66);border-bottom:1px solid rgba(255,255,255,.08)}.topbar-inner,.container{max-width:1240px;margin:0 auto;padding:0 24px}.topbar-inner{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap}.brand{display:flex;align-items:center;gap:14px}.brand-mark{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-weight:800;background:linear-gradient(135deg,#f59e0b,#f97316)}.brand-copy h1{margin:0;font-size:.96rem;letter-spacing:.08em;text-transform:uppercase}.brand-copy p{margin:4px 0 0;color:var(--subtle);font-size:.86rem}.nav-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.nav-link,.button,.dropdown-toggle,.dropdown-menu a{border-radius:999px;transition:.2s ease}.nav-link,.dropdown-toggle,.button{padding:10px 16px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:#d9e1ec}.button.primary{background:linear-gradient(135deg,#f59e0b,#f97316);border:none;color:#fff}.dropdown{position:relative}.dropdown-menu{position:absolute;right:0;top:calc(100% + 10px);min-width:220px;background:rgba(15,23,42,.96);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:10px;display:none}.dropdown.open .dropdown-menu{display:block}.dropdown-menu a{display:block;padding:12px 14px;color:#d9e1ec}.page{padding:28px 0 56px}.hero,.section{background:var(--card);border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow)}.hero{padding:28px}.section{padding:24px;margin-top:18px}.eyebrow{display:inline-flex;gap:10px;align-items:center;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:#fde68a}.eyebrow::before{content:'';width:24px;height:1px;background:currentColor}.hero h1{margin:14px 0 10px;font-family:Montserrat,sans-serif;font-size:clamp(2.4rem,5vw,4.6rem);line-height:.92;letter-spacing:-.05em;max-width:14ch}.hero p,.section p,.section li{color:var(--muted);line-height:1.75}.ref-list{display:grid;gap:12px;margin-top:16px}.ref{padding:16px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}@media (max-width:820px){.topbar-inner,.container{padding-left:16px;padding-right:16px}.topbar-inner{flex-direction:column;align-items:flex-start}.nav-actions{width:100%}}</style></head><body><header class="topbar"><div class="topbar-inner"><div class="brand"><div class="brand-mark">Z</div><div class="brand-copy"><h1>ZAFPI Capstone</h1><p>Sources and references</p></div></div><div class="nav-actions"><a class="nav-link" href="index.html">Home</a><a class="nav-link" href="about.html">About</a><a class="nav-link" href="system.html">System</a><div class="dropdown" id="menuDropdown"><button class="dropdown-toggle" id="dropdownToggle">More <span>&#9662;</span></button><div class="dropdown-menu" id="dropdownMenu"><a href="problem.html">The Problem</a><a href="results.html">Results</a><a href="team.html">Team</a><a href="resources.html">Resources</a><a href="sources.html">Sources</a></div></div><a class="button primary" href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">Farmbrite Demo</a></div></div></header><main class="page"><div class="container"><section class="hero"><div class="eyebrow">Sources</div><h1>Reference points behind the portfolio version.</h1><p>This page documents the inputs currently reflected in the GitHub Pages version. At the moment, the most explicit references are the confirmed ZAFPI project facts and the Farmbrite benchmark link you provided.</p></section><section class="section"><div class="eyebrow">Current Sources</div><div class="ref-list"><div class="ref"><strong>Farmbrite reference</strong><br><a href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">https://www.farmbrite.com/demo</a><p>Used as visual inspiration for the dashboard-overlay direction and the mini tablet UI.</p></div><div class="ref"><strong>Confirmed project facts</strong><p>ZAFPI as Zamboanga Agri-Farm Products Inc.; wholesale service area in Zamboanga City, Jolo Island, and Tawi-Tawi; manual paper-based reporting across two sites; T+1 delay; 43% weekly reconciliation burden; 57% utilization; 24-house activation scope; and 95%+ daily encoding compliance target.</p></div><div class="ref"><strong>Final paper integration status</strong><p>The current environment did not allow reliable extraction of text from the local PDF, so this page is prepared for a second pass once you upload screenshots, excerpts, or table images from the paper.</p></div></div></section></div></main><script>const dropdown=document.getElementById('menuDropdown');const toggle=document.getElementById('dropdownToggle');toggle.addEventListener('click',()=>dropdown.classList.toggle('open'));document.addEventListener('click',(e)=>{if(!dropdown.contains(e.target))dropdown.classList.remove('open')});</script></body></html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZAFPI Capstone | Sources</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#07101b;--bg2:#0d1624;--card:rgba(10,18,31,.72);--line:rgba(255,255,255,.1);--text:#f8fafc;--muted:#d9e1ec;--subtle:#8ba0b9;--shadow:0 24px 64px rgba(0,0,0,.28)}
+    *{box-sizing:border-box}body{margin:0;font-family:Inter,sans-serif;background:linear-gradient(180deg,var(--bg2),var(--bg));color:var(--text)}a{text-decoration:none;color:#fde68a}
+    .topbar{position:sticky;top:0;z-index:100;backdrop-filter:blur(18px);background:rgba(2,6,23,.66);border-bottom:1px solid rgba(255,255,255,.08)}
+    .topbar-inner,.container{max-width:1240px;margin:0 auto;padding:0 24px}.topbar-inner{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap}
+    .brand{display:flex;align-items:center;gap:14px}.brand-mark{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-weight:800;background:linear-gradient(135deg,#f59e0b,#f97316)}
+    .brand-copy h1{margin:0;font-size:.96rem;letter-spacing:.08em;text-transform:uppercase}.brand-copy p{margin:4px 0 0;color:var(--subtle);font-size:.86rem}
+    .nav-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.nav-link,.button,.dropdown-toggle,.dropdown-menu a{border-radius:999px;transition:.2s ease}
+    .nav-link,.dropdown-toggle,.button{padding:10px 16px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:#d9e1ec}.button.primary{background:linear-gradient(135deg,#f59e0b,#f97316);border:none;color:#fff}
+    .dropdown{position:relative}.dropdown-menu{position:absolute;right:0;top:calc(100% + 10px);min-width:220px;background:rgba(15,23,42,.96);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:10px;display:none}.dropdown.open .dropdown-menu{display:block}.dropdown-menu a{display:block;padding:12px 14px;color:#d9e1ec}
+    .page{padding:28px 0 56px}.hero,.section{background:var(--card);border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow)}.hero{padding:28px}.section{padding:24px;margin-top:18px}
+    .eyebrow{display:inline-flex;gap:10px;align-items:center;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:#fde68a}.eyebrow::before{content:'';width:24px;height:1px;background:currentColor}
+    .hero h1{margin:14px 0 10px;font-family:Montserrat,sans-serif;font-size:clamp(2.4rem,5vw,4.6rem);line-height:.92;letter-spacing:-.05em;max-width:14ch}.hero p,.section p,.section li{color:var(--muted);line-height:1.75}
+    .ref-list{display:grid;gap:12px;margin-top:16px}.ref{padding:16px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}.ref strong{display:block;margin-bottom:8px;color:#fff}
+    @media (max-width:820px){.topbar-inner,.container{padding-left:16px;padding-right:16px}.topbar-inner{flex-direction:column;align-items:flex-start}.nav-actions{width:100%}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">Z</div>
+        <div class="brand-copy">
+          <h1>ZAFPI Capstone</h1>
+          <p>Sources and references</p>
+        </div>
+      </div>
+      <div class="nav-actions">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="system.html">System</a>
+        <div class="dropdown" id="menuDropdown">
+          <button class="dropdown-toggle" id="dropdownToggle">More <span>&#9662;</span></button>
+          <div class="dropdown-menu" id="dropdownMenu">
+            <a href="problem.html">The Problem</a>
+            <a href="results.html">Results</a>
+            <a href="team.html">Team</a>
+            <a href="resources.html">Resources</a>
+            <a href="sources.html">Sources</a>
+          </div>
+        </div>
+        <a class="button primary" href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">Farmbrite Demo</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="container">
+      <section class="hero">
+        <div class="eyebrow">Sources</div>
+        <h1>Reference points behind the portfolio version.</h1>
+        <p>This page documents the inputs currently reflected in the GitHub Pages build. The strongest current source is the project debriefer you provided, supplemented by the Farmbrite demo reference and the local final paper path you shared for later visual extraction.</p>
+      </section>
+
+      <section class="section">
+        <div class="eyebrow">Current Source Set</div>
+        <div class="ref-list">
+          <div class="ref">
+            <strong>Project debriefer provided in chat</strong>
+            <p>Used for the company context, market coverage, product mix, 24-house structure, pre-project pain points, target-state design, workflows, implementation timeline, success metrics, and the final positioning statement used across the site.</p>
+          </div>
+          <div class="ref">
+            <strong>Farmbrite reference</strong>
+            <a href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">https://www.farmbrite.com/demo</a>
+            <p>Used as visual inspiration for the dashboard overlay direction, tablet presentation, and operational monitoring language.</p>
+          </div>
+          <div class="ref">
+            <strong>Local final paper reference</strong>
+            <p><code>C:\Users\kimit\Downloads\FINAL PAPER.pdf</code></p>
+            <p>Referenced as the next source for screenshots, tables, and supporting visuals once you upload the images or excerpts you want represented on the site.</p>
+          </div>
+          <div class="ref">
+            <strong>Confirmed core facts now reflected on-site</strong>
+            <p>ZAFPI serves wholesale buyers in Zamboanga City, Jolo Island, and Tawi-Tawi; reporting is manual and paper-based across two sites; visibility is delayed to T+1; around 43% of documents require weekly reconciliation; utilization is about 57%; the rollout target covers 24 houses; and the go-live compliance target is 95%+ within 24 hours.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const dropdown=document.getElementById('menuDropdown');
+    const toggle=document.getElementById('dropdownToggle');
+    toggle.addEventListener('click',()=>dropdown.classList.toggle('open'));
+    document.addEventListener('click',(e)=>{if(!dropdown.contains(e.target))dropdown.classList.remove('open')});
+  </script>
+</body>
+</html>
