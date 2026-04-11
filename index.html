@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -627,6 +627,221 @@
       line-height: 1.7;
     }
 
+    .sim-chip,
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.28);
+      border: 1px solid rgba(255,255,255,0.14);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .sim-chip { color: #dbeafe; }
+    .hud-head,
+    .gauge-value-row,
+    .hud-support,
+    .tablet-bar-head,
+    .tablet-top,
+    .tablet-top-cards,
+    .tablet-grid,
+    .overview-panel,
+    .overview-item {
+      display: grid;
+      gap: 10px;
+    }
+
+    .hud-head {
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.8);
+    }
+
+    .hud-support,
+    .gauge-value-row {
+      grid-template-columns: 1fr auto;
+      align-items: end;
+    }
+
+    .gauge-value-row h3 {
+      margin: 0;
+      font-size: 2.1rem;
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+    }
+
+    .gauge-value-row span,
+    .hero-subtext,
+    .overview-item span,
+    .tablet-subtitle {
+      font-family: 'Inter', sans-serif;
+      color: #dbe4ef;
+      line-height: 1.6;
+    }
+
+    .hero-subtext {
+      margin: 18px 0 0;
+      max-width: 48ch;
+      font-size: 0.96rem;
+      text-shadow: 0 10px 30px rgba(0,0,0,0.44);
+    }
+
+    .hud-support strong,
+    .overview-item strong {
+      color: white;
+    }
+
+    .feedback-stack,
+    .floating-feed {
+      position: absolute;
+      z-index: 12;
+      pointer-events: none;
+    }
+
+    .feedback-stack {
+      left: 32px;
+      bottom: 144px;
+    }
+
+    .feedback-toast {
+      min-width: 240px;
+      max-width: 320px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(8, 13, 23, 0.78);
+      color: #f8fafc;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    .feedback-toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .feedback-toast strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #fde68a;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .floating-feed { inset: 0; overflow: hidden; }
+
+    .floating-note {
+      position: absolute;
+      left: 50%;
+      bottom: 32%;
+      transform: translate(-50%, 0);
+      color: #fff7d6;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.84rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-shadow: 0 8px 24px rgba(0,0,0,0.45);
+      opacity: 0;
+      animation: floatNote 1.9s ease forwards;
+      white-space: nowrap;
+    }
+
+    @keyframes floatNote {
+      0% { opacity: 0; transform: translate(-50%, 12px) scale(0.96); }
+      18% { opacity: 1; }
+      100% { opacity: 0; transform: translate(-50%, -82px) scale(1.04); }
+    }
+
+    .tablet-top {
+      grid-template-columns: 100px 1fr;
+      align-items: start;
+      margin-bottom: 12px;
+    }
+
+    .ring-card,
+    .tablet-stat-card,
+    .tablet-mini-card,
+    .overview-panel {
+      padding: 12px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .ring-card span,
+    .tablet-stat-card label,
+    .tablet-mini-card label,
+    .overview-item label,
+    .tablet-bar-head span {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #bcd1ea;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .ring-progress {
+      --progress: 95%;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at center, rgba(7,12,22,0.96) 54%, transparent 55%),
+        conic-gradient(#22d3ee 0%, #60a5fa 35%, #34d399 var(--progress), rgba(255,255,255,0.08) 0);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+    }
+
+    .tablet-top-cards,
+    .tablet-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .tablet-top-cards strong,
+    .tablet-mini-card strong {
+      font-size: 1rem;
+      line-height: 1.1;
+    }
+
+    .tablet-pill-card strong,
+    #recordPulse {
+      color: #9ef0c5;
+    }
+
+    .tablet-bar-wrap {
+      display: grid;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .tablet-bar-head {
+      grid-template-columns: 1fr auto;
+      align-items: center;
+    }
+
+    .overview-panel {
+      margin-top: 18px;
+    }
+
     @media (max-width: 1150px) {
       .home-grid { grid-template-columns: 1fr; }
       .side-stack { order: -1; }
@@ -660,7 +875,7 @@
         <div class="brand-mark">Z</div>
         <div class="brand-copy">
           <h1>ZAFPI Capstone</h1>
-          <p>Retro simulation homepage</p>
+          <p>Simulation-first operations landing page</p>
         </div>
       </div>
 
@@ -694,60 +909,129 @@
               <div class="sim-top">
                 <div class="sim-brand">
                   <div class="demo-logo">ZAFPI</div>
-                  <div class="demo-tagline">Farmbrite Live Capture Experience</div>
+                  <div class="demo-tagline">Operations Capture Simulation</div>
+                  <div class="sim-chip">Farmbrite-Inspired Live Dashboard</div>
                 </div>
 
                 <div class="sim-status">
                   <div class="hud-card" id="egg-tracker">
-                    <p>Latest Egg</p>
-                    <h2 id="egg-type-display">WAITING...</h2>
+                    <div class="hud-head">
+                      <p>Latest Record</p>
+                      <span class="live-badge"><i class="status-dot"></i>Live</span>
+                    </div>
+                    <h2 id="egg-type-display">Awaiting capture</h2>
+                    <div class="hud-support">
+                      <span>Pass counter</span>
+                      <strong id="passCounterText">000 records</strong>
+                    </div>
                   </div>
 
-                  <div class="hud-card">
-                    <p>Farmbrite Throughput Gauge</p>
+                  <div class="hud-card" id="throughputCard">
+                    <div class="hud-head">
+                      <p>Same-Day Visibility</p>
+                      <span id="statusModeLabel">Monitoring</span>
+                    </div>
+                    <div class="gauge-value-row">
+                      <h3 id="throughputHeadline">57%</h3>
+                      <span id="throughputNarrative">Current utilization baseline in the rollout story.</span>
+                    </div>
                     <div class="gauge-shell">
                       <div class="gauge-fill" id="throughputFill"></div>
                     </div>
                     <div class="gauge-meta">
-                      <span id="throughputText">18% synced</span>
-                      <span id="recordsText">0 records/min</span>
+                      <span id="housesText">14 / 24 houses</span>
+                      <span id="throughputText">95% target</span>
+                      <span id="recordsText">12 records/min</span>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div class="text-container">
-                <h1 class="story-text active">A RETRO FARM DASHBOARD<br>POWERED BY LIVE DATA</h1>
-                <h1 class="story-text">CAPTURE EGGS, TRACK FLOW,<br>SYNC TO FARMBRITE</h1>
-                <h1 class="story-text">FROM THE BELT TO THE TABLET,<br>EVERY PASS BECOMES A RECORD</h1>
+                <h1 class="story-text active">WE&rsquo;RE HATCHING SOMETHING SPECIAL</h1>
+                <h1 class="story-text">FROM PAPER DELAYS TO SAME-DAY VISIBILITY</h1>
+                <h1 class="story-text">FROM THE BELT TO THE TABLET, EVERY PASS BECOMES A RECORD</h1>
+                <p class="hero-subtext">A cinematic egg-line view of ZAFPI&rsquo;s shift from paper-based T+1 reporting to same-day operational visibility across 24 houses.</p>
               </div>
 
               <div class="sim-bottom">
-                <button class="instruction" id="instruction-text">CLICK HERE, THEN HOLD SPACEBAR OR TOUCH TO LAY EGGS</button>
+                <button class="instruction" id="instruction-text">CLICK HERE, THEN HOLD SPACEBAR OR TOUCH TO CAPTURE PASSES</button>
                 <div class="mini-links">
-                  <a class="mini-link" href="about.html">About Project</a>
+                  <a class="mini-link" href="about.html">Learn More</a>
                   <a class="mini-link" href="problem.html">See Problem</a>
                   <a class="mini-link" href="system.html">Open System</a>
                 </div>
               </div>
             </div>
 
-            <div class="tablet-panel">
+            <div class="feedback-stack" id="feedbackStack">
+              <div class="feedback-toast show" id="eventToast">
+                <strong>Rollout Signal</strong>
+                <span id="eventToastText">Same-day capture view ready for house-level logging.</span>
+              </div>
+            </div>
+
+            <div class="floating-feed" id="floatingFeed"></div>
+
+            <div class="tablet-panel" id="tabletPanel">
               <div class="tablet-header">
-                <span>Farmbrite Tablet</span>
+                <div>
+                  <strong>Tablet Console</strong>
+                  <span class="tablet-subtitle">Production review and field encoding</span>
+                </div>
                 <span id="tabletTime">06:30 PM</span>
               </div>
               <div class="tablet-screen">
-                <div class="tablet-row"><span>House Sync</span><strong id="houseSyncValue">12 / 24</strong></div>
-                <div class="tablet-row"><span>Passes Logged</span><strong id="passesLoggedValue">000</strong></div>
-                <div class="tablet-row"><span>Cutoff Status</span><strong id="cutoffValue">ACTIVE</strong></div>
+                <div class="tablet-top">
+                  <div class="ring-card">
+                    <div class="ring-progress" id="ringProgress"><strong id="ringValue">95%</strong></div>
+                    <span>Compliance target</span>
+                  </div>
+                  <div class="tablet-top-cards">
+                    <div class="tablet-stat-card">
+                      <label>Activation Scope</label>
+                      <strong id="houseSyncValue">24 houses</strong>
+                    </div>
+                    <div class="tablet-stat-card tablet-pill-card">
+                      <label>Status</label>
+                      <strong id="cutoffValue">Monitoring</strong>
+                    </div>
+                  </div>
+                </div>
+                <div class="tablet-grid">
+                  <div class="tablet-mini-card">
+                    <label>Passes Logged</label>
+                    <strong id="passesLoggedValue">000</strong>
+                  </div>
+                  <div class="tablet-mini-card">
+                    <label>Live Mode</label>
+                    <strong id="recordPulse">Live</strong>
+                  </div>
+                  <div class="tablet-mini-card">
+                    <label>Utilization</label>
+                    <strong id="utilizationValue">57%</strong>
+                  </div>
+                  <div class="tablet-mini-card">
+                    <label>Reconciliation</label>
+                    <strong id="reconValue">43%</strong>
+                  </div>
+                </div>
                 <div class="tablet-bars">
-                  <div class="tablet-bar"><span id="tabletBar1"></span></div>
-                  <div class="tablet-bar"><span id="tabletBar2"></span></div>
-                  <div class="tablet-bar"><span id="tabletBar3"></span></div>
+                  <div class="tablet-bar-wrap">
+                    <div class="tablet-bar-head"><span>House activation</span><strong id="tabletBarLabel1">14 / 24</strong></div>
+                    <div class="tablet-bar"><span id="tabletBar1"></span></div>
+                  </div>
+                  <div class="tablet-bar-wrap">
+                    <div class="tablet-bar-head"><span>Data integrity</span><strong id="tabletBarLabel2">57% baseline</strong></div>
+                    <div class="tablet-bar"><span id="tabletBar2"></span></div>
+                  </div>
+                  <div class="tablet-bar-wrap">
+                    <div class="tablet-bar-head"><span>Capture compliance</span><strong id="tabletBarLabel3">95% target</strong></div>
+                    <div class="tablet-bar"><span id="tabletBar3"></span></div>
+                  </div>
                 </div>
                 <div class="ticker-wrap">
-                  <div class="ticker" id="dataTicker">farmbrite sync ready • quality checks stable • layer houses active • daily capture in progress •</div>
+                  <div class="ticker" id="dataTicker">same-day visibility online • 24-house activation planning • paper reconciliation pressure at 43% • wholesale service continuity across Zamboanga City, Jolo Island, and Tawi-Tawi •</div>
                 </div>
               </div>
             </div>
@@ -758,27 +1042,54 @@
 
         <aside class="side-stack">
           <section class="side-card">
-            <div class="eyebrow">Homepage</div>
-            <h2>Keep it <span>simple</span>, visual, and alive.</h2>
+            <div class="eyebrow">Landing Page</div>
+            <h2>From delayed logs to <span>same-day visibility</span>.</h2>
             <p>
-              This homepage is intentionally short. It puts the simulation first, keeps the same shared top bar you can reuse across every page, and uses the retro Farmbrite vibe as the main entry point into the project.
+              This capstone presents a simulation-first homepage for the digitization of ZAFPI&rsquo;s egg production reporting, built to feel polished, lightweight, and presentation-ready without losing the dashboard energy.
             </p>
+            <div class="overview-panel">
+              <div class="overview-item">
+                <label>Project</label>
+                <strong>ZAFPI Production Reporting Digitization</strong>
+              </div>
+              <div class="overview-item">
+                <label>Who ZAFPI Is</label>
+                <span>Zamboanga Agri-Farm Products Inc. produces eggs for wholesale buyers in Zamboanga City, Jolo Island, and Tawi-Tawi.</span>
+              </div>
+              <div class="overview-item">
+                <label>Core Problem</label>
+                <span>Two-site production reporting is manual and paper-based, with T+1 visibility and weekly reconciliation needed for about 43% of documents.</span>
+              </div>
+              <div class="overview-item">
+                <label>Project Goal</label>
+                <span>Move to same-day visibility, stronger data integrity, faster operational review, and tighter management control.</span>
+              </div>
+            </div>
             <div class="nav-buttons">
-              <a class="button primary" href="system.html">Enter Project</a>
-              <a class="button" href="about.html">About Us</a>
+              <a class="button primary" href="about.html">Learn More</a>
+              <a class="button" href="system.html">See the System</a>
+              <a class="button" href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">Farmbrite Demo</a>
             </div>
             <div class="quick-stats">
               <div class="quick-stat">
-                <strong>24</strong>
-                <span>houses represented through live-style capture and syncing cues</span>
+                <strong>57%</strong>
+                <span>Current farm utilization baseline in the operating story</span>
               </div>
               <div class="quick-stat">
-                <strong>Retro</strong>
-                <span>visual direction with dashboard overlays, gauges, and tablet UI</span>
+                <strong>43%</strong>
+                <span>Documents requiring weekly reconciliation under the current process</span>
+              </div>
+              <div class="quick-stat">
+                <strong>24</strong>
+                <span>Production houses included in the activation target</span>
+              </div>
+              <div class="quick-stat">
+                <strong>95%+</strong>
+                <span>Daily encoding compliance target within 24 hours during rollout</span>
               </div>
             </div>
             <p class="footer-note">
-              Next step is to make the inner pages match this same top bar and visual system.
+              The homepage stays intentionally short: simulation first, project framing second, and clear paths into the full capstone pages.
             </p>
           </section>
         </aside>
@@ -822,18 +1133,36 @@
     const instruction = document.getElementById('instruction-text');
     const uiDisplay = document.getElementById('egg-type-display');
     const uiContainer = document.getElementById('egg-tracker');
+    const throughputCard = document.getElementById('throughputCard');
     const throughputFill = document.getElementById('throughputFill');
+    const throughputHeadline = document.getElementById('throughputHeadline');
+    const throughputNarrative = document.getElementById('throughputNarrative');
     const throughputText = document.getElementById('throughputText');
     const recordsText = document.getElementById('recordsText');
+    const housesText = document.getElementById('housesText');
     const houseSyncValue = document.getElementById('houseSyncValue');
     const passesLoggedValue = document.getElementById('passesLoggedValue');
     const cutoffValue = document.getElementById('cutoffValue');
     const tabletBar1 = document.getElementById('tabletBar1');
     const tabletBar2 = document.getElementById('tabletBar2');
     const tabletBar3 = document.getElementById('tabletBar3');
+    const tabletBarLabel1 = document.getElementById('tabletBarLabel1');
+    const tabletBarLabel2 = document.getElementById('tabletBarLabel2');
+    const tabletBarLabel3 = document.getElementById('tabletBarLabel3');
     const tabletTime = document.getElementById('tabletTime');
     const dataTicker = document.getElementById('dataTicker');
     const storyTexts = Array.from(document.querySelectorAll('.story-text'));
+    const passCounterText = document.getElementById('passCounterText');
+    const tabletPanel = document.getElementById('tabletPanel');
+    const eventToast = document.getElementById('eventToast');
+    const eventToastText = document.getElementById('eventToastText');
+    const floatingFeed = document.getElementById('floatingFeed');
+    const ringProgress = document.getElementById('ringProgress');
+    const ringValue = document.getElementById('ringValue');
+    const recordPulse = document.getElementById('recordPulse');
+    const statusModeLabel = document.getElementById('statusModeLabel');
+    const utilizationValue = document.getElementById('utilizationValue');
+    const reconValue = document.getElementById('reconValue');
 
     let windmillBladesGroup;
     let chickenGroup;
@@ -845,8 +1174,16 @@
     let storyIndex = 0;
     let storyTimer = 0;
     let passesLogged = 0;
-    let syncedPercent = 18;
-    let lastMinuteRecords = 0;
+    let syncedPercent = 95;
+    let lastMinuteRecords = 12;
+    let displayRecords = 12;
+    let utilizationRate = 57;
+    let displayUtilization = 57;
+    let displayCompliance = 95;
+    let activeHouses = 14;
+    let displayHouses = 14;
+    let hudPulse = 0;
+    let toastTimer;
     const clock = new THREE.Clock();
 
     const sceneWidth = () => container.clientWidth || demoStage.clientWidth || window.innerWidth;
@@ -1170,17 +1507,73 @@
       return eggTypes[2];
     }
 
+    function showToast(title, message) {
+      eventToast.querySelector('strong').textContent = title;
+      eventToastText.textContent = message;
+      eventToast.classList.remove('show');
+      clearTimeout(toastTimer);
+      requestAnimationFrame(() => eventToast.classList.add('show'));
+      toastTimer = window.setTimeout(() => eventToast.classList.remove('show'), 2200);
+    }
+
+    function spawnFloatingNote(text) {
+      const note = document.createElement('div');
+      note.className = 'floating-note';
+      note.textContent = text;
+      note.style.left = `${42 + (Math.random() * 20)}%`;
+      note.style.bottom = `${28 + (Math.random() * 10)}%`;
+      floatingFeed.appendChild(note);
+      window.setTimeout(() => note.remove(), 1900);
+    }
+
+    function pulseHud() {
+      uiContainer.classList.add('bump');
+      throughputCard.classList.add('bump');
+      tabletPanel.classList.add('engaged');
+      hudPulse = 1;
+      setTimeout(() => {
+        uiContainer.classList.remove('bump');
+        throughputCard.classList.remove('bump');
+      }, 220);
+      setTimeout(() => {
+        if (!isLaying) tabletPanel.classList.remove('engaged');
+      }, 420);
+    }
+
     function updateHud() {
-      throughputFill.style.width = `${Math.max(12, Math.min(100, syncedPercent))}%`;
-      throughputText.textContent = `${Math.round(syncedPercent)}% synced`;
-      recordsText.textContent = `${Math.round(lastMinuteRecords)} records/min`;
-      houseSyncValue.textContent = `${Math.min(24, Math.max(1, Math.round((syncedPercent / 100) * 24)))} / 24`;
+      displayRecords += (lastMinuteRecords - displayRecords) * 0.1;
+      displayUtilization += (utilizationRate - displayUtilization) * 0.08;
+      displayCompliance += (syncedPercent - displayCompliance) * 0.08;
+      displayHouses += (activeHouses - displayHouses) * 0.08;
+
+      const roundedCompliance = Math.round(displayCompliance);
+      const roundedRecords = Math.round(displayRecords);
+      const roundedUtilization = Math.round(displayUtilization);
+      const roundedHouses = Math.max(1, Math.round(displayHouses));
+
+      throughputFill.style.width = `${Math.max(18, Math.min(100, roundedCompliance))}%`;
+      throughputHeadline.textContent = `${roundedUtilization}%`;
+      throughputNarrative.textContent = isLaying ? 'Live capture is pushing same-day reporting confidence upward.' : 'Manual reporting baseline shows where the rollout starts.';
+      throughputText.textContent = `${roundedCompliance}% target`;
+      recordsText.textContent = `${roundedRecords} records/min`;
+      housesText.textContent = `${roundedHouses} / 24 houses`;
+      houseSyncValue.textContent = `${roundedHouses} of 24 houses`;
       passesLoggedValue.textContent = String(passesLogged).padStart(3, '0');
-      cutoffValue.textContent = isLaying ? 'CAPTURING' : 'ACTIVE';
-      tabletBar1.style.width = `${Math.min(100, 16 + (syncedPercent * 0.8))}%`;
-      tabletBar2.style.width = `${Math.min(100, 10 + (passesLogged % 100))}%`;
-      tabletBar3.style.width = `${Math.min(100, 18 + (lastMinuteRecords * 0.9))}%`;
-      dataTicker.textContent = `farmbrite sync ${Math.round(syncedPercent)}% • passes logged ${String(passesLogged).padStart(3, '0')} • ${uiDisplay.textContent.toLowerCase()} latest record • houses active ${houseSyncValue.textContent} •`;
+      passCounterText.textContent = `${String(passesLogged).padStart(3, '0')} records`;
+      cutoffValue.textContent = isLaying ? 'Capturing' : 'Monitoring';
+      recordPulse.textContent = isLaying ? 'Active' : 'Live';
+      statusModeLabel.textContent = isLaying ? 'Capture Mode' : 'Monitoring';
+      utilizationValue.textContent = `${roundedUtilization}%`;
+      reconValue.textContent = '43%';
+      ringValue.textContent = `${roundedCompliance}%`;
+      ringProgress.style.setProperty('--progress', `${roundedCompliance}%`);
+      tabletBar1.style.width = `${Math.min(100, (roundedHouses / 24) * 100)}%`;
+      tabletBar2.style.width = `${Math.min(100, roundedUtilization)}%`;
+      tabletBar3.style.width = `${Math.min(100, roundedCompliance)}%`;
+      tabletBarLabel1.textContent = `${roundedHouses} / 24`;
+      tabletBarLabel2.textContent = `${roundedUtilization}% baseline`;
+      tabletBarLabel3.textContent = `${roundedCompliance}% target`;
+      dataTicker.textContent = `same-day visibility ${roundedCompliance}% target • records flowing ${String(passesLogged).padStart(3, '0')} captured • ${uiDisplay.textContent.toLowerCase()} latest event • utilization baseline ${roundedUtilization}% • reconciliation pressure 43% • houses in scope ${roundedHouses} of 24 •`;
     }
 
     function spawnEgg() {
@@ -1199,9 +1592,8 @@
         egg.scale.set(1.2, 0.25, 1.2);
         egg.position.y = 1.45;
       }
-      uiDisplay.textContent = selectedType.name.toUpperCase();
-      uiContainer.classList.add('bump');
-      setTimeout(() => uiContainer.classList.remove('bump'), 140);
+      uiDisplay.textContent = selectedType.name;
+      pulseHud();
     }
 
     function cycleStory(delta) {
@@ -1223,12 +1615,15 @@
       focusApp();
       isLaying = true;
       instruction.classList.add('accelerating-ui');
+      tabletPanel.classList.add('engaged');
+      showToast('Capture Active', 'Field-style logging is now following each egg pass in real time.');
     }
 
     function handleUp(e) {
       if (e) e.preventDefault();
       isLaying = false;
       instruction.classList.remove('accelerating-ui');
+      tabletPanel.classList.remove('engaged');
     }
 
     demoStage.tabIndex = 0;
@@ -1271,15 +1666,15 @@
       const now = new Date();
       tabletTime.textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-      if (windmillBladesGroup) windmillBladesGroup.rotation.z -= delta * 1.8;
+      if (windmillBladesGroup) windmillBladesGroup.rotation.z -= delta * 1.4;
       if (chickenGroup) {
-        chickenGroup.position.y = 2.4 + Math.sin(driftTime * (isLaying ? 18 : 3.5)) * (isLaying ? 0.14 : 0.05);
-        chickenGroup.rotation.x = Math.sin(driftTime * 9) * (isLaying ? 0.08 : 0.02);
+        chickenGroup.position.y = 2.4 + Math.sin(driftTime * (isLaying ? 10 : 3.2)) * (isLaying ? 0.11 : 0.04);
+        chickenGroup.rotation.x = Math.sin(driftTime * 6.5) * (isLaying ? 0.05 : 0.015);
       }
 
-      beltTexture.offset.y -= delta * (isLaying ? 3.2 : 0.35);
-      const currentSpeed = isLaying ? 7.5 : 1.15;
-      const currentSpawnRate = isLaying ? 0.12 : 2.4;
+      beltTexture.offset.y -= delta * (isLaying ? 2.2 : 0.42);
+      const currentSpeed = isLaying ? 6.1 : 1.55;
+      const currentSpawnRate = isLaying ? 0.16 : 2.8;
       spawnTimer += delta;
       if (spawnTimer >= currentSpawnRate) {
         spawnEgg();
@@ -1297,8 +1692,13 @@
         if (!egg.userData.logged && egg.position.z > 7.8) {
           egg.userData.logged = true;
           passesLogged += 1;
-          lastMinuteRecords = Math.min(99, lastMinuteRecords + (isLaying ? 4 : 1.2));
-          syncedPercent = Math.min(100, syncedPercent + (egg.userData.type.id === 'super_jumbo' ? 1.8 : 0.65));
+          lastMinuteRecords = Math.min(99, lastMinuteRecords + (isLaying ? 3.2 : 1.1));
+          syncedPercent = Math.min(98, syncedPercent + (egg.userData.type.id === 'super_jumbo' ? 0.4 : 0.12));
+          utilizationRate = Math.min(76, utilizationRate + (isLaying ? 0.22 : 0.05));
+          activeHouses = Math.min(24, activeHouses + (passesLogged % 8 === 0 ? 1 : 0));
+          showToast('Record Captured', `${egg.userData.type.name} pass logged and pushed into the same-day reporting view.`);
+          spawnFloatingNote('+1 record synced');
+          pulseHud();
           updateHud();
         }
 
@@ -1311,24 +1711,25 @@
         }
       });
 
-      lastMinuteRecords += ((isLaying ? 36 : 12) - lastMinuteRecords) * 0.02;
-      syncedPercent += ((isLaying ? 92 : 38) - syncedPercent) * 0.01;
+      lastMinuteRecords += ((isLaying ? 34 : 12) - lastMinuteRecords) * 0.022;
+      syncedPercent += ((isLaying ? 97 : 95) - syncedPercent) * 0.012;
+      utilizationRate += ((isLaying ? 64 : 57) - utilizationRate) * 0.012;
+      activeHouses += ((isLaying ? 24 : Math.max(14, activeHouses)) - activeHouses) * (isLaying ? 0.02 : 0.01);
       updateHud();
 
-      let camX = 6 + Math.sin(driftTime) * 3;
-      let camY = 4 + Math.cos(driftTime * 0.8) * 1;
-      let camZ = 14 + Math.sin(driftTime * 0.5) * 2;
+      let camX = 6.15 + Math.sin(driftTime * 0.5) * 1.4;
+      let camY = 4.1 + Math.cos(driftTime * 0.6) * 0.52;
+      let camZ = 14.15 + Math.sin(driftTime * 0.38) * 0.95;
 
       if (isLaying) {
-        const shake = 0.08;
-        camX = 4 + (Math.random() - 0.5) * shake;
-        camY = 3.5 + (Math.random() - 0.5) * shake;
-        camZ = 10;
-        camera.fov += (55 - camera.fov) * 0.1;
-        bloomPass.strength = 1.0;
+        camX = 4.7 + Math.sin(driftTime * 0.8) * 0.45;
+        camY = 3.55 + Math.cos(driftTime * 1.1) * 0.2;
+        camZ = 10.7 + Math.sin(driftTime * 0.9) * 0.26;
+        camera.fov += (49 - camera.fov) * 0.06;
+        bloomPass.strength += (0.82 - bloomPass.strength) * 0.08;
       } else {
         camera.fov += (40 - camera.fov) * 0.05;
-        bloomPass.strength += (0.5 - bloomPass.strength) * 0.05;
+        bloomPass.strength += (0.54 - bloomPass.strength) * 0.05;
       }
 
       camera.position.x += (camX - camera.position.x) * 0.05;
@@ -1343,3 +1744,6 @@
   </script>
 </body>
 </html>
+
+
+
