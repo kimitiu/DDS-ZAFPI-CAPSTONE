@@ -2359,6 +2359,402 @@ select {
   }
 }
 
+/* Homepage simulation layout v3 */
+.demo-stage--full {
+  min-height: max(980px, calc(100vh - var(--nav-height) - 18px));
+}
+
+.scene-sort-markers {
+  display: none;
+}
+
+.scene-belt {
+  left: 12%;
+  right: 24%;
+  bottom: 9%;
+  height: 138px;
+  z-index: 1;
+}
+
+.scene-belt-track {
+  inset: 28px 0 0;
+}
+
+.scene-farmline {
+  left: 10%;
+  right: 28%;
+  bottom: 34%;
+  gap: 20px;
+}
+
+.scene-silo {
+  right: 22%;
+  bottom: 35%;
+}
+
+.egg-stream {
+  inset: 0 4% 0 4%;
+}
+
+.sim-egg {
+  top: 24px;
+  box-shadow:
+    0 14px 22px rgba(18, 24, 27, 0.16),
+    inset 0 2px 5px rgba(255, 255, 255, 0.45);
+}
+
+.sim-egg::before {
+  content: "";
+  position: absolute;
+  inset: 12% 18% 42% 24%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.62), transparent 72%);
+  opacity: 0.88;
+}
+
+.egg--jumbo {
+  background: radial-gradient(circle at 35% 28%, #fffef9, #f0dfbd 70%);
+}
+
+.egg--large {
+  background: radial-gradient(circle at 35% 30%, #f7edd9, #ddbe90 70%);
+}
+
+.egg--medium {
+  background:
+    radial-gradient(circle at 35% 30%, #f5f0e4, #d9d2be 70%),
+    radial-gradient(circle at 26% 54%, rgba(104, 86, 62, 0.28) 0 2px, transparent 2px),
+    radial-gradient(circle at 66% 30%, rgba(104, 86, 62, 0.22) 0 1.5px, transparent 1.5px);
+}
+
+.egg--small {
+  background: radial-gradient(circle at 35% 28%, #fbf7ea, #ded8c2 72%);
+}
+
+.egg--exception {
+  background: radial-gradient(circle at 35% 30%, #f6d2c6, #c77b6f 72%);
+}
+
+.sim-overlay--landing {
+  grid-template-rows: auto auto 1fr auto;
+  padding: clamp(26px, 2vw, 34px);
+  gap: 22px;
+}
+
+.sim-stage-grid {
+  display: grid;
+  grid-template-columns: minmax(320px, 420px) minmax(280px, 1fr) minmax(320px, 380px);
+  gap: 24px;
+  align-items: start;
+  margin-top: 8px;
+  position: relative;
+  z-index: 3;
+}
+
+.hero-floating-card--stage {
+  max-width: 420px;
+}
+
+.scene-story-panel {
+  display: grid;
+  gap: 18px;
+  align-self: start;
+  justify-self: center;
+  max-width: 520px;
+  padding-top: 44px;
+}
+
+.scene-story-copy {
+  display: grid;
+  gap: 18px;
+  max-width: 460px;
+}
+
+.scene-story-panel .story-line {
+  margin: 0;
+  font-size: clamp(2.6rem, 5.2vw, 4.95rem);
+  line-height: 0.92;
+  color: rgba(251, 252, 247, 0.94);
+  text-shadow: 0 12px 26px rgba(10, 22, 18, 0.12);
+}
+
+.scene-story-panel .story-support {
+  max-width: 34ch;
+  color: rgba(248, 251, 245, 0.88);
+  font-size: 1.02rem;
+}
+
+.scene-grade-guide {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.grade-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(15, 28, 24, 0.42);
+  box-shadow: 0 14px 30px rgba(10, 20, 18, 0.08);
+  color: rgba(248, 251, 245, 0.92);
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  backdrop-filter: blur(12px);
+}
+
+.grade-chip--jumbo {
+  background: rgba(83, 117, 88, 0.78);
+}
+
+.grade-chip--large {
+  background: rgba(106, 132, 95, 0.76);
+}
+
+.grade-chip--medium {
+  background: rgba(75, 86, 96, 0.68);
+}
+
+.grade-chip--small {
+  background: rgba(59, 79, 95, 0.68);
+}
+
+.grade-chip--exception {
+  background: rgba(135, 77, 64, 0.78);
+}
+
+.monitor-stack {
+  width: min(100%, 380px);
+  justify-self: end;
+  align-self: start;
+  display: grid;
+  gap: 16px;
+  margin-top: 12px;
+  position: relative;
+  z-index: 3;
+}
+
+.record-dock {
+  width: 100%;
+  padding: 18px 20px;
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(19, 31, 28, 0.88), rgba(12, 24, 22, 0.82)),
+    rgba(255, 255, 255, 0.04);
+}
+
+.record-dock .signal-value {
+  font-size: clamp(2.1rem, 3vw, 3rem);
+  line-height: 0.94;
+  max-width: 10ch;
+}
+
+.record-dock .signal-copy {
+  max-width: none;
+}
+
+.record-dock .signal-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.dashboard-panel--landing {
+  width: 100%;
+  max-width: none;
+  padding: 18px;
+  background: linear-gradient(180deg, rgba(12, 23, 29, 0.94), rgba(17, 36, 32, 0.88));
+}
+
+.dashboard-summary-card {
+  display: grid;
+  gap: 8px;
+  padding: 14px 14px 12px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  margin-bottom: 14px;
+}
+
+.dashboard-summary-value {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(1.9rem, 3vw, 2.8rem);
+  line-height: 0.95;
+}
+
+.dashboard-grid {
+  grid-template-columns: 108px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.dashboard-mini-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.dashboard-mini-card {
+  min-height: 92px;
+  padding: 12px;
+}
+
+.dashboard-mini-card label {
+  display: block;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.dashboard-progress {
+  margin-top: 14px;
+  gap: 12px;
+}
+
+.dashboard-progress-head {
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.82rem;
+}
+
+.sim-control-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  width: fit-content;
+  max-width: 560px;
+  position: relative;
+  z-index: 4;
+  margin-top: auto;
+}
+
+.sim-control-rail .instruction-chip {
+  min-height: 58px;
+  padding: 16px 22px;
+}
+
+.sim-control-rail .sim-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.sim-control-rail .mini-button {
+  min-width: 148px;
+}
+
+.demo-stage.is-focus .hero-floating-card--stage,
+.demo-stage.is-focus .scene-story-panel,
+.demo-stage.is-focus .sim-topbar,
+.demo-stage.is-focus .sim-control-rail {
+  opacity: 0.32;
+}
+
+@media (max-width: 1180px) {
+  .demo-stage--full {
+    min-height: 1120px;
+  }
+
+  .sim-stage-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .hero-floating-card--stage,
+  .scene-story-panel,
+  .monitor-stack {
+    max-width: none;
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  .scene-story-panel {
+    padding-top: 0;
+  }
+
+  .scene-belt {
+    left: 8%;
+    right: 8%;
+    bottom: 12%;
+  }
+
+  .scene-farmline {
+    left: 8%;
+    right: 12%;
+    bottom: 33%;
+  }
+
+  .scene-silo {
+    right: 10%;
+    bottom: 34%;
+  }
+}
+
+@media (max-width: 900px) {
+  .demo-stage--full {
+    min-height: 1180px;
+  }
+
+  .scene-story-panel .story-line {
+    font-size: clamp(2.2rem, 9vw, 3.8rem);
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-mini-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sim-control-rail {
+    max-width: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .demo-stage--full {
+    min-height: 1260px;
+  }
+
+  .scene-belt {
+    left: 4%;
+    right: 4%;
+    bottom: 11%;
+    height: 124px;
+  }
+
+  .scene-farmline {
+    left: 4%;
+    right: 4%;
+    bottom: 31%;
+  }
+
+  .scene-silo {
+    right: 6%;
+    bottom: 33%;
+    transform: scale(0.82);
+  }
+
+  .dashboard-mini-grid,
+  .sim-control-rail .sim-controls {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .sim-control-rail .mini-button {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .record-dock .signal-value {
+    font-size: clamp(1.9rem, 8vw, 2.6rem);
+  }
+}
+
 </style>
 <!-- INLINE_SITE_CSS_END -->
 </head>
@@ -2657,6 +3053,7 @@ document.addEventListener("DOMContentLoaded", () => {
 <!-- INLINE_SITE_JS_END -->
 </body>
 </html>
+
 
 
 
