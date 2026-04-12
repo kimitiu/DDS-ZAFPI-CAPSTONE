@@ -7,108 +7,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
-  <style>
-    :root{--bg:#07101b;--bg2:#0d1624;--card:rgba(10,18,31,.72);--line:rgba(255,255,255,.1);--text:#f8fafc;--muted:#d9e1ec;--subtle:#8ba0b9;--shadow:0 24px 64px rgba(0,0,0,.28)}
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,sans-serif;background:linear-gradient(180deg,var(--bg2),var(--bg));color:var(--text)}
-    a{text-decoration:none;color:inherit}
-    .topbar{position:sticky;top:0;z-index:100;backdrop-filter:blur(18px);background:rgba(2,6,23,.66);border-bottom:1px solid rgba(255,255,255,.08)}
-    .topbar-inner,.container{max-width:1240px;margin:0 auto;padding:0 24px}.topbar-inner{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap}
-    .brand{display:flex;align-items:center;gap:14px}.brand-mark{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-weight:800;background:linear-gradient(135deg,#f59e0b,#f97316)}
-    .brand-copy h1{margin:0;font-size:.96rem;letter-spacing:.08em;text-transform:uppercase}.brand-copy p{margin:4px 0 0;color:var(--subtle);font-size:.86rem}
-    .nav-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.nav-link,.button,.dropdown-toggle,.dropdown-menu a{border-radius:999px;transition:.2s ease}
-    .nav-link,.dropdown-toggle,.button{padding:10px 16px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:#d9e1ec}.button.primary{background:linear-gradient(135deg,#f59e0b,#f97316);border:none;color:#fff}
-    .dropdown{position:relative}.dropdown-menu{position:absolute;right:0;top:calc(100% + 10px);min-width:220px;background:rgba(15,23,42,.96);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:10px;display:none}.dropdown.open .dropdown-menu{display:block}.dropdown-menu a{display:block;padding:12px 14px}
-    .page{padding:28px 0 56px}.hero,.section{background:var(--card);border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow)}.hero{padding:28px}.section{padding:24px;margin-top:18px}
-    .eyebrow{display:inline-flex;gap:10px;align-items:center;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:#fde68a}.eyebrow::before{content:'';width:24px;height:1px;background:currentColor}
-    .hero h1{margin:14px 0 10px;font-family:Montserrat,sans-serif;font-size:clamp(2.4rem,5vw,4.6rem);line-height:.92;letter-spacing:-.05em;max-width:12ch}
-    .hero p,.section p,.section td,.section th{color:var(--muted);line-height:1.75}
-    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:18px}.panel{padding:18px;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}.panel strong{display:block;font-size:1.15rem;margin-bottom:8px;color:#fff}
-    .chart{width:100%;display:block;border-radius:18px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06)}
-    .target-table{width:100%;border-collapse:collapse;margin-top:16px}.target-table th,.target-table td{padding:14px 0;text-align:left;vertical-align:top;border-bottom:1px solid rgba(255,255,255,.08)}.target-table th{width:32%;padding-right:18px;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:#bcd1ea}.target-table tr:last-child th,.target-table tr:last-child td{border-bottom:none}
-    @media (max-width:820px){.topbar-inner,.container{padding-left:16px;padding-right:16px}.topbar-inner{flex-direction:column;align-items:flex-start}.nav-actions{width:100%}.grid{grid-template-columns:1fr}.target-table th,.target-table td{display:block;width:100%}.target-table th{padding-bottom:6px}}
-  </style>
+  <link rel="stylesheet" href="assets/site.css" />
 </head>
 <body>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <div class="brand">
-        <div class="brand-mark">Z</div>
-        <div class="brand-copy">
-          <h1>ZAFPI Capstone</h1>
-          <p>Problem framing</p>
-        </div>
-      </div>
-      <div class="nav-actions">
-        <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link" href="about.html">About</a>
-        <a class="nav-link" href="system.html">System</a>
-        <div class="dropdown" id="menuDropdown">
-          <button class="dropdown-toggle" id="dropdownToggle">More <span>&#9662;</span></button>
-          <div class="dropdown-menu" id="dropdownMenu">
-            <a href="problem.html">The Problem</a>
-            <a href="results.html">Results</a>
-            <a href="team.html">Team</a>
-            <a href="resources.html">Resources</a>
-            <a href="sources.html">Sources</a>
-          </div>
-        </div>
-        <a class="button primary" href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">Farmbrite Demo</a>
-      </div>
-    </div>
-  </header>
-
-  <main class="page">
-    <div class="container">
-      <section class="hero">
-        <div class="eyebrow">Problem</div>
-        <h1>Manual reporting slows operational control.</h1>
-        <p>ZAFPI’s pre-project reporting model is fully manual, paper-based, and split across the farm site and the sorting and distribution center. That means production visibility arrives at T+1, operational review is delayed, and management has to spend time reconciling records before they are trusted.</p>
-        <div class="grid">
-          <div class="panel"><strong>Paper-first workflow</strong><span>Production logs begin as paperwork rather than structured digital entries, making consolidation slower and less reliable.</span></div>
-          <div class="panel"><strong>T+1 reporting lag</strong><span>Management cannot monitor the operation in near real time because reports land on the next reporting cycle.</span></div>
-          <div class="panel"><strong>43% reconciliation burden</strong><span>Around 43% of documents require weekly reconciliation because mismatches and inconsistencies are common in the current state.</span></div>
-          <div class="panel"><strong>57% utilization baseline</strong><span>The farm is operating at about 57% utilization, which means weak visibility is directly tied to a larger performance opportunity.</span></div>
-          <div class="panel"><strong>Missing standard reports</strong><span>The as-is process lacks consistent monthly, quarterly, and annual reporting, limiting structured review and trend analysis.</span></div>
-          <div class="panel"><strong>Missing critical KPIs</strong><span>Feed consumption per house, mortality, and performance KPIs are not consistently tracked in a centralized way.</span></div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="eyebrow">Why It Matters</div>
-        <svg class="chart" viewBox="0 0 760 260" role="img" aria-label="Problem impact chart">
-          <rect width="760" height="260" rx="24" fill="rgba(255,255,255,0.02)"></rect>
-          <line x1="70" y1="210" x2="690" y2="210" stroke="rgba(255,255,255,0.12)"></line>
-          <rect x="90" y="95" width="90" height="115" rx="16" fill="#f59e0b"></rect>
-          <rect x="230" y="123" width="90" height="87" rx="16" fill="#fb7185"></rect>
-          <rect x="370" y="161" width="90" height="49" rx="16" fill="#22d3ee"></rect>
-          <rect x="510" y="24" width="90" height="186" rx="16" fill="#f97316"></rect>
-          <text x="135" y="228" text-anchor="middle" fill="#dbe4ef" font-size="14">57% utilization</text>
-          <text x="275" y="228" text-anchor="middle" fill="#dbe4ef" font-size="14">43% reconcile</text>
-          <text x="415" y="228" text-anchor="middle" fill="#dbe4ef" font-size="14">T+1 reporting</text>
-          <text x="555" y="228" text-anchor="middle" fill="#dbe4ef" font-size="14">₱105.5M impact</text>
-        </svg>
-        <p style="margin-top:18px">The capstone frames the current-state problem as an operational control issue, not just an IT inconvenience. Underutilization, delayed reporting, and weak data discipline combine into slower decisions, more rework, and a large estimated annual lost-revenue story of about ₱105.5 million excluding spoilage and breakage.</p>
-      </section>
-
-      <section class="section">
-        <div class="eyebrow">Target Shift</div>
-        <table class="target-table">
-          <tr><th>Reporting speed</th><td>T+1 moves to same-day reporting.</td></tr>
-          <tr><th>Visibility target</th><td>Operational visibility should be available within 1 hour after cut-off.</td></tr>
-          <tr><th>Reconciliation target</th><td>Weekly reconciliation should fall from 43% to below 15%.</td></tr>
-          <tr><th>Data completeness</th><td>Structured daily reporting should reach at least 98% completeness.</td></tr>
-          <tr><th>Utilization target</th><td>The project story targets improvement from 57% toward roughly 75% utilization.</td></tr>
-        </table>
-      </section>
-    </div>
-  </main>
-
-  <script>
-    const dropdown=document.getElementById('menuDropdown');
-    const toggle=document.getElementById('dropdownToggle');
-    toggle.addEventListener('click',()=>dropdown.classList.toggle('open'));
-    document.addEventListener('click',(e)=>{if(!dropdown.contains(e.target))dropdown.classList.remove('open')});
-  </script>
+  <header class="topbar"><div class="topbar-inner"><div class="brand"><div class="brand-mark">Z</div><div class="brand-copy"><h1>ZAFPI Capstone</h1><p>Problem framing</p></div></div><div class="nav-actions"><a class="nav-link" href="index.html">Home</a><a class="nav-link" href="about.html">About</a><a class="nav-link" href="system.html">System</a><div class="dropdown" data-dropdown><button class="dropdown-toggle" data-dropdown-toggle aria-expanded="false">More <span>▾</span></button><div class="dropdown-menu"><a href="problem.html">The Problem</a><a href="results.html">Results</a><a href="team.html">Team</a><a href="resources.html">Resources</a><a href="sources.html">Sources</a></div></div><a class="button primary" href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">Farmbrite Demo</a></div></div></header>
+  <main class="page"><div class="container page-stack">
+    <section class="hero"><div class="eyebrow">Problem</div><h1>Manual reporting slows operational control.</h1><p>ZAFPI’s pre-project reporting model is fully manual, paper-based, and split across the farm site and the sorting and distribution center. That means production visibility arrives at T+1, operational review is delayed, and management has to reconcile records before trusting them for action.</p><div class="grid-2"><article class="card"><strong>Paper-first workflow</strong><span>Production logs begin as paperwork rather than structured digital entries, making consolidation slower and less reliable.</span></article><article class="card"><strong>T+1 reporting lag</strong><span>Management cannot monitor the operation in near real time because reports land in the next reporting cycle.</span></article><article class="card"><strong>43% reconciliation burden</strong><span>Around 43% of documents require weekly reconciliation because mismatches and inconsistencies are common in the current state.</span></article><article class="card"><strong>57% utilization baseline</strong><span>The farm is operating at about 57% utilization, turning weak visibility into a larger business-performance issue.</span></article><article class="card"><strong>Missing standard reports</strong><span>The as-is process lacks consistent monthly, quarterly, and annual summaries for structured management review.</span></article><article class="card"><strong>Missing critical KPIs</strong><span>Feed consumption per house, mortality, and core performance indicators are not consistently tracked in a centralized system.</span></article></div></section>
+    <section class="section grid-2"><div><div class="eyebrow">Impact</div><div class="chart-shell"><div class="bar-chart"><div class="bar-item"><div class="bar-label">Utilization baseline</div><div class="bar-shape" style="height:120px;background:#f59e0b;"></div><div class="bar-value">57%</div></div><div class="bar-item"><div class="bar-label">Docs needing reconciliation</div><div class="bar-shape" style="height:96px;background:#fb7185;"></div><div class="bar-value">43%</div></div><div class="bar-item"><div class="bar-label">Reporting delay</div><div class="bar-shape" style="height:62px;background:#22d3ee;"></div><div class="bar-value">T+1</div></div><div class="bar-item"><div class="bar-label">Estimated lost revenue story</div><div class="bar-shape" style="height:168px;background:#34d399;"></div><div class="bar-value">₱105.5M</div></div></div></div></div><div><div class="eyebrow">Business Case</div><p>The capstone frames the current-state problem as an operational-control issue, not just an IT inconvenience. Underutilization, delayed reporting, and weak data discipline combine into slower decisions, more rework, and a large estimated annual lost-revenue story of about ₱105.5 million, excluding spoilage and breakage.</p><table class="detail-table"><tr><th>Reporting speed</th><td>T+1 current-state reporting delay</td></tr><tr><th>Reconciliation burden</th><td>43% of documents require weekly reconciliation</td></tr><tr><th>Utilization</th><td>About 57% baseline farm utilization</td></tr><tr><th>Revenue implication</th><td>Estimated ₱105.5 million annual lost revenue due to underutilization</td></tr></table></div></section>
+    <section class="section"><div class="eyebrow">Target Shift</div><table class="detail-table"><tr><th>Reporting speed</th><td>T+1 moves to same-day reporting.</td></tr><tr><th>Visibility target</th><td>Operational visibility should be available within 1 hour after cut-off.</td></tr><tr><th>Reconciliation target</th><td>Weekly reconciliation should fall from 43% to below 15%.</td></tr><tr><th>Data completeness</th><td>Structured daily reporting should reach at least 98% completeness.</td></tr><tr><th>Utilization target</th><td>The project story targets improvement from 57% toward roughly 75% utilization.</td></tr></table></section>
+  </div></main>
+  <script src="assets/site.js"></script>
 </body>
 </html>

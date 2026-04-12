@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css" />
   <style>
     :root {
       --bg: #0a0f1a;
@@ -257,7 +258,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 32px;
+      padding: 32px 32px 68px;
     }
 
     .sim-top {
@@ -352,11 +353,11 @@
     }
 
     .gauge-meta {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
       margin-top: 10px;
-      font-size: 0.78rem;
+      font-size: 0.74rem;
       color: #e2e8f0;
     }
 
@@ -459,30 +460,31 @@
       flex-grow: 1;
       display: flex;
       align-items: flex-end;
-      max-width: 420px;
+      max-width: 340px;
       position: relative;
-      padding-bottom: 132px;
+      padding-bottom: 176px;
       transition: opacity 0.28s ease, transform 0.28s ease;
     }
 
     .story-text {
       font-family: 'Montserrat', sans-serif;
-      font-size: clamp(1.85rem, 4vw, 3.6rem);
+      font-size: clamp(1.55rem, 3.5vw, 3.1rem);
       line-height: 0.92;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.03em;
       color: #ffffff;
       text-shadow: 0 12px 34px rgba(0,0,0,0.84);
-      max-width: 9ch;
+      max-width: 8ch;
       margin: 0;
     }
 
     .sim-bottom {
       display: flex;
-      align-items: end;
+      align-items: flex-end;
       justify-content: space-between;
       gap: 16px;
       flex-wrap: wrap;
+      padding-bottom: 8px;
     }
 
     .instruction {
@@ -500,7 +502,8 @@
       transition: transform 0.2s, box-shadow 0.2s;
       cursor: pointer;
       border: none;
-      max-width: fit-content;
+      width: min(100%, 940px);
+      max-width: 940px;
     }
 
     .accelerating-ui {
@@ -706,13 +709,13 @@
 
     .feedback-stack {
       left: 32px;
-      bottom: 140px;
+      bottom: 214px;
       transition: opacity 0.28s ease, transform 0.28s ease;
     }
 
     .feedback-toast {
-      min-width: 240px;
-      max-width: 320px;
+      min-width: 0;
+      width: min(260px, calc(100vw - 80px));
       padding: 12px 14px;
       border-radius: 16px;
       border: 1px solid rgba(255,255,255,0.12);
@@ -912,7 +915,7 @@
     .product-grid,
     .timeline-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
       margin-top: 18px;
     }
@@ -934,8 +937,9 @@
     .home-extension {
       margin-top: 20px;
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
+      align-items: start;
     }
 
     .extension-card {
@@ -944,6 +948,11 @@
       border-radius: 28px;
       box-shadow: var(--shadow);
       padding: 24px;
+      overflow: hidden;
+    }
+
+    .feature-wide {
+      grid-column: 1 / -1;
     }
 
     .section-title {
@@ -1000,6 +1009,16 @@
       line-height: 1.6;
     }
 
+    .path-card {
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+
+    .path-card p {
+      margin: 0;
+    }
+
     @media (max-width: 1150px) {
       .home-grid { grid-template-columns: 1fr; }
       .home-extension { grid-template-columns: 1fr; }
@@ -1023,10 +1042,13 @@
         width: 220px;
         transform: rotate(-4deg);
       }
-      .text-container { max-width: 300px; padding-bottom: 152px; }
-      .story-text { font-size: 28px; max-width: 10ch; }
+      .text-container { max-width: 260px; padding-bottom: 214px; }
+      .story-text { font-size: 24px; max-width: 8ch; }
       .quick-stats { grid-template-columns: 1fr; }
-      .feedback-stack { bottom: 168px; }
+      .feedback-stack { bottom: 236px; left: 20px; }
+      .gauge-meta { grid-template-columns: 1fr; }
+      .product-grid,
+      .timeline-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -1045,8 +1067,8 @@
         <a class="nav-link" href="index.html">Home</a>
         <a class="nav-link" href="about.html">About</a>
         <a class="nav-link" href="system.html">System</a>
-        <div class="dropdown" id="menuDropdown">
-          <button class="dropdown-toggle" id="dropdownToggle" aria-expanded="false" aria-controls="dropdownMenu">
+        <div class="dropdown" id="menuDropdown" data-dropdown>
+          <button class="dropdown-toggle" id="dropdownToggle" data-dropdown-toggle aria-expanded="false" aria-controls="dropdownMenu">
             More <span>▾</span>
           </button>
           <div class="dropdown-menu" id="dropdownMenu">
@@ -1109,7 +1131,7 @@
               </div>
 
               <div class="text-container">
-                <h1 class="story-text active">FROM DELAYED LOGS TO SAME-DAY VISIBILITY</h1>
+                <h1 class="story-text active">FROM DELAYED LOGS TO SAME-DAY VISIBILITY.</h1>
                 <p class="hero-subtext">A cinematic egg-line view of ZAFPI&rsquo;s shift from paper-based T+1 reporting to same-day operational visibility across 24 houses.</p>
               </div>
 
@@ -1125,7 +1147,7 @@
             </div>
 
             <div class="feedback-stack" id="feedbackStack">
-              <div class="feedback-toast show" id="eventToast">
+              <div class="feedback-toast" id="eventToast">
                 <strong>Rollout Signal</strong>
                 <span id="eventToastText">Same-day capture view ready for house-level logging.</span>
               </div>
@@ -1230,124 +1252,103 @@
       <section class="home-extension">
         <article class="extension-card">
           <div class="eyebrow">Scorecard</div>
-          <h3 class="section-title">Rollout metrics anchored to the capstone.</h3>
+          <h3 class="section-title">Key metrics, kept short.</h3>
           <div class="metric-table">
             <div class="metric-row">
               <strong>57%</strong>
-              <span>Current utilization baseline showing why tighter monitoring and faster review matter.</span>
+              <span>Current utilization baseline showing why tighter monitoring matters.</span>
             </div>
             <div class="metric-row">
               <strong>43%</strong>
-              <span>Documents requiring weekly reconciliation under the current paper-heavy reporting process.</span>
+              <span>Documents requiring weekly reconciliation under the current process.</span>
             </div>
             <div class="metric-row">
               <strong>24</strong>
-              <span>Production houses included in the activation target during rollout planning.</span>
+              <span>Production houses included in the activation target.</span>
             </div>
             <div class="metric-row">
               <strong>95%+</strong>
-              <span>Daily encoding compliance target within 24 hours during rollout and go-live.</span>
-            </div>
-            <div class="metric-row">
-              <strong>₱105.5M</strong>
-              <span>Estimated annual lost revenue from underutilization, excluding spoilage and breakage.</span>
+              <span>Daily encoding compliance target within 24 hours during rollout.</span>
             </div>
           </div>
         </article>
 
         <article class="extension-card">
           <div class="eyebrow">Flow</div>
-          <h3 class="section-title">Current state to target state.</h3>
+          <h3 class="section-title">From current state to target state.</h3>
           <div class="diagram-steps">
-            <div class="diagram-step"><strong>1. Record on paper</strong><br><span>Production data starts as manual site paperwork across two locations.</span></div>
-            <div class="diagram-step"><strong>2. Delay to T+1</strong><br><span>Management waits until the next reporting cycle for consolidated visibility.</span></div>
-            <div class="diagram-step"><strong>3. Reconcile</strong><br><span>About 43% of documents need weekly reconciliation before confidence improves.</span></div>
-            <div class="diagram-step"><strong>4. Encode same-day</strong><br><span>The target workflow turns each pass into a record earlier in the operating day.</span></div>
-            <div class="diagram-step"><strong>5. Review within the day</strong><br><span>Management reviews dashboards, daily reports, and KPI signals within the same day.</span></div>
-          </div>
-        </article>
-
-        <article class="extension-card">
-          <div class="eyebrow">Portfolio Assets</div>
-          <h3 class="section-title">Charts, tables, and field photos.</h3>
-          <svg class="mini-chart" viewBox="0 0 360 220" role="img" aria-label="Project metrics chart">
-            <rect x="0" y="0" width="360" height="220" rx="18" fill="rgba(255,255,255,0.02)"></rect>
-            <line x1="48" y1="180" x2="320" y2="180" stroke="rgba(255,255,255,0.12)"></line>
-            <rect x="68" y="77" width="36" height="103" rx="10" fill="#f59e0b"></rect>
-            <rect x="138" y="103" width="36" height="77" rx="10" fill="#fb7185"></rect>
-            <rect x="208" y="137" width="36" height="43" rx="10" fill="#22d3ee"></rect>
-            <rect x="278" y="9" width="36" height="171" rx="10" fill="#34d399"></rect>
-            <text x="86" y="196" text-anchor="middle" fill="#dbe4ef" font-size="11">57%</text>
-            <text x="156" y="196" text-anchor="middle" fill="#dbe4ef" font-size="11">43%</text>
-            <text x="226" y="196" text-anchor="middle" fill="#dbe4ef" font-size="11">24</text>
-            <text x="296" y="196" text-anchor="middle" fill="#dbe4ef" font-size="11">95+</text>
-            <text x="86" y="68" text-anchor="middle" fill="#ffffff" font-size="12">Utilization</text>
-            <text x="156" y="94" text-anchor="middle" fill="#ffffff" font-size="12">Reconcile</text>
-            <text x="226" y="128" text-anchor="middle" fill="#ffffff" font-size="12">Houses</text>
-            <text x="296" y="28" text-anchor="middle" fill="#ffffff" font-size="12">Compliance</text>
-          </svg>
-            <div class="asset-grid">
-            <div class="asset-slot">Placeholder for project screenshots, field photos, and table exports from the final paper.</div>
-            <div class="asset-slot">Upload images later and this section can become a visual gallery with captions and source notes.</div>
+            <div class="diagram-step"><strong>1. Record on paper</strong><br><span>Production data starts as manual paperwork across two locations.</span></div>
+            <div class="diagram-step"><strong>2. Delay to T+1</strong><br><span>Management waits until the next reporting cycle for visibility.</span></div>
+            <div class="diagram-step"><strong>3. Encode same-day</strong><br><span>The target workflow turns each pass into a record earlier in the day.</span></div>
+            <div class="diagram-step"><strong>4. Review with control</strong><br><span>Dashboards, validation, and daily reports support stronger action.</span></div>
           </div>
         </article>
       </section>
 
       <section class="home-extension">
         <article class="extension-card">
-          <div class="eyebrow">Operational Structure</div>
-          <h3 class="section-title">24-house production environment.</h3>
-          <div class="product-grid">
-            <div class="product-card"><strong>19 Layer Houses</strong><span>Primary egg-production units reflected in the reporting and monitoring design.</span></div>
-            <div class="product-card"><strong>2 Brooder Houses</strong><span>Included in the broader operational footprint considered by the project.</span></div>
-            <div class="product-card"><strong>3 Grower Houses</strong><span>Part of the full production structure that brings the total to 24 houses.</span></div>
-            <div class="product-card"><strong>Farm + Sorting Center</strong><span>Reporting flow spans both production and sorting/distribution operations.</span></div>
+          <div class="eyebrow">Explore</div>
+          <h3 class="section-title">Go deeper where it matters.</h3>
+          <div class="grid-2">
+            <article class="card path-card">
+              <strong>About the project</strong>
+              <p>Client context, objectives, market coverage, and project positioning.</p>
+              <a class="button" href="about.html">Open About</a>
+            </article>
+            <article class="card path-card">
+              <strong>The problem</strong>
+              <p>Manual reporting, T+1 visibility, reconciliation burden, and business impact.</p>
+              <a class="button" href="problem.html">Open Problem</a>
+            </article>
+            <article class="card path-card">
+              <strong>The system</strong>
+              <p>Workflows, control layers, and how Farmbrite supports the operating model.</p>
+              <a class="button" href="system.html">Open System</a>
+            </article>
+            <article class="card path-card">
+              <strong>Results and evidence</strong>
+              <p>Targets, rollout success measures, and placeholders for paper-backed visuals.</p>
+              <a class="button" href="results.html">Open Results</a>
+            </article>
           </div>
         </article>
 
         <article class="extension-card">
-          <div class="eyebrow">Implementation Timeline</div>
-          <h3 class="section-title">From setup to hypercare.</h3>
-          <div class="timeline-grid">
-            <div class="phase-card"><strong>Preparation</strong><span>Stakeholder alignment, requirements gathering, and configuration planning.</span></div>
-            <div class="phase-card"><strong>System Setup</strong><span>Farmbrite configuration, KPI definition, and SOP development.</span></div>
-            <div class="phase-card"><strong>Data Onboarding</strong><span>Migration, validation, and cleaning of existing operational data.</span></div>
-            <div class="phase-card"><strong>Training & UAT</strong><span>User training, acceptance testing, and readiness checks before deployment.</span></div>
-            <div class="phase-card"><strong>Pilot</strong><span>Limited deployment for issue identification and refinement.</span></div>
-            <div class="phase-card"><strong>Go-Live</strong><span>Target go-live: March 27, 2026.</span></div>
-            <div class="phase-card"><strong>Hypercare</strong><span>Monitoring, issue resolution, and support immediately after launch.</span></div>
-            <div class="phase-card"><strong>Closeout</strong><span>Target project closeout: April 3, 2026.</span></div>
+          <div class="eyebrow">Portfolio Assets</div>
+          <h3 class="section-title">Ready for charts, tables, and photos.</h3>
+          <div class="chart-shell">
+            <div class="bar-chart">
+              <div class="bar-item">
+                <div class="bar-label">Utilization</div>
+                <div class="bar-shape" style="height:118px;background:#f59e0b;"></div>
+                <div class="bar-value">57%</div>
+              </div>
+              <div class="bar-item">
+                <div class="bar-label">Reconcile</div>
+                <div class="bar-shape" style="height:92px;background:#fb7185;"></div>
+                <div class="bar-value">43%</div>
+              </div>
+              <div class="bar-item">
+                <div class="bar-label">Houses</div>
+                <div class="bar-shape" style="height:62px;background:#22d3ee;"></div>
+                <div class="bar-value">24</div>
+              </div>
+              <div class="bar-item">
+                <div class="bar-label">Compliance</div>
+                <div class="bar-shape" style="height:176px;background:#34d399;"></div>
+                <div class="bar-value">95%+</div>
+              </div>
+            </div>
           </div>
-        </article>
-
-        <article class="extension-card">
-          <div class="eyebrow">Product Mix</div>
-          <h3 class="section-title">Egg categories represented by the simulation.</h3>
-          <div class="product-grid">
-            <div class="product-card"><strong>Super Jumbo</strong><span>Large premium output category in the current product mix.</span></div>
-            <div class="product-card"><strong>Jumbo</strong><span>Included in the wholesale assortment served by ZAFPI.</span></div>
-            <div class="product-card"><strong>Extra Large / Large</strong><span>Mid-to-high size categories relevant to daily production tracking.</span></div>
-            <div class="product-card"><strong>Medium / Small / Pewee / Crack</strong><span>Output variability that supports the data-record metaphor of the simulation.</span></div>
+          <div class="asset-grid" style="margin-top:14px;">
+            <div class="asset-slot">Paper screenshots, charts, and field photos can drop in here later without changing the layout.</div>
           </div>
         </article>
       </section>
     </div>
   </main>
 
-  <script>
-    const dropdown = document.getElementById('menuDropdown');
-    const dropdownToggle = document.getElementById('dropdownToggle');
-    dropdownToggle.addEventListener('click', () => {
-      const isOpen = dropdown.classList.toggle('open');
-      dropdownToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
-    document.addEventListener('click', (event) => {
-      if (!dropdown.contains(event.target)) {
-        dropdown.classList.remove('open');
-        dropdownToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-  </script>
+  <script src="assets/site.js"></script>
 
   <script type="importmap">
     {
