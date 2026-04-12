@@ -2408,6 +2408,13 @@ select {
             <div class="scene-belt">
               <div class="scene-belt-rail scene-belt-rail--left"></div>
               <div class="scene-belt-track"></div>
+              <div class="scene-sort-markers" aria-hidden="true">
+                <span>Jumbo</span>
+                <span>Large</span>
+                <span>Medium</span>
+                <span>Small</span>
+                <span>Exception</span>
+              </div>
               <div class="egg-stream" id="eggStream"></div>
               <div class="scene-belt-rail scene-belt-rail--right"></div>
               <div class="scene-belt-glow"></div>
@@ -2455,8 +2462,8 @@ select {
               </div>
             </div>
 
-            <div class="sim-hero-grid">
-              <article class="hero-floating-card reveal reveal-delay-1">
+            <div class="sim-stage-grid">
+              <article class="hero-floating-card hero-floating-card--stage reveal reveal-delay-1">
                 <div class="eyebrow">Simulation-first home</div>
                 <h1 class="hero-title hero-title--home">We&rsquo;re hatching something special.</h1>
                 <p class="lead hero-lead">Project Farmbrite redesigns ZAFPI&rsquo;s production reporting from a paper-first, T+1 operating model into a structured same-day management system built for visibility, data integrity, and tighter farm control.</p>
@@ -2474,112 +2481,117 @@ select {
                 </div>
               </article>
 
-              <article class="story-panel story-panel--landing reveal reveal-delay-2">
-                <div class="story-lines">
-                  <p class="story-line is-active">From paper delays to same-day visibility.</p>
-                  <p class="story-line">From the belt to the tablet, every pass becomes a record.</p>
-                  <p class="story-line">A farm dashboard built for discipline, not guesswork.</p>
+              <article class="scene-story-panel reveal reveal-delay-2">
+                <div class="scene-story-copy">
+                  <div class="story-lines">
+                    <p class="story-line is-active">From paper delays to same-day visibility.</p>
+                    <p class="story-line">From the belt to the tablet, every pass becomes a record.</p>
+                    <p class="story-line">A farm dashboard built for discipline, not guesswork.</p>
+                  </div>
+                  <p class="story-support">The scene starts as a calm baseline, then speeds up when capture begins. Egg grades are sorted, recorded, and pushed straight into the monitor stack.</p>
                 </div>
-                <p class="story-support">The landing page stays cinematic, but it is grounded in the capstone itself: delayed manual reporting, farm-wide operational scope, and the shift toward same-day visibility with structured digital capture.</p>
-                <div class="team-presence">
-                  <span class="team-presence-label">DDS team</span>
-                  <p>Jared Go, Keaton Shih, Kimi Tiu, Robin Regollo, and Manu Lantin are presented here as one capstone team building the reporting discipline ZAFPI needs.</p>
+                <div class="scene-grade-guide">
+                  <span class="grade-chip grade-chip--jumbo">Jumbo</span>
+                  <span class="grade-chip grade-chip--large">Large</span>
+                  <span class="grade-chip grade-chip--medium">Medium</span>
+                  <span class="grade-chip grade-chip--small">Small</span>
+                  <span class="grade-chip grade-chip--exception">Exception</span>
                 </div>
               </article>
-            </div>
 
-            <div class="sim-bottom sim-bottom--landing">
-              <div class="sim-control-deck reveal reveal-delay-3">
-                <div class="sim-controls">
-                  <span class="instruction-chip">Hold press or spacebar to simulate live capture</span>
-                  <a class="mini-button" href="about.html">Overview</a>
-                  <a class="mini-button" href="problem.html">Problem</a>
-                  <a class="mini-button" href="system.html">System</a>
-                  <button class="mini-button" id="focusToggle" type="button">Focus view</button>
-                </div>
-              </div>
+              <aside class="monitor-stack reveal reveal-delay-2">
+                <article class="signal-card record-dock">
+                  <div class="signal-head">
+                    <span>Latest record</span>
+                    <span class="live-dot" aria-hidden="true"></span>
+                  </div>
+                  <div class="signal-value signal-value--compact" id="latestRecord">Awaiting next field pass</div>
+                  <p class="signal-copy" id="latestNarrative">Monitoring the current-state baseline before capture begins.</p>
+                  <div class="signal-meta">
+                    <span id="housesMeta">14 / 24 active</span>
+                    <span id="passesMeta">126 passes</span>
+                    <span id="syncMeta">95% sync</span>
+                  </div>
+                </article>
 
-              <aside class="dashboard-panel dashboard-panel--landing reveal reveal-delay-2">
-                <div class="dashboard-header">
-                  <div>
-                    <h2 class="dashboard-title">Farmbrite console</h2>
-                    <div class="dashboard-subtitle">Production review, sync, and house-level control</div>
-                  </div>
-                  <div class="dashboard-time">Dashboard</div>
-                </div>
-                <div class="dashboard-grid">
-                  <div class="ring-card">
-                    <div class="ring-visual" id="ringVisual"><strong id="ringValue">95%</strong></div>
-                    <span class="dashboard-subtitle">Same-day sync confidence</span>
-                  </div>
-                  <div>
-                    <div class="dashboard-mini-grid">
-                      <article class="dashboard-mini-card">
-                        <label>Houses active</label>
-                        <strong id="housesCount">14 / 24</strong>
-                      </article>
-                      <article class="dashboard-mini-card">
-                        <label>Passes logged</label>
-                        <strong id="passesCount">126</strong>
-                      </article>
-                      <article class="dashboard-mini-card">
-                        <label>Feed match</label>
-                        <strong id="feedCount">88%</strong>
-                      </article>
-                      <article class="dashboard-mini-card">
-                        <label>Mortality log</label>
-                        <strong id="mortalityCount">2 verified</strong>
-                      </article>
-                      <article class="dashboard-mini-card">
-                        <label>Sync percentage</label>
-                        <strong id="syncCount">95%</strong>
-                      </article>
-                      <article class="dashboard-mini-card">
-                        <label>Exceptions</label>
-                        <strong id="alertCount">6 open</strong>
-                      </article>
+                <aside class="dashboard-panel dashboard-panel--landing">
+                  <div class="dashboard-header">
+                    <div>
+                      <h2 class="dashboard-title">Farmbrite console</h2>
+                      <div class="dashboard-subtitle">Production review, sync, and house-level control</div>
                     </div>
-                    <div class="dashboard-progress">
-                      <div class="dashboard-progress-item">
-                        <div class="dashboard-progress-head"><span>Daily reporting progress</span><span id="dailyLabel">81% of daily reporting target</span></div>
-                        <div class="dashboard-progress-bar"><span id="dailyBar" style="--fill: 81%"></span></div>
+                    <div class="dashboard-time">Monitor</div>
+                  </div>
+
+                  <article class="dashboard-summary-card">
+                    <div class="signal-head">
+                      <span>Visibility view</span>
+                      <span>24-house scope</span>
+                    </div>
+                    <div class="dashboard-summary-value" id="visibilityValue">57%</div>
+                    <p class="signal-copy" id="visibilityNarrative">The baseline shows why ZAFPI needs same-day operational visibility.</p>
+                  </article>
+
+                  <div class="dashboard-grid">
+                    <div class="ring-card">
+                      <div class="ring-visual" id="ringVisual"><strong id="ringValue">95%</strong></div>
+                      <span class="dashboard-subtitle">Same-day sync confidence</span>
+                    </div>
+                    <div>
+                      <div class="dashboard-mini-grid">
+                        <article class="dashboard-mini-card">
+                          <label>Houses active</label>
+                          <strong id="housesCount">14 / 24</strong>
+                        </article>
+                        <article class="dashboard-mini-card">
+                          <label>Passes logged</label>
+                          <strong id="passesCount">126</strong>
+                        </article>
+                        <article class="dashboard-mini-card">
+                          <label>Feed match</label>
+                          <strong id="feedCount">88%</strong>
+                        </article>
+                        <article class="dashboard-mini-card">
+                          <label>Mortality log</label>
+                          <strong id="mortalityCount">2 verified</strong>
+                        </article>
+                        <article class="dashboard-mini-card">
+                          <label>Sync percentage</label>
+                          <strong id="syncCount">95%</strong>
+                        </article>
+                        <article class="dashboard-mini-card">
+                          <label>Exceptions</label>
+                          <strong id="alertCount">6 open</strong>
+                        </article>
                       </div>
-                      <div class="dashboard-progress-item">
-                        <div class="dashboard-progress-head"><span>Same-day sync</span><span id="syncLabel">95% same-day sync confidence</span></div>
-                        <div class="dashboard-progress-bar"><span id="syncBar" style="--fill: 95%"></span></div>
-                      </div>
-                      <div class="dashboard-progress-item">
-                        <div class="dashboard-progress-head"><span>Utilization pathway</span><span id="utilLabel">57% utilization pathway</span></div>
-                        <div class="dashboard-progress-bar"><span id="utilBar" style="--fill: 57%"></span></div>
+                      <div class="dashboard-progress">
+                        <div class="dashboard-progress-item">
+                          <div class="dashboard-progress-head"><span>Daily reporting progress</span><span id="dailyLabel">81% of daily reporting target</span></div>
+                          <div class="dashboard-progress-bar"><span id="dailyBar" style="--fill: 81%"></span></div>
+                        </div>
+                        <div class="dashboard-progress-item">
+                          <div class="dashboard-progress-head"><span>Same-day sync</span><span id="syncLabel">95% same-day sync confidence</span></div>
+                          <div class="dashboard-progress-bar"><span id="syncBar" style="--fill: 95%"></span></div>
+                        </div>
+                        <div class="dashboard-progress-item">
+                          <div class="dashboard-progress-head"><span>Utilization pathway</span><span id="utilLabel">57% utilization pathway</span></div>
+                          <div class="dashboard-progress-bar"><span id="utilBar" style="--fill: 57%"></span></div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </aside>
               </aside>
             </div>
 
-            <div class="sim-floating-panels reveal reveal-delay-3">
-              <article class="signal-card signal-card--compact">
-                <div class="signal-head">
-                  <span>Latest record</span>
-                  <span class="live-dot" aria-hidden="true"></span>
-                </div>
-                <div class="signal-value signal-value--compact" id="latestRecord">Awaiting next field pass</div>
-                <p class="signal-copy" id="latestNarrative">Monitoring the current-state baseline before capture begins.</p>
-              </article>
-              <article class="signal-card signal-card--compact">
-                <div class="signal-head">
-                  <span>Visibility view</span>
-                  <span>24-house scope</span>
-                </div>
-                <div class="signal-value signal-value--compact" id="visibilityValue">57%</div>
-                <p class="signal-copy" id="visibilityNarrative">The baseline shows why ZAFPI needs same-day operational visibility.</p>
-                <div class="signal-meta">
-                  <span id="housesMeta">14 / 24</span>
-                  <span id="passesMeta">126</span>
-                  <span id="syncMeta">95%</span>
-                </div>
-              </article>
+            <div class="sim-control-rail reveal reveal-delay-3">
+              <span class="instruction-chip">Hold press or spacebar to simulate live capture</span>
+              <div class="sim-controls">
+                <a class="mini-button" href="about.html">Overview</a>
+                <a class="mini-button" href="problem.html">Problem</a>
+                <a class="mini-button" href="system.html">System</a>
+                <button class="mini-button" id="focusToggle" type="button">Focus view</button>
+              </div>
             </div>
 
             <div class="sim-toast" id="simToast">
@@ -2587,6 +2599,43 @@ select {
               <span id="simToastText">Same-day visibility is ready to follow each pass.</span>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section class="section-shell home-team-section reveal">
+        <div class="home-team-header">
+          <div>
+            <div class="eyebrow">Capstone team</div>
+            <h2 class="summary-title">One DDS team, one polished Farmbrite story.</h2>
+          </div>
+          <a class="button button-secondary" href="team.html">Meet the full team</a>
+        </div>
+        <div class="team-rail">
+          <article class="team-chip-card">
+            <span class="member-role">DDS member</span>
+            <strong>Jared Go</strong>
+            <span class="stat-support">Business context and capstone framing</span>
+          </article>
+          <article class="team-chip-card">
+            <span class="member-role">DDS member</span>
+            <strong>Keaton Shih</strong>
+            <span class="stat-support">Workflow and system structure</span>
+          </article>
+          <article class="team-chip-card">
+            <span class="member-role">DDS member</span>
+            <strong>Kimi Tiu</strong>
+            <span class="stat-support">Presentation and website narrative</span>
+          </article>
+          <article class="team-chip-card">
+            <span class="member-role">DDS member</span>
+            <strong>Robin Regollo</strong>
+            <span class="stat-support">Reporting logic and KPI framing</span>
+          </article>
+          <article class="team-chip-card">
+            <span class="member-role">DDS member</span>
+            <strong>Manu Lantin</strong>
+            <span class="stat-support">Documentation and project coordination</span>
+          </article>
         </div>
       </section>
 
@@ -2625,43 +2674,6 @@ select {
           <p class="summary-copy">Before Farmbrite, ZAFPI relied on a manual, paper-based production reporting process. That slowed management review, weakened feed and mortality visibility per house, and forced weekly reconciliation on a large share of records.</p>
           <div class="quote-strip">43% of documents require reconciliation, utilization sits around 57%, and management still waits for delayed visibility. Project Farmbrite exists to change those conditions into a disciplined, same-day operating rhythm.</div>
         </article>
-      </section>
-
-      <section class="section-shell home-team-section reveal">
-        <div class="home-team-header">
-          <div>
-            <div class="eyebrow">Capstone team</div>
-            <h2 class="summary-title">One DDS team, one polished Farmbrite story.</h2>
-          </div>
-          <a class="button button-secondary" href="team.html">Meet the full team</a>
-        </div>
-        <div class="team-rail">
-          <article class="team-chip-card">
-            <span class="member-role">DDS member</span>
-            <strong>Jared Go</strong>
-            <span class="stat-support">Business context and capstone framing</span>
-          </article>
-          <article class="team-chip-card">
-            <span class="member-role">DDS member</span>
-            <strong>Keaton Shih</strong>
-            <span class="stat-support">Workflow and system structure</span>
-          </article>
-          <article class="team-chip-card">
-            <span class="member-role">DDS member</span>
-            <strong>Kimi Tiu</strong>
-            <span class="stat-support">Presentation and website narrative</span>
-          </article>
-          <article class="team-chip-card">
-            <span class="member-role">DDS member</span>
-            <strong>Robin Regollo</strong>
-            <span class="stat-support">Reporting logic and KPI framing</span>
-          </article>
-          <article class="team-chip-card">
-            <span class="member-role">DDS member</span>
-            <strong>Manu Lantin</strong>
-            <span class="stat-support">Documentation and project coordination</span>
-          </article>
-        </div>
       </section>
 
       <section class="home-path-grid">

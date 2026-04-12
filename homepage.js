@@ -40,11 +40,82 @@ function initHomepage() {
   if (!stage || !eggStream) return;
   if (fallbackScene) fallbackScene.hidden = true;
 
+  const laneOffsets = [16, 42];
+  const layerHouses = Array.from({ length: 19 }, (_, index) => `Layer House ${String(index + 1).padStart(2, "0")}`);
+  const growerHouses = Array.from({ length: 3 }, (_, index) => `Grower House ${String(index + 1).padStart(2, "0")}`);
+  const brooderHouses = Array.from({ length: 2 }, (_, index) => `Brooder House ${String(index + 1).padStart(2, "0")}`);
+
   const eggTypes = [
-    { className: "egg--light", label: "Super Jumbo sync", weight: 0.24 },
-    { className: "egg--tan", label: "Large grade encoded", weight: 0.38 },
-    { className: "egg--speckled", label: "Medium tray passed", weight: 0.26 },
-    { className: "egg--alert", label: "Exception flagged", weight: 0.12 }
+    {
+      key: "jumbo",
+      label: "Jumbo",
+      className: "egg--jumbo",
+      width: 62,
+      height: 82,
+      weight: 0.12,
+      minGap: 166,
+      speedBoost: 22,
+      lanePool: [0],
+      destinationPool: layerHouses,
+      result: "high-yield tray accepted",
+      impact: "confidence"
+    },
+    {
+      key: "large",
+      label: "Large",
+      className: "egg--large",
+      width: 54,
+      height: 74,
+      weight: 0.34,
+      minGap: 150,
+      speedBoost: 12,
+      lanePool: [0, 1],
+      destinationPool: layerHouses,
+      result: "core production pass accepted",
+      impact: "confidence"
+    },
+    {
+      key: "medium",
+      label: "Medium",
+      className: "egg--medium",
+      width: 46,
+      height: 64,
+      weight: 0.26,
+      minGap: 138,
+      speedBoost: 0,
+      lanePool: [0, 1],
+      destinationPool: layerHouses.concat(growerHouses),
+      result: "volume tray added to consolidation",
+      impact: "volume"
+    },
+    {
+      key: "small",
+      label: "Small",
+      className: "egg--small",
+      width: 40,
+      height: 56,
+      weight: 0.18,
+      minGap: 126,
+      speedBoost: -10,
+      lanePool: [1],
+      destinationPool: growerHouses.concat(layerHouses.slice(0, 6)),
+      result: "secondary grade tray recorded",
+      impact: "volume"
+    },
+    {
+      key: "exception",
+      label: "Exception",
+      className: "egg--exception",
+      width: 50,
+      height: 68,
+      weight: 0.1,
+      minGap: 154,
+      speedBoost: 6,
+      lanePool: [0, 1],
+      destinationPool: layerHouses.concat(brooderHouses),
+      result: "manual review required",
+      impact: "exception"
+    }
   ];
 
   let eggs = [];
@@ -57,13 +128,19 @@ function initHomepage() {
   let utilization = 57;
   let dailyProgress = 81;
   let alertTotal = 6;
+  let mortalityVerified = 2;
   let storyIndex = 0;
   let storyTimer = 0;
-  let spawnTimer = 0;
+  let spawnTimer = 0.4;
   let beltShift = 0;
   let lastFrame = performance.now();
   let lastToastAt = 0;
   let toastTimer = 0;
+
+  const recordState = {
+    title: "Awaiting next field pass",
+    narrative: "Monitoring the current-state baseline before capture begins."
+  };
 
   const setStory = (index) => {
     storyLines.forEach((line, lineIndex) => {
@@ -79,6 +156,8 @@ function initHomepage() {
     });
   };
 
+  const pickFrom = (pool) => pool[Math.floor(Math.random() * pool.length)];
+
   const chooseEggType = () => {
     let cursor = Math.random();
     for (const option of eggTypes) {
@@ -88,10 +167,28 @@ function initHomepage() {
     return eggTypes[1];
   };
 
+  const buildRecord = (type) => {
+    const lane = pickFrom(type.lanePool);
+    const destination = pickFrom(type.destinationPool);
+    return {
+      type,
+      lane,
+      destination,
+      title:
+        type.key === "exception"
+          ? `${type.label} egg flagged from ${destination}`
+          : `${type.label} egg logged to ${destination}`,
+      narrative:
+        type.key === "exception"
+          ? `${type.result}. Supervisor review is now visible in the monitor stack.`
+          : `${type.result}. The pass is visible immediately inside the reporting console.`
+    };
+  };
+
   const showToast = (message) => {
     if (!toast || !toastText) return;
     const now = performance.now();
-    if (now - lastToastAt < 750) return;
+    if (now - lastToastAt < 720) return;
     lastToastAt = now;
     toastText.textContent = message;
     toast.classList.add("is-visible");
@@ -99,30 +196,48 @@ function initHomepage() {
     toastTimer = window.setTimeout(() => toast.classList.remove("is-visible"), 1600);
   };
 
+  const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+
   const setCaptureMode = (nextState) => {
     if (captureMode === nextState) return;
     captureMode = nextState;
     stage.classList.toggle("is-active", captureMode);
     if (stateMode) stateMode.textContent = captureMode ? "Capture active" : "Monitoring baseline";
     if (captureMode) {
-      showToast("Capture mode is live. Same-day reporting now feels immediate and controlled.");
+      showToast("Capture mode is live. Same-day recording, sorting, and dashboard updates are accelerating.");
+    }
+  };
+
+  const applyEggImpact = (record) => {
+    if (record.type.impact === "confidence") {
+      syncPercent = clamp(syncPercent + 0.85, 90, 99);
+      feedMatch = clamp(feedMatch + 0.7, 80, 99);
+      dailyProgress = clamp(dailyProgress + 0.22, 70, 99);
+      alertTotal = clamp(alertTotal - 0.2, 1, 12);
+    } else if (record.type.impact === "volume") {
+      dailyProgress = clamp(dailyProgress + 0.45, 70, 99);
+      utilization = clamp(utilization + 0.35, 48, 79);
+      activeHouses = clamp(activeHouses + 0.22, 12, 24);
+    } else {
+      alertTotal = clamp(alertTotal + 1.05, 1, 12);
+      syncPercent = clamp(syncPercent - 0.4, 90, 99);
+      feedMatch = clamp(feedMatch - 0.5, 80, 99);
+      mortalityVerified = clamp(mortalityVerified + 0.1, 1, 4);
     }
   };
 
   const updateDashboard = () => {
-    const targetSync = captureMode ? 97 : 95;
-    const targetFeed = captureMode ? 96 : 88;
-    const targetUtilization = captureMode ? 64 : 57;
-    const targetDaily = captureMode ? 95 : 81;
-    const targetAlerts = captureMode ? 3 : 6;
-    const targetHouses = captureMode ? 24 : 14;
+    const targets = captureMode
+      ? { sync: 97, feed: 95, utilization: 66, daily: 95, alerts: 3, houses: 24, mortality: 1 }
+      : { sync: 95, feed: 88, utilization: 57, daily: 81, alerts: 6, houses: 14, mortality: 2 };
 
-    syncPercent += (targetSync - syncPercent) * 0.024;
-    feedMatch += (targetFeed - feedMatch) * 0.028;
-    utilization += (targetUtilization - utilization) * 0.024;
-    dailyProgress += (targetDaily - dailyProgress) * 0.026;
-    alertTotal += (targetAlerts - alertTotal) * 0.04;
-    activeHouses += (targetHouses - activeHouses) * 0.024;
+    syncPercent += (targets.sync - syncPercent) * 0.018;
+    feedMatch += (targets.feed - feedMatch) * 0.02;
+    utilization += (targets.utilization - utilization) * 0.018;
+    dailyProgress += (targets.daily - dailyProgress) * 0.02;
+    alertTotal += (targets.alerts - alertTotal) * 0.026;
+    activeHouses += (targets.houses - activeHouses) * 0.02;
+    mortalityVerified += (targets.mortality - mortalityVerified) * 0.03;
 
     const roundedSync = Math.round(syncPercent);
     const roundedFeed = Math.round(feedMatch);
@@ -130,24 +245,25 @@ function initHomepage() {
     const roundedDaily = Math.round(dailyProgress);
     const roundedAlerts = Math.max(1, Math.round(alertTotal));
     const roundedHouses = Math.max(1, Math.round(activeHouses));
+    const roundedMortality = Math.max(1, Math.round(mortalityVerified));
     const passText = String(passesLogged).padStart(3, "0");
 
+    if (latestRecord) latestRecord.textContent = recordState.title;
+    if (latestNarrative) latestNarrative.textContent = recordState.narrative;
     if (visibilityValue) visibilityValue.textContent = `${roundedUtilization}%`;
     if (visibilityNarrative) {
       visibilityNarrative.textContent = captureMode
-        ? "Field encoding, sync checks, and same-day review are moving together."
-        : "The baseline shows why ZAFPI needs same-day operational visibility.";
+        ? "Graded passes are syncing immediately into the same-day control view."
+        : "The baseline still shows delayed visibility, but the sorter is already proving the future state.";
     }
-    if (latestRecord && !captureMode) latestRecord.textContent = "Awaiting next field pass";
-    if (latestNarrative && !captureMode) latestNarrative.textContent = "Monitoring the current-state baseline before capture begins.";
-    if (housesMeta) housesMeta.textContent = `${roundedHouses} / 24`;
-    if (passesMeta) passesMeta.textContent = passText;
-    if (syncMeta) syncMeta.textContent = `${roundedSync}%`;
+    if (housesMeta) housesMeta.textContent = `${roundedHouses} / 24 active`;
+    if (passesMeta) passesMeta.textContent = `${passText} passes`;
+    if (syncMeta) syncMeta.textContent = `${roundedSync}% sync`;
     if (housesCount) housesCount.textContent = `${roundedHouses} / 24`;
     if (passesCount) passesCount.textContent = passText;
     if (syncCount) syncCount.textContent = `${roundedSync}%`;
     if (feedCount) feedCount.textContent = `${roundedFeed}%`;
-    if (mortalityCount) mortalityCount.textContent = captureMode ? "1 verified" : "2 verified";
+    if (mortalityCount) mortalityCount.textContent = `${roundedMortality} verified`;
     if (alertCount) alertCount.textContent = `${roundedAlerts} open`;
     if (dailyLabel) dailyLabel.textContent = `${roundedDaily}% of daily reporting target`;
     if (syncLabel) syncLabel.textContent = `${roundedSync}% same-day sync confidence`;
@@ -159,23 +275,32 @@ function initHomepage() {
     if (ringValue) ringValue.textContent = `${roundedSync}%`;
   };
 
+  const hasSpawnClearance = (minimumGap) => {
+    return eggs.every((egg) => egg.x > minimumGap);
+  };
+
   const spawnEgg = () => {
     const type = chooseEggType();
+    const record = buildRecord(type);
     const egg = document.createElement("div");
     egg.className = `sim-egg ${type.className}`;
+    egg.style.width = `${type.width}px`;
+    egg.style.height = `${type.height}px`;
     eggStream.appendChild(egg);
 
+    const laneOffset = laneOffsets[record.lane];
     eggs.push({
       element: egg,
-      x: -80,
-      y: 18 + Math.random() * 28,
-      wobble: 12 + Math.random() * 10,
+      x: -type.width - 18,
+      y: laneOffset,
+      wobble: 5 + Math.random() * 4,
       phase: Math.random() * Math.PI * 2,
-      rotation: (Math.random() - 0.5) * 18,
-      rotationSpeed: (Math.random() - 0.5) * 32,
-      speed: captureMode ? 420 : 260,
+      rotation: (Math.random() - 0.5) * 10,
+      rotationSpeed: (Math.random() - 0.5) * 10,
+      speed: (captureMode ? 290 : 190) + type.speedBoost,
       counted: false,
-      label: type.label
+      width: type.width,
+      record
     });
   };
 
@@ -188,14 +313,11 @@ function initHomepage() {
     if (egg.counted) return;
     egg.counted = true;
     passesLogged += 1;
-    if (latestRecord) latestRecord.textContent = egg.label;
-    if (latestNarrative) {
-      latestNarrative.textContent = captureMode
-        ? "The dashboard is reflecting a fresh pass without waiting for T+1 consolidation."
-        : "The record is visible, but the workflow still needs same-day discipline to stabilize.";
-    }
+    recordState.title = egg.record.title;
+    recordState.narrative = egg.record.narrative;
+    applyEggImpact(egg.record);
     if (captureMode) {
-      showToast(`${egg.label} recorded and pushed into the reporting view.`);
+      showToast(`${egg.record.recordLabel || egg.record.title} now appears in the same-day monitor.`);
     }
   };
 
@@ -203,26 +325,27 @@ function initHomepage() {
     const delta = Math.min((timestamp - lastFrame) / 1000, 0.033);
     lastFrame = timestamp;
 
-    beltShift += delta * (captureMode ? 220 : 100);
+    beltShift += delta * (captureMode ? 160 : 90);
     stage.style.setProperty("--belt-shift", `${beltShift}px`);
 
     spawnTimer += delta;
-    const spawnRate = captureMode ? 0.22 : 0.48;
-    if (spawnTimer >= spawnRate) {
+    const spawnRate = captureMode ? 0.28 : 0.52;
+    const nextType = chooseEggType();
+    if (spawnTimer >= spawnRate && hasSpawnClearance(nextType.minGap)) {
       spawnEgg();
       spawnTimer = 0;
     }
 
-    const streamWidth = Math.max(eggStream.clientWidth, 640);
+    const streamWidth = Math.max(eggStream.clientWidth, 720);
     const checkpoint = streamWidth * 0.62;
 
-    eggs.forEach((egg) => {
+    eggs.slice().forEach((egg) => {
       egg.x += delta * egg.speed;
       egg.rotation += delta * egg.rotationSpeed;
-      const bob = Math.sin((timestamp / 1000) * egg.wobble + egg.phase) * 8;
+      const bob = prefersReducedMotion.matches ? 0 : Math.sin((timestamp / 1000) * egg.wobble + egg.phase) * 4;
       egg.element.style.transform = `translate(${egg.x}px, ${egg.y + bob}px) rotate(${egg.rotation}deg)`;
-      if (egg.x >= checkpoint) handleEggCheckpoint(egg);
-      if (egg.x > streamWidth + 100) removeEgg(egg);
+      if (egg.x + egg.width * 0.5 >= checkpoint) handleEggCheckpoint(egg);
+      if (egg.x > streamWidth + 120) removeEgg(egg);
     });
 
     storyTimer += delta;
