@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -7,10 +7,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="site.css" />
-
-
-
 <!-- INLINE_SITE_CSS_START -->
 <style>
 :root {
@@ -411,6 +407,11 @@ select {
   align-content: start;
 }
 
+.hero-copy > .button,
+.hero-copy > .text-button {
+  justify-self: start;
+}
+
 .hero-grid,
 .split-grid,
 .two-column-grid {
@@ -428,15 +429,15 @@ select {
 .mini-stat-grid,
 .success-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
 }
 
 .four-column-grid,
 .quick-stat-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
 }
 
 .surface-card,
@@ -452,11 +453,29 @@ select {
 .comparison-card,
 .summary-band,
 .evidence-card {
-  padding: 22px;
+  padding: 24px 22px;
   border-radius: var(--radius-lg);
   border: 1px solid rgba(18, 60, 53, 0.1);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(244, 248, 243, 0.86));
   box-shadow: var(--shadow-md);
+}
+
+.surface-card,
+.stat-card,
+.metric-card,
+.detail-card,
+.resource-card,
+.team-card,
+.process-card,
+.path-card,
+.phase-card,
+.logo-card,
+.comparison-card,
+.summary-band,
+.evidence-card {
+  display: grid;
+  align-content: start;
+  gap: 12px;
 }
 
 .surface-card:hover,
@@ -491,20 +510,21 @@ select {
 .metric-value,
 .big-number {
   display: block;
-  margin-top: 8px;
+  margin-top: 4px;
   font-family: "Montserrat", sans-serif;
-  font-size: clamp(1.7rem, 2vw, 2.3rem);
-  line-height: 1;
+  font-size: clamp(2rem, 2.8vw, 3.1rem);
+  line-height: 0.96;
   letter-spacing: -0.04em;
+  overflow-wrap: anywhere;
 }
 
 .stat-support,
 .detail-note,
 .metric-note {
-  margin-top: 12px;
+  margin-top: 8px;
   color: var(--muted);
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 0.98rem;
+  line-height: 1.65;
 }
 
 .stat-card.is-accent,
@@ -732,39 +752,42 @@ select {
 }
 
 .timeline-shell {
-  padding: 30px;
+  padding: 34px;
 }
 
 .timeline-track {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(9, minmax(0, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  align-items: stretch;
 }
 
 .timeline-track::before {
-  content: "";
-  position: absolute;
-  top: 22px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, rgba(18, 60, 53, 0.18), rgba(18, 60, 53, 0.52));
-  transform-origin: left center;
+  display: none;
 }
 
 .phase-card {
-  min-height: 220px;
+  min-height: 0;
+  padding: 26px 22px 24px;
+}
+
+.phase-card h3 {
+  font-size: clamp(1.22rem, 1.6vw, 1.6rem);
+  line-height: 1.12;
+  max-width: 12ch;
 }
 
 .phase-card p {
   margin: 0;
   color: var(--muted);
-  line-height: 1.65;
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 25ch;
 }
 
 .phase-card .phase-index {
-  margin-bottom: 14px;
+  margin-bottom: 18px;
 }
 
 .resource-card,
@@ -1401,11 +1424,12 @@ select {
 
 .summary-band {
   display: grid;
-  gap: 18px;
+  gap: 20px;
 }
 
 .summary-band .quick-stat-grid {
   margin-top: 6px;
+  align-items: stretch;
 }
 
 .summary-band .surface-card,
@@ -1431,8 +1455,25 @@ select {
 
 .page-intro-grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(280px, 0.72fr);
-  gap: 24px;
+  grid-template-columns: minmax(0, 1.18fr) minmax(360px, 0.82fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.mini-stat-grid {
+  align-self: start;
+}
+
+.mini-stat-grid .surface-card {
+  min-height: 100%;
+}
+
+.quick-stat-grid .stat-card {
+  min-height: 260px;
+}
+
+.quick-stat-grid .stat-value {
+  font-size: clamp(2.1rem, 3.2vw, 3.4rem);
 }
 
 .callout-card {
@@ -1478,11 +1519,7 @@ select {
   }
 
   .timeline-track {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .timeline-track::before {
-    display: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .three-column-grid,
@@ -1663,6 +1700,665 @@ select {
   }
 }
 
+/* Premium nav + landing stage overrides */
+.nav-shell {
+  gap: 12px;
+}
+
+.nav-toggle {
+  display: inline-flex;
+  position: relative;
+  width: 54px;
+  height: 54px;
+  padding: 0;
+  font-size: 0;
+  color: transparent;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: var(--shadow-sm);
+}
+
+.nav-toggle::before,
+.nav-toggle::after {
+  content: "";
+  position: absolute;
+  left: 15px;
+  width: 22px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--green-900);
+  transition: transform 240ms ease, box-shadow 240ms ease, opacity 240ms ease;
+}
+
+.nav-toggle::before {
+  top: 20px;
+  box-shadow: 0 7px 0 0 var(--green-900);
+}
+
+.nav-toggle::after {
+  top: 34px;
+}
+
+.nav-toggle.is-open::before {
+  top: 25px;
+  transform: rotate(45deg);
+  box-shadow: none;
+}
+
+.nav-toggle.is-open::after {
+  top: 25px;
+  transform: rotate(-45deg);
+}
+
+.nav-menu {
+  position: absolute;
+  top: calc(100% + 14px);
+  right: 0;
+  z-index: 130;
+  min-width: 290px;
+  padding: 14px;
+  border-radius: 26px;
+  border: 1px solid rgba(18, 60, 53, 0.1);
+  background: rgba(248, 250, 246, 0.96);
+  box-shadow: 0 22px 54px rgba(14, 35, 33, 0.18);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  display: grid;
+  gap: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px) scale(0.98);
+  transform-origin: top right;
+  transition: opacity 240ms ease, visibility 240ms ease, transform 240ms ease;
+}
+
+.nav-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.nav-menu .nav-link {
+  width: 100%;
+  min-height: 48px;
+  justify-content: flex-start;
+  padding: 12px 16px;
+  border-radius: 16px;
+}
+
+.nav-link--cta {
+  width: 100%;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.nav-cta {
+  display: none !important;
+}
+
+.site-footer {
+  padding: 10px 0 18px;
+}
+
+.footer-grid {
+  gap: 20px;
+  padding: 22px 26px 16px;
+  grid-template-columns: minmax(0, 1.25fr) repeat(2, minmax(170px, 0.7fr));
+}
+
+.footer-title {
+  font-size: 1.15rem;
+}
+
+.footer-bottom {
+  padding: 0 26px 18px;
+}
+
+.page-home .page-main {
+  padding: 16px 0 34px;
+}
+
+.page-home .page-container {
+  width: min(100%, 1380px);
+}
+
+.home-stage-shell {
+  min-height: calc(100vh - var(--nav-height) - 22px);
+}
+
+.home-stage-shell::before {
+  display: none;
+}
+
+.demo-stage--full {
+  min-height: calc(100vh - var(--nav-height) - 22px);
+  background:
+    radial-gradient(circle at 12% 18%, rgba(255, 235, 182, 0.58), transparent 16%),
+    linear-gradient(180deg, #dfe8da 0%, #efead9 42%, #d8e3d8 100%);
+}
+
+.demo-stage--full::before {
+  background:
+    linear-gradient(180deg, rgba(9, 18, 14, 0.04), rgba(9, 18, 14, 0.14) 100%),
+    radial-gradient(circle at center, transparent 28%, rgba(9, 18, 14, 0.16) 108%);
+}
+
+.scene-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.scene-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.26;
+  background-image:
+    linear-gradient(rgba(18, 60, 53, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18, 60, 53, 0.06) 1px, transparent 1px);
+  background-size: 112px 112px;
+}
+
+.scene-sun,
+.scene-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px);
+}
+
+.scene-sun {
+  top: 9%;
+  left: 13%;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(255, 246, 201, 0.95), rgba(248, 215, 116, 0.18) 72%, transparent 74%);
+  box-shadow: 0 0 120px rgba(248, 215, 116, 0.3);
+}
+
+.scene-glow {
+  right: 12%;
+  bottom: 18%;
+  width: 380px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(255, 246, 201, 0.3), transparent 68%);
+  filter: blur(26px);
+}
+
+.scene-farmline {
+  position: absolute;
+  left: 7%;
+  right: 15%;
+  bottom: 27%;
+  display: flex;
+  align-items: end;
+  gap: 18px;
+}
+
+.farm-house {
+  flex: 1;
+  min-height: 54px;
+  border-radius: 16px 16px 8px 8px;
+  background: linear-gradient(180deg, rgba(29, 72, 62, 0.9), rgba(20, 50, 44, 0.92));
+  box-shadow: 0 16px 32px rgba(20, 50, 44, 0.18);
+  position: relative;
+}
+
+.farm-house::before {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: -18px;
+  height: 26px;
+  border-radius: 999px 999px 0 0;
+  background: linear-gradient(180deg, rgba(24, 49, 71, 0.94), rgba(24, 49, 71, 0.72));
+}
+
+.house-wide {
+  min-height: 70px;
+}
+
+.house-mid {
+  min-height: 56px;
+}
+
+.house-tall {
+  min-height: 84px;
+}
+
+.scene-silo {
+  position: absolute;
+  right: 15%;
+  bottom: 28%;
+  width: 62px;
+  height: 150px;
+  border-radius: 999px 999px 22px 22px;
+  background: linear-gradient(180deg, rgba(210, 220, 225, 0.94), rgba(160, 172, 179, 0.98));
+  box-shadow: 0 16px 32px rgba(52, 62, 68, 0.18);
+}
+
+.scene-silo::before {
+  content: "";
+  position: absolute;
+  inset: -24px 0 auto;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, rgba(222, 231, 235, 0.96), rgba(168, 178, 185, 0.92));
+}
+
+.scene-belt {
+  position: absolute;
+  left: 10%;
+  right: 18%;
+  bottom: 11%;
+  height: 110px;
+  border-radius: 999px;
+}
+
+.scene-belt-track,
+.scene-belt-rail,
+.scene-belt-glow,
+.egg-stream {
+  position: absolute;
+}
+
+.scene-belt-track {
+  inset: 20px 0 0;
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(50, 56, 63, 0.96), rgba(32, 38, 43, 0.96)),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.08) 0 18px, transparent 18px 42px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 24px 44px rgba(19, 30, 26, 0.22);
+  overflow: hidden;
+}
+
+.scene-belt-track::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.14) 0 20px, transparent 20px 56px);
+  transform: translateX(calc(var(--belt-shift, 0px) * -1));
+}
+
+.scene-belt-rail {
+  top: 6px;
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(183, 193, 199, 0.96), rgba(144, 154, 160, 0.96));
+}
+
+.scene-belt-rail--left {
+  left: 0;
+}
+
+.scene-belt-rail--right {
+  top: auto;
+  bottom: -6px;
+}
+
+.scene-belt-glow {
+  inset: auto 4% -12px;
+  height: 30px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(248, 215, 116, 0.24), transparent 70%);
+  filter: blur(18px);
+}
+
+.egg-stream {
+  inset: 0 6% 0 6%;
+  overflow: hidden;
+}
+
+.sim-egg {
+  position: absolute;
+  left: 0;
+  top: 18px;
+  width: 36px;
+  height: 48px;
+  border-radius: 50% 50% 48% 48%;
+  box-shadow: 0 12px 20px rgba(18, 24, 27, 0.18);
+  will-change: transform;
+}
+
+.egg--light {
+  background: radial-gradient(circle at 35% 30%, #fffdf5, #f0e4ce 68%);
+}
+
+.egg--tan {
+  background: radial-gradient(circle at 35% 30%, #fae8cf, #d7b28a 70%);
+}
+
+.egg--speckled {
+  background:
+    radial-gradient(circle at 35% 30%, #f6efe0, #d8ceb8 70%),
+    radial-gradient(circle at 30% 50%, rgba(108, 86, 63, 0.3) 0 2px, transparent 2px),
+    radial-gradient(circle at 65% 28%, rgba(108, 86, 63, 0.22) 0 1.5px, transparent 1.5px);
+}
+
+.egg--alert {
+  background: radial-gradient(circle at 35% 30%, #f2cabf, #bf7d6d 72%);
+}
+
+.sim-overlay--landing {
+  padding: clamp(20px, 2vw, 32px);
+  gap: 22px;
+}
+
+.sim-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(350px, 0.82fr) minmax(300px, 0.76fr);
+  gap: 28px;
+  align-items: center;
+}
+
+.hero-floating-card {
+  padding: 28px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(249, 251, 247, 0.88);
+  box-shadow: 0 26px 56px rgba(14, 35, 33, 0.14);
+  backdrop-filter: blur(18px);
+}
+
+.hero-title--home {
+  max-width: 8ch;
+  font-size: clamp(3.4rem, 8vw, 6.3rem);
+  color: #1a2538;
+}
+
+.story-panel--landing {
+  max-width: 540px;
+  justify-self: end;
+  align-self: center;
+  padding: 18px 0 0;
+}
+
+.story-panel--landing .story-line {
+  color: rgba(250, 252, 247, 0.96);
+  font-size: clamp(2.9rem, 7vw, 5.2rem);
+  text-shadow: 0 18px 40px rgba(13, 26, 21, 0.18);
+}
+
+.story-support {
+  max-width: 44ch;
+}
+
+.team-presence {
+  margin-top: 18px;
+  padding: 16px 18px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(9, 22, 18, 0.44);
+  color: rgba(244, 250, 243, 0.84);
+  backdrop-filter: blur(14px);
+}
+
+.team-presence-label {
+  display: inline-flex;
+  margin-bottom: 8px;
+  color: rgba(244, 250, 243, 0.64);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.team-presence p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+.sim-bottom--landing {
+  grid-template-columns: minmax(0, 0.74fr) minmax(360px, 0.82fr);
+  align-items: end;
+}
+
+.sim-control-deck {
+  display: grid;
+  gap: 16px;
+  align-self: end;
+}
+
+.dashboard-panel--landing {
+  justify-self: end;
+  width: min(100%, 510px);
+  background: linear-gradient(180deg, rgba(12, 23, 29, 0.9), rgba(17, 36, 32, 0.84));
+}
+
+.signal-card--compact {
+  max-width: 360px;
+}
+
+.signal-value--compact {
+  font-size: clamp(1.8rem, 3vw, 3rem);
+}
+
+.sim-floating-panels {
+  position: absolute;
+  right: clamp(18px, 3vw, 32px);
+  bottom: clamp(140px, 20vh, 210px);
+  z-index: 4;
+  display: grid;
+  gap: 14px;
+}
+
+.sim-topbar,
+.story-panel,
+.hero-floating-card,
+.signal-card,
+.dashboard-panel,
+.instruction-chip,
+.team-presence {
+  transition: transform 260ms ease, opacity 260ms ease, box-shadow 260ms ease;
+}
+
+.demo-stage.is-focus .hero-floating-card,
+.demo-stage.is-focus .sim-topbar,
+.demo-stage.is-focus .sim-control-deck,
+.demo-stage.is-focus .team-presence {
+  opacity: 0.28;
+}
+
+.demo-stage.is-active .dashboard-panel,
+.demo-stage.is-active .signal-card {
+  box-shadow: 0 26px 56px rgba(10, 22, 18, 0.3);
+}
+
+.home-team-section {
+  display: grid;
+  gap: 22px;
+}
+
+.home-team-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.team-rail {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.team-chip-card {
+  padding: 18px;
+  border-radius: 22px;
+  border: 1px solid rgba(18, 60, 53, 0.1);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(244, 248, 243, 0.88));
+  box-shadow: var(--shadow-sm);
+  display: grid;
+  gap: 12px;
+}
+
+.team-chip-card strong {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.98rem;
+}
+
+@keyframes stageFloat {
+  from {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+  to {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes glowDrift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(14px, -10px, 0) scale(1.04);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.scene-sun {
+  animation: glowDrift 9s ease-in-out infinite;
+}
+
+.scene-glow {
+  animation: glowDrift 11s ease-in-out infinite reverse;
+}
+
+.story-panel--landing,
+.dashboard-panel--landing {
+  animation: stageFloat 8s ease-in-out infinite;
+}
+
+@media (max-width: 1180px) {
+  .sim-hero-grid,
+  .sim-bottom--landing,
+  .home-team-header {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .story-panel--landing,
+  .dashboard-panel--landing {
+    justify-self: stretch;
+    max-width: none;
+  }
+
+  .sim-floating-panels {
+    position: static;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .team-rail {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .nav-menu {
+    right: 0;
+    left: auto;
+    width: min(320px, calc(100vw - 36px));
+  }
+
+  .home-stage-shell,
+  .demo-stage--full {
+    min-height: 880px;
+  }
+
+  .scene-belt {
+    left: 6%;
+    right: 8%;
+    bottom: 14%;
+  }
+
+  .sim-overlay--landing {
+    padding: 18px;
+  }
+
+  .hero-title--home {
+    font-size: clamp(2.8rem, 10vw, 4.6rem);
+  }
+
+  .sim-floating-panels {
+    grid-template-columns: 1fr;
+  }
+
+  .team-rail {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .topbar-inner {
+    padding-right: 18px;
+  }
+
+  .brand-copy span {
+    display: none;
+  }
+
+  .home-stage-shell,
+  .demo-stage--full {
+    min-height: 980px;
+  }
+
+  .scene-farmline {
+    left: 5%;
+    right: 5%;
+    bottom: 31%;
+    gap: 10px;
+  }
+
+  .scene-silo {
+    right: 7%;
+    bottom: 33%;
+    transform: scale(0.82);
+  }
+
+  .scene-belt {
+    left: 4%;
+    right: 4%;
+    bottom: 16%;
+    height: 92px;
+  }
+
+  .hero-floating-card {
+    padding: 22px;
+  }
+
+  .signal-card--compact {
+    max-width: none;
+  }
+
+  .home-team-header {
+    gap: 14px;
+  }
+
+  .team-rail {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene-sun,
+  .scene-glow,
+  .story-panel--landing,
+  .dashboard-panel--landing {
+    animation: none;
+  }
+}
+
 </style>
 <!-- INLINE_SITE_CSS_END -->
 </head>
@@ -1692,109 +2388,108 @@ select {
     </div>
   </header>
 
-  <main class="page-main">
-    <div class="page-container home-grid">
-      <section class="home-hero reveal">
-        <article class="hero-shell home-copy-wrap reveal reveal-delay-1">
-          <div class="hero-copy">
-            <div class="eyebrow">Simulation-first home</div>
-            <h1 class="hero-title">We&rsquo;re hatching something special.</h1>
-            <p class="lead hero-lead">Project Farmbrite redesigns ZAFPI&rsquo;s production reporting from a paper-first, T+1 operating model into a structured same-day management system built for visibility, data integrity, and tighter farm control.</p>
-            <div class="positioning-line">Project Farmbrite transforms ZAFPI&rsquo;s production operations from delayed, manual reporting into a structured, same-day management system that enables real-time visibility, stronger data integrity, and better operational control.</div>
-            <div class="hero-actions">
-              <a class="button button-primary" href="about.html">Learn More</a>
-              <a class="button button-secondary" href="system.html">See the System</a>
-              <a class="button button-secondary" href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">Farmbrite Demo</a>
+      <main class="page-main">
+    <div class="page-container page-stack">
+      <section class="simulation-shell home-stage-shell reveal">
+        <div class="demo-stage demo-stage--full" id="demoStage">
+          <div class="scene-layer" aria-hidden="true">
+            <div class="scene-grid"></div>
+            <div class="scene-sun"></div>
+            <div class="scene-glow"></div>
+            <div class="scene-farmline">
+              <span class="farm-house house-wide"></span>
+              <span class="farm-house house-mid"></span>
+              <span class="farm-house house-tall"></span>
+              <span class="farm-house house-wide"></span>
+              <span class="farm-house house-mid"></span>
+              <span class="farm-house house-wide"></span>
             </div>
-            <div class="hero-facts">
-              <span class="fact-pill"><strong>43%</strong> reconciliation</span>
-              <span class="fact-pill"><strong>57%</strong> utilization</span>
-              <span class="fact-pill"><strong>24</strong> houses</span>
-              <span class="fact-pill"><strong>95%+</strong> compliance target</span>
+            <div class="scene-silo"></div>
+            <div class="scene-belt">
+              <div class="scene-belt-rail scene-belt-rail--left"></div>
+              <div class="scene-belt-track"></div>
+              <div class="egg-stream" id="eggStream"></div>
+              <div class="scene-belt-rail scene-belt-rail--right"></div>
+              <div class="scene-belt-glow"></div>
             </div>
           </div>
-        </article>
 
-        <section class="simulation-shell reveal reveal-delay-2">
-          <div class="demo-stage" id="demoStage">
-            <div class="fallback-scene" id="fallbackScene">
-              <div class="fallback-frame">
-                <div class="fallback-topline">
-                  <span>Farmbrite fallback</span>
-                  <span>Same-day control view</span>
-                </div>
-                <h2 class="section-title">From paper delays to same-day visibility.</h2>
-                <p class="lead">If the 3D stage is unavailable, this focused dashboard still shows the project story: source capture, daily discipline, sync confidence, and operational review across all 24 houses.</p>
-                <div class="fallback-grid">
-                  <article>
-                    <strong>24 houses</strong>
-                    <span>19 layer, 2 brooder, 3 grower houses in scope</span>
-                  </article>
-                  <article>
-                    <strong>95%+ target</strong>
-                    <span>Daily encoding compliance after rollout stabilization</span>
-                  </article>
-                  <article>
-                    <strong>&lt;15%</strong>
-                    <span>Target reconciliation burden after process control improves</span>
-                  </article>
-                  <article>
-                    <strong>Same-day</strong>
-                    <span>Operational visibility target for management review</span>
-                  </article>
-                </div>
+          <div class="fallback-scene" id="fallbackScene" hidden>
+            <div class="fallback-frame">
+              <div class="fallback-topline">
+                <span>Farmbrite fallback</span>
+                <span>Same-day control view</span>
+              </div>
+              <h2 class="section-title">From paper delays to same-day visibility.</h2>
+              <p class="lead">Even without the motion layer, the homepage still shows the capstone story: source capture, daily discipline, sync confidence, and operational review across all 24 houses.</p>
+              <div class="fallback-grid">
+                <article>
+                  <strong>24 houses</strong>
+                  <span>19 layer, 2 brooder, 3 grower houses in scope</span>
+                </article>
+                <article>
+                  <strong>95%+</strong>
+                  <span>Daily encoding compliance target after stabilization</span>
+                </article>
+                <article>
+                  <strong>&lt;15%</strong>
+                  <span>Target reconciliation burden after process control improves</span>
+                </article>
+                <article>
+                  <strong>Same-day</strong>
+                  <span>Operational visibility target for management review</span>
+                </article>
               </div>
             </div>
-            <div class="canvas-container" id="canvasContainer"></div>
+          </div>
 
-            <div class="sim-overlay">
-              <div class="sim-topbar">
-                <div class="sim-brand-chip">
-                  <strong>ZAFPI operations</strong>
-                  <span>Zamboanga City farm and distribution reporting</span>
-                </div>
-                <div class="sim-state-chip">
-                  <strong id="stateMode">Monitoring baseline</strong>
-                  <span id="simTime">06:30 PM</span>
-                </div>
+          <div class="sim-overlay sim-overlay--landing">
+            <div class="sim-topbar">
+              <div class="sim-brand-chip">
+                <strong>ZAFPI operations</strong>
+                <span>Zamboanga City farm and distribution reporting</span>
               </div>
-
-              <div class="sim-layout">
-                <div class="story-panel">
-                  <div class="story-lines">
-                    <p class="story-line is-active">From paper delays to same-day visibility.</p>
-                    <p class="story-line">From the belt to the tablet, every pass becomes a record.</p>
-                    <p class="story-line">A farm dashboard built for discipline, not guesswork.</p>
-                  </div>
-                  <p class="story-support">The homepage stays short and cinematic, but its cues are grounded in the capstone itself: delayed manual reporting, farm-wide operational scope, and the shift toward same-day visibility with structured digital capture.</p>
-                </div>
-
-                <div class="sim-signals">
-                  <article class="signal-card">
-                    <div class="signal-head">
-                      <span>Latest record</span>
-                      <span class="live-dot" aria-hidden="true"></span>
-                    </div>
-                    <div class="signal-value" id="latestRecord">Awaiting next field pass</div>
-                    <p class="signal-copy" id="latestNarrative">Monitoring the current-state baseline before capture begins.</p>
-                  </article>
-                  <article class="signal-card">
-                    <div class="signal-head">
-                      <span>Visibility view</span>
-                      <span>24-house scope</span>
-                    </div>
-                    <div class="signal-value" id="visibilityValue">57%</div>
-                    <p class="signal-copy" id="visibilityNarrative">The baseline shows why ZAFPI needs same-day operational visibility.</p>
-                    <div class="signal-meta">
-                      <span id="housesMeta">14 / 24</span>
-                      <span id="passesMeta">126</span>
-                      <span id="syncMeta">95%</span>
-                    </div>
-                  </article>
-                </div>
+              <div class="sim-state-chip">
+                <strong id="stateMode">Monitoring baseline</strong>
+                <span id="simTime">06:30 PM</span>
               </div>
+            </div>
 
-              <div class="sim-bottom">
+            <div class="sim-hero-grid">
+              <article class="hero-floating-card reveal reveal-delay-1">
+                <div class="eyebrow">Simulation-first home</div>
+                <h1 class="hero-title hero-title--home">We&rsquo;re hatching something special.</h1>
+                <p class="lead hero-lead">Project Farmbrite redesigns ZAFPI&rsquo;s production reporting from a paper-first, T+1 operating model into a structured same-day management system built for visibility, data integrity, and tighter farm control.</p>
+                <div class="positioning-line">Project Farmbrite transforms ZAFPI&rsquo;s production operations from delayed, manual reporting into a structured, same-day management system that enables real-time visibility, stronger data integrity, and better operational control.</div>
+                <div class="hero-actions">
+                  <a class="button button-primary" href="about.html">Learn More</a>
+                  <a class="button button-secondary" href="system.html">See the System</a>
+                  <a class="button button-secondary" href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">Farmbrite Demo</a>
+                </div>
+                <div class="hero-facts">
+                  <span class="fact-pill"><strong>43%</strong> reconciliation</span>
+                  <span class="fact-pill"><strong>57%</strong> utilization</span>
+                  <span class="fact-pill"><strong>24</strong> houses</span>
+                  <span class="fact-pill"><strong>95%+</strong> compliance target</span>
+                </div>
+              </article>
+
+              <article class="story-panel story-panel--landing reveal reveal-delay-2">
+                <div class="story-lines">
+                  <p class="story-line is-active">From paper delays to same-day visibility.</p>
+                  <p class="story-line">From the belt to the tablet, every pass becomes a record.</p>
+                  <p class="story-line">A farm dashboard built for discipline, not guesswork.</p>
+                </div>
+                <p class="story-support">The landing page stays cinematic, but it is grounded in the capstone itself: delayed manual reporting, farm-wide operational scope, and the shift toward same-day visibility with structured digital capture.</p>
+                <div class="team-presence">
+                  <span class="team-presence-label">DDS team</span>
+                  <p>Jared Go, Keaton Shih, Kimi Tiu, Robin Regollo, and Manu Lantin are presented here as one capstone team building the reporting discipline ZAFPI needs.</p>
+                </div>
+              </article>
+            </div>
+
+            <div class="sim-bottom sim-bottom--landing">
+              <div class="sim-control-deck reveal reveal-delay-3">
                 <div class="sim-controls">
                   <span class="instruction-chip">Hold press or spacebar to simulate live capture</span>
                   <a class="mini-button" href="about.html">Overview</a>
@@ -1802,65 +2497,89 @@ select {
                   <a class="mini-button" href="system.html">System</a>
                   <button class="mini-button" id="focusToggle" type="button">Focus view</button>
                 </div>
-
-                <aside class="dashboard-panel">
-                  <div class="dashboard-header">
-                    <div>
-                      <h2 class="dashboard-title">Farmbrite console</h2>
-                      <div class="dashboard-subtitle">Production review, sync, and house-level control</div>
-                    </div>
-                    <div class="dashboard-time">Dashboard</div>
-                  </div>
-                  <div class="dashboard-grid">
-                    <div class="ring-card">
-                      <div class="ring-visual" id="ringVisual"><strong id="ringValue">95%</strong></div>
-                      <span class="dashboard-subtitle">Same-day sync confidence</span>
-                    </div>
-                    <div>
-                      <div class="dashboard-mini-grid">
-                        <article class="dashboard-mini-card">
-                          <label>Houses active</label>
-                          <strong id="housesCount">14 / 24</strong>
-                        </article>
-                        <article class="dashboard-mini-card">
-                          <label>Passes logged</label>
-                          <strong id="passesCount">126</strong>
-                        </article>
-                        <article class="dashboard-mini-card">
-                          <label>Feed match</label>
-                          <strong id="feedCount">88%</strong>
-                        </article>
-                        <article class="dashboard-mini-card">
-                          <label>Mortality log</label>
-                          <strong id="mortalityCount">2 verified</strong>
-                        </article>
-                        <article class="dashboard-mini-card">
-                          <label>Sync percentage</label>
-                          <strong id="syncCount">95%</strong>
-                        </article>
-                        <article class="dashboard-mini-card">
-                          <label>Exceptions</label>
-                          <strong id="alertCount">6 open</strong>
-                        </article>
-                      </div>
-                      <div class="dashboard-progress">
-                        <div class="dashboard-progress-item">
-                          <div class="dashboard-progress-head"><span>Daily reporting progress</span><span id="dailyLabel">81% of daily reporting target</span></div>
-                          <div class="dashboard-progress-bar"><span id="dailyBar" style="--fill: 81%"></span></div>
-                        </div>
-                        <div class="dashboard-progress-item">
-                          <div class="dashboard-progress-head"><span>Same-day sync</span><span id="syncLabel">95% same-day sync confidence</span></div>
-                          <div class="dashboard-progress-bar"><span id="syncBar" style="--fill: 95%"></span></div>
-                        </div>
-                        <div class="dashboard-progress-item">
-                          <div class="dashboard-progress-head"><span>Utilization pathway</span><span id="utilLabel">57% utilization pathway</span></div>
-                          <div class="dashboard-progress-bar"><span id="utilBar" style="--fill: 57%"></span></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </aside>
               </div>
+
+              <aside class="dashboard-panel dashboard-panel--landing reveal reveal-delay-2">
+                <div class="dashboard-header">
+                  <div>
+                    <h2 class="dashboard-title">Farmbrite console</h2>
+                    <div class="dashboard-subtitle">Production review, sync, and house-level control</div>
+                  </div>
+                  <div class="dashboard-time">Dashboard</div>
+                </div>
+                <div class="dashboard-grid">
+                  <div class="ring-card">
+                    <div class="ring-visual" id="ringVisual"><strong id="ringValue">95%</strong></div>
+                    <span class="dashboard-subtitle">Same-day sync confidence</span>
+                  </div>
+                  <div>
+                    <div class="dashboard-mini-grid">
+                      <article class="dashboard-mini-card">
+                        <label>Houses active</label>
+                        <strong id="housesCount">14 / 24</strong>
+                      </article>
+                      <article class="dashboard-mini-card">
+                        <label>Passes logged</label>
+                        <strong id="passesCount">126</strong>
+                      </article>
+                      <article class="dashboard-mini-card">
+                        <label>Feed match</label>
+                        <strong id="feedCount">88%</strong>
+                      </article>
+                      <article class="dashboard-mini-card">
+                        <label>Mortality log</label>
+                        <strong id="mortalityCount">2 verified</strong>
+                      </article>
+                      <article class="dashboard-mini-card">
+                        <label>Sync percentage</label>
+                        <strong id="syncCount">95%</strong>
+                      </article>
+                      <article class="dashboard-mini-card">
+                        <label>Exceptions</label>
+                        <strong id="alertCount">6 open</strong>
+                      </article>
+                    </div>
+                    <div class="dashboard-progress">
+                      <div class="dashboard-progress-item">
+                        <div class="dashboard-progress-head"><span>Daily reporting progress</span><span id="dailyLabel">81% of daily reporting target</span></div>
+                        <div class="dashboard-progress-bar"><span id="dailyBar" style="--fill: 81%"></span></div>
+                      </div>
+                      <div class="dashboard-progress-item">
+                        <div class="dashboard-progress-head"><span>Same-day sync</span><span id="syncLabel">95% same-day sync confidence</span></div>
+                        <div class="dashboard-progress-bar"><span id="syncBar" style="--fill: 95%"></span></div>
+                      </div>
+                      <div class="dashboard-progress-item">
+                        <div class="dashboard-progress-head"><span>Utilization pathway</span><span id="utilLabel">57% utilization pathway</span></div>
+                        <div class="dashboard-progress-bar"><span id="utilBar" style="--fill: 57%"></span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </aside>
+            </div>
+
+            <div class="sim-floating-panels reveal reveal-delay-3">
+              <article class="signal-card signal-card--compact">
+                <div class="signal-head">
+                  <span>Latest record</span>
+                  <span class="live-dot" aria-hidden="true"></span>
+                </div>
+                <div class="signal-value signal-value--compact" id="latestRecord">Awaiting next field pass</div>
+                <p class="signal-copy" id="latestNarrative">Monitoring the current-state baseline before capture begins.</p>
+              </article>
+              <article class="signal-card signal-card--compact">
+                <div class="signal-head">
+                  <span>Visibility view</span>
+                  <span>24-house scope</span>
+                </div>
+                <div class="signal-value signal-value--compact" id="visibilityValue">57%</div>
+                <p class="signal-copy" id="visibilityNarrative">The baseline shows why ZAFPI needs same-day operational visibility.</p>
+                <div class="signal-meta">
+                  <span id="housesMeta">14 / 24</span>
+                  <span id="passesMeta">126</span>
+                  <span id="syncMeta">95%</span>
+                </div>
+              </article>
             </div>
 
             <div class="sim-toast" id="simToast">
@@ -1868,14 +2587,14 @@ select {
               <span id="simToastText">Same-day visibility is ready to follow each pass.</span>
             </div>
           </div>
-        </section>
+        </div>
       </section>
 
       <section class="home-summary-grid">
         <article class="summary-band reveal reveal-delay-1">
           <div class="eyebrow">ZAFPI snapshot</div>
           <h2 class="summary-title">An egg producer operating across two connected sites.</h2>
-          <p class="summary-copy">Zamboanga Agri-Farm Products Inc. is an egg producer based in Zamboanga City, serving wholesale buyers in Zamboanga City, Jolo Island, and Tawi-Tawi. Operations are split between the farm/production site and the sorting and distribution center.</p>
+          <p class="summary-copy">Zamboanga Agri-Farm Products Inc. is an egg producer based in Zamboanga City, serving wholesale buyers in Zamboanga City, Jolo Island, and Tawi-Tawi. Operations are split between the farm or production site and the sorting and distribution center.</p>
           <div class="quick-stat-grid">
             <article class="stat-card">
               <span class="card-label">Markets served</span>
@@ -1908,6 +2627,43 @@ select {
         </article>
       </section>
 
+      <section class="section-shell home-team-section reveal">
+        <div class="home-team-header">
+          <div>
+            <div class="eyebrow">Capstone team</div>
+            <h2 class="summary-title">One DDS team, one polished Farmbrite story.</h2>
+          </div>
+          <a class="button button-secondary" href="team.html">Meet the full team</a>
+        </div>
+        <div class="team-rail">
+          <article class="team-chip-card">
+            <span class="member-role">DDS member</span>
+            <strong>Jared Go</strong>
+            <span class="stat-support">Business context and capstone framing</span>
+          </article>
+          <article class="team-chip-card">
+            <span class="member-role">DDS member</span>
+            <strong>Keaton Shih</strong>
+            <span class="stat-support">Workflow and system structure</span>
+          </article>
+          <article class="team-chip-card">
+            <span class="member-role">DDS member</span>
+            <strong>Kimi Tiu</strong>
+            <span class="stat-support">Presentation and website narrative</span>
+          </article>
+          <article class="team-chip-card">
+            <span class="member-role">DDS member</span>
+            <strong>Robin Regollo</strong>
+            <span class="stat-support">Reporting logic and KPI framing</span>
+          </article>
+          <article class="team-chip-card">
+            <span class="member-role">DDS member</span>
+            <strong>Manu Lantin</strong>
+            <span class="stat-support">Documentation and project coordination</span>
+          </article>
+        </div>
+      </section>
+
       <section class="home-path-grid">
         <article class="summary-band reveal reveal-delay-1">
           <div class="eyebrow">Core metrics</div>
@@ -1926,35 +2682,40 @@ select {
             <article class="surface-card">
               <span class="card-label">Post-stabilization goal</span>
               <strong class="stat-value">~75%</strong>
-              <p>Utilization pathway after same-day reporting and management control improve.</p>
+              <p>Utilization pathway once reporting discipline and operational review are in place.</p>
+            </article>
+            <article class="surface-card">
+              <span class="card-label">Data discipline</span>
+              <strong class="stat-value">95%+</strong>
+              <p>Daily encoding compliance target that supports same-day management review.</p>
             </article>
           </div>
         </article>
 
         <article class="summary-band reveal reveal-delay-2">
           <div class="eyebrow">Continue through the site</div>
-          <h2 class="summary-title">Keep the homepage short, then go deeper where it matters.</h2>
+          <h2 class="summary-title">Keep the homepage short, then move into the capstone details.</h2>
           <div class="card-grid">
-            <article class="path-card">
-              <h3>Overview</h3>
-              <p>Company context, project positioning, and why ZAFPI matters.</p>
-              <a class="text-button" href="about.html">Open Overview</a>
-            </article>
-            <article class="path-card">
-              <h3>Problem</h3>
-              <p>Manual reporting pain points, reconciliation burden, and weak operational visibility.</p>
-              <a class="text-button" href="problem.html">Open Problem</a>
-            </article>
-            <article class="path-card">
-              <h3>System</h3>
-              <p>Scope, operating model, process redesign, and the full implementation timeline.</p>
-              <a class="text-button" href="system.html">Open System</a>
-            </article>
-            <article class="path-card">
-              <h3>Results</h3>
-              <p>Targets, value creation, and how success will be measured after rollout.</p>
-              <a class="text-button" href="results.html">Open Results</a>
-            </article>
+            <a class="surface-card" href="about.html">
+              <span class="card-label">Overview</span>
+              <strong class="stat-value">Who ZAFPI is</strong>
+              <p>Company context, footprint, operations, and why the project matters.</p>
+            </a>
+            <a class="surface-card" href="problem.html">
+              <span class="card-label">Problem</span>
+              <strong class="stat-value">Current-state pain</strong>
+              <p>Manual reporting, T+1 delay, reconciliation burden, and weak visibility.</p>
+            </a>
+            <a class="surface-card" href="system.html">
+              <span class="card-label">System</span>
+              <strong class="stat-value">Capstone approach</strong>
+              <p>System concept, timeline, deliverables, and target-state process flow.</p>
+            </a>
+            <a class="surface-card" href="results.html">
+              <span class="card-label">Results</span>
+              <strong class="stat-value">Value pathway</strong>
+              <p>Same-day visibility, lower reconciliation, stronger control, and better planning readiness.</p>
+            </a>
           </div>
         </article>
       </section>
@@ -1994,16 +2755,13 @@ select {
       </div>
     </div>
   </footer>
-
-  <script src="site.js"></script>
-  <script type="module" src="homepage.js"></script>
-
 <!-- INLINE_SITE_JS_START -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const navToggle = document.querySelector("[data-nav-toggle]");
   const navMenu = document.querySelector("[data-nav-menu]");
   const navShell = document.querySelector(".nav-shell");
+  const navCta = document.querySelector(".nav-cta");
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
@@ -2016,16 +2774,29 @@ document.addEventListener("DOMContentLoaded", () => {
     prefersReducedMotion.addEventListener("change", syncReducedMotionClass);
   }
 
+  if (navToggle) {
+    navToggle.setAttribute("aria-label", "Toggle navigation");
+    navToggle.textContent = "Menu";
+  }
+
+  if (navMenu && navCta && !navMenu.querySelector(".nav-link--cta")) {
+    const ctaClone = navCta.cloneNode(true);
+    ctaClone.className = "button button-primary nav-link--cta";
+    navMenu.appendChild(ctaClone);
+    navCta.hidden = true;
+  }
+
   const setMenuState = (isOpen) => {
     if (!navMenu || !navToggle) return;
     navMenu.classList.toggle("is-open", isOpen);
+    navToggle.classList.toggle("is-open", isOpen);
     navToggle.setAttribute("aria-expanded", String(isOpen));
+    document.body.classList.toggle("nav-open", isOpen);
   };
 
   if (navToggle && navMenu) {
     navToggle.addEventListener("click", () => {
-      const nextState = !navMenu.classList.contains("is-open");
-      setMenuState(nextState);
+      setMenuState(!navMenu.classList.contains("is-open"));
     });
 
     navMenu.querySelectorAll("a").forEach((link) => {
@@ -2038,8 +2809,9 @@ document.addEventListener("DOMContentLoaded", () => {
       setMenuState(false);
     });
 
-    window.addEventListener("resize", () => {
-      if (window.innerWidth > 900) setMenuState(false);
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      setMenuState(false);
     });
   }
 
@@ -2069,8 +2841,8 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     },
     {
-      threshold: 0.16,
-      rootMargin: "0px 0px -6% 0px"
+      threshold: 0.12,
+      rootMargin: "0px 0px -8% 0px"
     }
   );
 
@@ -2081,20 +2853,18 @@ document.addEventListener("DOMContentLoaded", () => {
 <!-- INLINE_SITE_JS_END -->
 
 <!-- INLINE_HOME_JS_START -->
-<script type='module'>
+<script>
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 const homeRoot = document.querySelector("[data-home-page]");
 if (homeRoot) {
-  initHomepage().catch(() => {
-    enableFallback();
-  });
+  initHomepage();
 }
 
-async function initHomepage() {
+function initHomepage() {
   const stage = document.getElementById("demoStage");
-  const canvasContainer = document.getElementById("canvasContainer");
   const fallbackScene = document.getElementById("fallbackScene");
+  const eggStream = document.getElementById("eggStream");
   const focusToggle = document.getElementById("focusToggle");
   const storyLines = Array.from(document.querySelectorAll(".story-line"));
   const simTime = document.getElementById("simTime");
@@ -2123,205 +2893,33 @@ async function initHomepage() {
   const toast = document.getElementById("simToast");
   const toastText = document.getElementById("simToastText");
 
-  if (!stage || !canvasContainer) return;
+  if (!stage || !eggStream) return;
+  if (fallbackScene) fallbackScene.hidden = true;
 
-  const { default: THREE } = await import("https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js");
-
-  if (!window.WebGLRenderingContext) {
-    throw new Error("WebGL unavailable");
-  }
-
-  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.6));
-  renderer.outputColorSpace = THREE.SRGBColorSpace;
-  renderer.shadowMap.enabled = !prefersReducedMotion.matches;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-  renderer.setSize(stage.clientWidth, stage.clientHeight);
-  canvasContainer.appendChild(renderer.domElement);
-
-  fallbackScene.hidden = true;
-
-  const scene = new THREE.Scene();
-  scene.fog = new THREE.Fog(0xdce4d7, 18, 42);
-
-  const camera = new THREE.PerspectiveCamera(38, stage.clientWidth / stage.clientHeight, 0.1, 100);
-  camera.position.set(7.2, 4.6, 14.4);
-
-  scene.add(new THREE.AmbientLight(0xf6f7f1, 1.85));
-
-  const sunLight = new THREE.DirectionalLight(0xfff2d2, 2.8);
-  sunLight.position.set(7, 11, 8);
-  sunLight.castShadow = !prefersReducedMotion.matches;
-  sunLight.shadow.mapSize.width = 1024;
-  sunLight.shadow.mapSize.height = 1024;
-  scene.add(sunLight);
-
-  const fillLight = new THREE.PointLight(0x8bc1ff, 10, 40, 2);
-  fillLight.position.set(-8, 5, 8);
-  scene.add(fillLight);
-
-  const ground = new THREE.Mesh(
-    new THREE.PlaneGeometry(60, 60),
-    new THREE.MeshStandardMaterial({ color: 0x6f9b58, roughness: 0.92 })
-  );
-  ground.rotation.x = -Math.PI / 2;
-  ground.receiveShadow = true;
-  scene.add(ground);
-
-  const serviceRoad = new THREE.Mesh(
-    new THREE.PlaneGeometry(10, 32),
-    new THREE.MeshStandardMaterial({ color: 0xd8cab0, roughness: 0.94 })
-  );
-  serviceRoad.rotation.x = -Math.PI / 2;
-  serviceRoad.position.set(0, 0.01, 3);
-  scene.add(serviceRoad);
-
-  const beltGroup = new THREE.Group();
-  scene.add(beltGroup);
-
-  const belt = new THREE.Mesh(
-    new THREE.BoxGeometry(4.8, 0.42, 26),
-    new THREE.MeshStandardMaterial({ color: 0x30363d, roughness: 0.72, metalness: 0.35 })
-  );
-  belt.position.set(0, 1.35, 0);
-  belt.receiveShadow = true;
-  belt.castShadow = true;
-  beltGroup.add(belt);
-
-  const railMaterial = new THREE.MeshStandardMaterial({ color: 0xaeb7bb, roughness: 0.32, metalness: 0.84 });
-  const leftRail = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.56, 26), railMaterial);
-  leftRail.position.set(-2.32, 1.86, 0);
-  const rightRail = leftRail.clone();
-  rightRail.position.x = 2.32;
-  beltGroup.add(leftRail, rightRail);
-
-  const crateMaterial = new THREE.MeshStandardMaterial({ color: 0xc5914b, roughness: 0.82 });
-  for (let index = 0; index < 4; index += 1) {
-    const crate = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.9, 1.1), crateMaterial);
-    crate.position.set(-4.2 + index * 2.8, 0.52, 11.8);
-    crate.castShadow = true;
-    crate.receiveShadow = true;
-    scene.add(crate);
-  }
-
-  const barnGroup = new THREE.Group();
-  scene.add(barnGroup);
-
-  const barnMaterial = new THREE.MeshStandardMaterial({ color: 0x25584a, roughness: 0.78 });
-  const roofMaterial = new THREE.MeshStandardMaterial({ color: 0x223647, roughness: 0.62, metalness: 0.22 });
-
-  const barnBase = new THREE.Mesh(new THREE.BoxGeometry(12, 6, 7.6), barnMaterial);
-  barnBase.position.set(-10, 3.05, -7.5);
-  barnBase.castShadow = true;
-  barnBase.receiveShadow = true;
-  barnGroup.add(barnBase);
-
-  const barnRoof = new THREE.Mesh(new THREE.ConeGeometry(5.2, 3.5, 4), roofMaterial);
-  barnRoof.position.set(-10, 7.25, -7.5);
-  barnRoof.rotation.y = Math.PI / 4;
-  barnRoof.castShadow = true;
-  barnGroup.add(barnRoof);
-
-  const shed = new THREE.Mesh(new THREE.BoxGeometry(7, 4.2, 5.2), barnMaterial);
-  shed.position.set(10, 2.15, -8.5);
-  shed.castShadow = true;
-  scene.add(shed);
-
-  const shedRoof = new THREE.Mesh(new THREE.ConeGeometry(3.7, 2.4, 4), roofMaterial);
-  shedRoof.position.set(10, 5.2, -8.5);
-  shedRoof.rotation.y = Math.PI / 4;
-  shedRoof.castShadow = true;
-  scene.add(shedRoof);
-
-  const siloMaterial = new THREE.MeshStandardMaterial({ color: 0xbdc5cb, roughness: 0.44, metalness: 0.5 });
-  const silo = new THREE.Mesh(new THREE.CylinderGeometry(1.45, 1.45, 7.8, 20), siloMaterial);
-  silo.position.set(4.8, 3.9, -7.8);
-  silo.castShadow = true;
-  scene.add(silo);
-
-  const siloCap = new THREE.Mesh(new THREE.SphereGeometry(1.45, 20, 20), siloMaterial);
-  siloCap.position.set(4.8, 7.8, -7.8);
-  siloCap.scale.y = 0.72;
-  siloCap.castShadow = true;
-  scene.add(siloCap);
-
-  const houseRows = new THREE.Group();
-  scene.add(houseRows);
-  const houseMaterial = new THREE.MeshStandardMaterial({ color: 0xf5f6ef, roughness: 0.82 });
-  for (let index = 0; index < 8; index += 1) {
-    const smallHouse = new THREE.Mesh(new THREE.BoxGeometry(1.5, 1.2, 2.4), houseMaterial);
-    smallHouse.position.set(-14 + index * 3.7, 0.62, -15.2);
-    smallHouse.castShadow = true;
-    houseRows.add(smallHouse);
-  }
-
-  const beltStripeCanvas = document.createElement("canvas");
-  beltStripeCanvas.width = 32;
-  beltStripeCanvas.height = 320;
-  const stripeContext = beltStripeCanvas.getContext("2d");
-  stripeContext.fillStyle = "#2a3036";
-  stripeContext.fillRect(0, 0, beltStripeCanvas.width, beltStripeCanvas.height);
-  stripeContext.fillStyle = "rgba(255,255,255,0.08)";
-  for (let y = 0; y < beltStripeCanvas.height; y += 30) {
-    stripeContext.fillRect(0, y, beltStripeCanvas.width, 14);
-  }
-  const beltTexture = new THREE.CanvasTexture(beltStripeCanvas);
-  beltTexture.wrapS = THREE.RepeatWrapping;
-  beltTexture.wrapT = THREE.RepeatWrapping;
-  beltTexture.repeat.set(1, 5);
-  belt.material.map = beltTexture;
-  belt.material.needsUpdate = true;
-
-  const eggMaterials = {
-    jumbo: new THREE.MeshStandardMaterial({ color: 0xf3ebe0, roughness: 0.3 }),
-    large: new THREE.MeshStandardMaterial({ color: 0xe6cfb8, roughness: 0.32 }),
-    small: new THREE.MeshStandardMaterial({ color: 0xe2dbc9, roughness: 0.36 }),
-    reject: new THREE.MeshStandardMaterial({ color: 0xc98f7e, roughness: 0.45 })
-  };
-
-  const eggOptions = [
-    { key: "jumbo", label: "Super Jumbo sync", weight: 0.18 },
-    { key: "large", label: "Large grade encoded", weight: 0.42 },
-    { key: "small", label: "Medium tray passed", weight: 0.28 },
-    { key: "reject", label: "Exception flagged", weight: 0.12 }
+  const eggTypes = [
+    { className: "egg--light", label: "Super Jumbo sync", weight: 0.24 },
+    { className: "egg--tan", label: "Large grade encoded", weight: 0.38 },
+    { className: "egg--speckled", label: "Medium tray passed", weight: 0.26 },
+    { className: "egg--alert", label: "Exception flagged", weight: 0.12 }
   ];
 
-  const eggs = [];
-  const eggGeometry = new THREE.SphereGeometry(0.34, 28, 28);
-  for (let index = 0; index < 20; index += 1) {
-    const egg = new THREE.Mesh(eggGeometry, eggMaterials.large);
-    egg.scale.set(0.88, 1.14, 0.88);
-    egg.visible = false;
-    egg.castShadow = true;
-    egg.userData = { active: false, speed: 1, spin: 0, label: "" };
-    scene.add(egg);
-    eggs.push(egg);
-  }
-
+  let eggs = [];
   let captureMode = false;
+  let focusMode = false;
   let passesLogged = 126;
-  let syncPercent = 95;
-  let utilization = 57;
   let activeHouses = 14;
+  let syncPercent = 95;
   let feedMatch = 88;
-  let alertTotal = 6;
+  let utilization = 57;
   let dailyProgress = 81;
-  let toastTimer = 0;
+  let alertTotal = 6;
   let storyIndex = 0;
+  let storyTimer = 0;
   let spawnTimer = 0;
-  let elapsed = 0;
+  let beltShift = 0;
+  let lastFrame = performance.now();
   let lastToastAt = 0;
-  let focusView = false;
-
-  const showToast = (message) => {
-    const now = performance.now();
-    if (now - lastToastAt < 700) return;
-    lastToastAt = now;
-    toastText.textContent = message;
-    toast.classList.add("is-visible");
-    window.clearTimeout(toastTimer);
-    toastTimer = window.setTimeout(() => toast.classList.remove("is-visible"), 1600);
-  };
+  let toastTimer = 0;
 
   const setStory = (index) => {
     storyLines.forEach((line, lineIndex) => {
@@ -2329,205 +2927,204 @@ async function initHomepage() {
     });
   };
 
-  setStory(0);
-
-  if (!prefersReducedMotion.matches && storyLines.length > 1) {
-    window.setInterval(() => {
-      storyIndex = (storyIndex + 1) % storyLines.length;
-      setStory(storyIndex);
-    }, 3600);
-  }
-
-  const chooseEgg = () => {
-    let cursor = Math.random();
-    for (const option of eggOptions) {
-      cursor -= option.weight;
-      if (cursor <= 0) return option;
-    }
-    return eggOptions[1];
-  };
-
-  const spawnEgg = () => {
-    const egg = eggs.find((item) => !item.userData.active);
-    if (!egg) return;
-    const choice = chooseEgg();
-    egg.visible = true;
-    egg.material = eggMaterials[choice.key];
-    egg.position.set((Math.random() - 0.5) * 0.6, 1.82, -10.6);
-    egg.rotation.set(Math.random() * 0.24, Math.random() * Math.PI, 0);
-    egg.userData.active = true;
-    egg.userData.speed = captureMode ? 7.8 : 4.2;
-    egg.userData.spin = (Math.random() - 0.5) * 0.06;
-    egg.userData.label = choice.label;
-  };
-
-  const updateDashboard = () => {
-    const targetSync = captureMode ? 97 : 95;
-    const targetUtilization = captureMode ? 64 : 57;
-    const targetFeed = captureMode ? 96 : 88;
-    const targetDaily = captureMode ? 95 : 81;
-    const targetAlerts = captureMode ? 3 : 6;
-    const targetHouses = captureMode ? 24 : 14;
-
-    syncPercent += (targetSync - syncPercent) * 0.025;
-    utilization += (targetUtilization - utilization) * 0.022;
-    feedMatch += (targetFeed - feedMatch) * 0.026;
-    dailyProgress += (targetDaily - dailyProgress) * 0.026;
-    alertTotal += (targetAlerts - alertTotal) * 0.04;
-    activeHouses += (targetHouses - activeHouses) * 0.028;
-
-    const roundedSync = Math.round(syncPercent);
-    const roundedUtilization = Math.round(utilization);
-    const roundedFeed = Math.round(feedMatch);
-    const roundedDaily = Math.round(dailyProgress);
-    const roundedAlerts = Math.max(1, Math.round(alertTotal));
-    const roundedHouses = Math.max(1, Math.round(activeHouses));
-
-    visibilityValue.textContent = `${roundedUtilization}%`;
-    visibilityNarrative.textContent = captureMode
-      ? "Field encoding, sync checks, and same-day review are moving together."
-      : "The baseline shows why ZAFPI needs same-day operational visibility.";
-    latestRecord.textContent = captureMode ? "Passes are syncing live" : "Awaiting next field pass";
-    latestNarrative.textContent = captureMode
-      ? "From the belt to the tablet, each pass becomes a record."
-      : "Monitoring the current-state baseline before capture begins.";
-    housesCount.textContent = `${roundedHouses} / 24`;
-    if (housesMeta) housesMeta.textContent = `${roundedHouses} / 24`;
-    passesCount.textContent = String(passesLogged).padStart(3, "0");
-    if (passesMeta) passesMeta.textContent = String(passesLogged).padStart(3, "0");
-    syncCount.textContent = `${roundedSync}%`;
-    if (syncMeta) syncMeta.textContent = `${roundedSync}%`;
-    feedCount.textContent = `${roundedFeed}%`;
-    mortalityCount.textContent = "2 verified";
-    alertCount.textContent = `${roundedAlerts} open`;
-    dailyLabel.textContent = `${roundedDaily}% of daily reporting target`;
-    syncLabel.textContent = `${roundedSync}% same-day sync confidence`;
-    utilLabel.textContent = `${roundedUtilization}% utilization pathway`;
-    dailyBar.style.setProperty("--fill", `${roundedDaily}%`);
-    syncBar.style.setProperty("--fill", `${roundedSync}%`);
-    utilBar.style.setProperty("--fill", `${roundedUtilization}%`);
-    ringVisual.style.setProperty("--ring-fill", roundedSync);
-    ringValue.textContent = `${roundedSync}%`;
-    stateMode.textContent = captureMode ? "Capture active" : "Monitoring baseline";
-  };
-
-  const handleCaptureStart = () => {
-    if (captureMode) return;
-    captureMode = true;
-    showToast("Capture mode is live. Same-day reporting now feels immediate and controlled.");
-  };
-
-  const handleCaptureEnd = () => {
-    captureMode = false;
-  };
-
-  const setTime = () => {
+  const updateClock = () => {
+    if (!simTime) return;
     simTime.textContent = new Date().toLocaleTimeString([], {
       hour: "2-digit",
       minute: "2-digit"
     });
   };
 
-  setTime();
-  window.setInterval(setTime, 1000);
-
-  focusToggle?.addEventListener("click", () => {
-    focusView = !focusView;
-    stage.classList.toggle("is-focus", focusView);
-    focusToggle.textContent = focusView ? "Return to full view" : "Focus view";
-  });
-
-  stage.tabIndex = 0;
-  stage.addEventListener("pointerdown", handleCaptureStart);
-  stage.addEventListener("pointerup", handleCaptureEnd);
-  stage.addEventListener("pointerleave", handleCaptureEnd);
-  stage.addEventListener("keydown", (event) => {
-    if (event.code !== "Space") return;
-    event.preventDefault();
-    handleCaptureStart();
-  });
-  stage.addEventListener("keyup", (event) => {
-    if (event.code !== "Space") return;
-    event.preventDefault();
-    handleCaptureEnd();
-  });
-
-  window.addEventListener("blur", handleCaptureEnd);
-
-  const resizeScene = () => {
-    const width = stage.clientWidth;
-    const height = stage.clientHeight;
-    camera.aspect = width / height;
-    camera.updateProjectionMatrix();
-    renderer.setSize(width, height);
+  const chooseEggType = () => {
+    let cursor = Math.random();
+    for (const option of eggTypes) {
+      cursor -= option.weight;
+      if (cursor <= 0) return option;
+    }
+    return eggTypes[1];
   };
 
-  window.addEventListener("resize", resizeScene);
-  resizeScene();
-  updateDashboard();
+  const showToast = (message) => {
+    if (!toast || !toastText) return;
+    const now = performance.now();
+    if (now - lastToastAt < 750) return;
+    lastToastAt = now;
+    toastText.textContent = message;
+    toast.classList.add("is-visible");
+    window.clearTimeout(toastTimer);
+    toastTimer = window.setTimeout(() => toast.classList.remove("is-visible"), 1600);
+  };
 
-  const clock = new THREE.Clock();
-  const animate = () => {
-    const delta = Math.min(clock.getDelta(), 0.033);
-    elapsed += delta;
-    beltTexture.offset.y -= delta * (captureMode ? 1.75 : 0.8);
+  const setCaptureMode = (nextState) => {
+    if (captureMode === nextState) return;
+    captureMode = nextState;
+    stage.classList.toggle("is-active", captureMode);
+    if (stateMode) stateMode.textContent = captureMode ? "Capture active" : "Monitoring baseline";
+    if (captureMode) {
+      showToast("Capture mode is live. Same-day reporting now feels immediate and controlled.");
+    }
+  };
+
+  const updateDashboard = () => {
+    const targetSync = captureMode ? 97 : 95;
+    const targetFeed = captureMode ? 96 : 88;
+    const targetUtilization = captureMode ? 64 : 57;
+    const targetDaily = captureMode ? 95 : 81;
+    const targetAlerts = captureMode ? 3 : 6;
+    const targetHouses = captureMode ? 24 : 14;
+
+    syncPercent += (targetSync - syncPercent) * 0.024;
+    feedMatch += (targetFeed - feedMatch) * 0.028;
+    utilization += (targetUtilization - utilization) * 0.024;
+    dailyProgress += (targetDaily - dailyProgress) * 0.026;
+    alertTotal += (targetAlerts - alertTotal) * 0.04;
+    activeHouses += (targetHouses - activeHouses) * 0.024;
+
+    const roundedSync = Math.round(syncPercent);
+    const roundedFeed = Math.round(feedMatch);
+    const roundedUtilization = Math.round(utilization);
+    const roundedDaily = Math.round(dailyProgress);
+    const roundedAlerts = Math.max(1, Math.round(alertTotal));
+    const roundedHouses = Math.max(1, Math.round(activeHouses));
+    const passText = String(passesLogged).padStart(3, "0");
+
+    if (visibilityValue) visibilityValue.textContent = `${roundedUtilization}%`;
+    if (visibilityNarrative) {
+      visibilityNarrative.textContent = captureMode
+        ? "Field encoding, sync checks, and same-day review are moving together."
+        : "The baseline shows why ZAFPI needs same-day operational visibility.";
+    }
+    if (latestRecord && !captureMode) latestRecord.textContent = "Awaiting next field pass";
+    if (latestNarrative && !captureMode) latestNarrative.textContent = "Monitoring the current-state baseline before capture begins.";
+    if (housesMeta) housesMeta.textContent = `${roundedHouses} / 24`;
+    if (passesMeta) passesMeta.textContent = passText;
+    if (syncMeta) syncMeta.textContent = `${roundedSync}%`;
+    if (housesCount) housesCount.textContent = `${roundedHouses} / 24`;
+    if (passesCount) passesCount.textContent = passText;
+    if (syncCount) syncCount.textContent = `${roundedSync}%`;
+    if (feedCount) feedCount.textContent = `${roundedFeed}%`;
+    if (mortalityCount) mortalityCount.textContent = captureMode ? "1 verified" : "2 verified";
+    if (alertCount) alertCount.textContent = `${roundedAlerts} open`;
+    if (dailyLabel) dailyLabel.textContent = `${roundedDaily}% of daily reporting target`;
+    if (syncLabel) syncLabel.textContent = `${roundedSync}% same-day sync confidence`;
+    if (utilLabel) utilLabel.textContent = `${roundedUtilization}% utilization pathway`;
+    if (dailyBar) dailyBar.style.setProperty("--fill", `${roundedDaily}%`);
+    if (syncBar) syncBar.style.setProperty("--fill", `${roundedSync}%`);
+    if (utilBar) utilBar.style.setProperty("--fill", `${roundedUtilization}%`);
+    if (ringVisual) ringVisual.style.setProperty("--ring-fill", roundedSync);
+    if (ringValue) ringValue.textContent = `${roundedSync}%`;
+  };
+
+  const spawnEgg = () => {
+    const type = chooseEggType();
+    const egg = document.createElement("div");
+    egg.className = `sim-egg ${type.className}`;
+    eggStream.appendChild(egg);
+
+    eggs.push({
+      element: egg,
+      x: -80,
+      y: 18 + Math.random() * 28,
+      wobble: 12 + Math.random() * 10,
+      phase: Math.random() * Math.PI * 2,
+      rotation: (Math.random() - 0.5) * 18,
+      rotationSpeed: (Math.random() - 0.5) * 32,
+      speed: captureMode ? 420 : 260,
+      counted: false,
+      label: type.label
+    });
+  };
+
+  const removeEgg = (egg) => {
+    egg.element.remove();
+    eggs = eggs.filter((item) => item !== egg);
+  };
+
+  const handleEggCheckpoint = (egg) => {
+    if (egg.counted) return;
+    egg.counted = true;
+    passesLogged += 1;
+    if (latestRecord) latestRecord.textContent = egg.label;
+    if (latestNarrative) {
+      latestNarrative.textContent = captureMode
+        ? "The dashboard is reflecting a fresh pass without waiting for T+1 consolidation."
+        : "The record is visible, but the workflow still needs same-day discipline to stabilize.";
+    }
+    if (captureMode) {
+      showToast(`${egg.label} recorded and pushed into the reporting view.`);
+    }
+  };
+
+  const animate = (timestamp) => {
+    const delta = Math.min((timestamp - lastFrame) / 1000, 0.033);
+    lastFrame = timestamp;
+
+    beltShift += delta * (captureMode ? 220 : 100);
+    stage.style.setProperty("--belt-shift", `${beltShift}px`);
 
     spawnTimer += delta;
-    const spawnRate = captureMode ? 0.24 : 0.62;
-    if (spawnTimer > spawnRate) {
+    const spawnRate = captureMode ? 0.22 : 0.48;
+    if (spawnTimer >= spawnRate) {
       spawnEgg();
       spawnTimer = 0;
     }
 
+    const streamWidth = Math.max(eggStream.clientWidth, 640);
+    const checkpoint = streamWidth * 0.62;
+
     eggs.forEach((egg) => {
-      if (!egg.userData.active) return;
-      egg.position.z += egg.userData.speed * delta;
-      egg.rotation.x += delta * egg.userData.speed * 0.8;
-      egg.rotation.z += egg.userData.spin;
-      if (egg.position.z > 7.4 && !egg.userData.counted) {
-        egg.userData.counted = true;
-        passesLogged += 1;
-        latestRecord.textContent = egg.userData.label;
-        latestNarrative.textContent = captureMode
-          ? "The dashboard is reflecting a fresh pass without waiting for T+1 consolidation."
-          : "The record is visible, but the workflow still needs same-day discipline to stabilize.";
-        if (captureMode) showToast(`${egg.userData.label} recorded and pushed into the reporting view.`);
-      }
-      if (egg.position.z > 14.5) {
-        egg.userData.active = false;
-        egg.userData.counted = false;
-        egg.visible = false;
-      }
+      egg.x += delta * egg.speed;
+      egg.rotation += delta * egg.rotationSpeed;
+      const bob = Math.sin((timestamp / 1000) * egg.wobble + egg.phase) * 8;
+      egg.element.style.transform = `translate(${egg.x}px, ${egg.y + bob}px) rotate(${egg.rotation}deg)`;
+      if (egg.x >= checkpoint) handleEggCheckpoint(egg);
+      if (egg.x > streamWidth + 100) removeEgg(egg);
     });
 
-    const idleX = 7.2 + Math.sin(elapsed * 0.36) * (prefersReducedMotion.matches ? 0 : 0.45);
-    const idleY = 4.6 + Math.cos(elapsed * 0.42) * (prefersReducedMotion.matches ? 0 : 0.12);
-    const idleZ = 14.4 + Math.sin(elapsed * 0.28) * (prefersReducedMotion.matches ? 0 : 0.28);
-    const activeX = 6.2 + Math.sin(elapsed * 0.54) * (prefersReducedMotion.matches ? 0 : 0.18);
-    const activeY = 4.1 + Math.cos(elapsed * 0.65) * (prefersReducedMotion.matches ? 0 : 0.08);
-    const activeZ = 12.2 + Math.sin(elapsed * 0.48) * (prefersReducedMotion.matches ? 0 : 0.14);
-
-    const targetPosition = captureMode
-      ? new THREE.Vector3(activeX, activeY, activeZ)
-      : new THREE.Vector3(idleX, idleY, idleZ);
-    camera.position.lerp(targetPosition, captureMode ? 0.03 : 0.018);
-    camera.lookAt(0, 1.95, -1.4);
+    storyTimer += delta;
+    if (!prefersReducedMotion.matches && storyTimer >= 3.6 && storyLines.length > 1) {
+      storyIndex = (storyIndex + 1) % storyLines.length;
+      setStory(storyIndex);
+      storyTimer = 0;
+    }
 
     updateDashboard();
-    renderer.render(scene, camera);
     window.requestAnimationFrame(animate);
   };
 
-  animate();
-}
+  focusToggle?.addEventListener("click", () => {
+    focusMode = !focusMode;
+    stage.classList.toggle("is-focus", focusMode);
+    focusToggle.textContent = focusMode ? "Return view" : "Focus view";
+  });
 
-function enableFallback() {
-  const fallbackScene = document.getElementById("fallbackScene");
-  if (!fallbackScene) return;
-  fallbackScene.hidden = false;
+  stage.tabIndex = 0;
+  stage.addEventListener("pointerdown", () => setCaptureMode(true));
+  stage.addEventListener("pointerup", () => setCaptureMode(false));
+  stage.addEventListener("pointerleave", () => setCaptureMode(false));
+  stage.addEventListener("keydown", (event) => {
+    if (event.code !== "Space") return;
+    event.preventDefault();
+    setCaptureMode(true);
+  });
+  stage.addEventListener("keyup", (event) => {
+    if (event.code !== "Space") return;
+    event.preventDefault();
+    setCaptureMode(false);
+  });
+  window.addEventListener("blur", () => setCaptureMode(false));
+
+  updateClock();
+  updateDashboard();
+  setStory(0);
+  window.setInterval(updateClock, 1000);
+  window.requestAnimationFrame(animate);
 }
 
 </script>
 <!-- INLINE_HOME_JS_END -->
 </body>
 </html>
+
+
+

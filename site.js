@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const navToggle = document.querySelector("[data-nav-toggle]");
   const navMenu = document.querySelector("[data-nav-menu]");
   const navShell = document.querySelector(".nav-shell");
+  const navCta = document.querySelector(".nav-cta");
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
@@ -14,16 +15,29 @@ document.addEventListener("DOMContentLoaded", () => {
     prefersReducedMotion.addEventListener("change", syncReducedMotionClass);
   }
 
+  if (navToggle) {
+    navToggle.setAttribute("aria-label", "Toggle navigation");
+    navToggle.textContent = "Menu";
+  }
+
+  if (navMenu && navCta && !navMenu.querySelector(".nav-link--cta")) {
+    const ctaClone = navCta.cloneNode(true);
+    ctaClone.className = "button button-primary nav-link--cta";
+    navMenu.appendChild(ctaClone);
+    navCta.hidden = true;
+  }
+
   const setMenuState = (isOpen) => {
     if (!navMenu || !navToggle) return;
     navMenu.classList.toggle("is-open", isOpen);
+    navToggle.classList.toggle("is-open", isOpen);
     navToggle.setAttribute("aria-expanded", String(isOpen));
+    document.body.classList.toggle("nav-open", isOpen);
   };
 
   if (navToggle && navMenu) {
     navToggle.addEventListener("click", () => {
-      const nextState = !navMenu.classList.contains("is-open");
-      setMenuState(nextState);
+      setMenuState(!navMenu.classList.contains("is-open"));
     });
 
     navMenu.querySelectorAll("a").forEach((link) => {
@@ -36,8 +50,9 @@ document.addEventListener("DOMContentLoaded", () => {
       setMenuState(false);
     });
 
-    window.addEventListener("resize", () => {
-      if (window.innerWidth > 900) setMenuState(false);
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      setMenuState(false);
     });
   }
 
@@ -67,8 +82,8 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     },
     {
-      threshold: 0.16,
-      rootMargin: "0px 0px -6% 0px"
+      threshold: 0.12,
+      rootMargin: "0px 0px -8% 0px"
     }
   );
 
