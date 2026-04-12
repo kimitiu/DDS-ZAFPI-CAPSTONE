@@ -1,21 +1,171 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZAFPI Capstone | Resources</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <title>Project Farmbrite | Resources</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="site.css" />
 </head>
-<body>
-  <header class="topbar"><div class="topbar-inner"><div class="brand"><div class="brand-mark">Z</div><div class="brand-copy"><h1>ZAFPI Capstone</h1><p>Resources and media</p></div></div><div class="nav-actions"><a class="nav-link" href="index.html">Home</a><a class="nav-link" href="about.html">About</a><a class="nav-link" href="system.html">System</a><div class="dropdown" data-dropdown><button class="dropdown-toggle" data-dropdown-toggle aria-expanded="false">More <span>▾</span></button><div class="dropdown-menu"><a href="problem.html">The Problem</a><a href="results.html">Results</a><a href="team.html">Team</a><a href="resources.html">Resources</a><a href="sources.html">Sources</a></div></div><a class="button primary" href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">Farmbrite Demo</a></div></div></header>
-  <main class="page"><div class="container page-stack">
-    <section class="hero"><div class="eyebrow">Resources</div><h1>Supporting materials, visuals, and upload placeholders.</h1><p>This page acts as the asset staging area for the portfolio version. It is intentionally designed for later swaps, so paper screenshots, team photos, field images, and system visuals can drop in without changing the overall layout.</p></section>
-    <section class="section"><div class="eyebrow">Asset Intake</div><div class="asset-grid"><article class="asset-card"><div class="placeholder">Paper table screenshot or chart export</div><strong>Paper charts and tables</strong><span>Use this slot for the strongest figures from the final paper: before/after tables, KPI summaries, rollout scorecards, or methodology visuals.</span></article><article class="asset-card"><div class="placeholder">Farm, sorting, or field photo</div><strong>Field and site photos</strong><span>Add captions such as location, workflow, or activity so the portfolio feels grounded in the actual operating context.</span></article><article class="asset-card"><div class="placeholder">System screenshot or process diagram</div><strong>System visuals</strong><span>Use dashboard screenshots, workflow diagrams, or annotated interface captures to support the solution story.</span></article><article class="asset-card"><div class="placeholder">Defense or presentation export</div><strong>Presentation assets</strong><span>Keep slide exports, cover designs, or defense visuals here if the site also becomes a presentation archive.</span></article><article class="asset-card"><div class="placeholder">Team portrait or group photo</div><strong>Team visuals</strong><span>Upload portraits or a group photo to replace placeholders on the team page and connect the portfolio to the actual team.</span></article><article class="asset-card"><div class="placeholder">Supporting document excerpt</div><strong>Supplementary records</strong><span>Reserve this for any supporting forms, SOP snippets, or rollout artifacts you want visible in the public portfolio version.</span></article></div></section>
-  </div></main>
+<body class="site-shell">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html" aria-label="Project Farmbrite home">
+        <span class="brand-mark">PF</span>
+        <span class="brand-copy">
+          <strong>Project Farmbrite</strong>
+          <span>ZAFPI capstone website</span>
+        </span>
+      </a>
+      <div class="nav-shell">
+        <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" data-nav-toggle>Menu</button>
+        <nav class="nav-menu" id="site-nav" data-nav-menu aria-label="Primary">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="about.html">Overview</a>
+          <a class="nav-link" href="problem.html">Problem</a>
+          <a class="nav-link" href="system.html">System</a>
+          <a class="nav-link" href="results.html">Results</a>
+          <a class="nav-link" href="resources.html">Resources</a>
+          <a class="nav-link" href="sources.html">Sources</a>
+        </nav>
+        <a class="button button-primary nav-cta" href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">Farmbrite Demo</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <div class="page-container page-stack">
+      <section class="hero-shell reveal">
+        <div class="page-hero-band">
+          <div class="eyebrow">Resources</div>
+          <div class="page-intro-grid">
+            <div class="hero-copy">
+              <h1 class="page-title">A clean archive for project outputs, visuals, and supporting material.</h1>
+              <p class="lead">This page keeps the website useful even before every final chart, screenshot, or appendix is uploaded. The layout is intentionally polished and modular so real capstone assets can be dropped in later without redesigning the site again.</p>
+              <p class="lead">For now, the page organizes the kinds of materials most likely to support a defense-ready capstone presentation: diagrams, project documents, rollout outputs, screenshots, and supporting evidence.</p>
+            </div>
+            <aside class="callout-card">
+              <strong>Current assumption</strong>
+              <p>The redesign uses the current repo assets and keeps placeholders styled and intentional until additional charts, screenshots, or documents are added.</p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="resource-grid">
+        <article class="resource-card reveal reveal-delay-1">
+          <div class="resource-meta">Project documents</div>
+          <h3>Capstone paper and debrief materials</h3>
+          <p>Use this slot for the final paper, project debrief, management plan, or refined excerpts that support the public portfolio story.</p>
+          <div class="document-placeholder">Drop future PDF exports, summary sheets, or approved excerpts here.</div>
+        </article>
+        <article class="resource-card reveal reveal-delay-2">
+          <div class="resource-meta">Process diagrams</div>
+          <h3>As-is and to-be workflow visuals</h3>
+          <p>Reserve this area for export-ready diagrams showing manual collection, delayed reporting, and the redesigned same-day process.</p>
+          <div class="document-placeholder">Add process flow exports or annotated diagrams here.</div>
+        </article>
+        <article class="resource-card reveal reveal-delay-3">
+          <div class="resource-meta">Dashboard evidence</div>
+          <h3>System screenshots and interface views</h3>
+          <p>Use clean system screenshots, dashboard samples, or reporting views to reinforce the Farmbrite operating concept.</p>
+          <div class="document-placeholder">Place interface screenshots or reporting views here.</div>
+        </article>
+        <article class="resource-card reveal reveal-delay-1">
+          <div class="resource-meta">Appendices</div>
+          <h3>Supporting references and structured outputs</h3>
+          <p>Appendix-ready material such as KPI definitions, report templates, or SOP excerpts can live here without cluttering the main pages.</p>
+          <div class="document-placeholder">Appendix tables, KPI sheets, or SOP excerpts.</div>
+        </article>
+        <article class="resource-card reveal reveal-delay-2">
+          <div class="resource-meta">Training and change</div>
+          <h3>Rollout support materials</h3>
+          <p>Training handouts, adoption checklists, or user support outputs can be stored here once they are ready for presentation.</p>
+          <div class="document-placeholder">Training decks, change guides, or rollout aids.</div>
+        </article>
+        <article class="resource-card reveal reveal-delay-3">
+          <div class="resource-meta">Field visuals</div>
+          <h3>Site photos and contextual imagery</h3>
+          <p>If approved visual assets become available, this section can hold photos from the farm, sorting area, or project walkthroughs.</p>
+          <div class="document-placeholder">Field photos or contextual site visuals.</div>
+        </article>
+      </section>
+
+      <section class="split-grid">
+        <article class="section-shell reveal reveal-delay-1">
+          <div class="eyebrow">What is available now</div>
+          <div class="card-grid">
+            <article class="surface-card">
+              <h3>Branding assets</h3>
+              <p>The DDS and ZAFPI logos already in the repository are available and now integrated into the site design system.</p>
+            </article>
+            <article class="surface-card">
+              <h3>Structured placeholders</h3>
+              <p>Every placeholder block is styled to feel intentional so the site remains presentation-ready before later uploads arrive.</p>
+            </article>
+            <article class="surface-card">
+              <h3>Capstone narrative</h3>
+              <p>The site already reflects the confirmed core numbers, client context, and project positioning supplied in the brief.</p>
+            </article>
+          </div>
+        </article>
+        <article class="section-shell reveal reveal-delay-2">
+          <div class="eyebrow">Recommended future additions</div>
+          <div class="progress-list">
+            <div class="progress-item">
+              <div class="progress-head"><span>Final paper excerpts</span><span>High value</span></div>
+              <div class="progress-bar"><span style="--fill: 88%"></span></div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-head"><span>Process diagrams</span><span>High value</span></div>
+              <div class="progress-bar"><span style="--fill: 84%"></span></div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-head"><span>Dashboard screenshots</span><span>High value</span></div>
+              <div class="progress-bar"><span style="--fill: 90%"></span></div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <section class="footer-brand">
+          <div class="eyebrow">Project Farmbrite</div>
+          <h2 class="footer-title">A presentation-ready capstone website for ZAFPI.</h2>
+          <p class="footer-copy">Built to explain how ZAFPI can move from paper-based production reporting to a structured same-day management system with stronger visibility, cleaner reporting discipline, and better operational control.</p>
+        </section>
+        <section>
+          <h3 class="footer-heading">Navigate</h3>
+          <div class="footer-list">
+            <a href="about.html">Overview</a>
+            <a href="problem.html">Problem</a>
+            <a href="system.html">System</a>
+            <a href="results.html">Results</a>
+          </div>
+        </section>
+        <section>
+          <h3 class="footer-heading">Project links</h3>
+          <div class="footer-list">
+            <a href="resources.html">Resources</a>
+            <a href="sources.html">Sources</a>
+            <a href="team.html">Team</a>
+            <a href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">Farmbrite Demo</a>
+          </div>
+        </section>
+      </div>
+      <div class="footer-bottom">
+        <span>Project Farmbrite for Zamboanga Agri-Farm Products Inc. (ZAFPI)</span>
+        <span>&copy; <span data-year></span> DDS Capstone</span>
+      </div>
+    </div>
+  </footer>
+
   <script src="site.js"></script>
 </body>
 </html>
-

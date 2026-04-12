@@ -1,92 +1,212 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZAFPI Capstone | About</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <title>Project Farmbrite | Overview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="site.css" />
 </head>
-<body>
+<body class="site-shell">
   <header class="topbar">
     <div class="topbar-inner">
-      <div class="brand"><div class="brand-mark">Z</div><div class="brand-copy"><h1>ZAFPI Capstone</h1><p>About the project</p></div></div>
-      <div class="nav-actions">
-        <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link" href="about.html">About</a>
-        <a class="nav-link" href="system.html">System</a>
-        <div class="dropdown" data-dropdown>
-          <button class="dropdown-toggle" data-dropdown-toggle aria-expanded="false">More <span>▾</span></button>
-          <div class="dropdown-menu">
-            <a href="problem.html">The Problem</a><a href="results.html">Results</a><a href="team.html">Team</a><a href="resources.html">Resources</a><a href="sources.html">Sources</a>
-          </div>
-        </div>
-        <a class="button primary" href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">Farmbrite Demo</a>
+      <a class="brand" href="index.html" aria-label="Project Farmbrite home">
+        <span class="brand-mark">PF</span>
+        <span class="brand-copy">
+          <strong>Project Farmbrite</strong>
+          <span>ZAFPI capstone website</span>
+        </span>
+      </a>
+      <div class="nav-shell">
+        <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" data-nav-toggle>Menu</button>
+        <nav class="nav-menu" id="site-nav" data-nav-menu aria-label="Primary">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="about.html">Overview</a>
+          <a class="nav-link" href="problem.html">Problem</a>
+          <a class="nav-link" href="system.html">System</a>
+          <a class="nav-link" href="results.html">Results</a>
+          <a class="nav-link" href="resources.html">Resources</a>
+          <a class="nav-link" href="sources.html">Sources</a>
+        </nav>
+        <a class="button button-primary nav-cta" href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">Farmbrite Demo</a>
       </div>
     </div>
   </header>
-  <main class="page">
-    <div class="container page-stack">
-      <section class="hero">
-        <div class="eyebrow">About</div>
-        <h1>ZAFPI’s reporting modernization initiative.</h1>
-        <p>Project Farmbrite is a data-driven operational transformation initiative for Zamboanga Agri-Farm Products Inc. It reframes production reporting as an operating-control problem, then redesigns the process around structured digital capture, same-day visibility, and stronger management review using Farmbrite.</p>
-        <div class="stats-grid">
-          <article class="metric-card"><strong>Egg production + wholesale</strong><span>ZAFPI operates as an egg producer serving wholesale buyers through a farm site and a sorting and distribution center.</span></article>
-          <article class="metric-card"><strong>3 markets served</strong><span>Zamboanga City, Jolo Island, and Tawi-Tawi define the operating geography reflected throughout the project.</span></article>
-          <article class="metric-card"><strong>24-house footprint</strong><span>The project covers 19 Layer Houses, 2 Brooder Houses, and 3 Grower Houses.</span></article>
-          <article class="metric-card"><strong>57% utilization baseline</strong><span>The capstone frames underutilization as a visibility and management-control problem, not just a production issue.</span></article>
+
+  <main class="page-main">
+    <div class="page-container page-stack">
+      <section class="hero-shell reveal">
+        <div class="page-hero-band">
+          <div class="eyebrow">Overview</div>
+          <div class="page-intro-grid">
+            <div class="hero-copy">
+              <h1 class="page-title">A capstone built around ZAFPI&rsquo;s operating reality.</h1>
+              <p class="lead">Project Farmbrite is a capstone initiative for Zamboanga Agri-Farm Products Inc., an egg producer based in Zamboanga City. The project focuses on improving production reporting, operational visibility, and control across a two-site operation that serves wholesale markets in Zamboanga City, Jolo Island, and Tawi-Tawi.</p>
+              <p class="lead">The work matters because ZAFPI&rsquo;s reporting discipline directly affects how quickly management can respond to production issues, monitor house-level performance, and make better planning decisions.</p>
+            </div>
+            <aside class="callout-card">
+              <strong>Why this project matters</strong>
+              <p>Project Farmbrite is not framed as a generic system installation. It is a management-control initiative designed to replace delayed paper reporting with same-day visibility, stronger data integrity, and more proactive farm oversight.</p>
+            </aside>
+          </div>
         </div>
       </section>
-      <section class="section">
-        <div class="eyebrow">Project Identity</div>
-        <div class="logo-grid">
-          <article class="logo-card">
+
+      <section class="three-column-grid">
+        <article class="stat-card reveal reveal-delay-1">
+          <span class="card-label">Client</span>
+          <strong class="stat-value">ZAFPI</strong>
+          <div class="stat-support">Zamboanga Agri-Farm Products Inc. is an egg producer and distributor operating from Zamboanga City.</div>
+        </article>
+        <article class="stat-card reveal reveal-delay-2">
+          <span class="card-label">Operating structure</span>
+          <strong class="stat-value">2 sites</strong>
+          <div class="stat-support">Operations are split between the farm or production site and the sorting and distribution center.</div>
+        </article>
+        <article class="stat-card is-accent reveal reveal-delay-3">
+          <span class="card-label">Operational footprint</span>
+          <strong class="stat-value">24 houses</strong>
+          <div class="stat-support">19 layer houses, 2 brooder houses, and 3 grower houses are covered by the project.</div>
+        </article>
+      </section>
+
+      <section class="section-shell reveal">
+        <div class="eyebrow">Client identity</div>
+        <div class="brand-strip">
+          <article class="logo-card reveal reveal-delay-1">
             <img src="assets/branding/dimsum-data-solutions.png" alt="Dimsum Data Solutions logo" />
-            <strong>Dimsum Data Solutions</strong>
-            <span>The capstone team identity used across the website, documentation, and presentation materials.</span>
+            <h3>Dimsum Data Solutions</h3>
+            <p>The student team identity behind Project Farmbrite and the DDS capstone presentation materials.</p>
           </article>
-          <article class="logo-card">
+          <article class="logo-card reveal reveal-delay-2">
             <img src="assets/branding/zafpi-client-logo.png" alt="Zamboanga Agri-Farm Products Inc. logo" />
-            <strong>Zamboanga Agri-Farm Products Inc. (ZAFPI)</strong>
-            <span>The client brand represented by the Farm Fresh Eggs mark used in the project presentation and portfolio context.</span>
+            <h3>Zamboanga Agri-Farm Products Inc.</h3>
+            <p>The client organization whose egg production, distribution, and reporting processes anchor the project narrative.</p>
           </article>
         </div>
       </section>
-      <section class="section grid-2">
-        <div>
-          <div class="eyebrow">Objectives</div>
+
+      <section class="split-grid">
+        <article class="section-shell reveal reveal-delay-1">
+          <div class="eyebrow">Operational context</div>
           <div class="card-grid">
-            <article class="card"><strong>Operational objective</strong><span>Digitize production reporting, standardize workflows, centralize data, and reduce manual error.</span></article>
-            <article class="card"><strong>Data objective</strong><span>Capture structured daily data for egg output, rejects, mortality, flock age and headcount, and feed issuance and consumption.</span></article>
-            <article class="card"><strong>System objective</strong><span>Use dashboards, validation rules, audit trails, role-based access, and automated reports to support control.</span></article>
+            <article class="surface-card">
+              <h3>What ZAFPI produces</h3>
+              <p>ZAFPI specializes in egg production and distribution, serving wholesale buyers across multiple markets with a sustained production footprint.</p>
+            </article>
+            <article class="surface-card">
+              <h3>Where it operates</h3>
+              <p>The business is based in Zamboanga City and serves Zamboanga City, Jolo Island, and Tawi-Tawi through its farm and distribution operations.</p>
+            </article>
+            <article class="surface-card">
+              <h3>Why the company matters</h3>
+              <p>Its scale, multi-site structure, and reporting discipline make it a strong case for operational redesign rather than a small isolated systems fix.</p>
+            </article>
           </div>
-        </div>
-        <div>
-          <div class="eyebrow">Positioning</div>
-          <div class="positioning-grid">
-            <article class="position-box before"><strong>Before</strong><span>Manual, delayed, fragmented</span></article>
-            <article class="position-box after"><strong>After</strong><span>Digital, same-day, auditable</span></article>
-          </div>
-          <p style="margin-top:16px;">Project Farmbrite is positioned as an operational management system, not just a software installation. The website uses the simulation to make that shift legible, while the inner pages translate the project into a proper capstone portfolio record.</p>
+        </article>
+
+        <article class="section-shell reveal reveal-delay-2">
+          <div class="eyebrow">Project framing</div>
+          <table class="detail-table">
+            <tr><th>Problem focus</th><td>Delayed manual production reporting, fragmented data, and weak operational visibility.</td></tr>
+            <tr><th>Business goal</th><td>Support same-day visibility, stronger reporting discipline, and more proactive farm management.</td></tr>
+            <tr><th>Control focus</th><td>Standardize reporting, improve integrity checks, and enable more confident review at the management level.</td></tr>
+            <tr><th>Project direction</th><td>Use structured digital capture, dashboards, validations, and auditability to improve operational control.</td></tr>
+          </table>
+        </article>
+      </section>
+
+      <section class="section-shell reveal">
+        <div class="eyebrow">Why the capstone matters</div>
+        <div class="comparison-grid">
+          <article class="comparison-card before reveal reveal-delay-1">
+            <header>
+              <h3>Current state</h3>
+              <p>Before Project Farmbrite, management visibility arrived late and required significant manual effort before data could be trusted.</p>
+            </header>
+            <ul>
+              <li>Paper-based production recording across two sites</li>
+              <li>T+1 reporting and delayed operational review</li>
+              <li>43% weekly reconciliation burden</li>
+              <li>Weak house-level visibility for feed and mortality</li>
+            </ul>
+          </article>
+          <article class="comparison-card after reveal reveal-delay-2">
+            <header>
+              <h3>Target state</h3>
+              <p>The capstone moves the conversation toward structured reporting discipline and better management control.</p>
+            </header>
+            <ul>
+              <li>Same-day digital production capture</li>
+              <li>Cleaner reporting discipline and data integrity checks</li>
+              <li>Less than 15% reconciliation target</li>
+              <li>Dashboards and reporting for operational review</li>
+            </ul>
+          </article>
         </div>
       </section>
-      <section class="section">
-        <div class="eyebrow">Project Detail</div>
-        <table class="detail-table">
-          <tr><th>Client</th><td>Zamboanga Agri-Farm Products Inc. (ZAFPI)</td></tr>
-          <tr><th>Markets</th><td>Zamboanga City, Jolo Island, and Tawi-Tawi</td></tr>
-          <tr><th>Products</th><td>Super Jumbo, Jumbo, Extra Large, Large, Medium, Small, Pewee, and Crack eggs</td></tr>
-          <tr><th>Operating model</th><td>Farm production site plus sorting and distribution center</td></tr>
-          <tr><th>Current state</th><td>Manual, paper-based, fragmented reporting across two operating locations with T+1 visibility</td></tr>
-          <tr><th>Target state</th><td>Structured same-day management visibility with stronger data integrity and better control</td></tr>
-        </table>
+
+      <section class="section-shell reveal">
+        <div class="eyebrow">Team preview</div>
+        <div class="page-intro-grid">
+          <div class="hero-copy">
+            <h2 class="section-title">A five-member DDS capstone team.</h2>
+            <p class="lead">Project Farmbrite is presented by Jared Go, Keaton Shih, Kimi Tiu, Robin Regollo, and Manu Lantin. The team page keeps the full roster available without overcrowding the main navigation.</p>
+            <a class="button button-secondary" href="team.html">Meet the team</a>
+          </div>
+          <div class="mini-stat-grid">
+            <article class="surface-card">
+              <span class="card-label">Roster</span>
+              <strong class="stat-value">5 members</strong>
+              <p>One DDS team aligned around analysis, process redesign, reporting, and delivery.</p>
+            </article>
+            <article class="surface-card">
+              <span class="card-label">Client context</span>
+              <strong class="stat-value">ZAFPI</strong>
+              <p>The project remains anchored to the client&rsquo;s production and distribution reality.</p>
+            </article>
+          </div>
+        </div>
       </section>
     </div>
   </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <section class="footer-brand">
+          <div class="eyebrow">Project Farmbrite</div>
+          <h2 class="footer-title">A presentation-ready capstone website for ZAFPI.</h2>
+          <p class="footer-copy">Built to explain how ZAFPI can move from paper-based production reporting to a structured same-day management system with stronger visibility, cleaner reporting discipline, and better operational control.</p>
+        </section>
+        <section>
+          <h3 class="footer-heading">Navigate</h3>
+          <div class="footer-list">
+            <a href="about.html">Overview</a>
+            <a href="problem.html">Problem</a>
+            <a href="system.html">System</a>
+            <a href="results.html">Results</a>
+          </div>
+        </section>
+        <section>
+          <h3 class="footer-heading">Project links</h3>
+          <div class="footer-list">
+            <a href="resources.html">Resources</a>
+            <a href="sources.html">Sources</a>
+            <a href="team.html">Team</a>
+            <a href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">Farmbrite Demo</a>
+          </div>
+        </section>
+      </div>
+      <div class="footer-bottom">
+        <span>Project Farmbrite for Zamboanga Agri-Farm Products Inc. (ZAFPI)</span>
+        <span>&copy; <span data-year></span> DDS Capstone</span>
+      </div>
+    </div>
+  </footer>
+
   <script src="site.js"></script>
 </body>
 </html>
-

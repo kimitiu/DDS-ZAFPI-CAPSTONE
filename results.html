@@ -1,22 +1,200 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZAFPI Capstone | Results</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <title>Project Farmbrite | Results</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="site.css" />
 </head>
-<body>
-  <header class="topbar"><div class="topbar-inner"><div class="brand"><div class="brand-mark">Z</div><div class="brand-copy"><h1>ZAFPI Capstone</h1><p>Results and targets</p></div></div><div class="nav-actions"><a class="nav-link" href="index.html">Home</a><a class="nav-link" href="about.html">About</a><a class="nav-link" href="system.html">System</a><div class="dropdown" data-dropdown><button class="dropdown-toggle" data-dropdown-toggle aria-expanded="false">More <span>▾</span></button><div class="dropdown-menu"><a href="problem.html">The Problem</a><a href="results.html">Results</a><a href="team.html">Team</a><a href="resources.html">Resources</a><a href="sources.html">Sources</a></div></div><a class="button primary" href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">Farmbrite Demo</a></div></div></header>
-  <main class="page"><div class="container page-stack">
-    <section class="hero"><div class="eyebrow">Results</div><h1>What success looks like.</h1><p>The project defines success through implementation readiness, daily reporting discipline, operational visibility, and measurable data quality. The goal is not only to install Farmbrite, but to make the operating model around it more structured, auditable, and actionable.</p><div class="grid-2"><article class="metric-card"><strong>24 / 24 houses active</strong><span>Full operational activation across all houses during rollout and go-live.</span></article><article class="metric-card"><strong>95%+ encoding compliance</strong><span>Daily records entered within 24 hours during rollout and go-live.</span></article><article class="metric-card"><strong>95%+ completeness compliance</strong><span>Structured reporting should meet the expected completeness discipline during rollout.</span></article><article class="metric-card"><strong>&lt; 15% reconciliation</strong><span>Target reduction from the current 43% weekly reconciliation burden.</span></article></div></section>
-    <section class="section grid-2"><div><div class="eyebrow">Accuracy</div><div class="card-grid"><article class="card"><strong>98% feed match</strong><span>Feed issuance and consumption should align with output and reporting checks.</span></article><article class="card"><strong>95% mortality accuracy</strong><span>Mortality entries should remain consistent, complete, and aligned with flock data.</span></article><article class="card"><strong>100% correction-note discipline</strong><span>Correction workflows should be documented consistently whenever data needs adjustment.</span></article><article class="card"><strong>7 consecutive daily reports</strong><span>Daily reports should be sustained for seven straight days after go-live.</span></article></div></div><div><div class="eyebrow">Readiness</div><table class="detail-table"><tr><th>Visibility target</th><td>Within 1 hour after cut-off</td></tr><tr><th>Training completion</th><td>100% completion target</td></tr><tr><th>UAT completion</th><td>100% completion target</td></tr><tr><th>Reporting shift</th><td>T+1 current state to same-day reporting</td></tr></table></div></section>
-    <section class="section"><div class="eyebrow">Metric View</div><div class="chart-shell"><div class="bar-chart"><div class="bar-item"><div class="bar-label">Utilization baseline</div><div class="bar-shape" style="height:118px;background:#f59e0b;"></div><div class="bar-value">57%</div></div><div class="bar-item"><div class="bar-label">Current reconciliation burden</div><div class="bar-shape" style="height:92px;background:#fb7185;"></div><div class="bar-value">43%</div></div><div class="bar-item"><div class="bar-label">Activation scope</div><div class="bar-shape" style="height:62px;background:#22d3ee;"></div><div class="bar-value">24</div></div><div class="bar-item"><div class="bar-label">Encoding target</div><div class="bar-shape" style="height:176px;background:#34d399;"></div><div class="bar-value">95%+</div></div></div></div></section>
-  </div></main>
+<body class="site-shell">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html" aria-label="Project Farmbrite home">
+        <span class="brand-mark">PF</span>
+        <span class="brand-copy">
+          <strong>Project Farmbrite</strong>
+          <span>ZAFPI capstone website</span>
+        </span>
+      </a>
+      <div class="nav-shell">
+        <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" data-nav-toggle>Menu</button>
+        <nav class="nav-menu" id="site-nav" data-nav-menu aria-label="Primary">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="about.html">Overview</a>
+          <a class="nav-link" href="problem.html">Problem</a>
+          <a class="nav-link" href="system.html">System</a>
+          <a class="nav-link" href="results.html">Results</a>
+          <a class="nav-link" href="resources.html">Resources</a>
+          <a class="nav-link" href="sources.html">Sources</a>
+        </nav>
+        <a class="button button-primary nav-cta" href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">Farmbrite Demo</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <div class="page-container page-stack">
+      <section class="hero-shell reveal">
+        <div class="page-hero-band">
+          <div class="eyebrow">Results and value</div>
+          <div class="page-intro-grid">
+            <div class="hero-copy">
+              <h1 class="page-title">The project aims to create cleaner discipline and faster management response.</h1>
+              <p class="lead">Project Farmbrite defines success through same-day visibility, lower reconciliation, stronger reporting discipline, and improved management control. The expected value is not only better records, but a more reliable operating rhythm for planning, review, and daily action.</p>
+              <p class="lead">If the system stabilizes as intended, ZAFPI should be better positioned to track feed and mortality more consistently, improve reporting confidence, and move toward stronger utilization performance.</p>
+            </div>
+            <aside class="callout-card">
+              <strong>Results framing</strong>
+              <p>The capstone measures success by the quality of the operating model after rollout, not by system access alone.</p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="four-column-grid">
+        <article class="stat-card reveal reveal-delay-1">
+          <span class="card-label">Visibility</span>
+          <strong class="stat-value">Same-day</strong>
+          <div class="stat-support">Operational review should be available on the same day instead of arriving in a T+1 cycle.</div>
+        </article>
+        <article class="stat-card reveal reveal-delay-2">
+          <span class="card-label">Reconciliation</span>
+          <strong class="stat-value">&lt;15%</strong>
+          <div class="stat-support">The target is to reduce the current 43% reconciliation burden after stabilization.</div>
+        </article>
+        <article class="stat-card reveal reveal-delay-3">
+          <span class="card-label">Encoding discipline</span>
+          <strong class="stat-value">95%+</strong>
+          <div class="stat-support">Daily reporting compliance is one of the clearest indicators that the operating model is working.</div>
+        </article>
+        <article class="stat-card is-accent reveal">
+          <span class="card-label">Utilization pathway</span>
+          <strong class="stat-value">~75%</strong>
+          <div class="stat-support">A better-controlled, more visible operation supports the path from 57% baseline utilization toward improved performance.</div>
+        </article>
+      </section>
+
+      <section class="comparison-grid">
+        <article class="comparison-card before reveal reveal-delay-1">
+          <header>
+            <h3>Before Project Farmbrite</h3>
+            <p>The current-state process limits confidence and slows response.</p>
+          </header>
+          <ul>
+            <li>T+1 reporting delay</li>
+            <li>43% weekly reconciliation burden</li>
+            <li>Weak house-level feed visibility</li>
+            <li>No formal consolidated monthly, quarterly, or yearly reports</li>
+          </ul>
+        </article>
+        <article class="comparison-card after reveal reveal-delay-2">
+          <header>
+            <h3>After stabilization</h3>
+            <p>The target state is a more reliable operating model for daily management review.</p>
+          </header>
+          <ul>
+            <li>Same-day visibility for operations</li>
+            <li>Lower reconciliation and cleaner reporting discipline</li>
+            <li>Improved feed and mortality tracking</li>
+            <li>Stronger readiness for planning and operational review</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="split-grid">
+        <article class="section-shell reveal reveal-delay-1">
+          <div class="eyebrow">Measures of success</div>
+          <div class="progress-list">
+            <div class="progress-item">
+              <div class="progress-head"><span>Daily encoding compliance</span><span>95%+</span></div>
+              <div class="progress-bar"><span style="--fill: 95%"></span></div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-head"><span>Reconciliation target</span><span>&lt;15%</span></div>
+              <div class="progress-bar"><span style="--fill: 15%"></span></div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-head"><span>Utilization pathway</span><span>~75%</span></div>
+              <div class="progress-bar"><span style="--fill: 75%"></span></div>
+            </div>
+          </div>
+        </article>
+        <article class="section-shell reveal reveal-delay-2">
+          <div class="eyebrow">Value summary</div>
+          <div class="card-grid">
+            <article class="surface-card">
+              <h3>Stronger reporting discipline</h3>
+              <p>Daily data becomes more complete, timely, and consistent enough to support regular management review.</p>
+            </article>
+            <article class="surface-card">
+              <h3>Improved management control</h3>
+              <p>Earlier visibility gives decision-makers more room to respond instead of only documenting issues after the fact.</p>
+            </article>
+            <article class="surface-card">
+              <h3>Better planning readiness</h3>
+              <p>Cleaner reporting supports future trend review, operational analysis, and higher-confidence planning.</p>
+            </article>
+          </div>
+        </article>
+      </section>
+
+      <section class="section-shell reveal">
+        <div class="eyebrow">Expected capability gains</div>
+        <div class="success-grid">
+          <article class="surface-card reveal reveal-delay-1">
+            <h3>Same-day visibility</h3>
+            <p>Operational signals become visible within the day rather than after the reporting cycle has passed.</p>
+          </article>
+          <article class="surface-card reveal reveal-delay-2">
+            <h3>Feed and mortality tracking</h3>
+            <p>Key house-level measures can be reviewed more consistently with structured source capture and reporting.</p>
+          </article>
+          <article class="surface-card reveal reveal-delay-3">
+            <h3>Utilization improvement pathway</h3>
+            <p>Better control and cleaner visibility create the conditions for more confident utilization improvement over time.</p>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <section class="footer-brand">
+          <div class="eyebrow">Project Farmbrite</div>
+          <h2 class="footer-title">A presentation-ready capstone website for ZAFPI.</h2>
+          <p class="footer-copy">Built to explain how ZAFPI can move from paper-based production reporting to a structured same-day management system with stronger visibility, cleaner reporting discipline, and better operational control.</p>
+        </section>
+        <section>
+          <h3 class="footer-heading">Navigate</h3>
+          <div class="footer-list">
+            <a href="about.html">Overview</a>
+            <a href="problem.html">Problem</a>
+            <a href="system.html">System</a>
+            <a href="results.html">Results</a>
+          </div>
+        </section>
+        <section>
+          <h3 class="footer-heading">Project links</h3>
+          <div class="footer-list">
+            <a href="resources.html">Resources</a>
+            <a href="sources.html">Sources</a>
+            <a href="team.html">Team</a>
+            <a href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">Farmbrite Demo</a>
+          </div>
+        </section>
+      </div>
+      <div class="footer-bottom">
+        <span>Project Farmbrite for Zamboanga Agri-Farm Products Inc. (ZAFPI)</span>
+        <span>&copy; <span data-year></span> DDS Capstone</span>
+      </div>
+    </div>
+  </footer>
+
   <script src="site.js"></script>
 </body>
 </html>
-

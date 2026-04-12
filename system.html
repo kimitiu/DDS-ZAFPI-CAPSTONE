@@ -1,23 +1,289 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZAFPI Capstone | System</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <title>Project Farmbrite | System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="site.css" />
 </head>
-<body>
-  <header class="topbar"><div class="topbar-inner"><div class="brand"><div class="brand-mark">Z</div><div class="brand-copy"><h1>ZAFPI Capstone</h1><p>System overview</p></div></div><div class="nav-actions"><a class="nav-link" href="index.html">Home</a><a class="nav-link" href="about.html">About</a><a class="nav-link" href="system.html">System</a><div class="dropdown" data-dropdown><button class="dropdown-toggle" data-dropdown-toggle aria-expanded="false">More <span>▾</span></button><div class="dropdown-menu"><a href="problem.html">The Problem</a><a href="results.html">Results</a><a href="team.html">Team</a><a href="resources.html">Resources</a><a href="sources.html">Sources</a></div></div><a class="button primary" href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">Farmbrite Demo</a></div></div></header>
-  <main class="page"><div class="container page-stack">
-    <section class="hero"><div class="eyebrow">System</div><h1>From field encoding to management review.</h1><p>The solution combines business process redesign with an off-the-shelf system strategy using Farmbrite. The point is to make data capture structured, validation immediate, reporting visible, and control enforceable through a same-day operating model.</p><div class="grid-2"><article class="step-card"><strong>1. Data capture layer</strong><span>Field encoding through structured forms and validation rules.</span></article><article class="step-card"><strong>2. Data processing layer</strong><span>Automated checks, reconciliation logic, and aggregation.</span></article><article class="step-card"><strong>3. Reporting layer</strong><span>Dashboards, daily reports, and KPI tracking.</span></article><article class="step-card"><strong>4. Control layer</strong><span>SOPs, approval flow, audit trails, and accountability.</span></article></div></section>
-    <section class="section"><div class="eyebrow">Workflow Diagram</div><div class="grid-2"><article class="card"><strong>Paper source</strong><span>Current-state field records begin on paper across the operation.</span></article><article class="card"><strong>Encoding</strong><span>Same-day entry converts paperwork into structured operational records.</span></article><article class="card"><strong>Validation</strong><span>Integrity checks, reconciliation logic, and exception handling improve trust in the data.</span></article><article class="card"><strong>Review</strong><span>Management uses the resulting dashboard and daily reports for operational control.</span></article></div></section>
-    <section class="section"><div class="eyebrow">Core Workflows</div><div class="grid-2"><article class="card"><strong>Daily production flow</strong><span>Egg production occurs at each house, data is captured immediately, validated, synced to a central dashboard, and reviewed within the same day.</span></article><article class="card"><strong>Feed tracking flow</strong><span>Feed issued per house is recorded, consumption is tracked against output, and variances are flagged automatically.</span></article><article class="card"><strong>Mortality tracking flow</strong><span>Mortality is recorded per house, time-stamped, linked to flock data, and included in daily reports.</span></article><article class="card"><strong>Data governance flow</strong><span>Completeness checks, correction notes, audit trails, and locking rules support accountability after validation.</span></article></div></section>
-    <section class="section"><div class="eyebrow">Implementation Timeline</div><div class="timeline-grid"><article class="phase-card"><strong>Preparation</strong><span>Stakeholder alignment, requirements gathering, and system planning.</span></article><article class="phase-card"><strong>System Setup</strong><span>Farmbrite configuration, KPI definition, and SOP development.</span></article><article class="phase-card"><strong>Data Onboarding</strong><span>Migration, cleaning, and validation of existing records.</span></article><article class="phase-card"><strong>Training & UAT</strong><span>User training sessions and formal acceptance testing.</span></article><article class="phase-card"><strong>Pilot</strong><span>Limited deployment for issue identification and refinement.</span></article><article class="phase-card"><strong>Go-Live</strong><span>Target go-live: March 27, 2026.</span></article><article class="phase-card"><strong>Hypercare</strong><span>Monitoring, support, and rapid issue resolution after launch.</span></article><article class="phase-card"><strong>Closeout</strong><span>Target closeout: April 3, 2026.</span></article></div></section>
-  </div></main>
+<body class="site-shell">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html" aria-label="Project Farmbrite home">
+        <span class="brand-mark">PF</span>
+        <span class="brand-copy">
+          <strong>Project Farmbrite</strong>
+          <span>ZAFPI capstone website</span>
+        </span>
+      </a>
+      <div class="nav-shell">
+        <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" data-nav-toggle>Menu</button>
+        <nav class="nav-menu" id="site-nav" data-nav-menu aria-label="Primary">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="about.html">Overview</a>
+          <a class="nav-link" href="problem.html">Problem</a>
+          <a class="nav-link" href="system.html">System</a>
+          <a class="nav-link" href="results.html">Results</a>
+          <a class="nav-link" href="resources.html">Resources</a>
+          <a class="nav-link" href="sources.html">Sources</a>
+        </nav>
+        <a class="button button-primary nav-cta" href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">Farmbrite Demo</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <div class="page-container page-stack">
+      <section class="hero-shell reveal">
+        <div class="page-hero-band">
+          <div class="eyebrow">System debrief</div>
+          <div class="page-intro-grid">
+            <div class="hero-copy">
+              <h1 class="page-title">A same-day management system built around reporting discipline.</h1>
+              <p class="lead">Project Farmbrite combines business process redesign with a practical system approach: structured digital production capture, validations, audit trails, dashboards, and reporting that support operational review within the same day.</p>
+              <p class="lead">The goal is not only to digitize forms. It is to create a control model where source capture, checks, accountability, and management visibility all reinforce each other.</p>
+            </div>
+            <aside class="callout-card">
+              <strong>System direction</strong>
+              <p>Use Farmbrite as the enabling platform for digital production capture, same-day visibility, reporting structure, and stronger data integrity across the ZAFPI operation.</p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="four-column-grid">
+        <article class="stat-card reveal reveal-delay-1">
+          <span class="card-label">Scope</span>
+          <strong class="stat-value">24 houses</strong>
+          <div class="stat-support">The system concept covers the full production footprint rather than a partial reporting subset.</div>
+        </article>
+        <article class="stat-card reveal reveal-delay-2">
+          <span class="card-label">Visibility goal</span>
+          <strong class="stat-value">Same-day</strong>
+          <div class="stat-support">Operational review should no longer wait for T+1 consolidation cycles.</div>
+        </article>
+        <article class="stat-card reveal reveal-delay-3">
+          <span class="card-label">Compliance target</span>
+          <strong class="stat-value">95%+</strong>
+          <div class="stat-support">Daily encoding discipline is part of the operating model, not an optional behavior.</div>
+        </article>
+        <article class="stat-card is-accent reveal">
+          <span class="card-label">Reconciliation target</span>
+          <strong class="stat-value">&lt;15%</strong>
+          <div class="stat-support">Lower reconciliation is one of the clearest measures of improved control and cleaner data flows.</div>
+        </article>
+      </section>
+
+      <section class="section-shell reveal">
+        <div class="eyebrow">System concept</div>
+        <div class="card-grid">
+          <article class="surface-card reveal reveal-delay-1">
+            <h3>Digital production capture</h3>
+            <p>Daily production, feed, and mortality data move into structured digital forms instead of staying trapped in paper-first workflows.</p>
+          </article>
+          <article class="surface-card reveal reveal-delay-2">
+            <h3>Validation and audit trails</h3>
+            <p>Checks, correction handling, and traceable activity improve trust in the records and make review more consistent.</p>
+          </article>
+          <article class="surface-card reveal reveal-delay-3">
+            <h3>Dashboards and reporting</h3>
+            <p>Management gets same-day visibility through dashboards and reports that support routine operational review.</p>
+          </article>
+          <article class="surface-card reveal reveal-delay-1">
+            <h3>Operational review loop</h3>
+            <p>The system closes the gap between source capture and action by giving managers earlier, cleaner signals to review.</p>
+          </article>
+          <article class="surface-card reveal reveal-delay-2">
+            <h3>Data integrity discipline</h3>
+            <p>Standardized definitions, validations, and reporting rules improve consistency across houses and operating locations.</p>
+          </article>
+          <article class="surface-card reveal reveal-delay-3">
+            <h3>Business value</h3>
+            <p>Stronger visibility supports better planning, cleaner controls, and a clearer path toward higher utilization after stabilization.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="comparison-grid">
+        <article class="comparison-card before reveal reveal-delay-1">
+          <header>
+            <h3>As-is process</h3>
+            <p>The original process relies on manual handling before information becomes useful to management.</p>
+          </header>
+          <ul>
+            <li>Source data starts on paper</li>
+            <li>Encoding happens later in the cycle</li>
+            <li>Consolidation is delayed and fragile</li>
+            <li>Management visibility lands after the fact</li>
+          </ul>
+        </article>
+        <article class="comparison-card after reveal reveal-delay-2">
+          <header>
+            <h3>To-be process</h3>
+            <p>The redesigned process creates a tighter same-day management loop.</p>
+          </header>
+          <ul>
+            <li>Source capture happens in a structured digital flow</li>
+            <li>Same-day input supports earlier visibility</li>
+            <li>Automated consolidation improves consistency</li>
+            <li>Review, accountability, and reporting become part of the daily rhythm</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="section-shell reveal">
+        <div class="eyebrow">To-be process flow</div>
+        <div class="process-flow">
+          <article class="process-card reveal reveal-delay-1">
+            <span class="process-index">01</span>
+            <h3>Source capture</h3>
+            <p>Production data is entered in a structured format at the point where the work happens.</p>
+          </article>
+          <article class="process-card reveal reveal-delay-2">
+            <span class="process-index">02</span>
+            <h3>Same-day input</h3>
+            <p>Daily reporting discipline moves visibility forward instead of waiting for the next cycle.</p>
+          </article>
+          <article class="process-card reveal reveal-delay-3">
+            <span class="process-index">03</span>
+            <h3>Automated consolidation</h3>
+            <p>Standardized records and validations reduce rework and support cleaner summaries.</p>
+          </article>
+          <article class="process-card reveal">
+            <span class="process-index">04</span>
+            <h3>Reporting and accountability</h3>
+            <p>Dashboards, reports, and review routines turn data into usable operational control.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-shell timeline-shell reveal">
+        <div class="eyebrow">Project phases</div>
+        <div class="timeline-track">
+          <article class="phase-card reveal reveal-delay-1">
+            <span class="phase-index">1</span>
+            <h3>Project Initiation &amp; Planning</h3>
+            <p>Establish goals, project framing, stakeholders, and the capstone delivery approach.</p>
+          </article>
+          <article class="phase-card reveal reveal-delay-2">
+            <span class="phase-index">2</span>
+            <h3>BPR &amp; Requirements</h3>
+            <p>Map the as-is process, clarify pain points, and document what the new reporting model must support.</p>
+          </article>
+          <article class="phase-card reveal reveal-delay-3">
+            <span class="phase-index">3</span>
+            <h3>Architecture &amp; Infrastructure</h3>
+            <p>Select the implementation approach and define how the solution will support visibility and control.</p>
+          </article>
+          <article class="phase-card reveal reveal-delay-1">
+            <span class="phase-index">4</span>
+            <h3>Data &amp; Master Data Management</h3>
+            <p>Standardize structures, fields, and reference data needed for reliable reporting.</p>
+          </article>
+          <article class="phase-card reveal reveal-delay-2">
+            <span class="phase-index">5</span>
+            <h3>App Development</h3>
+            <p>Configure and shape the digital reporting workflow around the chosen system direction.</p>
+          </article>
+          <article class="phase-card reveal reveal-delay-3">
+            <span class="phase-index">6</span>
+            <h3>Testing &amp; QA</h3>
+            <p>Validate data flows, reporting accuracy, usability, and overall readiness before cutover.</p>
+          </article>
+          <article class="phase-card reveal reveal-delay-1">
+            <span class="phase-index">7</span>
+            <h3>Training &amp; Change</h3>
+            <p>Prepare users for the new reporting discipline and clarify the accountability model.</p>
+          </article>
+          <article class="phase-card reveal reveal-delay-2">
+            <span class="phase-index">8</span>
+            <h3>Cutover &amp; Hypercare</h3>
+            <p>Support go-live, stabilize reporting routines, and monitor early operational adoption.</p>
+          </article>
+          <article class="phase-card reveal reveal-delay-3">
+            <span class="phase-index">9</span>
+            <h3>Project Management</h3>
+            <p>Coordinate planning, delivery, issue handling, and communication across every stage of the project.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="split-grid">
+        <article class="section-shell reveal reveal-delay-1">
+          <div class="eyebrow">Deliverables</div>
+          <div class="card-grid">
+            <article class="surface-card">
+              <h3>Structured capture model</h3>
+              <p>A digital operating pattern for daily production reporting, validations, and house-level tracking.</p>
+            </article>
+            <article class="surface-card">
+              <h3>Dashboard and reporting view</h3>
+              <p>A management-friendly output layer for same-day review, reporting discipline, and summary visibility.</p>
+            </article>
+            <article class="surface-card">
+              <h3>Operational governance</h3>
+              <p>Rules, auditability expectations, and reporting habits that support integrity after go-live.</p>
+            </article>
+          </div>
+        </article>
+        <article class="section-shell reveal reveal-delay-2">
+          <div class="eyebrow">Measures of success</div>
+          <div class="progress-list">
+            <div class="progress-item">
+              <div class="progress-head"><span>Same-day visibility</span><span>Target state</span></div>
+              <div class="progress-bar"><span style="--fill: 96%"></span></div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-head"><span>Daily encoding compliance</span><span>95%+</span></div>
+              <div class="progress-bar"><span style="--fill: 95%"></span></div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-head"><span>Reconciliation burden</span><span>&lt;15%</span></div>
+              <div class="progress-bar"><span style="--fill: 15%"></span></div>
+            </div>
+          </div>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <section class="footer-brand">
+          <div class="eyebrow">Project Farmbrite</div>
+          <h2 class="footer-title">A presentation-ready capstone website for ZAFPI.</h2>
+          <p class="footer-copy">Built to explain how ZAFPI can move from paper-based production reporting to a structured same-day management system with stronger visibility, cleaner reporting discipline, and better operational control.</p>
+        </section>
+        <section>
+          <h3 class="footer-heading">Navigate</h3>
+          <div class="footer-list">
+            <a href="about.html">Overview</a>
+            <a href="problem.html">Problem</a>
+            <a href="system.html">System</a>
+            <a href="results.html">Results</a>
+          </div>
+        </section>
+        <section>
+          <h3 class="footer-heading">Project links</h3>
+          <div class="footer-list">
+            <a href="resources.html">Resources</a>
+            <a href="sources.html">Sources</a>
+            <a href="team.html">Team</a>
+            <a href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">Farmbrite Demo</a>
+          </div>
+        </section>
+      </div>
+      <div class="footer-bottom">
+        <span>Project Farmbrite for Zamboanga Agri-Farm Products Inc. (ZAFPI)</span>
+        <span>&copy; <span data-year></span> DDS Capstone</span>
+      </div>
+    </div>
+  </footer>
+
   <script src="site.js"></script>
 </body>
 </html>
-

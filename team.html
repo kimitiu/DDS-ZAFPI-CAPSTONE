@@ -1,39 +1,157 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZAFPI Capstone | Team</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <title>Project Farmbrite | Team</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="site.css" />
 </head>
-<body>
-  <header class="topbar"><div class="topbar-inner"><div class="brand"><div class="brand-mark">Z</div><div class="brand-copy"><h1>ZAFPI Capstone</h1><p>Team and credits</p></div></div><div class="nav-actions"><a class="nav-link" href="index.html">Home</a><a class="nav-link" href="about.html">About</a><a class="nav-link" href="system.html">System</a><div class="dropdown" data-dropdown><button class="dropdown-toggle" data-dropdown-toggle aria-expanded="false">More <span>▾</span></button><div class="dropdown-menu"><a href="problem.html">The Problem</a><a href="results.html">Results</a><a href="team.html">Team</a><a href="resources.html">Resources</a><a href="sources.html">Sources</a></div></div><a class="button primary" href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">Farmbrite Demo</a></div></div></header>
-  <main class="page"><div class="container page-stack">
-    <section class="hero"><div class="eyebrow">Team</div><h1>People behind Project Farmbrite.</h1><p>Dimsum Data Solutions is the student team behind the ZAFPI capstone. This page now carries the real member roster, client identity, and a cleaner structure for later photo additions without changing the layout again.</p></section>
-    <section class="section team-intro">
-      <article class="logo-card">
-        <img src="assets/branding/dimsum-data-solutions.png" alt="Dimsum Data Solutions logo" />
-        <strong>Dimsum Data Solutions</strong>
-        <span>The project team brand used for the capstone presentation and portfolio framing.</span>
-      </article>
-      <article class="card">
-        <div class="eyebrow">Member Roster</div>
-        <div class="member-list">
-          <div class="member-row"><div class="member-badge">JG</div><div class="member-copy"><strong>Jared Go</strong><span>Core member of the Project Farmbrite capstone team.</span></div></div>
-          <div class="member-row"><div class="member-badge">KS</div><div class="member-copy"><strong>Keaton Shih</strong><span>Core member of the Project Farmbrite capstone team.</span></div></div>
-          <div class="member-row"><div class="member-badge">KT</div><div class="member-copy"><strong>Kimi Tiu</strong><span>Core member of the Project Farmbrite capstone team.</span></div></div>
-          <div class="member-row"><div class="member-badge">RR</div><div class="member-copy"><strong>Robin Regollo</strong><span>Core member of the Project Farmbrite capstone team.</span></div></div>
-          <div class="member-row"><div class="member-badge">ML</div><div class="member-copy"><strong>Manu Lantin</strong><span>Core member of the Project Farmbrite capstone team.</span></div></div>
+<body class="site-shell">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html" aria-label="Project Farmbrite home">
+        <span class="brand-mark">PF</span>
+        <span class="brand-copy">
+          <strong>Project Farmbrite</strong>
+          <span>ZAFPI capstone website</span>
+        </span>
+      </a>
+      <div class="nav-shell">
+        <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" data-nav-toggle>Menu</button>
+        <nav class="nav-menu" id="site-nav" data-nav-menu aria-label="Primary">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="about.html">Overview</a>
+          <a class="nav-link" href="problem.html">Problem</a>
+          <a class="nav-link" href="system.html">System</a>
+          <a class="nav-link" href="results.html">Results</a>
+          <a class="nav-link" href="resources.html">Resources</a>
+          <a class="nav-link" href="sources.html">Sources</a>
+        </nav>
+        <a class="button button-primary nav-cta" href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">Farmbrite Demo</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <div class="page-container page-stack">
+      <section class="hero-shell reveal">
+        <div class="page-hero-band">
+          <div class="eyebrow">Team</div>
+          <div class="page-intro-grid">
+            <div class="hero-copy">
+              <h1 class="page-title">The DDS team behind Project Farmbrite.</h1>
+              <p class="lead">This page keeps the full team visible without competing with the main project navigation. It standardizes the roster, removes placeholder names, and presents the group as part of one polished capstone system.</p>
+              <p class="lead">The team members listed here are Jared Go, Keaton Shih, Kimi Tiu, Robin Regollo, and Manu Lantin.</p>
+            </div>
+            <aside class="callout-card">
+              <strong>Client collaboration</strong>
+              <p>Project Farmbrite is a DDS capstone project created for Zamboanga Agri-Farm Products Inc. and framed around the company&rsquo;s reporting and operational visibility challenges.</p>
+            </aside>
+          </div>
         </div>
-      </article>
-    </section>
-    <section class="section"><div class="eyebrow">Team Profiles</div><div class="team-grid"><article class="team-card"><div class="avatar-slot">Add Jared Go photo here later</div><div class="role">Team Member</div><strong>Jared Go</strong><span>Business analysis, requirements framing, and operational context support for the capstone.</span></article><article class="team-card"><div class="avatar-slot">Add Keaton Shih photo here later</div><div class="role">Team Member</div><strong>Keaton Shih</strong><span>System thinking, workflow documentation, and process redesign support for the project.</span></article><article class="team-card"><div class="avatar-slot">Add Kimi Tiu photo here later</div><div class="role">Team Member</div><strong>Kimi Tiu</strong><span>Portfolio presentation, visual communication, and capstone narrative support across the site.</span></article><article class="team-card"><div class="avatar-slot">Add Robin Regollo photo here later</div><div class="role">Team Member</div><strong>Robin Regollo</strong><span>Data logic, KPI framing, and reporting structure support for the Farmbrite solution model.</span></article><article class="team-card"><div class="avatar-slot">Add Manu Lantin photo here later</div><div class="role">Team Member</div><strong>Manu Lantin</strong><span>Documentation, rollout support, and project coordination contribution within the team.</span></article></div></section>
-    <section class="section"><div class="eyebrow">Contribution Areas</div><div class="grid-2"><article class="card"><strong>Business process redesign</strong><span>Mapping the as-is and to-be production reporting flow across farm and sorting operations.</span></article><article class="card"><strong>Farmbrite configuration framing</strong><span>Translating ZAFPI’s operational needs into structured capture, dashboards, validation, and reporting logic.</span></article><article class="card"><strong>Governance and controls</strong><span>Documenting SOPs, KPI definitions, auditability expectations, and correction-note discipline.</span></article><article class="card"><strong>Portfolio and presentation support</strong><span>Turning the capstone into a readable, presentation-ready portfolio artifact without losing evidence and structure.</span></article></div></section>
-  </div></main>
+      </section>
+
+      <section class="team-grid">
+        <article class="team-card reveal reveal-delay-1">
+          <div class="avatar-badge">JG</div>
+          <span class="member-role">Team member</span>
+          <h3>Jared Go</h3>
+          <p>Supports project framing, business understanding, and the translation of operational needs into a clear capstone direction.</p>
+        </article>
+        <article class="team-card reveal reveal-delay-2">
+          <div class="avatar-badge">KS</div>
+          <span class="member-role">Team member</span>
+          <h3>Keaton Shih</h3>
+          <p>Contributes to workflow thinking, system structure, and the process redesign narrative across the project.</p>
+        </article>
+        <article class="team-card reveal reveal-delay-3">
+          <div class="avatar-badge">KT</div>
+          <span class="member-role">Team member</span>
+          <h3>Kimi Tiu</h3>
+          <p>Supports presentation design, website communication, and the clarity of the capstone narrative in public-facing materials.</p>
+        </article>
+        <article class="team-card reveal reveal-delay-1">
+          <div class="avatar-badge">RR</div>
+          <span class="member-role">Team member</span>
+          <h3>Robin Regollo</h3>
+          <p>Supports reporting logic, KPI framing, and the articulation of how data integrity improves through the solution model.</p>
+        </article>
+        <article class="team-card reveal reveal-delay-2">
+          <div class="avatar-badge">ML</div>
+          <span class="member-role">Team member</span>
+          <h3>Manu Lantin</h3>
+          <p>Supports documentation, project coordination, and the overall delivery flow that connects the capstone work together.</p>
+        </article>
+      </section>
+
+      <section class="split-grid">
+        <article class="section-shell reveal reveal-delay-1">
+          <div class="eyebrow">Contribution areas</div>
+          <div class="card-grid">
+            <article class="surface-card">
+              <h3>Business process redesign</h3>
+              <p>Mapping the current-state process and structuring the target-state reporting flow.</p>
+            </article>
+            <article class="surface-card">
+              <h3>Reporting and KPI framing</h3>
+              <p>Defining which measures matter for visibility, compliance, and operational review.</p>
+            </article>
+            <article class="surface-card">
+              <h3>Presentation and communication</h3>
+              <p>Turning the capstone into a defense-ready website and presentation narrative.</p>
+            </article>
+          </div>
+        </article>
+        <article class="section-shell reveal reveal-delay-2">
+          <div class="eyebrow">Project context</div>
+          <table class="detail-table">
+            <tr><th>Client</th><td>Zamboanga Agri-Farm Products Inc. (ZAFPI)</td></tr>
+            <tr><th>Project</th><td>Project Farmbrite</td></tr>
+            <tr><th>Focus</th><td>Production reporting, operational visibility, data integrity, and management control</td></tr>
+            <tr><th>Website role</th><td>Presentation-ready capstone artifact aligned to the DDS/ZAFPI visual direction</td></tr>
+          </table>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <section class="footer-brand">
+          <div class="eyebrow">Project Farmbrite</div>
+          <h2 class="footer-title">A presentation-ready capstone website for ZAFPI.</h2>
+          <p class="footer-copy">Built to explain how ZAFPI can move from paper-based production reporting to a structured same-day management system with stronger visibility, cleaner reporting discipline, and better operational control.</p>
+        </section>
+        <section>
+          <h3 class="footer-heading">Navigate</h3>
+          <div class="footer-list">
+            <a href="about.html">Overview</a>
+            <a href="problem.html">Problem</a>
+            <a href="system.html">System</a>
+            <a href="results.html">Results</a>
+          </div>
+        </section>
+        <section>
+          <h3 class="footer-heading">Project links</h3>
+          <div class="footer-list">
+            <a href="resources.html">Resources</a>
+            <a href="sources.html">Sources</a>
+            <a href="team.html">Team</a>
+            <a href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">Farmbrite Demo</a>
+          </div>
+        </section>
+      </div>
+      <div class="footer-bottom">
+        <span>Project Farmbrite for Zamboanga Agri-Farm Products Inc. (ZAFPI)</span>
+        <span>&copy; <span data-year></span> DDS Capstone</span>
+      </div>
+    </div>
+  </footer>
+
   <script src="site.js"></script>
 </body>
 </html>
-

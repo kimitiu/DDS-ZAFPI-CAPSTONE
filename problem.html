@@ -1,22 +1,214 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZAFPI Capstone | Problem</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <title>Project Farmbrite | Problem</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="site.css" />
 </head>
-<body>
-  <header class="topbar"><div class="topbar-inner"><div class="brand"><div class="brand-mark">Z</div><div class="brand-copy"><h1>ZAFPI Capstone</h1><p>Problem framing</p></div></div><div class="nav-actions"><a class="nav-link" href="index.html">Home</a><a class="nav-link" href="about.html">About</a><a class="nav-link" href="system.html">System</a><div class="dropdown" data-dropdown><button class="dropdown-toggle" data-dropdown-toggle aria-expanded="false">More <span>▾</span></button><div class="dropdown-menu"><a href="problem.html">The Problem</a><a href="results.html">Results</a><a href="team.html">Team</a><a href="resources.html">Resources</a><a href="sources.html">Sources</a></div></div><a class="button primary" href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">Farmbrite Demo</a></div></div></header>
-  <main class="page"><div class="container page-stack">
-    <section class="hero"><div class="eyebrow">Problem</div><h1>Manual reporting slows operational control.</h1><p>ZAFPI’s pre-project reporting model is fully manual, paper-based, and split across the farm site and the sorting and distribution center. That means production visibility arrives at T+1, operational review is delayed, and management has to reconcile records before trusting them for action.</p><div class="grid-2"><article class="card"><strong>Paper-first workflow</strong><span>Production logs begin as paperwork rather than structured digital entries, making consolidation slower and less reliable.</span></article><article class="card"><strong>T+1 reporting lag</strong><span>Management cannot monitor the operation in near real time because reports land in the next reporting cycle.</span></article><article class="card"><strong>43% reconciliation burden</strong><span>Around 43% of documents require weekly reconciliation because mismatches and inconsistencies are common in the current state.</span></article><article class="card"><strong>57% utilization baseline</strong><span>The farm is operating at about 57% utilization, turning weak visibility into a larger business-performance issue.</span></article><article class="card"><strong>Missing standard reports</strong><span>The as-is process lacks consistent monthly, quarterly, and annual summaries for structured management review.</span></article><article class="card"><strong>Missing critical KPIs</strong><span>Feed consumption per house, mortality, and core performance indicators are not consistently tracked in a centralized system.</span></article></div></section>
-    <section class="section grid-2"><div><div class="eyebrow">Impact</div><div class="chart-shell"><div class="bar-chart"><div class="bar-item"><div class="bar-label">Utilization baseline</div><div class="bar-shape" style="height:120px;background:#f59e0b;"></div><div class="bar-value">57%</div></div><div class="bar-item"><div class="bar-label">Docs needing reconciliation</div><div class="bar-shape" style="height:96px;background:#fb7185;"></div><div class="bar-value">43%</div></div><div class="bar-item"><div class="bar-label">Reporting delay</div><div class="bar-shape" style="height:62px;background:#22d3ee;"></div><div class="bar-value">T+1</div></div><div class="bar-item"><div class="bar-label">Estimated lost revenue story</div><div class="bar-shape" style="height:168px;background:#34d399;"></div><div class="bar-value">₱105.5M</div></div></div></div></div><div><div class="eyebrow">Business Case</div><p>The capstone frames the current-state problem as an operational-control issue, not just an IT inconvenience. Underutilization, delayed reporting, and weak data discipline combine into slower decisions, more rework, and a large estimated annual lost-revenue story of about ₱105.5 million, excluding spoilage and breakage.</p><table class="detail-table"><tr><th>Reporting speed</th><td>T+1 current-state reporting delay</td></tr><tr><th>Reconciliation burden</th><td>43% of documents require weekly reconciliation</td></tr><tr><th>Utilization</th><td>About 57% baseline farm utilization</td></tr><tr><th>Revenue implication</th><td>Estimated ₱105.5 million annual lost revenue due to underutilization</td></tr></table></div></section>
-    <section class="section"><div class="eyebrow">Target Shift</div><table class="detail-table"><tr><th>Reporting speed</th><td>T+1 moves to same-day reporting.</td></tr><tr><th>Visibility target</th><td>Operational visibility should be available within 1 hour after cut-off.</td></tr><tr><th>Reconciliation target</th><td>Weekly reconciliation should fall from 43% to below 15%.</td></tr><tr><th>Data completeness</th><td>Structured daily reporting should reach at least 98% completeness.</td></tr><tr><th>Utilization target</th><td>The project story targets improvement from 57% toward roughly 75% utilization.</td></tr></table></section>
-  </div></main>
+<body class="site-shell">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html" aria-label="Project Farmbrite home">
+        <span class="brand-mark">PF</span>
+        <span class="brand-copy">
+          <strong>Project Farmbrite</strong>
+          <span>ZAFPI capstone website</span>
+        </span>
+      </a>
+      <div class="nav-shell">
+        <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" data-nav-toggle>Menu</button>
+        <nav class="nav-menu" id="site-nav" data-nav-menu aria-label="Primary">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="about.html">Overview</a>
+          <a class="nav-link" href="problem.html">Problem</a>
+          <a class="nav-link" href="system.html">System</a>
+          <a class="nav-link" href="results.html">Results</a>
+          <a class="nav-link" href="resources.html">Resources</a>
+          <a class="nav-link" href="sources.html">Sources</a>
+        </nav>
+        <a class="button button-primary nav-cta" href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">Farmbrite Demo</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <div class="page-container page-stack">
+      <section class="hero-shell reveal">
+        <div class="page-hero-band">
+          <div class="eyebrow">Problem</div>
+          <div class="page-intro-grid">
+            <div class="hero-copy">
+              <h1 class="page-title">Manual reporting slows visibility, review, and control.</h1>
+              <p class="lead">Before Project Farmbrite, ZAFPI relied on a fully manual, paper-based production reporting process split across the farm site and the sorting and distribution center. That setup delayed visibility, created weekly reconciliation work, and limited house-level monitoring for key measures like feed and mortality.</p>
+              <p class="lead">The problem is not only administrative. It affects how quickly management can understand what is happening on the farm, how reliably records can be consolidated, and how confidently the business can respond to emerging issues.</p>
+            </div>
+            <aside class="callout-card">
+              <strong>Core issue</strong>
+              <p>The current-state model produces T+1 visibility, inconsistent house-level tracking, and no formal consolidated monthly, quarterly, or yearly reporting baseline for management control.</p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="four-column-grid">
+        <article class="stat-card reveal reveal-delay-1">
+          <span class="card-label">Reporting delay</span>
+          <strong class="stat-value">T+1</strong>
+          <div class="stat-support">Operational review waits until the next reporting cycle instead of the same day.</div>
+        </article>
+        <article class="stat-card reveal reveal-delay-2">
+          <span class="card-label">Reconciliation burden</span>
+          <strong class="stat-value">43%</strong>
+          <div class="stat-support">Around 43% of documents require weekly reconciliation because records do not align cleanly.</div>
+        </article>
+        <article class="stat-card reveal reveal-delay-3">
+          <span class="card-label">Utilization baseline</span>
+          <strong class="stat-value">57%</strong>
+          <div class="stat-support">Farm utilization reflects the wider cost of weak visibility and delayed management action.</div>
+        </article>
+        <article class="stat-card is-accent reveal">
+          <span class="card-label">Operational scope</span>
+          <strong class="stat-value">24 houses</strong>
+          <div class="stat-support">The reporting challenge spans the full operational footprint and cannot be solved with ad hoc workarounds.</div>
+        </article>
+      </section>
+
+      <section class="section-shell reveal">
+        <div class="eyebrow">Current-state pain points</div>
+        <div class="card-grid">
+          <article class="surface-card reveal reveal-delay-1">
+            <h3>Paper-based source capture</h3>
+            <p>Production data begins as paperwork, which means consolidation and review depend on later encoding rather than immediate visibility.</p>
+          </article>
+          <article class="surface-card reveal reveal-delay-2">
+            <h3>Weak feed visibility per house</h3>
+            <p>Feed consumption is not tracked consistently at the house level, weakening the ability to spot mismatches and operational issues early.</p>
+          </article>
+          <article class="surface-card reveal reveal-delay-3">
+            <h3>No consolidated reporting rhythm</h3>
+            <p>The current setup lacks formal consolidated monthly, quarterly, or yearly reporting, making trend review and management control harder.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-shell reveal">
+        <div class="eyebrow">As-is process</div>
+        <div class="process-flow">
+          <article class="process-card reveal reveal-delay-1">
+            <span class="process-index">01</span>
+            <h3>Manual collection</h3>
+            <p>Production data is collected on paper at the source instead of being captured directly into a structured digital workflow.</p>
+          </article>
+          <article class="process-card reveal reveal-delay-2">
+            <span class="process-index">02</span>
+            <h3>Delayed reporting</h3>
+            <p>Records travel through a slower consolidation cycle, which pushes usable reporting visibility into T+1.</p>
+          </article>
+          <article class="process-card reveal reveal-delay-3">
+            <span class="process-index">03</span>
+            <h3>Reconciliation burden</h3>
+            <p>Weekly rechecking becomes necessary because source documents and final records often need manual alignment.</p>
+          </article>
+          <article class="process-card reveal">
+            <span class="process-index">04</span>
+            <h3>Poor visibility</h3>
+            <p>Management cannot respond with the confidence or speed needed for proactive daily operational control.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="comparison-grid">
+        <article class="comparison-card before reveal reveal-delay-1">
+          <header>
+            <h3>What the current state creates</h3>
+            <p>The reporting model turns routine production data into a lagging management view.</p>
+          </header>
+          <ul>
+            <li>Late review of production output and issues</li>
+            <li>Manual effort before data can be trusted</li>
+            <li>Weak standardization across sites and houses</li>
+            <li>Limited accountability for timely encoding and validation</li>
+          </ul>
+        </article>
+        <article class="comparison-card after reveal reveal-delay-2">
+          <header>
+            <h3>What the project needs to correct</h3>
+            <p>The capstone must solve process discipline as much as visibility.</p>
+          </header>
+          <ul>
+            <li>Same-day operational reporting instead of T+1 lag</li>
+            <li>Less than 15% reconciliation after stabilization</li>
+            <li>95%+ daily encoding compliance target</li>
+            <li>Clearer feed, mortality, and house-level review signals</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="split-grid">
+        <article class="section-shell reveal reveal-delay-1">
+          <div class="eyebrow">Management consequences</div>
+          <div class="progress-list">
+            <div class="progress-item">
+              <div class="progress-head"><span>Data trust</span><span>Low in current state</span></div>
+              <div class="progress-bar"><span style="--fill: 43%"></span></div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-head"><span>Operational utilization</span><span>57% baseline</span></div>
+              <div class="progress-bar"><span style="--fill: 57%"></span></div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-head"><span>Desired encoding discipline</span><span>95%+ target</span></div>
+              <div class="progress-bar"><span style="--fill: 95%"></span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="section-shell reveal reveal-delay-2">
+          <div class="eyebrow">Problem statement</div>
+          <div class="quote-strip">ZAFPI&rsquo;s reporting problem is a business visibility problem. Manual paperwork, T+1 reporting, weak per-house controls, and heavy reconciliation work combine into slower decisions and weaker operational confidence.</div>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <section class="footer-brand">
+          <div class="eyebrow">Project Farmbrite</div>
+          <h2 class="footer-title">A presentation-ready capstone website for ZAFPI.</h2>
+          <p class="footer-copy">Built to explain how ZAFPI can move from paper-based production reporting to a structured same-day management system with stronger visibility, cleaner reporting discipline, and better operational control.</p>
+        </section>
+        <section>
+          <h3 class="footer-heading">Navigate</h3>
+          <div class="footer-list">
+            <a href="about.html">Overview</a>
+            <a href="problem.html">Problem</a>
+            <a href="system.html">System</a>
+            <a href="results.html">Results</a>
+          </div>
+        </section>
+        <section>
+          <h3 class="footer-heading">Project links</h3>
+          <div class="footer-list">
+            <a href="resources.html">Resources</a>
+            <a href="sources.html">Sources</a>
+            <a href="team.html">Team</a>
+            <a href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">Farmbrite Demo</a>
+          </div>
+        </section>
+      </div>
+      <div class="footer-bottom">
+        <span>Project Farmbrite for Zamboanga Agri-Farm Products Inc. (ZAFPI)</span>
+        <span>&copy; <span data-year></span> DDS Capstone</span>
+      </div>
+    </div>
+  </footer>
+
   <script src="site.js"></script>
 </body>
 </html>
-
