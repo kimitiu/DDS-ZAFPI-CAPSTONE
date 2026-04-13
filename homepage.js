@@ -9,6 +9,7 @@ function initHomepage() {
   const stage = document.getElementById("demoStage");
   const fallbackScene = document.getElementById("fallbackScene");
   const eggStream = document.getElementById("eggStream");
+  const basketCards = Array.from(document.querySelectorAll(".scene-baskets [data-basket-key]"));
   const simTime = document.getElementById("simTime");
   const stateMode = document.getElementById("stateMode");
   const quoteTitle = document.getElementById("quoteTitle");
@@ -39,10 +40,9 @@ function initHomepage() {
   if (!stage || !eggStream) return;
   if (fallbackScene) fallbackScene.hidden = true;
 
-  const laneOffsets = [16, 44];
-  const layerHouses = Array.from({ length: 19 }, (_, index) => `Layer House ${String(index + 1).padStart(2, "0")}`);
-  const growerHouses = Array.from({ length: 3 }, (_, index) => `Grower House ${String(index + 1).padStart(2, "0")}`);
-  const brooderHouses = Array.from({ length: 2 }, (_, index) => `Brooder House ${String(index + 1).padStart(2, "0")}`);
+  const laneOffsets = [22, 50];
+  const farmHouses = Array.from({ length: 24 }, (_, index) => `Farm House ${String(index + 1).padStart(2, "0")}`);
+  const truckBatches = ["Truck Batch A1", "Truck Batch A2", "Truck Batch B1", "Truck Batch B2", "Truck Batch C1"];
 
   const quoteDeck = [
     {
@@ -78,8 +78,9 @@ function initHomepage() {
       minGap: 116,
       speedBoost: -12,
       lanePool: [1],
-      destinationPool: growerHouses.concat(layerHouses.slice(0, 5)),
-      result: "peewee tray captured for graded volume tracking",
+      basket: "Peewee basket",
+      basketIndex: 0,
+      result: "peewee tray routed to the smallest grade basket",
       impact: "volume"
     },
     {
@@ -92,8 +93,9 @@ function initHomepage() {
       minGap: 126,
       speedBoost: -8,
       lanePool: [1],
-      destinationPool: growerHouses.concat(layerHouses.slice(0, 8)),
-      result: "small tray recorded into the reporting mix",
+      basket: "Small basket",
+      basketIndex: 1,
+      result: "small tray routed into the secondary grade basket",
       impact: "volume"
     },
     {
@@ -106,8 +108,9 @@ function initHomepage() {
       minGap: 138,
       speedBoost: -2,
       lanePool: [0, 1],
-      destinationPool: layerHouses.concat(growerHouses),
-      result: "medium tray added to consolidation",
+      basket: "Medium basket",
+      basketIndex: 2,
+      result: "medium tray added into the volume basket",
       impact: "volume"
     },
     {
@@ -120,8 +123,9 @@ function initHomepage() {
       minGap: 148,
       speedBoost: 12,
       lanePool: [0, 1],
-      destinationPool: layerHouses,
-      result: "core production pass accepted",
+      basket: "Large basket",
+      basketIndex: 3,
+      result: "large tray routed into the core output basket",
       impact: "confidence"
     },
     {
@@ -134,8 +138,9 @@ function initHomepage() {
       minGap: 160,
       speedBoost: 20,
       lanePool: [0],
-      destinationPool: layerHouses,
-      result: "XL tray locked into the high-output batch",
+      basket: "XL basket",
+      basketIndex: 4,
+      result: "XL tray locked into the high-output basket",
       impact: "confidence"
     },
     {
@@ -148,8 +153,9 @@ function initHomepage() {
       minGap: 174,
       speedBoost: 24,
       lanePool: [0],
-      destinationPool: layerHouses,
-      result: "jumbo tray locked into the premium output run",
+      basket: "Jumbo basket",
+      basketIndex: 5,
+      result: "jumbo tray accepted into the premium output batch",
       impact: "confidence"
     },
     {
@@ -162,8 +168,9 @@ function initHomepage() {
       minGap: 146,
       speedBoost: 4,
       lanePool: [1],
-      destinationPool: layerHouses.concat(brooderHouses),
-      result: "cracked egg isolated for exception review",
+      basket: "Cracked basket",
+      basketIndex: 6,
+      result: "cracked tray flagged for quality review",
       impact: "exception"
     },
     {
@@ -176,8 +183,9 @@ function initHomepage() {
       minGap: 152,
       speedBoost: 0,
       lanePool: [1],
-      destinationPool: layerHouses.concat(brooderHouses),
-      result: "leaker isolated and raised for quality review",
+      basket: "Leakers basket",
+      basketIndex: 7,
+      result: "leakers tray isolated for exception handling",
       impact: "exception"
     }
   ];
@@ -202,8 +210,8 @@ function initHomepage() {
   let toastTimer = 0;
 
   const recordState = {
-    title: "Slow baseline recording",
-    narrative: "The conveyor is moving at a calm pace. Hold spacebar to speed up live capture and logging."
+    title: "Large tray to Large basket",
+    narrative: "Truck Batch A2 arrived from Farm House 07 and entered the sorting-center queue."
   };
 
   const updateClock = () => {
@@ -233,17 +241,22 @@ function initHomepage() {
 
   const buildRecord = (type) => {
     const lane = pickFrom(type.lanePool);
-    const destination = pickFrom(type.destinationPool);
-    const isDefect = type.impact === "exception";
+    const sourceHouse = pickFrom(farmHouses);
+    const truckBatch = pickFrom(truckBatches);
+    const title = `${type.label} tray to ${type.basket}`;
+    const narrative = `${truckBatch} collected from ${sourceHouse}. ${type.result}.`;
     return {
       type,
       lane,
-      destination,
-      title: isDefect ? `${type.label} flagged from ${destination}` : `${type.label} egg logged to ${destination}`,
-      narrative: isDefect
-        ? `${type.result}. Sorting center review is now visible for management.`
-        : `${type.result}. The pass is visible immediately inside the reporting console.`,
-      recordLabel: `${type.label} ${isDefect ? "flagged" : "logged"}`
+      sourceHouse,
+      truckBatch,
+      basketTarget: type.basket,
+      basketKey: type.key,
+      sortingLane: lane === 0 ? "Primary size lane" : "Quality and secondary lane",
+      title,
+      narrative,
+      recordLabel: `${type.label} tray`,
+      basketIndex: type.basketIndex
     };
   };
 
@@ -349,6 +362,25 @@ function initHomepage() {
     egg.element.style.transform = `translate(${egg.x}px, ${egg.y + bob}px) rotate(${egg.rotation}deg)`;
   };
 
+  const getBasketTarget = (egg, streamWidth) => {
+    const basket = basketCards.find((card) => card.dataset.basketKey === egg.record.basketKey);
+    if (basket) {
+      const streamRect = eggStream.getBoundingClientRect();
+      const basketRect = basket.getBoundingClientRect();
+      return {
+        x: basketRect.left - streamRect.left + basketRect.width * 0.5 - egg.width * 0.5,
+        y: basketRect.top - streamRect.top + basketRect.height * 0.26
+      };
+    }
+
+    const column = egg.record.basketIndex % 2;
+    const row = Math.floor(egg.record.basketIndex / 2);
+    return {
+      x: streamWidth * 0.68 + column * 78,
+      y: row * 52 - 42
+    };
+  };
+
   const createEgg = (type, x) => {
     const record = buildRecord(type);
     const egg = document.createElement("div");
@@ -362,12 +394,15 @@ function initHomepage() {
       element: egg,
       x,
       y: laneOffset,
+      baseY: laneOffset,
       wobble: 5 + Math.random() * 4,
       phase: Math.random() * Math.PI * 2,
       rotation: (Math.random() - 0.5) * 10,
       rotationSpeed: (Math.random() - 0.5) * 10,
       speed: 180 + type.speedBoost,
       counted: false,
+      routing: false,
+      routedAt: 0,
       width: type.width,
       record
     };
@@ -401,11 +436,12 @@ function initHomepage() {
   const handleEggCheckpoint = (egg) => {
     if (egg.counted) return;
     egg.counted = true;
+    egg.routing = true;
     passesLogged += 1;
     recordState.title = egg.record.title;
     recordState.narrative = egg.record.narrative;
     applyEggImpact(egg.record);
-    showToast(`${egg.record.recordLabel || egg.record.title} in the Farmbrite console.`);
+    showToast(`${egg.record.recordLabel || egg.record.title} visible in the sorting-center console.`);
   };
 
   const toggleCollapse = (toggle) => {
@@ -423,9 +459,9 @@ function initHomepage() {
     const delta = Math.min((timestamp - lastFrame) / 1000, 0.033);
     lastFrame = timestamp;
 
-    const beltSpeed = captureMode ? 164 : 56;
-    const speedMultiplier = captureMode ? 1.55 : 0.42;
-    const spawnRate = captureMode ? 0.42 : 1.65;
+    const beltSpeed = captureMode ? 154 : 42;
+    const speedMultiplier = captureMode ? 1.4 : 0.34;
+    const spawnRate = captureMode ? 0.48 : 1.85;
 
     beltShift += delta * beltSpeed;
     spawnTimer += delta;
@@ -441,12 +477,25 @@ function initHomepage() {
     const checkpoint = streamWidth * 0.62;
 
     eggs.slice().forEach((egg) => {
-      egg.x += delta * egg.speed * speedMultiplier;
+      const movement = delta * speedMultiplier;
       egg.rotation += delta * egg.rotationSpeed * speedMultiplier;
       egg.phase += delta * egg.wobble * speedMultiplier;
+
+      if (egg.routing) {
+        const target = getBasketTarget(egg, streamWidth);
+        egg.x += (target.x - egg.x) * Math.min(1, movement * 2.2);
+        egg.y += (target.y - egg.y) * Math.min(1, movement * 2.6);
+        if (Math.abs(target.x - egg.x) < 4 && Math.abs(target.y - egg.y) < 4) {
+          egg.routedAt += delta;
+        }
+      } else {
+        egg.x += delta * egg.speed * speedMultiplier;
+        egg.y += (egg.baseY - egg.y) * Math.min(1, movement * 1.8);
+      }
+
       placeEgg(egg);
       if (egg.x + egg.width * 0.5 >= checkpoint) handleEggCheckpoint(egg);
-      if (egg.x > streamWidth + 120) removeEgg(egg);
+      if ((egg.routing && egg.routedAt > 0.9) || egg.x > streamWidth + 120) removeEgg(egg);
     });
 
     if (!prefersReducedMotion.matches) {
@@ -463,6 +512,8 @@ function initHomepage() {
   };
 
   collapseToggles.forEach((toggle) => {
+    toggle.addEventListener("pointerdown", (event) => event.stopPropagation());
+    toggle.addEventListener("pointerup", (event) => event.stopPropagation());
     toggle.addEventListener("click", (event) => {
       event.stopPropagation();
       toggleCollapse(toggle);

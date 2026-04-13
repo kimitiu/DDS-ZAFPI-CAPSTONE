@@ -3271,60 +3271,148 @@ select {
 }
 
 .demo-stage--full {
-  min-height: 860px;
+  min-height: 980px;
 }
 
 .sim-overlay--landing {
-  gap: 20px;
+  gap: 18px;
 }
 
 .sim-home-grid {
-  grid-template-columns: minmax(320px, 540px) minmax(320px, 400px);
-  gap: 20px;
+  grid-template-columns: minmax(320px, 420px) minmax(280px, 332px);
+  gap: 18px;
   align-items: start;
 }
 
 .sim-stage-card {
-  width: min(100%, 540px);
-  padding: 24px;
+  width: min(100%, 420px);
+  padding: 22px;
   background: rgba(255, 255, 255, 0.82);
   box-shadow: var(--shadow-md);
 }
 
 .sim-stage-card .sim-tray-title {
-  font-size: clamp(1.9rem, 3vw, 2.8rem);
+  font-size: clamp(1.7rem, 2.5vw, 2.35rem);
 }
 
 .sim-stage-card .sim-tray-lead {
-  max-width: 42ch;
+  max-width: 34ch;
 }
 
 .monitor-stack-inline {
-  width: min(100%, 400px);
-  gap: 14px;
+  width: min(100%, 332px);
+  gap: 12px;
+}
+
+.record-dock,
+.dashboard-panel--landing {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.record-dock {
+  min-height: 78px;
+  height: 78px;
+}
+
+.dashboard-panel--landing {
+  min-height: 94px;
+  height: 94px;
+}
+
+.record-dock:not(.is-collapsed) {
+  height: 238px;
+}
+
+.dashboard-panel--landing:not(.is-collapsed) {
+  height: 364px;
+}
+
+.record-dock .collapsible-body,
+.dashboard-panel--landing .collapsible-body {
+  overflow: auto;
+  padding-right: 4px;
 }
 
 .record-dock .signal-value {
-  font-size: clamp(1.5rem, 2.6vw, 2.7rem);
-  max-width: 9ch;
+  font-size: clamp(1rem, 1.6vw, 1.35rem);
+  line-height: 1.12;
+  max-width: none;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .record-dock .signal-copy {
-  font-size: 0.98rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .dashboard-panel--landing {
   padding: 16px;
 }
 
+.collapsible-head {
+  min-height: 42px;
+}
+
+.signal-head {
+  gap: 10px;
+}
+
+.signal-meta {
+  font-size: 0.82rem;
+}
+
+.dashboard-header {
+  align-items: center;
+}
+
+.dashboard-title {
+  font-size: 1rem;
+}
+
+.dashboard-subtitle {
+  font-size: 0.8rem;
+}
+
+.dashboard-summary-card {
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.dashboard-summary-value {
+  font-size: clamp(1.7rem, 2.4vw, 2.4rem);
+}
+
+.dashboard-grid {
+  grid-template-columns: 88px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.dashboard-mini-grid {
+  gap: 8px;
+}
+
+.dashboard-mini-card {
+  min-height: 82px;
+  padding: 10px;
+}
+
 .dashboard-mini-card strong {
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .scene-barn {
   position: absolute;
   left: 8%;
-  bottom: 340px;
+  bottom: 348px;
   width: 170px;
   height: 110px;
   border-radius: 26px 26px 18px 18px;
@@ -3355,16 +3443,83 @@ select {
 }
 
 .scene-farmline {
-  left: 28%;
-  right: 28%;
-  bottom: 330px;
-  gap: 14px;
+  left: 24%;
+  right: 42%;
+  bottom: 348px;
+  gap: 12px;
+}
+
+.scene-truck {
+  position: absolute;
+  left: 31%;
+  bottom: 258px;
+  width: 132px;
+  height: 68px;
+}
+
+.scene-truck-bed,
+.scene-truck-cab {
+  position: absolute;
+  bottom: 0;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(65, 89, 72, 0.96), rgba(39, 57, 46, 0.98));
+  box-shadow: 0 14px 28px rgba(18, 35, 29, 0.12);
+}
+
+.scene-truck-bed {
+  left: 0;
+  width: 82px;
+  height: 48px;
+}
+
+.scene-truck-cab {
+  right: 0;
+  width: 42px;
+  height: 38px;
+}
+
+.scene-truck::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: -8px;
+  height: 16px;
+  background:
+    radial-gradient(circle, #1e2d3b 0 42%, transparent 45%) left center / 28px 28px no-repeat,
+    radial-gradient(circle, #1e2d3b 0 42%, transparent 45%) right center / 28px 28px no-repeat;
+}
+
+.scene-backflow {
+  position: absolute;
+  left: 44%;
+  bottom: 430px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px dashed rgba(18, 60, 53, 0.18);
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: var(--shadow-sm);
+}
+
+.scene-backflow span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(18, 60, 53, 0.08);
+  color: var(--green-900);
+  font-size: 0.76rem;
+  font-weight: 700;
 }
 
 .scene-worker {
   position: absolute;
-  right: 12%;
-  bottom: 300px;
+  right: 42%;
+  bottom: 252px;
   width: 62px;
   height: 124px;
   border-radius: 30px 30px 18px 18px;
@@ -3418,15 +3573,81 @@ select {
   max-width: 100%;
 }
 
+.scene-baskets {
+  position: absolute;
+  right: 37%;
+  bottom: 264px;
+  width: 270px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.basket-card {
+  display: grid;
+  gap: 2px;
+  min-height: 58px;
+  padding: 9px 8px 8px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(18, 31, 27, 0.66);
+  color: #f5fbf4;
+  box-shadow: var(--shadow-sm);
+}
+
+.basket-card strong {
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.basket-card span {
+  color: rgba(245, 251, 244, 0.78);
+  font-size: 0.66rem;
+  line-height: 1.3;
+}
+
+.basket-card--peewee,
+.basket-card--small,
+.basket-card--medium,
+.basket-card--large,
+.basket-card--xl,
+.basket-card--jumbo {
+  background: linear-gradient(180deg, rgba(62, 86, 69, 0.92), rgba(31, 49, 40, 0.94));
+}
+
+.basket-card--cracked,
+.basket-card--leakers {
+  background: linear-gradient(180deg, rgba(111, 74, 64, 0.92), rgba(68, 40, 35, 0.94));
+}
+
 .scene-belt {
-  left: 10%;
-  right: 10%;
-  bottom: 70px;
+  left: 9%;
+  right: 37%;
+  bottom: 72px;
   height: 122px;
 }
 
 .scene-belt-track {
   inset: 18px 0 0;
+}
+
+.egg-stream {
+  inset: -112px 2% 0 2%;
+}
+
+.sim-toast {
+  left: auto;
+  right: 364px;
+  bottom: auto;
+  top: 96px;
+  max-width: 220px;
+  padding: 10px 12px;
+  font-size: 0.82rem;
+}
+
+.sim-toast strong {
+  margin-bottom: 2px;
 }
 
 @media (max-width: 1240px) {
@@ -3435,47 +3656,96 @@ select {
   }
 
   .sim-home-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .sim-stage-card,
-  .monitor-stack-inline {
-    width: 100%;
-    max-width: none;
+    grid-template-columns: minmax(300px, 1fr) 312px;
   }
 
   .scene-farmline {
-    left: 24%;
-    right: 22%;
+    left: 22%;
+    right: 40%;
+  }
+
+  .scene-worker {
+    right: 39%;
+  }
+
+  .scene-baskets {
+    right: 34%;
+  }
+
+  .scene-belt {
+    right: 34%;
+  }
+
+  .sim-toast {
+    right: 326px;
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 980px) {
   .management-signal-grid {
     grid-template-columns: 1fr;
   }
 
+  .sim-home-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .monitor-stack-inline,
+  .sim-stage-card {
+    width: 100%;
+    max-width: none;
+  }
+
   .demo-stage--full {
-    min-height: 980px;
+    min-height: 1120px;
   }
 
   .scene-barn {
     left: 6%;
-    bottom: 330px;
-    transform: scale(0.9);
+    bottom: 360px;
+    transform: scale(0.86);
   }
 
   .scene-farmline {
-    left: 23%;
-    right: 8%;
-    bottom: 322px;
+    left: 24%;
+    right: 18%;
+    bottom: 360px;
     gap: 10px;
   }
 
+  .scene-truck {
+    left: 34%;
+    bottom: 274px;
+    transform: scale(0.92);
+  }
+
+  .scene-backflow {
+    left: 50%;
+    bottom: 446px;
+    transform: translateX(-50%);
+  }
+
   .scene-worker {
-    right: 6%;
-    bottom: 290px;
-    transform: scale(0.9);
+    right: 14%;
+    bottom: 286px;
+    transform: scale(0.84);
+  }
+
+  .scene-baskets {
+    right: 10%;
+    bottom: 294px;
+  }
+
+  .scene-belt {
+    left: 6%;
+    right: 8%;
+    bottom: 74px;
+    height: 118px;
+  }
+
+  .sim-toast {
+    right: 18px;
+    top: 138px;
   }
 }
 
@@ -3486,32 +3756,469 @@ select {
   }
 
   .demo-stage--full {
-    min-height: 1040px;
+    min-height: 1240px;
+  }
+
+  .sim-stage-card .sim-tray-title {
+    font-size: clamp(1.5rem, 8vw, 2rem);
+  }
+
+  .record-dock .signal-value {
+    -webkit-line-clamp: 3;
+  }
+
+  .scene-barn {
+    left: 4%;
+    bottom: 398px;
+    transform: scale(0.74);
+  }
+
+  .scene-farmline {
+    left: 18%;
+    right: 4%;
+    bottom: 390px;
+    gap: 8px;
+  }
+
+  .scene-truck {
+    left: 30%;
+    bottom: 314px;
+    transform: scale(0.78);
+  }
+
+  .scene-backflow {
+    display: none;
+  }
+
+  .scene-worker {
+    right: 6%;
+    bottom: 302px;
+    transform: scale(0.7);
+  }
+
+  .scene-baskets {
+    left: 6%;
+    right: 6%;
+    width: auto;
+    bottom: 220px;
+  }
+
+  .basket-card {
+    min-height: 54px;
+  }
+
+  .scene-belt {
+    left: 4%;
+    right: 4%;
+    bottom: 66px;
+    height: 108px;
+  }
+}
+
+/* Homepage stage v6 reset */
+.home-stage-shell {
+  padding: 0;
+}
+
+.demo-stage--full {
+  min-height: auto;
+  padding: clamp(22px, 2.3vw, 30px);
+  display: grid;
+  gap: 20px;
+  background:
+    radial-gradient(circle at 14% 20%, rgba(255, 235, 182, 0.42), transparent 18%),
+    linear-gradient(180deg, #dfe8da 0%, #f0eadb 42%, #dbe5d9 100%);
+}
+
+.sim-stage-layout {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 312px;
+  gap: 22px;
+  align-items: start;
+}
+
+.sim-scene-shell {
+  display: grid;
+  gap: 18px;
+  min-width: 0;
+}
+
+.sim-scene-header,
+.sim-scene-footer {
+  display: grid;
+  gap: 12px;
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: var(--shadow-sm);
+}
+
+.sim-scene-header .eyebrow,
+.sim-scene-footer .eyebrow {
+  margin-bottom: 0;
+}
+
+.sim-scene-header .sim-tray-title {
+  margin: 0;
+  font-size: clamp(2rem, 3vw, 2.7rem);
+  line-height: 0.98;
+}
+
+.sim-scene-header .sim-tray-lead {
+  margin: 0;
+  max-width: 54ch;
+}
+
+.sim-visual-stage {
+  position: relative;
+  min-height: 620px;
+  overflow: hidden;
+  border: 1px solid rgba(18, 60, 53, 0.12);
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 18% 24%, rgba(255, 214, 146, 0.22), transparent 20%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.06));
+  box-shadow: var(--shadow-md);
+}
+
+.sim-visual-stage .scene-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.sim-scene-footer {
+  gap: 14px;
+}
+
+.scene-direction,
+.scene-feedback-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.scene-feedback-strip span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(18, 60, 53, 0.08);
+  color: var(--green-900);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.scene-instruction {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
+}
+
+.monitor-stack-inline {
+  display: grid;
+  gap: 14px;
+  width: 312px;
+  max-width: 312px;
+  align-self: start;
+}
+
+.record-dock,
+.dashboard-panel--landing {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.record-dock {
+  min-height: 74px;
+  height: 74px;
+  padding: 16px 18px;
+}
+
+.dashboard-panel--landing {
+  min-height: 86px;
+  height: 86px;
+  padding: 16px;
+}
+
+.record-dock:not(.is-collapsed) {
+  height: 228px;
+}
+
+.dashboard-panel--landing:not(.is-collapsed) {
+  height: 332px;
+}
+
+.record-dock .collapsible-body,
+.dashboard-panel--landing .collapsible-body {
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.record-dock .signal-value {
+  font-size: clamp(1rem, 1.45vw, 1.28rem);
+  line-height: 1.14;
+  max-width: none;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.record-dock .signal-copy {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.48;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.record-dock .signal-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.8rem;
+}
+
+.dashboard-title {
+  margin: 0;
+  font-size: 0.98rem;
+}
+
+.dashboard-subtitle {
+  font-size: 0.82rem;
+}
+
+.dashboard-summary-card {
+  margin-bottom: 12px;
+}
+
+.dashboard-summary-value {
+  font-size: clamp(1.55rem, 2.4vw, 2rem);
+}
+
+.dashboard-grid {
+  grid-template-columns: 94px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.dashboard-mini-grid {
+  gap: 8px;
+}
+
+.dashboard-mini-card {
+  min-height: 78px;
+  padding: 10px;
+}
+
+.dashboard-mini-card label {
+  font-size: 0.72rem;
+}
+
+.dashboard-mini-card strong {
+  font-size: 0.98rem;
+}
+
+.dashboard-progress {
+  gap: 10px;
+}
+
+.dashboard-progress-head {
+  gap: 12px;
+  font-size: 0.78rem;
+}
+
+.sim-toast {
+  display: none;
+}
+
+.scene-backflow {
+  display: none;
+}
+
+.scene-barn {
+  left: 6%;
+  bottom: 360px;
+  transform: scale(0.9);
+}
+
+.scene-farmline {
+  left: 20%;
+  right: 32%;
+  bottom: 360px;
+  gap: 12px;
+}
+
+.scene-truck {
+  left: 30%;
+  bottom: 272px;
+}
+
+.scene-worker {
+  right: 12%;
+  bottom: 276px;
+  transform: scale(0.88);
+}
+
+.scene-baskets {
+  right: 6%;
+  bottom: 244px;
+  width: 290px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.basket-card {
+  min-height: 66px;
+  padding: 10px 10px 9px;
+  border-radius: 18px;
+}
+
+.basket-card strong {
+  font-size: 0.74rem;
+}
+
+.basket-card span {
+  font-size: 0.68rem;
+}
+
+.scene-belt {
+  left: 7%;
+  right: 12%;
+  bottom: 72px;
+  height: 126px;
+}
+
+.egg-stream {
+  inset: -116px 2% 0 2%;
+}
+
+@media (max-width: 1180px) {
+  .sim-stage-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .monitor-stack-inline {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+@media (max-width: 820px) {
+  .demo-stage--full {
+    padding: 18px;
+  }
+
+  .sim-visual-stage {
+    min-height: 760px;
   }
 
   .scene-barn {
     left: 5%;
-    bottom: 308px;
-    transform: scale(0.78);
+    bottom: 486px;
+    transform: scale(0.82);
   }
 
   .scene-farmline {
     left: 20%;
-    right: 5%;
-    bottom: 300px;
+    right: 8%;
+    bottom: 478px;
+  }
+
+  .scene-truck {
+    left: 32%;
+    bottom: 386px;
+    transform: scale(0.9);
+  }
+
+  .scene-worker {
+    right: 7%;
+    bottom: 394px;
+    transform: scale(0.78);
+  }
+
+  .scene-baskets {
+    left: 6%;
+    right: 6%;
+    width: auto;
+    bottom: 246px;
+  }
+
+  .scene-belt {
+    left: 6%;
+    right: 6%;
+    bottom: 76px;
+  }
+}
+
+@media (max-width: 640px) {
+  .sim-scene-header,
+  .sim-scene-footer {
+    padding: 18px;
+  }
+
+  .sim-scene-header .sim-tray-title {
+    font-size: clamp(1.65rem, 7.5vw, 2.2rem);
+  }
+
+  .sim-visual-stage {
+    min-height: 820px;
+  }
+
+  .record-dock:not(.is-collapsed) {
+    height: 246px;
+  }
+
+  .dashboard-panel--landing:not(.is-collapsed) {
+    height: 352px;
+  }
+
+  .record-dock .signal-value {
+    -webkit-line-clamp: 3;
+  }
+
+  .scene-barn {
+    left: 4%;
+    bottom: 542px;
+    transform: scale(0.7);
+  }
+
+  .scene-farmline {
+    left: 14%;
+    right: 4%;
+    bottom: 532px;
     gap: 8px;
+  }
+
+  .scene-truck {
+    left: 28%;
+    bottom: 438px;
+    transform: scale(0.76);
   }
 
   .scene-worker {
     right: 5%;
-    bottom: 270px;
-    transform: scale(0.76);
+    bottom: 452px;
+    transform: scale(0.66);
+  }
+
+  .scene-baskets {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    bottom: 258px;
   }
 
   .scene-belt {
-    left: 5%;
-    right: 5%;
-    bottom: 58px;
+    left: 4%;
+    right: 4%;
+    bottom: 78px;
     height: 112px;
   }
 }
@@ -3593,35 +4300,173 @@ select {
 
       <section class="simulation-shell home-stage-shell reveal">
         <div class="demo-stage demo-stage--full" id="demoStage">
-          <div class="scene-layer" aria-hidden="true">
-            <div class="scene-grid"></div>
-            <div class="scene-sun"></div>
-            <div class="scene-glow"></div>
-            <div class="scene-barn"></div>
-            <div class="scene-farmline">
-              <span class="farm-house house-wide"></span>
-              <span class="farm-house house-mid"></span>
-              <span class="farm-house house-tall"></span>
-              <span class="farm-house house-wide"></span>
-              <span class="farm-house house-mid"></span>
-              <span class="farm-house house-wide"></span>
+          <div class="sim-topbar">
+            <div class="sim-brand-chip">
+              <strong>ZAFPI operations</strong>
+              <span>Zamboanga City farm and distribution reporting</span>
             </div>
-            <div class="scene-worker">
-              <span class="scene-worker-tablet"></span>
+            <div class="sim-state-chip">
+              <strong id="stateMode">Monitoring baseline</strong>
+              <span id="simTime">06:30 PM</span>
             </div>
-            <div class="scene-belt">
-              <div class="scene-belt-rail scene-belt-rail--left"></div>
-              <div class="scene-belt-track"></div>
-              <div class="scene-sort-markers" aria-hidden="true">
-                <span>Jumbo</span>
-                <span>Large</span>
-                <span>Medium</span>
-                <span>Small</span>
-                <span>Exception</span>
+          </div>
+
+          <div class="sim-stage-layout">
+            <div class="sim-scene-shell reveal reveal-delay-1">
+              <div class="sim-scene-header">
+                <div class="eyebrow">Live sorter</div>
+                <h2 class="sim-tray-title">Farm collection moves into sorting, then into grade baskets.</h2>
+                <p class="sim-tray-lead">Workers capture at the farm, a truck brings trays to the sorting center, and Farmbrite shows the same-day signal nearby for management review.</p>
               </div>
-              <div class="egg-stream" id="eggStream"></div>
-              <div class="scene-belt-rail scene-belt-rail--right"></div>
-              <div class="scene-belt-glow"></div>
+
+              <div class="sim-visual-stage">
+                <div class="scene-layer" aria-hidden="true">
+                  <div class="scene-grid"></div>
+                  <div class="scene-sun"></div>
+                  <div class="scene-glow"></div>
+                  <div class="scene-barn"></div>
+                  <div class="scene-farmline">
+                    <span class="farm-house house-wide"></span>
+                    <span class="farm-house house-mid"></span>
+                    <span class="farm-house house-tall"></span>
+                    <span class="farm-house house-wide"></span>
+                    <span class="farm-house house-mid"></span>
+                    <span class="farm-house house-wide"></span>
+                  </div>
+                  <div class="scene-truck">
+                    <span class="scene-truck-cab"></span>
+                    <span class="scene-truck-bed"></span>
+                  </div>
+                  <div class="scene-worker">
+                    <span class="scene-worker-tablet"></span>
+                  </div>
+                  <div class="scene-baskets" aria-hidden="true">
+                    <article class="basket-card basket-card--peewee" data-basket-key="peewee"><strong>Peewee</strong><span>Smallest grade</span></article>
+                    <article class="basket-card basket-card--small" data-basket-key="small"><strong>Small</strong><span>Secondary tray</span></article>
+                    <article class="basket-card basket-card--medium" data-basket-key="medium"><strong>Medium</strong><span>Volume grade</span></article>
+                    <article class="basket-card basket-card--large" data-basket-key="large"><strong>Large</strong><span>Core output</span></article>
+                    <article class="basket-card basket-card--xl" data-basket-key="xl"><strong>XL</strong><span>High-output tray</span></article>
+                    <article class="basket-card basket-card--jumbo" data-basket-key="jumbo"><strong>Jumbo</strong><span>Premium run</span></article>
+                    <article class="basket-card basket-card--cracked" data-basket-key="cracked"><strong>Cracked</strong><span>Quality hold</span></article>
+                    <article class="basket-card basket-card--leakers" data-basket-key="leakers"><strong>Leakers</strong><span>Exception hold</span></article>
+                  </div>
+                  <div class="scene-belt">
+                    <div class="scene-belt-rail scene-belt-rail--left"></div>
+                    <div class="scene-belt-track"></div>
+                    <div class="egg-stream" id="eggStream"></div>
+                    <div class="scene-belt-rail scene-belt-rail--right"></div>
+                    <div class="scene-belt-glow"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sim-scene-footer">
+                <div class="scene-direction">
+                  <span>Farm houses</span>
+                  <span class="scene-arrow" aria-hidden="true">&rarr;</span>
+                  <span>Collection truck</span>
+                  <span class="scene-arrow" aria-hidden="true">&rarr;</span>
+                  <span>Sorting center belt</span>
+                  <span class="scene-arrow" aria-hidden="true">&rarr;</span>
+                  <span>Grade baskets</span>
+                </div>
+                <div class="scene-feedback-strip" aria-hidden="true">
+                  <span>Feed planning</span>
+                  <span>Medicine / vaccine readiness</span>
+                  <span>Chick and cull decisions</span>
+                </div>
+                <span class="instruction-chip scene-instruction">The conveyor moves slowly by default. Hold the stage or spacebar to sort faster.</span>
+              </div>
+            </div>
+
+            <div class="monitor-stack-inline reveal reveal-delay-2">
+              <article class="signal-card record-dock collapsible-card is-collapsed">
+                <div class="collapsible-head">
+                  <div class="signal-head">
+                    <span>Latest record</span>
+                    <span class="live-dot" aria-hidden="true"></span>
+                  </div>
+                  <button class="collapse-toggle" type="button" data-collapse-target="latestRecordBody" aria-expanded="false" aria-label="Toggle latest record">
+                    <span aria-hidden="true">&#9662;</span>
+                  </button>
+                </div>
+                <div class="collapsible-body" id="latestRecordBody">
+                  <div class="signal-value signal-value--compact" id="latestRecord">Large tray to Large basket</div>
+                  <p class="signal-copy" id="latestNarrative">Truck Batch A2 arrived from Farm House 07 and entered the sorting center queue.</p>
+                  <div class="signal-meta">
+                    <span id="housesMeta">14 / 24 active</span>
+                    <span id="passesMeta">126 passes</span>
+                    <span id="syncMeta">95% sync</span>
+                  </div>
+                </div>
+              </article>
+
+              <aside class="dashboard-panel dashboard-panel--landing collapsible-card is-collapsed">
+                <div class="collapsible-head dashboard-header">
+                  <div>
+                    <h2 class="dashboard-title">Farmbrite console</h2>
+                    <div class="dashboard-subtitle">Sorting-center view of farm capture and reporting signals</div>
+                  </div>
+                  <div class="collapse-actions">
+                    <span class="dashboard-time">Monitor</span>
+                    <button class="collapse-toggle" type="button" data-collapse-target="consoleBody" aria-expanded="false" aria-label="Toggle console">
+                      <span aria-hidden="true">&#9662;</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="collapsible-body" id="consoleBody">
+                  <article class="dashboard-summary-card">
+                    <div class="signal-head">
+                      <span>Visibility view</span>
+                      <span>Sorting center</span>
+                    </div>
+                    <div class="dashboard-summary-value" id="visibilityValue">57%</div>
+                    <p class="signal-copy" id="visibilityNarrative">Workers capture at the farm first, then management follows feed, casualties, medicine, and vaccine readiness from the sorting center console.</p>
+                  </article>
+
+                  <div class="dashboard-grid">
+                    <div class="ring-card">
+                      <div class="ring-visual" id="ringVisual"><strong id="ringValue">95%</strong></div>
+                      <span class="dashboard-subtitle">Same-day sync confidence</span>
+                    </div>
+                    <div>
+                      <div class="dashboard-mini-grid">
+                        <article class="dashboard-mini-card">
+                          <label>Houses active</label>
+                          <strong id="housesCount">14 / 24</strong>
+                        </article>
+                        <article class="dashboard-mini-card">
+                          <label>Passes logged</label>
+                          <strong id="passesCount">126</strong>
+                        </article>
+                        <article class="dashboard-mini-card">
+                          <label>Feed intake</label>
+                          <strong id="feedCount">18.6 tons</strong>
+                        </article>
+                        <article class="dashboard-mini-card">
+                          <label>Casualties</label>
+                          <strong id="alertCount">2 logged</strong>
+                        </article>
+                      </div>
+                      <div class="dashboard-progress">
+                        <div class="dashboard-progress-item">
+                          <div class="dashboard-progress-head"><span>Daily reporting progress</span><span id="dailyLabel">81% of daily reporting target</span></div>
+                          <div class="dashboard-progress-bar"><span id="dailyBar" style="--fill: 81%"></span></div>
+                        </div>
+                        <div class="dashboard-progress-item">
+                          <div class="dashboard-progress-head"><span>Medicine log readiness</span><span id="syncLabel">92% of medicine log target</span></div>
+                          <div class="dashboard-progress-bar"><span id="syncBar" style="--fill: 92%"></span></div>
+                        </div>
+                        <div class="dashboard-progress-item">
+                          <div class="dashboard-progress-head"><span>Vaccine schedule readiness</span><span id="utilLabel">86% of vaccine schedule target</span></div>
+                          <div class="dashboard-progress-bar"><span id="utilBar" style="--fill: 86%"></span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </aside>
             </div>
           </div>
 
@@ -3651,138 +4496,6 @@ select {
                   <span>Operational visibility target for management review</span>
                 </article>
               </div>
-            </div>
-          </div>
-
-          <div class="sim-overlay sim-overlay--landing">
-            <div class="sim-topbar">
-              <div class="sim-brand-chip">
-                <strong>ZAFPI operations</strong>
-                <span>Zamboanga City farm and distribution reporting</span>
-              </div>
-              <div class="sim-state-chip">
-                <strong id="stateMode">Monitoring baseline</strong>
-                <span id="simTime">06:30 PM</span>
-              </div>
-            </div>
-
-            <div class="sim-home-grid">
-              <article class="surface-card sim-stage-card reveal reveal-delay-1">
-                <div class="eyebrow">Farm to sorting center</div>
-                <h2 class="sim-tray-title">From the farm houses to the sorting center, every tray becomes a record.</h2>
-                <p class="sim-tray-lead">The conveyor moves at a calm baseline, then speeds up when workers actively capture. Egg grades and defect trays feed the live console right beside the sorter.</p>
-                <div class="scene-direction">
-                  <span>Farm houses</span>
-                  <span class="scene-arrow" aria-hidden="true">&rarr;</span>
-                  <span>Sorting center</span>
-                </div>
-                <div class="scene-grade-guide">
-                  <span class="grade-chip grade-chip--peewee">Peewee</span>
-                  <span class="grade-chip grade-chip--small">Small</span>
-                  <span class="grade-chip grade-chip--medium">Medium</span>
-                  <span class="grade-chip grade-chip--large">Large</span>
-                  <span class="grade-chip grade-chip--xl">XL</span>
-                  <span class="grade-chip grade-chip--jumbo">Jumbo</span>
-                  <span class="grade-chip grade-chip--cracked">Cracked</span>
-                  <span class="grade-chip grade-chip--leakers">Leakers</span>
-                </div>
-                <span class="instruction-chip scene-instruction">The conveyor moves slowly by default. Hold the stage or spacebar to sort faster.</span>
-              </article>
-
-              <div class="monitor-stack-inline reveal reveal-delay-2">
-                <article class="signal-card record-dock collapsible-card is-expanded">
-                  <div class="collapsible-head">
-                    <div class="signal-head">
-                      <span>Latest record</span>
-                      <span class="live-dot" aria-hidden="true"></span>
-                    </div>
-                    <button class="collapse-toggle" type="button" data-collapse-target="latestRecordBody" aria-expanded="true" aria-label="Toggle latest record">
-                      <span aria-hidden="true">&#9662;</span>
-                    </button>
-                  </div>
-                  <div class="collapsible-body" id="latestRecordBody">
-                    <div class="signal-value signal-value--compact" id="latestRecord">Awaiting next field pass</div>
-                    <p class="signal-copy" id="latestNarrative">Press and hold spacebar to run the sorter and send the next pass into the console.</p>
-                    <div class="signal-meta">
-                      <span id="housesMeta">14 / 24 active</span>
-                      <span id="passesMeta">126 passes</span>
-                      <span id="syncMeta">95% sync</span>
-                    </div>
-                  </div>
-                </article>
-
-                <aside class="dashboard-panel dashboard-panel--landing collapsible-card is-expanded">
-                  <div class="collapsible-head dashboard-header">
-                    <div>
-                      <h2 class="dashboard-title">Farmbrite console</h2>
-                      <div class="dashboard-subtitle">Sorting center visibility for farm and production reporting</div>
-                    </div>
-                    <div class="collapse-actions">
-                      <span class="dashboard-time">Monitor</span>
-                      <button class="collapse-toggle" type="button" data-collapse-target="consoleBody" aria-expanded="true" aria-label="Toggle console">
-                        <span aria-hidden="true">&#9662;</span>
-                      </button>
-                    </div>
-                  </div>
-
-                  <div class="collapsible-body" id="consoleBody">
-                    <article class="dashboard-summary-card">
-                      <div class="signal-head">
-                        <span>Visibility view</span>
-                        <span>Sorting center</span>
-                      </div>
-                      <div class="dashboard-summary-value" id="visibilityValue">57%</div>
-                      <p class="signal-copy" id="visibilityNarrative">Workers capture production at the farm, then management sees feed, casualties, medicine, and vaccine readiness at the sorting center.</p>
-                    </article>
-
-                    <div class="dashboard-grid">
-                      <div class="ring-card">
-                        <div class="ring-visual" id="ringVisual"><strong id="ringValue">95%</strong></div>
-                        <span class="dashboard-subtitle">Same-day sync confidence</span>
-                      </div>
-                      <div>
-                        <div class="dashboard-mini-grid">
-                          <article class="dashboard-mini-card">
-                            <label>Houses active</label>
-                            <strong id="housesCount">14 / 24</strong>
-                          </article>
-                          <article class="dashboard-mini-card">
-                            <label>Passes logged</label>
-                            <strong id="passesCount">126</strong>
-                          </article>
-                          <article class="dashboard-mini-card">
-                            <label>Feed intake</label>
-                            <strong id="feedCount">18.6 tons</strong>
-                          </article>
-                          <article class="dashboard-mini-card">
-                            <label>Casualties</label>
-                            <strong id="alertCount">2 logged</strong>
-                          </article>
-                        </div>
-                        <div class="dashboard-progress">
-                          <div class="dashboard-progress-item">
-                            <div class="dashboard-progress-head"><span>Daily reporting progress</span><span id="dailyLabel">81% of daily reporting target</span></div>
-                            <div class="dashboard-progress-bar"><span id="dailyBar" style="--fill: 81%"></span></div>
-                          </div>
-                          <div class="dashboard-progress-item">
-                            <div class="dashboard-progress-head"><span>Medicine log readiness</span><span id="syncLabel">92% of medicine log target</span></div>
-                            <div class="dashboard-progress-bar"><span id="syncBar" style="--fill: 92%"></span></div>
-                          </div>
-                          <div class="dashboard-progress-item">
-                            <div class="dashboard-progress-head"><span>Vaccine schedule readiness</span><span id="utilLabel">86% of vaccine schedule target</span></div>
-                            <div class="dashboard-progress-bar"><span id="utilBar" style="--fill: 86%"></span></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </aside>
-              </div>
-            </div>
-
-            <div class="sim-toast" id="simToast">
-              <strong>Rollout signal</strong>
-              <span id="simToastText">Same-day visibility is ready to follow each pass.</span>
             </div>
           </div>
         </div>
@@ -4063,6 +4776,7 @@ function initHomepage() {
   const stage = document.getElementById("demoStage");
   const fallbackScene = document.getElementById("fallbackScene");
   const eggStream = document.getElementById("eggStream");
+  const basketCards = Array.from(document.querySelectorAll(".scene-baskets [data-basket-key]"));
   const simTime = document.getElementById("simTime");
   const stateMode = document.getElementById("stateMode");
   const quoteTitle = document.getElementById("quoteTitle");
@@ -4093,10 +4807,9 @@ function initHomepage() {
   if (!stage || !eggStream) return;
   if (fallbackScene) fallbackScene.hidden = true;
 
-  const laneOffsets = [16, 44];
-  const layerHouses = Array.from({ length: 19 }, (_, index) => `Layer House ${String(index + 1).padStart(2, "0")}`);
-  const growerHouses = Array.from({ length: 3 }, (_, index) => `Grower House ${String(index + 1).padStart(2, "0")}`);
-  const brooderHouses = Array.from({ length: 2 }, (_, index) => `Brooder House ${String(index + 1).padStart(2, "0")}`);
+  const laneOffsets = [22, 50];
+  const farmHouses = Array.from({ length: 24 }, (_, index) => `Farm House ${String(index + 1).padStart(2, "0")}`);
+  const truckBatches = ["Truck Batch A1", "Truck Batch A2", "Truck Batch B1", "Truck Batch B2", "Truck Batch C1"];
 
   const quoteDeck = [
     {
@@ -4132,8 +4845,9 @@ function initHomepage() {
       minGap: 116,
       speedBoost: -12,
       lanePool: [1],
-      destinationPool: growerHouses.concat(layerHouses.slice(0, 5)),
-      result: "peewee tray captured for graded volume tracking",
+      basket: "Peewee basket",
+      basketIndex: 0,
+      result: "peewee tray routed to the smallest grade basket",
       impact: "volume"
     },
     {
@@ -4146,8 +4860,9 @@ function initHomepage() {
       minGap: 126,
       speedBoost: -8,
       lanePool: [1],
-      destinationPool: growerHouses.concat(layerHouses.slice(0, 8)),
-      result: "small tray recorded into the reporting mix",
+      basket: "Small basket",
+      basketIndex: 1,
+      result: "small tray routed into the secondary grade basket",
       impact: "volume"
     },
     {
@@ -4160,8 +4875,9 @@ function initHomepage() {
       minGap: 138,
       speedBoost: -2,
       lanePool: [0, 1],
-      destinationPool: layerHouses.concat(growerHouses),
-      result: "medium tray added to consolidation",
+      basket: "Medium basket",
+      basketIndex: 2,
+      result: "medium tray added into the volume basket",
       impact: "volume"
     },
     {
@@ -4174,8 +4890,9 @@ function initHomepage() {
       minGap: 148,
       speedBoost: 12,
       lanePool: [0, 1],
-      destinationPool: layerHouses,
-      result: "core production pass accepted",
+      basket: "Large basket",
+      basketIndex: 3,
+      result: "large tray routed into the core output basket",
       impact: "confidence"
     },
     {
@@ -4188,8 +4905,9 @@ function initHomepage() {
       minGap: 160,
       speedBoost: 20,
       lanePool: [0],
-      destinationPool: layerHouses,
-      result: "XL tray locked into the high-output batch",
+      basket: "XL basket",
+      basketIndex: 4,
+      result: "XL tray locked into the high-output basket",
       impact: "confidence"
     },
     {
@@ -4202,8 +4920,9 @@ function initHomepage() {
       minGap: 174,
       speedBoost: 24,
       lanePool: [0],
-      destinationPool: layerHouses,
-      result: "jumbo tray locked into the premium output run",
+      basket: "Jumbo basket",
+      basketIndex: 5,
+      result: "jumbo tray accepted into the premium output batch",
       impact: "confidence"
     },
     {
@@ -4216,8 +4935,9 @@ function initHomepage() {
       minGap: 146,
       speedBoost: 4,
       lanePool: [1],
-      destinationPool: layerHouses.concat(brooderHouses),
-      result: "cracked egg isolated for exception review",
+      basket: "Cracked basket",
+      basketIndex: 6,
+      result: "cracked tray flagged for quality review",
       impact: "exception"
     },
     {
@@ -4230,8 +4950,9 @@ function initHomepage() {
       minGap: 152,
       speedBoost: 0,
       lanePool: [1],
-      destinationPool: layerHouses.concat(brooderHouses),
-      result: "leaker isolated and raised for quality review",
+      basket: "Leakers basket",
+      basketIndex: 7,
+      result: "leakers tray isolated for exception handling",
       impact: "exception"
     }
   ];
@@ -4256,8 +4977,8 @@ function initHomepage() {
   let toastTimer = 0;
 
   const recordState = {
-    title: "Slow baseline recording",
-    narrative: "The conveyor is moving at a calm pace. Hold spacebar to speed up live capture and logging."
+    title: "Large tray to Large basket",
+    narrative: "Truck Batch A2 arrived from Farm House 07 and entered the sorting-center queue."
   };
 
   const updateClock = () => {
@@ -4287,17 +5008,22 @@ function initHomepage() {
 
   const buildRecord = (type) => {
     const lane = pickFrom(type.lanePool);
-    const destination = pickFrom(type.destinationPool);
-    const isDefect = type.impact === "exception";
+    const sourceHouse = pickFrom(farmHouses);
+    const truckBatch = pickFrom(truckBatches);
+    const title = `${type.label} tray to ${type.basket}`;
+    const narrative = `${truckBatch} collected from ${sourceHouse}. ${type.result}.`;
     return {
       type,
       lane,
-      destination,
-      title: isDefect ? `${type.label} flagged from ${destination}` : `${type.label} egg logged to ${destination}`,
-      narrative: isDefect
-        ? `${type.result}. Sorting center review is now visible for management.`
-        : `${type.result}. The pass is visible immediately inside the reporting console.`,
-      recordLabel: `${type.label} ${isDefect ? "flagged" : "logged"}`
+      sourceHouse,
+      truckBatch,
+      basketTarget: type.basket,
+      basketKey: type.key,
+      sortingLane: lane === 0 ? "Primary size lane" : "Quality and secondary lane",
+      title,
+      narrative,
+      recordLabel: `${type.label} tray`,
+      basketIndex: type.basketIndex
     };
   };
 
@@ -4403,6 +5129,25 @@ function initHomepage() {
     egg.element.style.transform = `translate(${egg.x}px, ${egg.y + bob}px) rotate(${egg.rotation}deg)`;
   };
 
+  const getBasketTarget = (egg, streamWidth) => {
+    const basket = basketCards.find((card) => card.dataset.basketKey === egg.record.basketKey);
+    if (basket) {
+      const streamRect = eggStream.getBoundingClientRect();
+      const basketRect = basket.getBoundingClientRect();
+      return {
+        x: basketRect.left - streamRect.left + basketRect.width * 0.5 - egg.width * 0.5,
+        y: basketRect.top - streamRect.top + basketRect.height * 0.26
+      };
+    }
+
+    const column = egg.record.basketIndex % 2;
+    const row = Math.floor(egg.record.basketIndex / 2);
+    return {
+      x: streamWidth * 0.68 + column * 78,
+      y: row * 52 - 42
+    };
+  };
+
   const createEgg = (type, x) => {
     const record = buildRecord(type);
     const egg = document.createElement("div");
@@ -4416,12 +5161,15 @@ function initHomepage() {
       element: egg,
       x,
       y: laneOffset,
+      baseY: laneOffset,
       wobble: 5 + Math.random() * 4,
       phase: Math.random() * Math.PI * 2,
       rotation: (Math.random() - 0.5) * 10,
       rotationSpeed: (Math.random() - 0.5) * 10,
       speed: 180 + type.speedBoost,
       counted: false,
+      routing: false,
+      routedAt: 0,
       width: type.width,
       record
     };
@@ -4455,11 +5203,12 @@ function initHomepage() {
   const handleEggCheckpoint = (egg) => {
     if (egg.counted) return;
     egg.counted = true;
+    egg.routing = true;
     passesLogged += 1;
     recordState.title = egg.record.title;
     recordState.narrative = egg.record.narrative;
     applyEggImpact(egg.record);
-    showToast(`${egg.record.recordLabel || egg.record.title} in the Farmbrite console.`);
+    showToast(`${egg.record.recordLabel || egg.record.title} visible in the sorting-center console.`);
   };
 
   const toggleCollapse = (toggle) => {
@@ -4477,9 +5226,9 @@ function initHomepage() {
     const delta = Math.min((timestamp - lastFrame) / 1000, 0.033);
     lastFrame = timestamp;
 
-    const beltSpeed = captureMode ? 164 : 56;
-    const speedMultiplier = captureMode ? 1.55 : 0.42;
-    const spawnRate = captureMode ? 0.42 : 1.65;
+    const beltSpeed = captureMode ? 154 : 42;
+    const speedMultiplier = captureMode ? 1.4 : 0.34;
+    const spawnRate = captureMode ? 0.48 : 1.85;
 
     beltShift += delta * beltSpeed;
     spawnTimer += delta;
@@ -4495,12 +5244,25 @@ function initHomepage() {
     const checkpoint = streamWidth * 0.62;
 
     eggs.slice().forEach((egg) => {
-      egg.x += delta * egg.speed * speedMultiplier;
+      const movement = delta * speedMultiplier;
       egg.rotation += delta * egg.rotationSpeed * speedMultiplier;
       egg.phase += delta * egg.wobble * speedMultiplier;
+
+      if (egg.routing) {
+        const target = getBasketTarget(egg, streamWidth);
+        egg.x += (target.x - egg.x) * Math.min(1, movement * 2.2);
+        egg.y += (target.y - egg.y) * Math.min(1, movement * 2.6);
+        if (Math.abs(target.x - egg.x) < 4 && Math.abs(target.y - egg.y) < 4) {
+          egg.routedAt += delta;
+        }
+      } else {
+        egg.x += delta * egg.speed * speedMultiplier;
+        egg.y += (egg.baseY - egg.y) * Math.min(1, movement * 1.8);
+      }
+
       placeEgg(egg);
       if (egg.x + egg.width * 0.5 >= checkpoint) handleEggCheckpoint(egg);
-      if (egg.x > streamWidth + 120) removeEgg(egg);
+      if ((egg.routing && egg.routedAt > 0.9) || egg.x > streamWidth + 120) removeEgg(egg);
     });
 
     if (!prefersReducedMotion.matches) {
@@ -4517,6 +5279,8 @@ function initHomepage() {
   };
 
   collapseToggles.forEach((toggle) => {
+    toggle.addEventListener("pointerdown", (event) => event.stopPropagation());
+    toggle.addEventListener("pointerup", (event) => event.stopPropagation());
     toggle.addEventListener("click", (event) => {
       event.stopPropagation();
       toggleCollapse(toggle);
@@ -4552,6 +5316,7 @@ function initHomepage() {
 <!-- INLINE_HOME_JS_END -->
 </body>
 </html>
+
 
 
 
