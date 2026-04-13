@@ -16,6 +16,7 @@ function initHomepage() {
   const quoteBody = document.getElementById("quoteBody");
   const latestRecord = document.getElementById("latestRecord");
   const latestNarrative = document.getElementById("latestNarrative");
+  const monitorStack = document.querySelector(".monitor-stack-inline");
   const visibilityValue = document.getElementById("visibilityValue");
   const visibilityNarrative = document.getElementById("visibilityNarrative");
   const housesMeta = document.getElementById("housesMeta");
@@ -273,6 +274,12 @@ function initHomepage() {
 
   const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 
+  const setActiveBasket = (basketKey) => {
+    basketCards.forEach((card) => {
+      card.classList.toggle("is-active", card.dataset.basketKey === basketKey);
+    });
+  };
+
   const setCaptureMode = (nextState) => {
     if (captureMode === nextState) return;
     captureMode = nextState;
@@ -333,8 +340,8 @@ function initHomepage() {
     if (visibilityValue) visibilityValue.textContent = `${roundedVisibility}%`;
     if (visibilityNarrative) {
       visibilityNarrative.textContent = captureMode
-        ? "Farm workers are logging at source while the sorting center can already see feed, casualty, medicine, and vaccine signals."
-        : "Workers capture at the farm first, then management follows the day from the sorting center console.";
+        ? "Farm workers are logging at source while the sorting center can already see feed, casualty, medicine, vaccine, and readiness trends in the same day."
+        : "Workers capture at the farm first, then management follows feed, health, and reporting signals over time from the sorting center console.";
     }
     if (housesMeta) housesMeta.textContent = `${roundedHouses} / 24 active`;
     if (passesMeta) passesMeta.textContent = `${passText} passes`;
@@ -440,6 +447,7 @@ function initHomepage() {
     passesLogged += 1;
     recordState.title = egg.record.title;
     recordState.narrative = egg.record.narrative;
+    setActiveBasket(egg.record.basketKey);
     applyEggImpact(egg.record);
     showToast(`${egg.record.recordLabel || egg.record.title} visible in the sorting-center console.`);
   };
@@ -520,6 +528,12 @@ function initHomepage() {
     });
   });
 
+  if (monitorStack) {
+    monitorStack.addEventListener("pointerdown", (event) => event.stopPropagation());
+    monitorStack.addEventListener("pointerup", (event) => event.stopPropagation());
+    monitorStack.addEventListener("click", (event) => event.stopPropagation());
+  }
+
   stage.tabIndex = 0;
   stage.addEventListener("pointerdown", () => setCaptureMode(true));
   stage.addEventListener("pointerup", () => setCaptureMode(false));
@@ -537,6 +551,7 @@ function initHomepage() {
   window.addEventListener("blur", () => setCaptureMode(false));
 
   seedEggs();
+  setActiveBasket("large");
   setQuote(0);
   updateClock();
   updateDashboard();

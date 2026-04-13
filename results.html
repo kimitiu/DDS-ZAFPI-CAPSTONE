@@ -4223,6 +4223,388 @@ select {
   }
 }
 
+/* Homepage stage v7 refinement */
+.sim-stage-layout {
+  grid-template-columns: minmax(0, 1fr) 336px;
+  gap: 18px;
+}
+
+.sim-scene-shell {
+  gap: 16px;
+}
+
+.sim-scene-header {
+  max-width: none;
+}
+
+.sim-scene-header .sim-tray-title {
+  max-width: 20ch;
+}
+
+.sim-visual-stage {
+  min-height: 690px;
+}
+
+.scene-barn {
+  left: 5%;
+  bottom: 418px;
+  width: 188px;
+  height: 124px;
+  transform: none;
+}
+
+.scene-farmline {
+  left: 22%;
+  right: 46%;
+  bottom: 414px;
+  gap: 10px;
+}
+
+.scene-truck {
+  left: 33%;
+  bottom: 328px;
+  width: 156px;
+  height: 74px;
+  animation: truckRoute 7.5s ease-in-out infinite alternate;
+}
+
+.demo-stage.is-active .scene-truck {
+  animation-duration: 4.4s;
+}
+
+.scene-truck-bed {
+  width: 96px;
+  height: 54px;
+}
+
+.scene-truck-cab {
+  width: 48px;
+  height: 42px;
+}
+
+.scene-sorting-center {
+  position: absolute;
+  right: 22%;
+  bottom: 344px;
+  width: 160px;
+  height: 112px;
+  border-radius: 26px 26px 18px 18px;
+  background: linear-gradient(180deg, rgba(72, 97, 83, 0.94), rgba(42, 58, 48, 0.96));
+  box-shadow: 0 20px 40px rgba(18, 35, 29, 0.14);
+}
+
+.scene-sorting-center::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  top: -22px;
+  height: 34px;
+  border-radius: 18px 18px 0 0;
+  background: linear-gradient(180deg, #2c4158, #203041);
+}
+
+.scene-sorting-center::after {
+  content: "";
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 14px;
+  height: 34px;
+  border-radius: 12px;
+  background: rgba(245, 250, 246, 0.16);
+}
+
+.scene-sorting-label {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  top: 12px;
+  display: inline-flex;
+  justify-content: center;
+  min-height: 28px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #f4f8f1;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.scene-worker {
+  right: 7%;
+  bottom: 326px;
+  width: 72px;
+  height: 140px;
+  transform: none;
+}
+
+.scene-worker::before {
+  inset: -38px 4px auto;
+  height: 56px;
+}
+
+.scene-worker-tablet {
+  left: -36px;
+  top: 22px;
+  width: 34px;
+  height: 48px;
+}
+
+.scene-baskets {
+  right: 6%;
+  bottom: 214px;
+  width: 342px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.basket-card {
+  position: relative;
+  min-height: 74px;
+  padding: 22px 10px 10px;
+  border-radius: 18px 18px 22px 22px;
+  border: 1px solid rgba(28, 48, 40, 0.18);
+  background:
+    linear-gradient(180deg, rgba(237, 225, 191, 0.98), rgba(210, 188, 140, 0.98));
+  color: var(--green-900);
+  box-shadow: 0 12px 24px rgba(70, 58, 30, 0.12);
+}
+
+.basket-card::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  top: 8px;
+  height: 12px;
+  border-radius: 999px;
+  border: 2px solid rgba(93, 72, 34, 0.36);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.basket-card strong {
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+}
+
+.basket-card span {
+  color: rgba(17, 35, 49, 0.72);
+  font-size: 0.62rem;
+}
+
+.basket-card--peewee,
+.basket-card--small,
+.basket-card--medium,
+.basket-card--large,
+.basket-card--xl,
+.basket-card--jumbo {
+  background:
+    linear-gradient(180deg, rgba(239, 232, 207, 0.98), rgba(217, 197, 152, 0.98));
+}
+
+.basket-card--cracked,
+.basket-card--leakers {
+  background:
+    linear-gradient(180deg, rgba(215, 184, 171, 0.98), rgba(174, 124, 109, 0.98));
+}
+
+.basket-card.is-active {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 34px rgba(70, 58, 30, 0.18);
+  border-color: rgba(36, 88, 74, 0.26);
+}
+
+.scene-belt {
+  left: 8%;
+  right: 8%;
+  bottom: 58px;
+  height: 124px;
+}
+
+.egg-stream {
+  inset: -108px 2% 0 2%;
+}
+
+.monitor-stack-inline {
+  width: 336px;
+  max-width: 336px;
+  gap: 12px;
+}
+
+.record-dock {
+  height: 72px;
+  min-height: 72px;
+}
+
+.dashboard-panel--landing {
+  height: 84px;
+  min-height: 84px;
+}
+
+.record-dock:not(.is-collapsed) {
+  height: 214px;
+}
+
+.dashboard-panel--landing:not(.is-collapsed) {
+  height: 314px;
+}
+
+.record-dock .signal-value {
+  font-size: clamp(0.98rem, 1.28vw, 1.16rem);
+  -webkit-line-clamp: 2;
+}
+
+.record-dock .signal-copy {
+  font-size: 0.86rem;
+  -webkit-line-clamp: 3;
+}
+
+.dashboard-summary-value {
+  font-size: clamp(1.45rem, 2vw, 1.85rem);
+}
+
+.dashboard-mini-card strong {
+  font-size: 0.92rem;
+}
+
+@keyframes truckRoute {
+  0% {
+    transform: translateX(-10px);
+  }
+
+  50% {
+    transform: translateX(26px);
+  }
+
+  100% {
+    transform: translateX(74px);
+  }
+}
+
+@media (max-width: 1180px) {
+  .sim-stage-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .monitor-stack-inline {
+    width: 100%;
+    max-width: none;
+  }
+
+  .sim-visual-stage {
+    min-height: 760px;
+  }
+
+  .scene-farmline {
+    right: 40%;
+  }
+
+  .scene-sorting-center {
+    right: 18%;
+  }
+
+  .scene-worker {
+    right: 6%;
+  }
+
+  .scene-baskets {
+    right: 4%;
+    width: 360px;
+  }
+}
+
+@media (max-width: 820px) {
+  .sim-visual-stage {
+    min-height: 860px;
+  }
+
+  .scene-barn {
+    bottom: 548px;
+    transform: scale(0.8);
+  }
+
+  .scene-farmline {
+    left: 18%;
+    right: 8%;
+    bottom: 542px;
+  }
+
+  .scene-truck {
+    left: 26%;
+    bottom: 450px;
+    transform: scale(0.88);
+  }
+
+  .scene-sorting-center {
+    right: 10%;
+    bottom: 440px;
+    transform: scale(0.92);
+  }
+
+  .scene-worker {
+    right: 7%;
+    bottom: 314px;
+    transform: scale(0.82);
+  }
+
+  .scene-baskets {
+    left: 6%;
+    right: 6%;
+    width: auto;
+    bottom: 228px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .scene-belt {
+    left: 6%;
+    right: 6%;
+  }
+}
+
+@media (max-width: 640px) {
+  .sim-visual-stage {
+    min-height: 930px;
+  }
+
+  .scene-barn {
+    left: 4%;
+    bottom: 612px;
+    transform: scale(0.68);
+  }
+
+  .scene-farmline {
+    left: 12%;
+    right: 4%;
+    bottom: 604px;
+  }
+
+  .scene-truck {
+    left: 20%;
+    bottom: 514px;
+    transform: scale(0.72);
+  }
+
+  .scene-sorting-center {
+    right: 6%;
+    bottom: 500px;
+    transform: scale(0.78);
+  }
+
+  .scene-worker {
+    right: 5%;
+    bottom: 386px;
+    transform: scale(0.7);
+  }
+
+  .scene-baskets {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    bottom: 246px;
+  }
+}
+
 </style>
 <!-- INLINE_SITE_CSS_END -->
 </head>
@@ -4509,6 +4891,8 @@ document.addEventListener("DOMContentLoaded", () => {
 <!-- INLINE_SITE_JS_END -->
 </body>
 </html>
+
+
 
 
 
