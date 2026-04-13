@@ -10,7 +10,6 @@ function initHomepage() {
   const fallbackScene = document.getElementById("fallbackScene");
   const eggStream = document.getElementById("eggStream");
   const focusToggle = document.getElementById("focusToggle");
-  const storyLines = Array.from(document.querySelectorAll(".story-line"));
   const simTime = document.getElementById("simTime");
   const latestRecord = document.getElementById("latestRecord");
   const latestNarrative = document.getElementById("latestNarrative");
@@ -47,27 +46,55 @@ function initHomepage() {
 
   const eggTypes = [
     {
-      key: "jumbo",
-      label: "Jumbo",
-      className: "egg--jumbo",
-      width: 62,
-      height: 82,
-      weight: 0.12,
-      minGap: 166,
-      speedBoost: 22,
-      lanePool: [0],
-      destinationPool: layerHouses,
-      result: "high-yield tray accepted",
-      impact: "confidence"
+      key: "peewee",
+      label: "Peewee",
+      className: "egg--peewee",
+      width: 26,
+      height: 38,
+      weight: 0.08,
+      minGap: 116,
+      speedBoost: -16,
+      lanePool: [1],
+      destinationPool: growerHouses.concat(layerHouses.slice(0, 5)),
+      result: "peewee tray captured for graded volume tracking",
+      impact: "volume"
+    },
+    {
+      key: "small",
+      label: "Small",
+      className: "egg--small",
+      width: 34,
+      height: 48,
+      weight: 0.16,
+      minGap: 126,
+      speedBoost: -10,
+      lanePool: [1],
+      destinationPool: growerHouses.concat(layerHouses.slice(0, 8)),
+      result: "small tray recorded into the reporting mix",
+      impact: "volume"
+    },
+    {
+      key: "medium",
+      label: "Medium",
+      className: "egg--medium",
+      width: 42,
+      height: 58,
+      weight: 0.2,
+      minGap: 138,
+      speedBoost: -2,
+      lanePool: [0, 1],
+      destinationPool: layerHouses.concat(growerHouses),
+      result: "medium tray added to consolidation",
+      impact: "volume"
     },
     {
       key: "large",
       label: "Large",
       className: "egg--large",
-      width: 54,
-      height: 74,
-      weight: 0.34,
-      minGap: 150,
+      width: 50,
+      height: 68,
+      weight: 0.22,
+      minGap: 148,
       speedBoost: 12,
       lanePool: [0, 1],
       destinationPool: layerHouses,
@@ -75,45 +102,59 @@ function initHomepage() {
       impact: "confidence"
     },
     {
-      key: "medium",
-      label: "Medium",
-      className: "egg--medium",
-      width: 46,
-      height: 64,
-      weight: 0.26,
-      minGap: 138,
-      speedBoost: 0,
-      lanePool: [0, 1],
-      destinationPool: layerHouses.concat(growerHouses),
-      result: "volume tray added to consolidation",
-      impact: "volume"
+      key: "xl",
+      label: "XL",
+      className: "egg--xl",
+      width: 58,
+      height: 78,
+      weight: 0.15,
+      minGap: 160,
+      speedBoost: 20,
+      lanePool: [0],
+      destinationPool: layerHouses,
+      result: "XL tray locked into the high-output batch",
+      impact: "confidence"
     },
     {
-      key: "small",
-      label: "Small",
-      className: "egg--small",
-      width: 40,
-      height: 56,
-      weight: 0.18,
-      minGap: 126,
-      speedBoost: -10,
-      lanePool: [1],
-      destinationPool: growerHouses.concat(layerHouses.slice(0, 6)),
-      result: "secondary grade tray recorded",
-      impact: "volume"
+      key: "jumbo",
+      label: "Jumbo",
+      className: "egg--jumbo",
+      width: 66,
+      height: 90,
+      weight: 0.09,
+      minGap: 174,
+      speedBoost: 26,
+      lanePool: [0],
+      destinationPool: layerHouses,
+      result: "jumbo tray locked into the premium output run",
+      impact: "confidence"
     },
     {
-      key: "exception",
-      label: "Exception",
-      className: "egg--exception",
-      width: 50,
-      height: 68,
-      weight: 0.1,
-      minGap: 154,
+      key: "cracked",
+      label: "Cracked",
+      className: "egg--cracked",
+      width: 44,
+      height: 60,
+      weight: 0.06,
+      minGap: 146,
       speedBoost: 6,
-      lanePool: [0, 1],
+      lanePool: [1],
       destinationPool: layerHouses.concat(brooderHouses),
-      result: "manual review required",
+      result: "cracked egg isolated for exception review",
+      impact: "exception"
+    },
+    {
+      key: "leakers",
+      label: "Leakers",
+      className: "egg--leakers",
+      width: 48,
+      height: 64,
+      weight: 0.04,
+      minGap: 152,
+      speedBoost: 2,
+      lanePool: [1],
+      destinationPool: layerHouses.concat(brooderHouses),
+      result: "leaker isolated and raised for quality review",
       impact: "exception"
     }
   ];
@@ -129,8 +170,6 @@ function initHomepage() {
   let dailyProgress = 81;
   let alertTotal = 6;
   let mortalityVerified = 2;
-  let storyIndex = 0;
-  let storyTimer = 0;
   let spawnTimer = 0.4;
   let beltShift = 0;
   let lastFrame = performance.now();
@@ -140,12 +179,6 @@ function initHomepage() {
   const recordState = {
     title: "Awaiting next field pass",
     narrative: "Monitoring the current-state baseline before capture begins."
-  };
-
-  const setStory = (index) => {
-    storyLines.forEach((line, lineIndex) => {
-      line.classList.toggle("is-active", lineIndex === index);
-    });
   };
 
   const updateClock = () => {
@@ -164,24 +197,22 @@ function initHomepage() {
       cursor -= option.weight;
       if (cursor <= 0) return option;
     }
-    return eggTypes[1];
+    return eggTypes[3];
   };
 
   const buildRecord = (type) => {
     const lane = pickFrom(type.lanePool);
     const destination = pickFrom(type.destinationPool);
+    const isDefect = type.impact === "exception";
     return {
       type,
       lane,
       destination,
-      title:
-        type.key === "exception"
-          ? `${type.label} egg flagged from ${destination}`
-          : `${type.label} egg logged to ${destination}`,
-      narrative:
-        type.key === "exception"
-          ? `${type.result}. Supervisor review is now visible in the monitor stack.`
-          : `${type.result}. The pass is visible immediately inside the reporting console.`
+      title: isDefect ? `${type.label} flagged from ${destination}` : `${type.label} egg logged to ${destination}`,
+      narrative: isDefect
+        ? `${type.result}. The exception is visible immediately inside the reporting console.`
+        : `${type.result}. The pass is visible immediately inside the reporting console.`,
+      recordLabel: `${type.label} ${isDefect ? "flagged" : "logged"}`
     };
   };
 
@@ -210,19 +241,19 @@ function initHomepage() {
 
   const applyEggImpact = (record) => {
     if (record.type.impact === "confidence") {
-      syncPercent = clamp(syncPercent + 0.85, 90, 99);
-      feedMatch = clamp(feedMatch + 0.7, 80, 99);
-      dailyProgress = clamp(dailyProgress + 0.22, 70, 99);
-      alertTotal = clamp(alertTotal - 0.2, 1, 12);
+      syncPercent = clamp(syncPercent + 0.9, 90, 99);
+      feedMatch = clamp(feedMatch + 0.8, 80, 99);
+      dailyProgress = clamp(dailyProgress + 0.18, 70, 99);
+      alertTotal = clamp(alertTotal - 0.24, 1, 12);
     } else if (record.type.impact === "volume") {
-      dailyProgress = clamp(dailyProgress + 0.45, 70, 99);
-      utilization = clamp(utilization + 0.35, 48, 79);
-      activeHouses = clamp(activeHouses + 0.22, 12, 24);
+      dailyProgress = clamp(dailyProgress + 0.42, 70, 99);
+      utilization = clamp(utilization + 0.3, 48, 79);
+      activeHouses = clamp(activeHouses + 0.18, 12, 24);
     } else {
-      alertTotal = clamp(alertTotal + 1.05, 1, 12);
-      syncPercent = clamp(syncPercent - 0.4, 90, 99);
-      feedMatch = clamp(feedMatch - 0.5, 80, 99);
-      mortalityVerified = clamp(mortalityVerified + 0.1, 1, 4);
+      alertTotal = clamp(alertTotal + 1.08, 1, 12);
+      syncPercent = clamp(syncPercent - 0.45, 90, 99);
+      feedMatch = clamp(feedMatch - 0.55, 80, 99);
+      mortalityVerified = clamp(mortalityVerified + 0.08, 1, 4);
     }
   };
 
@@ -329,7 +360,7 @@ function initHomepage() {
     stage.style.setProperty("--belt-shift", `${beltShift}px`);
 
     spawnTimer += delta;
-    const spawnRate = captureMode ? 0.28 : 0.52;
+    const spawnRate = captureMode ? 0.32 : 0.62;
     const nextType = chooseEggType();
     if (spawnTimer >= spawnRate && hasSpawnClearance(nextType.minGap)) {
       spawnEgg();
@@ -347,13 +378,6 @@ function initHomepage() {
       if (egg.x + egg.width * 0.5 >= checkpoint) handleEggCheckpoint(egg);
       if (egg.x > streamWidth + 120) removeEgg(egg);
     });
-
-    storyTimer += delta;
-    if (!prefersReducedMotion.matches && storyTimer >= 3.6 && storyLines.length > 1) {
-      storyIndex = (storyIndex + 1) % storyLines.length;
-      setStory(storyIndex);
-      storyTimer = 0;
-    }
 
     updateDashboard();
     window.requestAnimationFrame(animate);
@@ -383,7 +407,6 @@ function initHomepage() {
 
   updateClock();
   updateDashboard();
-  setStory(0);
   window.setInterval(updateClock, 1000);
   window.requestAnimationFrame(animate);
 }
