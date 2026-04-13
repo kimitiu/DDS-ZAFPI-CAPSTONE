@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -36,7 +36,7 @@
   --radius-sm: 12px;
   --max-width: 1240px;
   --nav-height: 86px;
-  --transition: 220ms ease;
+  --transition: 260ms cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 *,
@@ -2755,6 +2755,475 @@ select {
   }
 }
 
+/* Homepage stage v4 */
+.demo-stage--full {
+  min-height: 980px;
+}
+
+.sim-overlay--landing {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: clamp(24px, 2.4vw, 34px);
+  gap: 28px;
+}
+
+.sim-home-grid {
+  position: relative;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: minmax(340px, 470px) minmax(320px, 420px);
+  justify-content: space-between;
+  align-items: start;
+  gap: 26px;
+}
+
+.hero-floating-card--stage {
+  max-width: 470px;
+  padding: 28px;
+  background: rgba(255, 255, 255, 0.84);
+}
+
+.stage-quote {
+  margin-bottom: 12px;
+  font-size: clamp(3rem, 5.4vw, 5rem);
+  line-height: 0.92;
+}
+
+.stage-quote-copy {
+  min-height: 5.4em;
+}
+
+.monitor-stack-inline {
+  width: min(100%, 420px);
+  justify-self: end;
+  display: grid;
+  gap: 18px;
+}
+
+.collapsible-card {
+  overflow: hidden;
+}
+
+.collapsible-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.collapsible-body {
+  display: grid;
+  gap: 14px;
+  max-height: 1200px;
+  opacity: 1;
+  overflow: hidden;
+  transition: max-height 280ms ease, opacity 220ms ease, margin 220ms ease;
+}
+
+.collapsible-card.is-collapsed .collapsible-body {
+  max-height: 0;
+  opacity: 0;
+  margin-top: 0;
+}
+
+.collapse-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.collapse-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #f5fbf4;
+  cursor: pointer;
+  transition: transform 220ms ease, background 220ms ease, border-color 220ms ease;
+}
+
+.collapse-toggle:hover,
+.collapse-toggle:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+.collapse-toggle span {
+  display: inline-block;
+  transition: transform 220ms ease;
+}
+
+.collapse-toggle[aria-expanded="false"] span {
+  transform: rotate(-90deg);
+}
+
+.record-dock {
+  width: 100%;
+  padding: 18px 20px;
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(19, 31, 28, 0.88), rgba(12, 24, 22, 0.82)),
+    rgba(255, 255, 255, 0.04);
+}
+
+.record-dock .collapsible-body {
+  margin-top: 8px;
+}
+
+.record-dock .signal-value {
+  font-size: clamp(1.9rem, 3.2vw, 3.35rem);
+  line-height: 0.94;
+  max-width: 8ch;
+}
+
+.record-dock .signal-copy {
+  max-width: 34ch;
+}
+
+.record-dock .signal-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.dashboard-panel--landing {
+  width: 100%;
+  padding: 18px;
+  max-width: none;
+  animation: none;
+}
+
+.dashboard-panel--landing .collapsible-body {
+  margin-top: 8px;
+}
+
+.dashboard-grid {
+  grid-template-columns: 112px minmax(0, 1fr);
+}
+
+.dashboard-mini-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.sim-tray-band {
+  position: relative;
+  z-index: 4;
+  display: grid;
+  gap: 14px;
+  width: min(100%, 860px);
+  padding: 10px 0 260px;
+}
+
+.sim-tray-copy {
+  max-width: 58ch;
+}
+
+.sim-tray-title {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  line-height: 0.96;
+  color: var(--text);
+}
+
+.sim-tray-lead {
+  margin: 0;
+  max-width: 56ch;
+  color: var(--muted);
+  font-size: 1.03rem;
+}
+
+.scene-direction {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  width: fit-content;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(17, 35, 49, 0.1);
+  background: rgba(255, 255, 255, 0.58);
+  color: var(--green-900);
+  font-size: 0.92rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+}
+
+.scene-arrow {
+  opacity: 0.72;
+}
+
+.scene-grade-guide {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.grade-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(15, 28, 24, 0.42);
+  box-shadow: 0 14px 30px rgba(10, 20, 18, 0.08);
+  color: rgba(248, 251, 245, 0.92);
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  backdrop-filter: blur(12px);
+}
+
+.grade-chip--peewee {
+  background: rgba(100, 118, 93, 0.75);
+}
+
+.grade-chip--small {
+  background: rgba(92, 108, 118, 0.72);
+}
+
+.grade-chip--medium {
+  background: rgba(82, 94, 105, 0.72);
+}
+
+.grade-chip--large {
+  background: rgba(112, 141, 103, 0.78);
+}
+
+.grade-chip--xl {
+  background: rgba(126, 141, 104, 0.78);
+}
+
+.grade-chip--jumbo {
+  background: rgba(83, 117, 88, 0.82);
+}
+
+.grade-chip--cracked {
+  background: rgba(130, 88, 74, 0.8);
+}
+
+.grade-chip--leakers {
+  background: rgba(121, 72, 66, 0.82);
+}
+
+.scene-instruction {
+  width: fit-content;
+}
+
+.scene-farmline {
+  left: 10%;
+  right: 24%;
+  bottom: 270px;
+  gap: 16px;
+}
+
+.scene-silo {
+  right: 12%;
+  bottom: 278px;
+  transform: scale(0.92);
+}
+
+.scene-belt {
+  left: 10%;
+  right: 12%;
+  bottom: 84px;
+  height: 126px;
+  z-index: 1;
+}
+
+.scene-belt-track {
+  inset: 22px 0 0;
+}
+
+.egg-stream {
+  inset: 0 2% 0 2%;
+}
+
+.sim-egg {
+  top: 20px;
+  box-shadow:
+    0 14px 22px rgba(18, 24, 27, 0.16),
+    inset 0 2px 5px rgba(255, 255, 255, 0.45);
+}
+
+.sim-egg::before {
+  content: "";
+  position: absolute;
+  inset: 12% 18% 42% 24%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.62), transparent 72%);
+  opacity: 0.88;
+}
+
+.egg--peewee {
+  background: radial-gradient(circle at 35% 30%, #fbf8ee, #ddd3ba 74%);
+}
+
+.egg--small {
+  background: radial-gradient(circle at 35% 30%, #f7f1e4, #d9d2be 74%);
+}
+
+.egg--medium {
+  background:
+    radial-gradient(circle at 35% 30%, #f5f0e4, #d4ccb6 70%),
+    radial-gradient(circle at 26% 54%, rgba(104, 86, 62, 0.28) 0 2px, transparent 2px),
+    radial-gradient(circle at 66% 30%, rgba(104, 86, 62, 0.22) 0 1.5px, transparent 1.5px);
+}
+
+.egg--large {
+  background: radial-gradient(circle at 35% 30%, #f8ecd8, #ddbe90 70%);
+}
+
+.egg--xl {
+  background: radial-gradient(circle at 35% 28%, #fff2d9, #e4c98f 70%);
+}
+
+.egg--jumbo {
+  background: radial-gradient(circle at 35% 28%, #fffef9, #f0dfbd 70%);
+}
+
+.egg--cracked {
+  background:
+    linear-gradient(120deg, transparent 44%, rgba(112, 75, 58, 0.82) 45%, rgba(112, 75, 58, 0.82) 49%, transparent 50%),
+    radial-gradient(circle at 35% 30%, #f0dfd8, #cd9f91 74%);
+}
+
+.egg--leakers {
+  background:
+    radial-gradient(circle at 52% 78%, rgba(196, 121, 88, 0.74) 0 16%, transparent 18%),
+    radial-gradient(circle at 35% 30%, #f5e2d7, #bf8878 74%);
+}
+
+.sim-toast {
+  left: auto;
+  right: 26px;
+  bottom: 26px;
+}
+
+.home-team-section {
+  margin-top: 10px;
+}
+
+@media (max-width: 1240px) {
+  .sim-home-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-floating-card--stage,
+  .monitor-stack-inline {
+    max-width: none;
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  .sim-tray-band {
+    width: min(100%, 760px);
+    padding-bottom: 240px;
+  }
+
+  .scene-farmline {
+    right: 18%;
+  }
+
+  .scene-silo {
+    right: 9%;
+  }
+}
+
+@media (max-width: 980px) {
+  .demo-stage--full {
+    min-height: 1140px;
+  }
+
+  .sim-overlay--landing {
+    gap: 22px;
+  }
+
+  .sim-tray-band {
+    padding-bottom: 220px;
+  }
+
+  .scene-farmline {
+    left: 8%;
+    right: 12%;
+    bottom: 270px;
+    gap: 12px;
+  }
+
+  .scene-silo {
+    right: 6%;
+    bottom: 280px;
+    transform: scale(0.8);
+  }
+
+  .scene-belt {
+    left: 8%;
+    right: 8%;
+    bottom: 86px;
+  }
+}
+
+@media (max-width: 760px) {
+  .demo-stage--full {
+    min-height: 1200px;
+  }
+
+  .stage-quote {
+    font-size: clamp(2.4rem, 11vw, 3.8rem);
+  }
+
+  .record-dock .signal-value {
+    font-size: clamp(1.8rem, 8vw, 2.8rem);
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .dashboard-mini-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .sim-tray-band {
+    padding-bottom: 200px;
+  }
+
+  .scene-direction {
+    flex-wrap: wrap;
+  }
+
+  .scene-farmline {
+    left: 5%;
+    right: 5%;
+    bottom: 250px;
+  }
+
+  .scene-silo {
+    display: none;
+  }
+
+  .scene-belt {
+    left: 5%;
+    right: 5%;
+    bottom: 72px;
+    height: 112px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage-quote,
+  .stage-quote-copy,
+  .collapse-toggle span {
+    transition: none;
+  }
+}
+
 </style>
 <!-- INLINE_SITE_CSS_END -->
 </head>
@@ -2858,11 +3327,126 @@ select {
               </div>
             </div>
 
-            <section class="sim-tray-band reveal reveal-delay-1">
+            <div class="sim-home-grid">
+              <article class="hero-floating-card hero-floating-card--stage reveal reveal-delay-1">
+                <div class="eyebrow">Simulation-first home</div>
+                <h1 class="section-title stage-quote" id="quoteTitle">We&rsquo;re hatching something special.</h1>
+                <p class="lead hero-lead stage-quote-copy" id="quoteBody">Project Farmbrite helps farm workers log production, feed intake, mortality, medicine, and vaccine activity so the sorting center can see the day as it happens.</p>
+                <div class="positioning-line">Project Farmbrite transforms ZAFPI&rsquo;s production operations from delayed, manual reporting into a structured, same-day management system that enables real-time visibility, stronger data integrity, and better operational control.</div>
+                <div class="hero-actions">
+                  <a class="button button-primary" href="about.html">Learn More</a>
+                  <a class="button button-secondary" href="system.html">See the System</a>
+                  <a class="button button-secondary" href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">Farmbrite Demo</a>
+                </div>
+                <div class="hero-facts">
+                  <span class="fact-pill"><strong>43%</strong> reconciliation</span>
+                  <span class="fact-pill"><strong>57%</strong> utilization</span>
+                  <span class="fact-pill"><strong>24</strong> houses</span>
+                  <span class="fact-pill"><strong>95%+</strong> compliance target</span>
+                </div>
+              </article>
+
+              <div class="monitor-stack-inline reveal reveal-delay-2">
+                <article class="signal-card record-dock collapsible-card is-expanded">
+                  <div class="collapsible-head">
+                    <div class="signal-head">
+                      <span>Latest record</span>
+                      <span class="live-dot" aria-hidden="true"></span>
+                    </div>
+                    <button class="collapse-toggle" type="button" data-collapse-target="latestRecordBody" aria-expanded="true" aria-label="Toggle latest record">
+                      <span aria-hidden="true">&#9662;</span>
+                    </button>
+                  </div>
+                  <div class="collapsible-body" id="latestRecordBody">
+                    <div class="signal-value signal-value--compact" id="latestRecord">Awaiting next field pass</div>
+                    <p class="signal-copy" id="latestNarrative">Press and hold spacebar to run the sorter and send the next pass into the console.</p>
+                    <div class="signal-meta">
+                      <span id="housesMeta">14 / 24 active</span>
+                      <span id="passesMeta">126 passes</span>
+                      <span id="syncMeta">95% sync</span>
+                    </div>
+                  </div>
+                </article>
+
+                <aside class="dashboard-panel dashboard-panel--landing collapsible-card is-expanded">
+                  <div class="collapsible-head dashboard-header">
+                    <div>
+                      <h2 class="dashboard-title">Farmbrite console</h2>
+                      <div class="dashboard-subtitle">Sorting center visibility for farm and production reporting</div>
+                    </div>
+                    <div class="collapse-actions">
+                      <span class="dashboard-time">Monitor</span>
+                      <button class="collapse-toggle" type="button" data-collapse-target="consoleBody" aria-expanded="true" aria-label="Toggle console">
+                        <span aria-hidden="true">&#9662;</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="collapsible-body" id="consoleBody">
+                    <article class="dashboard-summary-card">
+                      <div class="signal-head">
+                        <span>Visibility view</span>
+                        <span>Sorting center</span>
+                      </div>
+                      <div class="dashboard-summary-value" id="visibilityValue">57%</div>
+                      <p class="signal-copy" id="visibilityNarrative">Workers capture production at the farm, then management sees feed, casualties, medicine, and vaccine readiness at the sorting center.</p>
+                    </article>
+
+                    <div class="dashboard-grid">
+                      <div class="ring-card">
+                        <div class="ring-visual" id="ringVisual"><strong id="ringValue">95%</strong></div>
+                        <span class="dashboard-subtitle">Same-day sync confidence</span>
+                      </div>
+                      <div>
+                        <div class="dashboard-mini-grid">
+                          <article class="dashboard-mini-card">
+                            <label>Houses active</label>
+                            <strong id="housesCount">14 / 24</strong>
+                          </article>
+                          <article class="dashboard-mini-card">
+                            <label>Passes logged</label>
+                            <strong id="passesCount">126</strong>
+                          </article>
+                          <article class="dashboard-mini-card">
+                            <label>Feed intake</label>
+                            <strong id="feedCount">18.6 tons</strong>
+                          </article>
+                          <article class="dashboard-mini-card">
+                            <label>Casualties</label>
+                            <strong id="alertCount">2 logged</strong>
+                          </article>
+                        </div>
+                        <div class="dashboard-progress">
+                          <div class="dashboard-progress-item">
+                            <div class="dashboard-progress-head"><span>Daily reporting progress</span><span id="dailyLabel">81% of daily reporting target</span></div>
+                            <div class="dashboard-progress-bar"><span id="dailyBar" style="--fill: 81%"></span></div>
+                          </div>
+                          <div class="dashboard-progress-item">
+                            <div class="dashboard-progress-head"><span>Medicine log readiness</span><span id="syncLabel">92% of medicine log target</span></div>
+                            <div class="dashboard-progress-bar"><span id="syncBar" style="--fill: 92%"></span></div>
+                          </div>
+                          <div class="dashboard-progress-item">
+                            <div class="dashboard-progress-head"><span>Vaccine schedule readiness</span><span id="utilLabel">86% of vaccine schedule target</span></div>
+                            <div class="dashboard-progress-bar"><span id="utilBar" style="--fill: 86%"></span></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </aside>
+              </div>
+            </div>
+
+            <section class="sim-tray-band reveal reveal-delay-3">
               <div class="sim-tray-copy">
-                <div class="eyebrow">Live sorter</div>
-                <h1 class="sim-tray-title">Eggs move from tray to same-day record.</h1>
-                <p class="sim-tray-lead">Peewee through Jumbo plus defect eggs are captured, sorted, and logged without waiting for a delayed reporting cycle.</p>
+                <div class="eyebrow">Farm to sorting center</div>
+                <h2 class="sim-tray-title">From the farm houses to the sorting center, every tray becomes a record.</h2>
+                <p class="sim-tray-lead">Workers log production, feed intake, casualties, medicine, and vaccine updates at the source. Management sees the sorting center and reporting console update in the same day.</p>
+              </div>
+              <div class="scene-direction">
+                <span>Farm houses</span>
+                <span class="scene-arrow" aria-hidden="true">&rarr;</span>
+                <span>Sorting center</span>
               </div>
               <div class="scene-grade-guide">
                 <span class="grade-chip grade-chip--peewee">Peewee</span>
@@ -2874,6 +3458,7 @@ select {
                 <span class="grade-chip grade-chip--cracked">Cracked</span>
                 <span class="grade-chip grade-chip--leakers">Leakers</span>
               </div>
+              <span class="instruction-chip scene-instruction">Press and hold the stage or spacebar to run the sorter</span>
             </section>
 
             <div class="sim-toast" id="simToast">
@@ -2882,117 +3467,6 @@ select {
             </div>
           </div>
         </div>
-      </section>
-
-      <section class="section-shell home-control-strip reveal reveal-delay-2">
-        <div class="home-control-strip__rail">
-          <span class="instruction-chip">Hold press or spacebar to simulate live capture</span>
-          <div class="sim-controls">
-            <button class="mini-button" id="focusToggle" type="button">Focus view</button>
-            <a class="mini-button" href="about.html">Overview</a>
-            <a class="mini-button" href="problem.html">Problem</a>
-            <a class="mini-button" href="system.html">System</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="two-column-grid home-monitor-grid reveal">
-        <article class="signal-card record-dock reveal reveal-delay-1">
-          <div class="signal-head">
-            <span>Latest record</span>
-            <span class="live-dot" aria-hidden="true"></span>
-          </div>
-          <div class="signal-value signal-value--compact" id="latestRecord">Awaiting next field pass</div>
-          <p class="signal-copy" id="latestNarrative">Monitoring the current-state baseline before capture begins.</p>
-          <div class="signal-meta">
-            <span id="housesMeta">14 / 24 active</span>
-            <span id="passesMeta">126 passes</span>
-            <span id="syncMeta">95% sync</span>
-          </div>
-        </article>
-
-        <aside class="dashboard-panel dashboard-panel--landing reveal reveal-delay-2">
-          <div class="dashboard-header">
-            <div>
-              <h2 class="dashboard-title">Farmbrite console</h2>
-              <div class="dashboard-subtitle">Production review, sync, and house-level control</div>
-            </div>
-            <div class="dashboard-time">Monitor</div>
-          </div>
-
-          <article class="dashboard-summary-card">
-            <div class="signal-head">
-              <span>Visibility view</span>
-              <span>24-house scope</span>
-            </div>
-            <div class="dashboard-summary-value" id="visibilityValue">57%</div>
-            <p class="signal-copy" id="visibilityNarrative">The baseline shows why ZAFPI needs same-day operational visibility.</p>
-          </article>
-
-          <div class="dashboard-grid">
-            <div class="ring-card">
-              <div class="ring-visual" id="ringVisual"><strong id="ringValue">95%</strong></div>
-              <span class="dashboard-subtitle">Same-day sync confidence</span>
-            </div>
-            <div>
-              <div class="dashboard-mini-grid">
-                <article class="dashboard-mini-card">
-                  <label>Houses active</label>
-                  <strong id="housesCount">14 / 24</strong>
-                </article>
-                <article class="dashboard-mini-card">
-                  <label>Passes logged</label>
-                  <strong id="passesCount">126</strong>
-                </article>
-                <article class="dashboard-mini-card">
-                  <label>Feed match</label>
-                  <strong id="feedCount">88%</strong>
-                </article>
-                <article class="dashboard-mini-card">
-                  <label>Exceptions</label>
-                  <strong id="alertCount">6 open</strong>
-                </article>
-              </div>
-              <div class="dashboard-progress">
-                <div class="dashboard-progress-item">
-                  <div class="dashboard-progress-head"><span>Daily reporting progress</span><span id="dailyLabel">81% of daily reporting target</span></div>
-                  <div class="dashboard-progress-bar"><span id="dailyBar" style="--fill: 81%"></span></div>
-                </div>
-                <div class="dashboard-progress-item">
-                  <div class="dashboard-progress-head"><span>Same-day sync</span><span id="syncLabel">95% same-day sync confidence</span></div>
-                  <div class="dashboard-progress-bar"><span id="syncBar" style="--fill: 95%"></span></div>
-                </div>
-                <div class="dashboard-progress-item">
-                  <div class="dashboard-progress-head"><span>Utilization pathway</span><span id="utilLabel">57% utilization pathway</span></div>
-                  <div class="dashboard-progress-bar"><span id="utilBar" style="--fill: 57%"></span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </aside>
-      </section>
-
-      <section class="split-grid home-support-grid reveal">
-        <article class="hero-floating-card hero-floating-card--support reveal reveal-delay-1">
-          <div class="eyebrow">Simulation-first home</div>
-          <h2 class="section-title sim-support-title">We&rsquo;re hatching something special.</h2>
-          <p class="lead hero-lead">Project Farmbrite redesigns ZAFPI&rsquo;s production reporting from a paper-first, T+1 operating model into a structured same-day management system built for visibility, data integrity, and tighter farm control.</p>
-          <div class="positioning-line">Project Farmbrite transforms ZAFPI&rsquo;s production operations from delayed, manual reporting into a structured, same-day management system that enables real-time visibility, stronger data integrity, and better operational control.</div>
-        </article>
-
-        <article class="section-shell home-support-actions reveal reveal-delay-2">
-          <div class="hero-actions">
-            <a class="button button-primary" href="about.html">Learn More</a>
-            <a class="button button-secondary" href="system.html">See the System</a>
-            <a class="button button-secondary" href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">Farmbrite Demo</a>
-          </div>
-          <div class="hero-facts">
-            <span class="fact-pill"><strong>43%</strong> reconciliation</span>
-            <span class="fact-pill"><strong>57%</strong> utilization</span>
-            <span class="fact-pill"><strong>24</strong> houses</span>
-            <span class="fact-pill"><strong>95%+</strong> compliance target</span>
-          </div>
-        </article>
       </section>
 
       <section class="section-shell home-team-section reveal">
@@ -3270,9 +3744,10 @@ function initHomepage() {
   const stage = document.getElementById("demoStage");
   const fallbackScene = document.getElementById("fallbackScene");
   const eggStream = document.getElementById("eggStream");
-  const focusToggle = document.getElementById("focusToggle");
-  const storyLines = Array.from(document.querySelectorAll(".story-line"));
   const simTime = document.getElementById("simTime");
+  const stateMode = document.getElementById("stateMode");
+  const quoteTitle = document.getElementById("quoteTitle");
+  const quoteBody = document.getElementById("quoteBody");
   const latestRecord = document.getElementById("latestRecord");
   const latestNarrative = document.getElementById("latestNarrative");
   const visibilityValue = document.getElementById("visibilityValue");
@@ -3282,9 +3757,7 @@ function initHomepage() {
   const syncMeta = document.getElementById("syncMeta");
   const housesCount = document.getElementById("housesCount");
   const passesCount = document.getElementById("passesCount");
-  const syncCount = document.getElementById("syncCount");
   const feedCount = document.getElementById("feedCount");
-  const mortalityCount = document.getElementById("mortalityCount");
   const alertCount = document.getElementById("alertCount");
   const dailyBar = document.getElementById("dailyBar");
   const dailyLabel = document.getElementById("dailyLabel");
@@ -3294,41 +3767,93 @@ function initHomepage() {
   const utilLabel = document.getElementById("utilLabel");
   const ringVisual = document.getElementById("ringVisual");
   const ringValue = document.getElementById("ringValue");
-  const stateMode = document.getElementById("stateMode");
   const toast = document.getElementById("simToast");
   const toastText = document.getElementById("simToastText");
+  const collapseToggles = Array.from(document.querySelectorAll("[data-collapse-target]"));
+  const trayBand = stage ? stage.querySelector(".sim-tray-band") : null;
 
   if (!stage || !eggStream) return;
   if (fallbackScene) fallbackScene.hidden = true;
 
-  const laneOffsets = [16, 42];
+  const laneOffsets = [16, 44];
   const layerHouses = Array.from({ length: 19 }, (_, index) => `Layer House ${String(index + 1).padStart(2, "0")}`);
   const growerHouses = Array.from({ length: 3 }, (_, index) => `Grower House ${String(index + 1).padStart(2, "0")}`);
   const brooderHouses = Array.from({ length: 2 }, (_, index) => `Brooder House ${String(index + 1).padStart(2, "0")}`);
 
+  const quoteDeck = [
+    {
+      title: "We’re hatching something special.",
+      body: "Project Farmbrite helps farm workers log production, feed intake, mortality, medicine, and vaccine activity so the sorting center can see the day as it happens."
+    },
+    {
+      title: "From farm logbook to sorting center console.",
+      body: "Every pass starts at the houses, then flows into a same-day console that supports feed planning, chick ordering, culling, and operational review."
+    },
+    {
+      title: "The belt moves, the record updates.",
+      body: "Instead of waiting for delayed reconciliation, management can follow egg grades, exceptions, and reporting discipline while work is still in motion."
+    },
+    {
+      title: "Workers capture the source, managers see the signal.",
+      body: "Production, casualties, medicine, and vaccine entries are visible in one reporting rhythm so decisions can be based on data rather than guesswork."
+    },
+    {
+      title: "Same-day visibility changes the whole farm rhythm.",
+      body: "Farmbrite turns tray movement into operational visibility, helping ZAFPI act earlier on feed, health, and production trends."
+    }
+  ];
+
   const eggTypes = [
     {
-      key: "jumbo",
-      label: "Jumbo",
-      className: "egg--jumbo",
-      width: 62,
-      height: 82,
-      weight: 0.12,
-      minGap: 166,
-      speedBoost: 22,
-      lanePool: [0],
-      destinationPool: layerHouses,
-      result: "high-yield tray accepted",
-      impact: "confidence"
+      key: "peewee",
+      label: "Peewee",
+      className: "egg--peewee",
+      width: 26,
+      height: 38,
+      weight: 0.08,
+      minGap: 116,
+      speedBoost: -12,
+      lanePool: [1],
+      destinationPool: growerHouses.concat(layerHouses.slice(0, 5)),
+      result: "peewee tray captured for graded volume tracking",
+      impact: "volume"
+    },
+    {
+      key: "small",
+      label: "Small",
+      className: "egg--small",
+      width: 34,
+      height: 48,
+      weight: 0.16,
+      minGap: 126,
+      speedBoost: -8,
+      lanePool: [1],
+      destinationPool: growerHouses.concat(layerHouses.slice(0, 8)),
+      result: "small tray recorded into the reporting mix",
+      impact: "volume"
+    },
+    {
+      key: "medium",
+      label: "Medium",
+      className: "egg--medium",
+      width: 42,
+      height: 58,
+      weight: 0.2,
+      minGap: 138,
+      speedBoost: -2,
+      lanePool: [0, 1],
+      destinationPool: layerHouses.concat(growerHouses),
+      result: "medium tray added to consolidation",
+      impact: "volume"
     },
     {
       key: "large",
       label: "Large",
       className: "egg--large",
-      width: 54,
-      height: 74,
-      weight: 0.34,
-      minGap: 150,
+      width: 50,
+      height: 68,
+      weight: 0.21,
+      minGap: 148,
       speedBoost: 12,
       lanePool: [0, 1],
       destinationPool: layerHouses,
@@ -3336,62 +3861,76 @@ function initHomepage() {
       impact: "confidence"
     },
     {
-      key: "medium",
-      label: "Medium",
-      className: "egg--medium",
-      width: 46,
-      height: 64,
-      weight: 0.26,
-      minGap: 138,
-      speedBoost: 0,
-      lanePool: [0, 1],
-      destinationPool: layerHouses.concat(growerHouses),
-      result: "volume tray added to consolidation",
-      impact: "volume"
+      key: "xl",
+      label: "XL",
+      className: "egg--xl",
+      width: 58,
+      height: 78,
+      weight: 0.13,
+      minGap: 160,
+      speedBoost: 20,
+      lanePool: [0],
+      destinationPool: layerHouses,
+      result: "XL tray locked into the high-output batch",
+      impact: "confidence"
     },
     {
-      key: "small",
-      label: "Small",
-      className: "egg--small",
-      width: 40,
-      height: 56,
-      weight: 0.18,
-      minGap: 126,
-      speedBoost: -10,
+      key: "jumbo",
+      label: "Jumbo",
+      className: "egg--jumbo",
+      width: 66,
+      height: 90,
+      weight: 0.09,
+      minGap: 174,
+      speedBoost: 24,
+      lanePool: [0],
+      destinationPool: layerHouses,
+      result: "jumbo tray locked into the premium output run",
+      impact: "confidence"
+    },
+    {
+      key: "cracked",
+      label: "Cracked",
+      className: "egg--cracked",
+      width: 44,
+      height: 60,
+      weight: 0.07,
+      minGap: 146,
+      speedBoost: 4,
       lanePool: [1],
-      destinationPool: growerHouses.concat(layerHouses.slice(0, 6)),
-      result: "secondary grade tray recorded",
-      impact: "volume"
+      destinationPool: layerHouses.concat(brooderHouses),
+      result: "cracked egg isolated for exception review",
+      impact: "exception"
     },
     {
-      key: "exception",
-      label: "Exception",
-      className: "egg--exception",
-      width: 50,
-      height: 68,
-      weight: 0.1,
-      minGap: 154,
-      speedBoost: 6,
-      lanePool: [0, 1],
+      key: "leakers",
+      label: "Leakers",
+      className: "egg--leakers",
+      width: 48,
+      height: 64,
+      weight: 0.06,
+      minGap: 152,
+      speedBoost: 0,
+      lanePool: [1],
       destinationPool: layerHouses.concat(brooderHouses),
-      result: "manual review required",
+      result: "leaker isolated and raised for quality review",
       impact: "exception"
     }
   ];
 
   let eggs = [];
   let captureMode = false;
-  let focusMode = false;
+  let quoteIndex = 0;
+  let quoteTimer = 0;
   let passesLogged = 126;
   let activeHouses = 14;
   let syncPercent = 95;
-  let feedMatch = 88;
-  let utilization = 57;
+  let visibilityScore = 57;
+  let feedTons = 18.6;
+  let casualtyCount = 2;
   let dailyProgress = 81;
-  let alertTotal = 6;
-  let mortalityVerified = 2;
-  let storyIndex = 0;
-  let storyTimer = 0;
+  let medicineReadiness = 92;
+  let vaccineReadiness = 86;
   let spawnTimer = 0.4;
   let beltShift = 0;
   let lastFrame = performance.now();
@@ -3399,14 +3938,8 @@ function initHomepage() {
   let toastTimer = 0;
 
   const recordState = {
-    title: "Awaiting next field pass",
-    narrative: "Monitoring the current-state baseline before capture begins."
-  };
-
-  const setStory = (index) => {
-    storyLines.forEach((line, lineIndex) => {
-      line.classList.toggle("is-active", lineIndex === index);
-    });
+    title: "Sorter idle",
+    narrative: "Press and hold spacebar to run the sorter and send the next pass into the console."
   };
 
   const updateClock = () => {
@@ -3417,6 +3950,12 @@ function initHomepage() {
     });
   };
 
+  const setQuote = (index) => {
+    if (!quoteTitle || !quoteBody) return;
+    quoteTitle.textContent = quoteDeck[index].title;
+    quoteBody.textContent = quoteDeck[index].body;
+  };
+
   const pickFrom = (pool) => pool[Math.floor(Math.random() * pool.length)];
 
   const chooseEggType = () => {
@@ -3425,24 +3964,22 @@ function initHomepage() {
       cursor -= option.weight;
       if (cursor <= 0) return option;
     }
-    return eggTypes[1];
+    return eggTypes[3];
   };
 
   const buildRecord = (type) => {
     const lane = pickFrom(type.lanePool);
     const destination = pickFrom(type.destinationPool);
+    const isDefect = type.impact === "exception";
     return {
       type,
       lane,
       destination,
-      title:
-        type.key === "exception"
-          ? `${type.label} egg flagged from ${destination}`
-          : `${type.label} egg logged to ${destination}`,
-      narrative:
-        type.key === "exception"
-          ? `${type.result}. Supervisor review is now visible in the monitor stack.`
-          : `${type.result}. The pass is visible immediately inside the reporting console.`
+      title: isDefect ? `${type.label} flagged from ${destination}` : `${type.label} egg logged to ${destination}`,
+      narrative: isDefect
+        ? `${type.result}. Sorting center review is now visible for management.`
+        : `${type.result}. The pass is visible immediately inside the reporting console.`,
+      recordLabel: `${type.label} ${isDefect ? "flagged" : "logged"}`
     };
   };
 
@@ -3463,75 +4000,78 @@ function initHomepage() {
     if (captureMode === nextState) return;
     captureMode = nextState;
     stage.classList.toggle("is-active", captureMode);
-    if (stateMode) stateMode.textContent = captureMode ? "Capture active" : "Monitoring baseline";
+    if (stateMode) stateMode.textContent = captureMode ? "Sorter running" : "Monitoring baseline";
     if (captureMode) {
-      showToast("Capture mode is live. Same-day recording, sorting, and dashboard updates are accelerating.");
+      showToast("Sorter running. Each tray is now logging directly into the Farmbrite console.");
     }
   };
 
   const applyEggImpact = (record) => {
     if (record.type.impact === "confidence") {
-      syncPercent = clamp(syncPercent + 0.85, 90, 99);
-      feedMatch = clamp(feedMatch + 0.7, 80, 99);
-      dailyProgress = clamp(dailyProgress + 0.22, 70, 99);
-      alertTotal = clamp(alertTotal - 0.2, 1, 12);
+      syncPercent = clamp(syncPercent + 0.7, 90, 99);
+      visibilityScore = clamp(visibilityScore + 0.42, 50, 92);
+      feedTons = clamp(feedTons + 0.08, 16, 24);
+      dailyProgress = clamp(dailyProgress + 0.26, 70, 99);
+      casualtyCount = clamp(casualtyCount - 0.04, 0, 8);
     } else if (record.type.impact === "volume") {
-      dailyProgress = clamp(dailyProgress + 0.45, 70, 99);
-      utilization = clamp(utilization + 0.35, 48, 79);
-      activeHouses = clamp(activeHouses + 0.22, 12, 24);
+      visibilityScore = clamp(visibilityScore + 0.34, 50, 92);
+      dailyProgress = clamp(dailyProgress + 0.34, 70, 99);
+      activeHouses = clamp(activeHouses + 0.12, 12, 24);
+      feedTons = clamp(feedTons + 0.04, 16, 24);
     } else {
-      alertTotal = clamp(alertTotal + 1.05, 1, 12);
-      syncPercent = clamp(syncPercent - 0.4, 90, 99);
-      feedMatch = clamp(feedMatch - 0.5, 80, 99);
-      mortalityVerified = clamp(mortalityVerified + 0.1, 1, 4);
+      casualtyCount = clamp(casualtyCount + 0.22, 0, 8);
+      syncPercent = clamp(syncPercent - 0.2, 90, 99);
+      visibilityScore = clamp(visibilityScore - 0.12, 50, 92);
+      medicineReadiness = clamp(medicineReadiness - 0.18, 75, 99);
+      vaccineReadiness = clamp(vaccineReadiness - 0.15, 72, 99);
     }
   };
 
   const updateDashboard = () => {
     const targets = captureMode
-      ? { sync: 97, feed: 95, utilization: 66, daily: 95, alerts: 3, houses: 24, mortality: 1 }
-      : { sync: 95, feed: 88, utilization: 57, daily: 81, alerts: 6, houses: 14, mortality: 2 };
+      ? { sync: 97, visibility: 74, daily: 95, houses: 24, feed: 19.6, casualties: 1, medicine: 97, vaccine: 94 }
+      : { sync: 95, visibility: 57, daily: 81, houses: 14, feed: 18.6, casualties: 2, medicine: 92, vaccine: 86 };
 
     syncPercent += (targets.sync - syncPercent) * 0.018;
-    feedMatch += (targets.feed - feedMatch) * 0.02;
-    utilization += (targets.utilization - utilization) * 0.018;
+    visibilityScore += (targets.visibility - visibilityScore) * 0.018;
     dailyProgress += (targets.daily - dailyProgress) * 0.02;
-    alertTotal += (targets.alerts - alertTotal) * 0.026;
     activeHouses += (targets.houses - activeHouses) * 0.02;
-    mortalityVerified += (targets.mortality - mortalityVerified) * 0.03;
+    feedTons += (targets.feed - feedTons) * 0.02;
+    casualtyCount += (targets.casualties - casualtyCount) * 0.03;
+    medicineReadiness += (targets.medicine - medicineReadiness) * 0.02;
+    vaccineReadiness += (targets.vaccine - vaccineReadiness) * 0.02;
 
     const roundedSync = Math.round(syncPercent);
-    const roundedFeed = Math.round(feedMatch);
-    const roundedUtilization = Math.round(utilization);
+    const roundedVisibility = Math.round(visibilityScore);
     const roundedDaily = Math.round(dailyProgress);
-    const roundedAlerts = Math.max(1, Math.round(alertTotal));
     const roundedHouses = Math.max(1, Math.round(activeHouses));
-    const roundedMortality = Math.max(1, Math.round(mortalityVerified));
+    const roundedCasualties = Math.max(0, Math.round(casualtyCount));
+    const feedLabel = `${feedTons.toFixed(1)} tons`;
     const passText = String(passesLogged).padStart(3, "0");
+    const medicineLabel = `${Math.round(medicineReadiness)}% of medicine log target`;
+    const vaccineLabel = `${Math.round(vaccineReadiness)}% of vaccine schedule target`;
 
     if (latestRecord) latestRecord.textContent = recordState.title;
     if (latestNarrative) latestNarrative.textContent = recordState.narrative;
-    if (visibilityValue) visibilityValue.textContent = `${roundedUtilization}%`;
+    if (visibilityValue) visibilityValue.textContent = `${roundedVisibility}%`;
     if (visibilityNarrative) {
       visibilityNarrative.textContent = captureMode
-        ? "Graded passes are syncing immediately into the same-day control view."
-        : "The baseline still shows delayed visibility, but the sorter is already proving the future state.";
+        ? "Farm workers are logging at source while the sorting center can already see feed, casualty, medicine, and vaccine signals."
+        : "Workers capture at the farm first, then management follows the day from the sorting center console.";
     }
     if (housesMeta) housesMeta.textContent = `${roundedHouses} / 24 active`;
     if (passesMeta) passesMeta.textContent = `${passText} passes`;
     if (syncMeta) syncMeta.textContent = `${roundedSync}% sync`;
     if (housesCount) housesCount.textContent = `${roundedHouses} / 24`;
     if (passesCount) passesCount.textContent = passText;
-    if (syncCount) syncCount.textContent = `${roundedSync}%`;
-    if (feedCount) feedCount.textContent = `${roundedFeed}%`;
-    if (mortalityCount) mortalityCount.textContent = `${roundedMortality} verified`;
-    if (alertCount) alertCount.textContent = `${roundedAlerts} open`;
+    if (feedCount) feedCount.textContent = feedLabel;
+    if (alertCount) alertCount.textContent = `${roundedCasualties} logged`;
     if (dailyLabel) dailyLabel.textContent = `${roundedDaily}% of daily reporting target`;
-    if (syncLabel) syncLabel.textContent = `${roundedSync}% same-day sync confidence`;
-    if (utilLabel) utilLabel.textContent = `${roundedUtilization}% utilization pathway`;
+    if (syncLabel) syncLabel.textContent = medicineLabel;
+    if (utilLabel) utilLabel.textContent = vaccineLabel;
     if (dailyBar) dailyBar.style.setProperty("--fill", `${roundedDaily}%`);
-    if (syncBar) syncBar.style.setProperty("--fill", `${roundedSync}%`);
-    if (utilBar) utilBar.style.setProperty("--fill", `${roundedUtilization}%`);
+    if (syncBar) syncBar.style.setProperty("--fill", `${Math.round(medicineReadiness)}%`);
+    if (utilBar) utilBar.style.setProperty("--fill", `${Math.round(vaccineReadiness)}%`);
     if (ringVisual) ringVisual.style.setProperty("--ring-fill", roundedSync);
     if (ringValue) ringValue.textContent = `${roundedSync}%`;
   };
@@ -3540,8 +4080,12 @@ function initHomepage() {
     return eggs.every((egg) => egg.x > minimumGap);
   };
 
-  const spawnEgg = () => {
-    const type = chooseEggType();
+  const placeEgg = (egg) => {
+    const bob = prefersReducedMotion.matches ? 0 : Math.sin(egg.phase) * 2;
+    egg.element.style.transform = `translate(${egg.x}px, ${egg.y + bob}px) rotate(${egg.rotation}deg)`;
+  };
+
+  const createEgg = (type, x) => {
     const record = buildRecord(type);
     const egg = document.createElement("div");
     egg.className = `sim-egg ${type.className}`;
@@ -3550,18 +4094,38 @@ function initHomepage() {
     eggStream.appendChild(egg);
 
     const laneOffset = laneOffsets[record.lane];
-    eggs.push({
+    const item = {
       element: egg,
-      x: -type.width - 18,
+      x,
       y: laneOffset,
       wobble: 5 + Math.random() * 4,
       phase: Math.random() * Math.PI * 2,
       rotation: (Math.random() - 0.5) * 10,
       rotationSpeed: (Math.random() - 0.5) * 10,
-      speed: (captureMode ? 290 : 190) + type.speedBoost,
+      speed: 180 + type.speedBoost,
       counted: false,
       width: type.width,
       record
+    };
+
+    eggs.push(item);
+    placeEgg(item);
+  };
+
+  const spawnEgg = () => {
+    const type = chooseEggType();
+    createEgg(type, -type.width - 18);
+  };
+
+  const seedEggs = () => {
+    [
+      { key: "small", x: 60 },
+      { key: "medium", x: 250 },
+      { key: "large", x: 470 },
+      { key: "jumbo", x: 700 }
+    ].forEach((seed) => {
+      const type = eggTypes.find((item) => item.key === seed.key);
+      if (type) createEgg(type, seed.x);
     });
   };
 
@@ -3577,59 +4141,76 @@ function initHomepage() {
     recordState.title = egg.record.title;
     recordState.narrative = egg.record.narrative;
     applyEggImpact(egg.record);
-    if (captureMode) {
-      showToast(`${egg.record.recordLabel || egg.record.title} now appears in the same-day monitor.`);
-    }
+    showToast(`${egg.record.recordLabel || egg.record.title} in the Farmbrite console.`);
+  };
+
+  const toggleCollapse = (toggle) => {
+    const targetId = toggle.getAttribute("data-collapse-target");
+    if (!targetId) return;
+    const body = document.getElementById(targetId);
+    const card = toggle.closest(".collapsible-card");
+    if (!body || !card) return;
+    const nextExpanded = toggle.getAttribute("aria-expanded") !== "true";
+    toggle.setAttribute("aria-expanded", String(nextExpanded));
+    card.classList.toggle("is-collapsed", !nextExpanded);
   };
 
   const animate = (timestamp) => {
     const delta = Math.min((timestamp - lastFrame) / 1000, 0.033);
     lastFrame = timestamp;
 
-    beltShift += delta * (captureMode ? 160 : 90);
+    if (captureMode) {
+      beltShift += delta * 160;
+      spawnTimer += delta;
+    }
     stage.style.setProperty("--belt-shift", `${beltShift}px`);
 
-    spawnTimer += delta;
-    const spawnRate = captureMode ? 0.28 : 0.52;
-    const nextType = chooseEggType();
-    if (spawnTimer >= spawnRate && hasSpawnClearance(nextType.minGap)) {
-      spawnEgg();
-      spawnTimer = 0;
+    if (captureMode) {
+      const nextType = chooseEggType();
+      if (spawnTimer >= 0.34 && hasSpawnClearance(nextType.minGap)) {
+        spawnEgg();
+        spawnTimer = 0;
+      }
     }
 
     const streamWidth = Math.max(eggStream.clientWidth, 720);
     const checkpoint = streamWidth * 0.62;
 
     eggs.slice().forEach((egg) => {
-      egg.x += delta * egg.speed;
-      egg.rotation += delta * egg.rotationSpeed;
-      const bob = prefersReducedMotion.matches ? 0 : Math.sin((timestamp / 1000) * egg.wobble + egg.phase) * 4;
-      egg.element.style.transform = `translate(${egg.x}px, ${egg.y + bob}px) rotate(${egg.rotation}deg)`;
-      if (egg.x + egg.width * 0.5 >= checkpoint) handleEggCheckpoint(egg);
+      if (captureMode) {
+        egg.x += delta * egg.speed;
+        egg.rotation += delta * egg.rotationSpeed;
+        egg.phase += delta * egg.wobble;
+      }
+      placeEgg(egg);
+      if (captureMode && egg.x + egg.width * 0.5 >= checkpoint) handleEggCheckpoint(egg);
       if (egg.x > streamWidth + 120) removeEgg(egg);
     });
 
-    storyTimer += delta;
-    if (!prefersReducedMotion.matches && storyTimer >= 3.6 && storyLines.length > 1) {
-      storyIndex = (storyIndex + 1) % storyLines.length;
-      setStory(storyIndex);
-      storyTimer = 0;
+    if (!prefersReducedMotion.matches) {
+      quoteTimer += delta;
+      if (quoteTimer >= 4.4) {
+        quoteIndex = (quoteIndex + 1) % quoteDeck.length;
+        setQuote(quoteIndex);
+        quoteTimer = 0;
+      }
     }
 
     updateDashboard();
     window.requestAnimationFrame(animate);
   };
 
-  focusToggle?.addEventListener("click", () => {
-    focusMode = !focusMode;
-    stage.classList.toggle("is-focus", focusMode);
-    focusToggle.textContent = focusMode ? "Return view" : "Focus view";
+  collapseToggles.forEach((toggle) => {
+    toggle.addEventListener("click", (event) => {
+      event.stopPropagation();
+      toggleCollapse(toggle);
+    });
   });
 
   stage.tabIndex = 0;
-  stage.addEventListener("pointerdown", () => setCaptureMode(true));
-  stage.addEventListener("pointerup", () => setCaptureMode(false));
-  stage.addEventListener("pointerleave", () => setCaptureMode(false));
+  trayBand?.addEventListener("pointerdown", () => setCaptureMode(true));
+  trayBand?.addEventListener("pointerup", () => setCaptureMode(false));
+  trayBand?.addEventListener("pointerleave", () => setCaptureMode(false));
   stage.addEventListener("keydown", (event) => {
     if (event.code !== "Space") return;
     event.preventDefault();
@@ -3642,9 +4223,10 @@ function initHomepage() {
   });
   window.addEventListener("blur", () => setCaptureMode(false));
 
+  seedEggs();
+  setQuote(0);
   updateClock();
   updateDashboard();
-  setStory(0);
   window.setInterval(updateClock, 1000);
   window.requestAnimationFrame(animate);
 }
@@ -3653,6 +4235,10 @@ function initHomepage() {
 <!-- INLINE_HOME_JS_END -->
 </body>
 </html>
+
+
+
+
 
 
 

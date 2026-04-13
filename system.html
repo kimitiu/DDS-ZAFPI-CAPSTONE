@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -36,7 +36,7 @@
   --radius-sm: 12px;
   --max-width: 1240px;
   --nav-height: 86px;
-  --transition: 220ms ease;
+  --transition: 260ms cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 *,
@@ -2755,6 +2755,475 @@ select {
   }
 }
 
+/* Homepage stage v4 */
+.demo-stage--full {
+  min-height: 980px;
+}
+
+.sim-overlay--landing {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: clamp(24px, 2.4vw, 34px);
+  gap: 28px;
+}
+
+.sim-home-grid {
+  position: relative;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: minmax(340px, 470px) minmax(320px, 420px);
+  justify-content: space-between;
+  align-items: start;
+  gap: 26px;
+}
+
+.hero-floating-card--stage {
+  max-width: 470px;
+  padding: 28px;
+  background: rgba(255, 255, 255, 0.84);
+}
+
+.stage-quote {
+  margin-bottom: 12px;
+  font-size: clamp(3rem, 5.4vw, 5rem);
+  line-height: 0.92;
+}
+
+.stage-quote-copy {
+  min-height: 5.4em;
+}
+
+.monitor-stack-inline {
+  width: min(100%, 420px);
+  justify-self: end;
+  display: grid;
+  gap: 18px;
+}
+
+.collapsible-card {
+  overflow: hidden;
+}
+
+.collapsible-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.collapsible-body {
+  display: grid;
+  gap: 14px;
+  max-height: 1200px;
+  opacity: 1;
+  overflow: hidden;
+  transition: max-height 280ms ease, opacity 220ms ease, margin 220ms ease;
+}
+
+.collapsible-card.is-collapsed .collapsible-body {
+  max-height: 0;
+  opacity: 0;
+  margin-top: 0;
+}
+
+.collapse-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.collapse-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #f5fbf4;
+  cursor: pointer;
+  transition: transform 220ms ease, background 220ms ease, border-color 220ms ease;
+}
+
+.collapse-toggle:hover,
+.collapse-toggle:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+.collapse-toggle span {
+  display: inline-block;
+  transition: transform 220ms ease;
+}
+
+.collapse-toggle[aria-expanded="false"] span {
+  transform: rotate(-90deg);
+}
+
+.record-dock {
+  width: 100%;
+  padding: 18px 20px;
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(19, 31, 28, 0.88), rgba(12, 24, 22, 0.82)),
+    rgba(255, 255, 255, 0.04);
+}
+
+.record-dock .collapsible-body {
+  margin-top: 8px;
+}
+
+.record-dock .signal-value {
+  font-size: clamp(1.9rem, 3.2vw, 3.35rem);
+  line-height: 0.94;
+  max-width: 8ch;
+}
+
+.record-dock .signal-copy {
+  max-width: 34ch;
+}
+
+.record-dock .signal-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.dashboard-panel--landing {
+  width: 100%;
+  padding: 18px;
+  max-width: none;
+  animation: none;
+}
+
+.dashboard-panel--landing .collapsible-body {
+  margin-top: 8px;
+}
+
+.dashboard-grid {
+  grid-template-columns: 112px minmax(0, 1fr);
+}
+
+.dashboard-mini-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.sim-tray-band {
+  position: relative;
+  z-index: 4;
+  display: grid;
+  gap: 14px;
+  width: min(100%, 860px);
+  padding: 10px 0 260px;
+}
+
+.sim-tray-copy {
+  max-width: 58ch;
+}
+
+.sim-tray-title {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  line-height: 0.96;
+  color: var(--text);
+}
+
+.sim-tray-lead {
+  margin: 0;
+  max-width: 56ch;
+  color: var(--muted);
+  font-size: 1.03rem;
+}
+
+.scene-direction {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  width: fit-content;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(17, 35, 49, 0.1);
+  background: rgba(255, 255, 255, 0.58);
+  color: var(--green-900);
+  font-size: 0.92rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+}
+
+.scene-arrow {
+  opacity: 0.72;
+}
+
+.scene-grade-guide {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.grade-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(15, 28, 24, 0.42);
+  box-shadow: 0 14px 30px rgba(10, 20, 18, 0.08);
+  color: rgba(248, 251, 245, 0.92);
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  backdrop-filter: blur(12px);
+}
+
+.grade-chip--peewee {
+  background: rgba(100, 118, 93, 0.75);
+}
+
+.grade-chip--small {
+  background: rgba(92, 108, 118, 0.72);
+}
+
+.grade-chip--medium {
+  background: rgba(82, 94, 105, 0.72);
+}
+
+.grade-chip--large {
+  background: rgba(112, 141, 103, 0.78);
+}
+
+.grade-chip--xl {
+  background: rgba(126, 141, 104, 0.78);
+}
+
+.grade-chip--jumbo {
+  background: rgba(83, 117, 88, 0.82);
+}
+
+.grade-chip--cracked {
+  background: rgba(130, 88, 74, 0.8);
+}
+
+.grade-chip--leakers {
+  background: rgba(121, 72, 66, 0.82);
+}
+
+.scene-instruction {
+  width: fit-content;
+}
+
+.scene-farmline {
+  left: 10%;
+  right: 24%;
+  bottom: 270px;
+  gap: 16px;
+}
+
+.scene-silo {
+  right: 12%;
+  bottom: 278px;
+  transform: scale(0.92);
+}
+
+.scene-belt {
+  left: 10%;
+  right: 12%;
+  bottom: 84px;
+  height: 126px;
+  z-index: 1;
+}
+
+.scene-belt-track {
+  inset: 22px 0 0;
+}
+
+.egg-stream {
+  inset: 0 2% 0 2%;
+}
+
+.sim-egg {
+  top: 20px;
+  box-shadow:
+    0 14px 22px rgba(18, 24, 27, 0.16),
+    inset 0 2px 5px rgba(255, 255, 255, 0.45);
+}
+
+.sim-egg::before {
+  content: "";
+  position: absolute;
+  inset: 12% 18% 42% 24%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.62), transparent 72%);
+  opacity: 0.88;
+}
+
+.egg--peewee {
+  background: radial-gradient(circle at 35% 30%, #fbf8ee, #ddd3ba 74%);
+}
+
+.egg--small {
+  background: radial-gradient(circle at 35% 30%, #f7f1e4, #d9d2be 74%);
+}
+
+.egg--medium {
+  background:
+    radial-gradient(circle at 35% 30%, #f5f0e4, #d4ccb6 70%),
+    radial-gradient(circle at 26% 54%, rgba(104, 86, 62, 0.28) 0 2px, transparent 2px),
+    radial-gradient(circle at 66% 30%, rgba(104, 86, 62, 0.22) 0 1.5px, transparent 1.5px);
+}
+
+.egg--large {
+  background: radial-gradient(circle at 35% 30%, #f8ecd8, #ddbe90 70%);
+}
+
+.egg--xl {
+  background: radial-gradient(circle at 35% 28%, #fff2d9, #e4c98f 70%);
+}
+
+.egg--jumbo {
+  background: radial-gradient(circle at 35% 28%, #fffef9, #f0dfbd 70%);
+}
+
+.egg--cracked {
+  background:
+    linear-gradient(120deg, transparent 44%, rgba(112, 75, 58, 0.82) 45%, rgba(112, 75, 58, 0.82) 49%, transparent 50%),
+    radial-gradient(circle at 35% 30%, #f0dfd8, #cd9f91 74%);
+}
+
+.egg--leakers {
+  background:
+    radial-gradient(circle at 52% 78%, rgba(196, 121, 88, 0.74) 0 16%, transparent 18%),
+    radial-gradient(circle at 35% 30%, #f5e2d7, #bf8878 74%);
+}
+
+.sim-toast {
+  left: auto;
+  right: 26px;
+  bottom: 26px;
+}
+
+.home-team-section {
+  margin-top: 10px;
+}
+
+@media (max-width: 1240px) {
+  .sim-home-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-floating-card--stage,
+  .monitor-stack-inline {
+    max-width: none;
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  .sim-tray-band {
+    width: min(100%, 760px);
+    padding-bottom: 240px;
+  }
+
+  .scene-farmline {
+    right: 18%;
+  }
+
+  .scene-silo {
+    right: 9%;
+  }
+}
+
+@media (max-width: 980px) {
+  .demo-stage--full {
+    min-height: 1140px;
+  }
+
+  .sim-overlay--landing {
+    gap: 22px;
+  }
+
+  .sim-tray-band {
+    padding-bottom: 220px;
+  }
+
+  .scene-farmline {
+    left: 8%;
+    right: 12%;
+    bottom: 270px;
+    gap: 12px;
+  }
+
+  .scene-silo {
+    right: 6%;
+    bottom: 280px;
+    transform: scale(0.8);
+  }
+
+  .scene-belt {
+    left: 8%;
+    right: 8%;
+    bottom: 86px;
+  }
+}
+
+@media (max-width: 760px) {
+  .demo-stage--full {
+    min-height: 1200px;
+  }
+
+  .stage-quote {
+    font-size: clamp(2.4rem, 11vw, 3.8rem);
+  }
+
+  .record-dock .signal-value {
+    font-size: clamp(1.8rem, 8vw, 2.8rem);
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .dashboard-mini-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .sim-tray-band {
+    padding-bottom: 200px;
+  }
+
+  .scene-direction {
+    flex-wrap: wrap;
+  }
+
+  .scene-farmline {
+    left: 5%;
+    right: 5%;
+    bottom: 250px;
+  }
+
+  .scene-silo {
+    display: none;
+  }
+
+  .scene-belt {
+    left: 5%;
+    right: 5%;
+    bottom: 72px;
+    height: 112px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage-quote,
+  .stage-quote-copy,
+  .collapse-toggle span {
+    transition: none;
+  }
+}
+
 </style>
 <!-- INLINE_SITE_CSS_END -->
 </head>
@@ -3130,6 +3599,9 @@ document.addEventListener("DOMContentLoaded", () => {
 <!-- INLINE_SITE_JS_END -->
 </body>
 </html>
+
+
+
 
 
 
