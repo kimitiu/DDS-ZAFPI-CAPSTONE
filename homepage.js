@@ -35,7 +35,6 @@ function initHomepage() {
   const toast = document.getElementById("simToast");
   const toastText = document.getElementById("simToastText");
   const collapseToggles = Array.from(document.querySelectorAll("[data-collapse-target]"));
-  const trayBand = stage ? stage.querySelector(".sim-tray-band") : null;
 
   if (!stage || !eggStream) return;
   if (fallbackScene) fallbackScene.hidden = true;
@@ -47,7 +46,7 @@ function initHomepage() {
 
   const quoteDeck = [
     {
-      title: "We’re hatching something special.",
+      title: "We're hatching something special.",
       body: "Project Farmbrite helps farm workers log production, feed intake, mortality, medicine, and vaccine activity so the sorting center can see the day as it happens."
     },
     {
@@ -203,8 +202,8 @@ function initHomepage() {
   let toastTimer = 0;
 
   const recordState = {
-    title: "Sorter idle",
-    narrative: "Press and hold spacebar to run the sorter and send the next pass into the console."
+    title: "Slow baseline recording",
+    narrative: "The conveyor is moving at a calm pace. Hold spacebar to speed up live capture and logging."
   };
 
   const updateClock = () => {
@@ -424,31 +423,29 @@ function initHomepage() {
     const delta = Math.min((timestamp - lastFrame) / 1000, 0.033);
     lastFrame = timestamp;
 
-    if (captureMode) {
-      beltShift += delta * 160;
-      spawnTimer += delta;
-    }
+    const beltSpeed = captureMode ? 164 : 56;
+    const speedMultiplier = captureMode ? 1.55 : 0.42;
+    const spawnRate = captureMode ? 0.42 : 1.65;
+
+    beltShift += delta * beltSpeed;
+    spawnTimer += delta;
     stage.style.setProperty("--belt-shift", `${beltShift}px`);
 
-    if (captureMode) {
-      const nextType = chooseEggType();
-      if (spawnTimer >= 0.34 && hasSpawnClearance(nextType.minGap)) {
-        spawnEgg();
-        spawnTimer = 0;
-      }
+    const nextType = chooseEggType();
+    if (spawnTimer >= spawnRate && hasSpawnClearance(nextType.minGap)) {
+      spawnEgg();
+      spawnTimer = 0;
     }
 
     const streamWidth = Math.max(eggStream.clientWidth, 720);
     const checkpoint = streamWidth * 0.62;
 
     eggs.slice().forEach((egg) => {
-      if (captureMode) {
-        egg.x += delta * egg.speed;
-        egg.rotation += delta * egg.rotationSpeed;
-        egg.phase += delta * egg.wobble;
-      }
+      egg.x += delta * egg.speed * speedMultiplier;
+      egg.rotation += delta * egg.rotationSpeed * speedMultiplier;
+      egg.phase += delta * egg.wobble * speedMultiplier;
       placeEgg(egg);
-      if (captureMode && egg.x + egg.width * 0.5 >= checkpoint) handleEggCheckpoint(egg);
+      if (egg.x + egg.width * 0.5 >= checkpoint) handleEggCheckpoint(egg);
       if (egg.x > streamWidth + 120) removeEgg(egg);
     });
 
@@ -473,9 +470,9 @@ function initHomepage() {
   });
 
   stage.tabIndex = 0;
-  trayBand?.addEventListener("pointerdown", () => setCaptureMode(true));
-  trayBand?.addEventListener("pointerup", () => setCaptureMode(false));
-  trayBand?.addEventListener("pointerleave", () => setCaptureMode(false));
+  stage.addEventListener("pointerdown", () => setCaptureMode(true));
+  stage.addEventListener("pointerup", () => setCaptureMode(false));
+  stage.addEventListener("pointerleave", () => setCaptureMode(false));
   stage.addEventListener("keydown", (event) => {
     if (event.code !== "Space") return;
     event.preventDefault();
@@ -495,3 +492,4 @@ function initHomepage() {
   window.setInterval(updateClock, 1000);
   window.requestAnimationFrame(animate);
 }
+

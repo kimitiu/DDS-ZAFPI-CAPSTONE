@@ -3224,6 +3224,298 @@ select {
   }
 }
 
+/* Homepage stage v5 */
+.home-intro-grid {
+  align-items: stretch;
+}
+
+.hero-floating-card--intro,
+.management-signal-card {
+  min-height: 100%;
+}
+
+.hero-floating-card--intro {
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.management-signal-card {
+  display: grid;
+  gap: 18px;
+  padding: 30px;
+}
+
+.management-signal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.management-signal-grid article {
+  display: grid;
+  gap: 8px;
+  padding: 16px;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.64);
+}
+
+.management-signal-grid strong {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.95rem;
+}
+
+.management-signal-grid span {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.demo-stage--full {
+  min-height: 860px;
+}
+
+.sim-overlay--landing {
+  gap: 20px;
+}
+
+.sim-home-grid {
+  grid-template-columns: minmax(320px, 540px) minmax(320px, 400px);
+  gap: 20px;
+  align-items: start;
+}
+
+.sim-stage-card {
+  width: min(100%, 540px);
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: var(--shadow-md);
+}
+
+.sim-stage-card .sim-tray-title {
+  font-size: clamp(1.9rem, 3vw, 2.8rem);
+}
+
+.sim-stage-card .sim-tray-lead {
+  max-width: 42ch;
+}
+
+.monitor-stack-inline {
+  width: min(100%, 400px);
+  gap: 14px;
+}
+
+.record-dock .signal-value {
+  font-size: clamp(1.5rem, 2.6vw, 2.7rem);
+  max-width: 9ch;
+}
+
+.record-dock .signal-copy {
+  font-size: 0.98rem;
+}
+
+.dashboard-panel--landing {
+  padding: 16px;
+}
+
+.dashboard-mini-card strong {
+  font-size: 1.1rem;
+}
+
+.scene-barn {
+  position: absolute;
+  left: 8%;
+  bottom: 340px;
+  width: 170px;
+  height: 110px;
+  border-radius: 26px 26px 18px 18px;
+  background: linear-gradient(180deg, rgba(63, 91, 72, 0.94), rgba(40, 59, 49, 0.96));
+  box-shadow: 0 22px 44px rgba(18, 35, 29, 0.14);
+}
+
+.scene-barn::before {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  top: -26px;
+  height: 42px;
+  border-radius: 22px 22px 0 0;
+  background: linear-gradient(180deg, #2c4158, #203041);
+}
+
+.scene-barn::after {
+  content: "";
+  position: absolute;
+  left: 64px;
+  bottom: 0;
+  width: 42px;
+  height: 54px;
+  border-radius: 14px 14px 0 0;
+  background: rgba(246, 248, 243, 0.16);
+}
+
+.scene-farmline {
+  left: 28%;
+  right: 28%;
+  bottom: 330px;
+  gap: 14px;
+}
+
+.scene-worker {
+  position: absolute;
+  right: 12%;
+  bottom: 300px;
+  width: 62px;
+  height: 124px;
+  border-radius: 30px 30px 18px 18px;
+  background: linear-gradient(180deg, rgba(233, 240, 247, 0.92), rgba(190, 202, 216, 0.94));
+  box-shadow: 0 18px 34px rgba(19, 35, 42, 0.12);
+}
+
+.scene-worker::before {
+  content: "";
+  position: absolute;
+  inset: -34px 4px auto;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, rgba(223, 231, 239, 0.96), rgba(181, 194, 207, 0.96));
+}
+
+.scene-worker::after {
+  content: "";
+  position: absolute;
+  left: -18px;
+  top: 28px;
+  width: 24px;
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(205, 217, 228, 0.88);
+  transform: rotate(-24deg);
+}
+
+.scene-worker-tablet {
+  position: absolute;
+  left: -30px;
+  top: 20px;
+  width: 30px;
+  height: 42px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  background: linear-gradient(180deg, rgba(28, 44, 58, 0.96), rgba(16, 27, 37, 0.96));
+  box-shadow: 0 12px 22px rgba(17, 31, 41, 0.18);
+}
+
+.scene-worker-tablet::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border-radius: 6px;
+  background: linear-gradient(180deg, rgba(133, 200, 157, 0.92), rgba(58, 126, 89, 0.88));
+}
+
+.scene-instruction {
+  width: fit-content;
+  max-width: 100%;
+}
+
+.scene-belt {
+  left: 10%;
+  right: 10%;
+  bottom: 70px;
+  height: 122px;
+}
+
+.scene-belt-track {
+  inset: 18px 0 0;
+}
+
+@media (max-width: 1240px) {
+  .management-signal-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .sim-home-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sim-stage-card,
+  .monitor-stack-inline {
+    width: 100%;
+    max-width: none;
+  }
+
+  .scene-farmline {
+    left: 24%;
+    right: 22%;
+  }
+}
+
+@media (max-width: 900px) {
+  .management-signal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .demo-stage--full {
+    min-height: 980px;
+  }
+
+  .scene-barn {
+    left: 6%;
+    bottom: 330px;
+    transform: scale(0.9);
+  }
+
+  .scene-farmline {
+    left: 23%;
+    right: 8%;
+    bottom: 322px;
+    gap: 10px;
+  }
+
+  .scene-worker {
+    right: 6%;
+    bottom: 290px;
+    transform: scale(0.9);
+  }
+}
+
+@media (max-width: 700px) {
+  .hero-floating-card--intro,
+  .management-signal-card {
+    padding: 22px;
+  }
+
+  .demo-stage--full {
+    min-height: 1040px;
+  }
+
+  .scene-barn {
+    left: 5%;
+    bottom: 308px;
+    transform: scale(0.78);
+  }
+
+  .scene-farmline {
+    left: 20%;
+    right: 5%;
+    bottom: 300px;
+    gap: 8px;
+  }
+
+  .scene-worker {
+    right: 5%;
+    bottom: 270px;
+    transform: scale(0.76);
+  }
+
+  .scene-belt {
+    left: 5%;
+    right: 5%;
+    bottom: 58px;
+    height: 112px;
+  }
+}
+
 </style>
 <!-- INLINE_SITE_CSS_END -->
 </head>
@@ -3255,12 +3547,57 @@ select {
 
       <main class="page-main">
     <div class="page-container page-stack">
+      <section class="split-grid home-intro-grid reveal">
+        <article class="hero-floating-card hero-floating-card--intro reveal reveal-delay-1">
+          <div class="eyebrow">Simulation-first home</div>
+          <h1 class="section-title stage-quote" id="quoteTitle">We&rsquo;re hatching something special.</h1>
+          <p class="lead hero-lead stage-quote-copy" id="quoteBody">Project Farmbrite helps farm workers log production, feed intake, mortality, medicine, and vaccine activity so the sorting center can see the day as it happens.</p>
+          <div class="positioning-line">Project Farmbrite transforms ZAFPI&rsquo;s production operations from delayed, manual reporting into a structured, same-day management system that enables real-time visibility, stronger data integrity, and better operational control.</div>
+          <div class="hero-actions">
+            <a class="button button-primary" href="about.html">Learn More</a>
+            <a class="button button-secondary" href="system.html">See the System</a>
+            <a class="button button-secondary" href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">Farmbrite Demo</a>
+          </div>
+          <div class="hero-facts">
+            <span class="fact-pill"><strong>43%</strong> reconciliation</span>
+            <span class="fact-pill"><strong>57%</strong> utilization</span>
+            <span class="fact-pill"><strong>24</strong> houses</span>
+            <span class="fact-pill"><strong>95%+</strong> compliance target</span>
+          </div>
+        </article>
+
+        <article class="section-shell management-signal-card reveal reveal-delay-2">
+          <div class="eyebrow">Management sees the signal</div>
+          <h2 class="summary-title">Source capture becomes a decision-ready management view.</h2>
+          <p class="lead">Production, feed intake, casualties, medicine, and vaccine updates start with workers at the farm, then become visible at the sorting center in the same operating day.</p>
+          <div class="management-signal-grid">
+            <article>
+              <strong>Feed planning</strong>
+              <span>Track intake sooner so procurement and ordering decisions are grounded in actual use.</span>
+            </article>
+            <article>
+              <strong>Health visibility</strong>
+              <span>Monitor casualties, medicine logs, and vaccine readiness without waiting for next-day reconciliation.</span>
+            </article>
+            <article>
+              <strong>Production rhythm</strong>
+              <span>See tray movement, pass volume, and same-day compliance while operations are still in motion.</span>
+            </article>
+            <article>
+              <strong>Farm control</strong>
+              <span>Support chick ordering, culling, and house-level decisions with structured reporting instead of paper lag.</span>
+            </article>
+          </div>
+        </article>
+      </section>
+
       <section class="simulation-shell home-stage-shell reveal">
         <div class="demo-stage demo-stage--full" id="demoStage">
           <div class="scene-layer" aria-hidden="true">
             <div class="scene-grid"></div>
             <div class="scene-sun"></div>
             <div class="scene-glow"></div>
+            <div class="scene-barn"></div>
             <div class="scene-farmline">
               <span class="farm-house house-wide"></span>
               <span class="farm-house house-mid"></span>
@@ -3269,7 +3606,9 @@ select {
               <span class="farm-house house-mid"></span>
               <span class="farm-house house-wide"></span>
             </div>
-            <div class="scene-silo"></div>
+            <div class="scene-worker">
+              <span class="scene-worker-tablet"></span>
+            </div>
             <div class="scene-belt">
               <div class="scene-belt-rail scene-belt-rail--left"></div>
               <div class="scene-belt-track"></div>
@@ -3328,22 +3667,26 @@ select {
             </div>
 
             <div class="sim-home-grid">
-              <article class="hero-floating-card hero-floating-card--stage reveal reveal-delay-1">
-                <div class="eyebrow">Simulation-first home</div>
-                <h1 class="section-title stage-quote" id="quoteTitle">We&rsquo;re hatching something special.</h1>
-                <p class="lead hero-lead stage-quote-copy" id="quoteBody">Project Farmbrite helps farm workers log production, feed intake, mortality, medicine, and vaccine activity so the sorting center can see the day as it happens.</p>
-                <div class="positioning-line">Project Farmbrite transforms ZAFPI&rsquo;s production operations from delayed, manual reporting into a structured, same-day management system that enables real-time visibility, stronger data integrity, and better operational control.</div>
-                <div class="hero-actions">
-                  <a class="button button-primary" href="about.html">Learn More</a>
-                  <a class="button button-secondary" href="system.html">See the System</a>
-                  <a class="button button-secondary" href="https://www.farmbrite.com/demo" target="_blank" rel="noopener noreferrer">Farmbrite Demo</a>
+              <article class="surface-card sim-stage-card reveal reveal-delay-1">
+                <div class="eyebrow">Farm to sorting center</div>
+                <h2 class="sim-tray-title">From the farm houses to the sorting center, every tray becomes a record.</h2>
+                <p class="sim-tray-lead">The conveyor moves at a calm baseline, then speeds up when workers actively capture. Egg grades and defect trays feed the live console right beside the sorter.</p>
+                <div class="scene-direction">
+                  <span>Farm houses</span>
+                  <span class="scene-arrow" aria-hidden="true">&rarr;</span>
+                  <span>Sorting center</span>
                 </div>
-                <div class="hero-facts">
-                  <span class="fact-pill"><strong>43%</strong> reconciliation</span>
-                  <span class="fact-pill"><strong>57%</strong> utilization</span>
-                  <span class="fact-pill"><strong>24</strong> houses</span>
-                  <span class="fact-pill"><strong>95%+</strong> compliance target</span>
+                <div class="scene-grade-guide">
+                  <span class="grade-chip grade-chip--peewee">Peewee</span>
+                  <span class="grade-chip grade-chip--small">Small</span>
+                  <span class="grade-chip grade-chip--medium">Medium</span>
+                  <span class="grade-chip grade-chip--large">Large</span>
+                  <span class="grade-chip grade-chip--xl">XL</span>
+                  <span class="grade-chip grade-chip--jumbo">Jumbo</span>
+                  <span class="grade-chip grade-chip--cracked">Cracked</span>
+                  <span class="grade-chip grade-chip--leakers">Leakers</span>
                 </div>
+                <span class="instruction-chip scene-instruction">The conveyor moves slowly by default. Hold the stage or spacebar to sort faster.</span>
               </article>
 
               <div class="monitor-stack-inline reveal reveal-delay-2">
@@ -3436,30 +3779,6 @@ select {
                 </aside>
               </div>
             </div>
-
-            <section class="sim-tray-band reveal reveal-delay-3">
-              <div class="sim-tray-copy">
-                <div class="eyebrow">Farm to sorting center</div>
-                <h2 class="sim-tray-title">From the farm houses to the sorting center, every tray becomes a record.</h2>
-                <p class="sim-tray-lead">Workers log production, feed intake, casualties, medicine, and vaccine updates at the source. Management sees the sorting center and reporting console update in the same day.</p>
-              </div>
-              <div class="scene-direction">
-                <span>Farm houses</span>
-                <span class="scene-arrow" aria-hidden="true">&rarr;</span>
-                <span>Sorting center</span>
-              </div>
-              <div class="scene-grade-guide">
-                <span class="grade-chip grade-chip--peewee">Peewee</span>
-                <span class="grade-chip grade-chip--small">Small</span>
-                <span class="grade-chip grade-chip--medium">Medium</span>
-                <span class="grade-chip grade-chip--large">Large</span>
-                <span class="grade-chip grade-chip--xl">XL</span>
-                <span class="grade-chip grade-chip--jumbo">Jumbo</span>
-                <span class="grade-chip grade-chip--cracked">Cracked</span>
-                <span class="grade-chip grade-chip--leakers">Leakers</span>
-              </div>
-              <span class="instruction-chip scene-instruction">Press and hold the stage or spacebar to run the sorter</span>
-            </section>
 
             <div class="sim-toast" id="simToast">
               <strong>Rollout signal</strong>
@@ -3770,7 +4089,6 @@ function initHomepage() {
   const toast = document.getElementById("simToast");
   const toastText = document.getElementById("simToastText");
   const collapseToggles = Array.from(document.querySelectorAll("[data-collapse-target]"));
-  const trayBand = stage ? stage.querySelector(".sim-tray-band") : null;
 
   if (!stage || !eggStream) return;
   if (fallbackScene) fallbackScene.hidden = true;
@@ -3782,7 +4100,7 @@ function initHomepage() {
 
   const quoteDeck = [
     {
-      title: "We’re hatching something special.",
+      title: "We're hatching something special.",
       body: "Project Farmbrite helps farm workers log production, feed intake, mortality, medicine, and vaccine activity so the sorting center can see the day as it happens."
     },
     {
@@ -3938,8 +4256,8 @@ function initHomepage() {
   let toastTimer = 0;
 
   const recordState = {
-    title: "Sorter idle",
-    narrative: "Press and hold spacebar to run the sorter and send the next pass into the console."
+    title: "Slow baseline recording",
+    narrative: "The conveyor is moving at a calm pace. Hold spacebar to speed up live capture and logging."
   };
 
   const updateClock = () => {
@@ -4159,31 +4477,29 @@ function initHomepage() {
     const delta = Math.min((timestamp - lastFrame) / 1000, 0.033);
     lastFrame = timestamp;
 
-    if (captureMode) {
-      beltShift += delta * 160;
-      spawnTimer += delta;
-    }
+    const beltSpeed = captureMode ? 164 : 56;
+    const speedMultiplier = captureMode ? 1.55 : 0.42;
+    const spawnRate = captureMode ? 0.42 : 1.65;
+
+    beltShift += delta * beltSpeed;
+    spawnTimer += delta;
     stage.style.setProperty("--belt-shift", `${beltShift}px`);
 
-    if (captureMode) {
-      const nextType = chooseEggType();
-      if (spawnTimer >= 0.34 && hasSpawnClearance(nextType.minGap)) {
-        spawnEgg();
-        spawnTimer = 0;
-      }
+    const nextType = chooseEggType();
+    if (spawnTimer >= spawnRate && hasSpawnClearance(nextType.minGap)) {
+      spawnEgg();
+      spawnTimer = 0;
     }
 
     const streamWidth = Math.max(eggStream.clientWidth, 720);
     const checkpoint = streamWidth * 0.62;
 
     eggs.slice().forEach((egg) => {
-      if (captureMode) {
-        egg.x += delta * egg.speed;
-        egg.rotation += delta * egg.rotationSpeed;
-        egg.phase += delta * egg.wobble;
-      }
+      egg.x += delta * egg.speed * speedMultiplier;
+      egg.rotation += delta * egg.rotationSpeed * speedMultiplier;
+      egg.phase += delta * egg.wobble * speedMultiplier;
       placeEgg(egg);
-      if (captureMode && egg.x + egg.width * 0.5 >= checkpoint) handleEggCheckpoint(egg);
+      if (egg.x + egg.width * 0.5 >= checkpoint) handleEggCheckpoint(egg);
       if (egg.x > streamWidth + 120) removeEgg(egg);
     });
 
@@ -4208,9 +4524,9 @@ function initHomepage() {
   });
 
   stage.tabIndex = 0;
-  trayBand?.addEventListener("pointerdown", () => setCaptureMode(true));
-  trayBand?.addEventListener("pointerup", () => setCaptureMode(false));
-  trayBand?.addEventListener("pointerleave", () => setCaptureMode(false));
+  stage.addEventListener("pointerdown", () => setCaptureMode(true));
+  stage.addEventListener("pointerup", () => setCaptureMode(false));
+  stage.addEventListener("pointerleave", () => setCaptureMode(false));
   stage.addEventListener("keydown", (event) => {
     if (event.code !== "Space") return;
     event.preventDefault();
@@ -4231,10 +4547,12 @@ function initHomepage() {
   window.requestAnimationFrame(animate);
 }
 
+
 </script>
 <!-- INLINE_HOME_JS_END -->
 </body>
 </html>
+
 
 
 
